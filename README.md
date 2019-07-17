@@ -10,6 +10,8 @@ Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para
 
 ## O App
 
+<img src="screenshots/ss01.png?raw=true" width="250"> <img src="screenshots/ss02.png?raw=true" width="250"> <img src="screenshots/ss03.png?raw=true" width="250">
+
 #### Filmes Populares
 
 Como usuário, gostaria de ver a lista de de filmes mais populares em cartaz nos cinemas. Os itens dessa lista deverão conter:
@@ -41,10 +43,6 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  - Utilize a The Movie Database para realizar as consultas 
  -- TMDB (https://www.themoviedb.org)
  -- API (https://www.themoviedb.org/documentation/api)
- 
-## Imagens de Referência
-
-<img src="screenshots/ss01.png?raw=true" width="250"> <img src="screenshots/ss02.png?raw=true" width="250"> <img src="screenshots/ss03.png?raw=true" width="250">
  
 # BOA SORTE!
  
