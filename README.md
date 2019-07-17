@@ -43,9 +43,8 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  -- API (https://www.themoviedb.org/documentation/api)
  
 ## Imagens de Referência
- 
-![](https://raw.githubusercontent.com/ciandt-mobile/desafio-mobile/master/screenshots/ss01.png)
-![](https://raw.githubusercontent.com/ciandt-mobile/desafio-mobile/master/screenshots/ss02.png)
+
+<img src="screenshots/ss01.png?raw=true" width="250"> <img src="screenshots/ss02.png?raw=true" width="250"> <img src="screenshots/ss03.png?raw=true" width="250">
  
 # BOA SORTE!
  
