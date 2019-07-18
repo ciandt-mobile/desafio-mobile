@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="Toggle">
+        <attr name="toggle_initialPosition" />
+        <attr name="toggle_background" format="reference" />
+        <attr name="toggle_switchBackgroundRight" format="reference" />
+        <attr name="toggle_switchBackgroundLeft" format="reference" />
+        <attr name="toggle_textColor" format="reference" />
+        <attr name="toggle_separatorView" format="color" />
+        <attr name="toggle_leftBackground" format="reference" />
+        <attr name="toggle_rightBackground" format="reference" />
+    </declare-styleable>
+
+    <style name="ToggleStyle">
+        <item name="toggle_background">@drawable/toggle_background</item>
+        <item name="toggle_switchBackgroundLeft">@drawable/toggle_selector_left</item>
+        <item name="toggle_switchBackgroundRight">@drawable/toggle_selector_right</item>
+        <item name="toggle_textColor">@drawable/toggle_selector_text</item>
+        <item name="toggle_separatorView">@color/colorPrimary</item>
+    </style>
+
+    <attr name="toggle_initialPosition" format="integer">
+        <enum name="left" value="0" />
+        <enum name="right" value="1" />
+    </attr>
+
+</resources>
