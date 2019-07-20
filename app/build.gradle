@@ -31,6 +31,8 @@ def okHttp3Version = '3.9.0'
 def glideVersion = '4.9.0'
 def koinVersion = '2.0.1'
 def navigationVersion = '1.0.0'
+def coroutineVersion = '1.2.1'
+def coroutineAdapterVersion = '0.9.2'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -65,6 +67,11 @@ dependencies {
     implementation "org.koin:koin-android-viewmodel:$koinVersion"
     testImplementation "org.koin:koin-test:$koinVersion"
     androidTestImplementation "org.koin:koin-test:$koinVersion"
+
+    // COROUTINES
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$coroutineAdapterVersion"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
