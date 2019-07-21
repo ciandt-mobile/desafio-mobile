@@ -64,15 +64,13 @@ class Toggle @JvmOverloads constructor(
 
         leftSwitch.setOnClickListener {
             select(RoundSwitchState.ON_LEFT)
-            onLeftSwitchClick?.invoke(Unit)
         }
         rightSwitch.setOnClickListener {
             select(RoundSwitchState.ON_RIGHT)
-            onRightSwitchClick?.invoke(Unit)
         }
     }
 
-    private fun select(state: RoundSwitchState) {
+    fun select(state: RoundSwitchState) {
         switchState = state
         chooseSelector(switchState)
     }
@@ -90,29 +88,6 @@ class Toggle @JvmOverloads constructor(
         onSwitchValueChanged = action
     }
 
-    fun setLeftSwitchOnClick(action: (Unit) -> Unit) {
-        onLeftSwitchClick = action
-    }
-
-    fun setRightSwitchOnClick(action: (Unit) -> Unit) {
-        onRightSwitchClick = action
-    }
-
-//    private fun updateColor(color: Int, colorState: Boolean) {
-//        val drawable = background as? GradientDrawable
-//        drawable?.setStroke(
-//            resources.getDimension(R.dimen.switch_width_stroke).toInt(),
-//            color)
-//        viewIntercept.setBackgroundColor(color)
-//        if (colorState.not()) {
-//            leftSwitch.setTextColor(color)
-//            rightSwitch.setTextColor(color)
-//        } else {
-//            leftSwitch.setTextColor(textColor)
-//            rightSwitch.setTextColor(textColor)
-//        }
-//    }
-
     private fun chooseSelector(state: RoundSwitchState) {
         when (state) {
             RoundSwitchState.ON_RIGHT -> {
@@ -123,9 +98,6 @@ class Toggle @JvmOverloads constructor(
             }
         }
     }
-
-    fun stateIsOnLeft() = switchState == RoundSwitchState.ON_LEFT
-    fun stateIsOnRight() = switchState == RoundSwitchState.ON_RIGHT
 
     private fun changeSelector(left: Boolean, right: Boolean, state: RoundSwitchState) {
         leftSwitch.isSelected = left

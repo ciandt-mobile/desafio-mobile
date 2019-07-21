@@ -3,13 +3,15 @@ package com.msaviczki.themovieapp.presentation.home.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.msaviczki.themovieapp.helper.customview.Toggle
 import com.msaviczki.themovieapp.network.core.Result
 import com.msaviczki.themovieapp.presentation.home.viewstate.ViewState
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 interface HomeViewModelImpl {
-    fun requestMovies()
+    fun requestPopularMovies()
+    fun requestUpComingMovies()
 }
 
 class HomeViewModel(private val repository: HomeViewModelRepository) : ViewModel(), HomeViewModelImpl {
@@ -22,18 +24,36 @@ class HomeViewModel(private val repository: HomeViewModelRepository) : ViewModel
 
     private val movieLiveData: MutableLiveData<ViewState> = MutableLiveData()
 
+    var toggleState = Toggle.RoundSwitchState.ON_RIGHT
+
     init {
         movieLiveData.value = ViewState()
     }
 
-    override fun requestMovies() {
+    override fun requestPopularMovies() {
         setValue(ViewState(loading = true))
         coroutineScope.launch {
-            val response = repository.requestMovies()
+            val response = repository.requestPopularMovies()
 
             when (response) {
                 is Result.Success -> {
-                    postValue(ViewState(loading = false))
+                    postValue(ViewState(loading = false, response = response.data))
+                }
+                is Result.Error -> {
+                    postValue(ViewState(loading = false, error = response.error))
+                }
+            }
+        }
+    }
+
+    override fun requestUpComingMovies() {
+        setValue(ViewState(loading = true))
+        coroutineScope.launch {
+            val response = repository.requestUpcomingMovies()
+
+            when (response) {
+                is Result.Success -> {
+                    postValue(ViewState(loading = false, response = response.data))
                 }
                 is Result.Error -> {
                     postValue(ViewState(loading = false, error = response.error))
@@ -46,7 +66,8 @@ class HomeViewModel(private val repository: HomeViewModelRepository) : ViewModel
         movieLiveData.postValue(
             movieLiveData.value!!.copy(
                 loading = state.loading,
-                error = state.error
+                error = state.error,
+                response = state.response
             )
         )
     }
@@ -54,7 +75,8 @@ class HomeViewModel(private val repository: HomeViewModelRepository) : ViewModel
     private fun setValue(state: ViewState) {
         movieLiveData.value = movieLiveData.value!!.copy(
             loading = state.loading,
-            error = state.error
+            error = state.error,
+            response = state.response
         )
     }
 
