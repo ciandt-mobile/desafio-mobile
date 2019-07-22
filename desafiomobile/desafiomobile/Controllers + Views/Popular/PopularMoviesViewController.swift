@@ -57,6 +57,18 @@ extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionVie
         present(vc, animated: true, completion: nil)
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        let numberOfSection = presenter?.numberOfItemsInSection() ?? 0
+        
+        if numberOfSection > 0 {
+            if indexPath.row == ( numberOfSection - 1 ) {
+                presenter?.callNextPage()
+            }
+        }
+        
+    }
 
 }
 

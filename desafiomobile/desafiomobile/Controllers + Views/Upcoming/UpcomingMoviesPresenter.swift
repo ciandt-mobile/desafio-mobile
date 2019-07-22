@@ -18,9 +18,14 @@ class UpcomingMoviesPresenter: NSObject {
     // MARK :- vars
     var delegate: UpcomingMoviesProtocol?
     var movies = [MovieDetail]()
+    var page = 1
     
     func viewDidLoad() {
-        loadMovies()
+        loadMovies(at: page)
+    }
+    
+    func callNextPage() {
+        loadMovies(at: page)
     }
 
     func numberOfItemsInSection() -> Int { return movies.count }
@@ -33,14 +38,16 @@ class UpcomingMoviesPresenter: NSObject {
             movies.append(MovieDetail(dict: movie))
         }
         
+        page += 1
+        
         delegate?.reloadView()
     }
     
-    func loadMovies() {
+    func loadMovies(at page: Int) {
         
         guard let postData = "{}".data(using: .utf8) else { return }
         
-        guard let url = URL(string: "https://api.themoviedb.org/3/movie/upcoming?page=1&language=en-US&api_key=f3457e0e73837d80da2de63f310ea930") else { return }
+        guard let url = URL(string: "https://api.themoviedb.org/3/movie/upcoming?page=" + String(page) + "&language=en-US&api_key=f3457e0e73837d80da2de63f310ea930") else { return }
         var request = URLRequest(url: url,
                                 cachePolicy: .useProtocolCachePolicy,
                                 timeoutInterval: 10.0)
