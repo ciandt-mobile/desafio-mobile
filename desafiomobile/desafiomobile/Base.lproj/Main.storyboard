@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3gf-aB-bye">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Popular-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="PopularMoviesViewController" customModule="desafiomobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jBA-qf-tKU">
+                                <rect key="frame" x="0.0" y="102" width="414" height="711"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RSG-Ic-VYp">
+                                    <size key="itemSize" width="150" height="275"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3OW-I9-Pcs" customClass="MovieCell" customModule="desafiomobile" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="150" height="275"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="275"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular Movies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d52-Kx-ia6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4GW-Td-8V4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="d52-Kx-ia6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3I9-ig-UHa"/>
+                            <constraint firstItem="jBA-qf-tKU" firstAttribute="top" secondItem="d52-Kx-ia6" secondAttribute="bottom" constant="8" id="8UM-hl-yp9"/>
+                            <constraint firstItem="jBA-qf-tKU" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EJI-2y-Aft"/>
+                            <constraint firstItem="d52-Kx-ia6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="anz-nZ-ZHH"/>
+                            <constraint firstItem="jBA-qf-tKU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="du8-D3-Ooj"/>
+                            <constraint firstItem="d52-Kx-ia6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nPg-Ww-UDY"/>
+                            <constraint firstItem="jBA-qf-tKU" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="xwB-bk-sjv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Popular" id="s9G-Cd-6L9"/>
+                    <connections>
+                        <outlet property="collectionView" destination="jBA-qf-tKU" id="3AN-pk-gIy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1236" y="315"/>
+        </scene>
+        <!--Upcoming-->
+        <scene sceneID="8i9-kL-gfh">
+            <objects>
+                <viewController id="ZAE-QS-Yqi" customClass="UpcomingMoviesViewController" customModule="desafiomobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nSV-i9-mVq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1ee-7p-beH">
+                                <rect key="frame" x="0.0" y="102" width="414" height="711"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xoc-sg-Gdq">
+                                    <size key="itemSize" width="150" height="275"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Fa9-mh-gP7" customClass="MovieCell" customModule="desafiomobile" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="150" height="275"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="275"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Movies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Vn-RX-2U1">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cbZ-D6-cno"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fWQ-Bp-eyj" firstAttribute="trailing" secondItem="5Vn-RX-2U1" secondAttribute="trailing" id="1Vs-Rx-1dP"/>
+                            <constraint firstItem="5Vn-RX-2U1" firstAttribute="top" secondItem="fWQ-Bp-eyj" secondAttribute="top" id="AxP-n6-X6Z"/>
+                            <constraint firstItem="1ee-7p-beH" firstAttribute="trailing" secondItem="fWQ-Bp-eyj" secondAttribute="trailing" id="Eiv-6t-rLA"/>
+                            <constraint firstItem="1ee-7p-beH" firstAttribute="bottom" secondItem="fWQ-Bp-eyj" secondAttribute="bottom" id="cJ6-6B-fPO"/>
+                            <constraint firstItem="1ee-7p-beH" firstAttribute="leading" secondItem="fWQ-Bp-eyj" secondAttribute="leading" id="ec5-QJ-Sov"/>
+                            <constraint firstItem="5Vn-RX-2U1" firstAttribute="leading" secondItem="fWQ-Bp-eyj" secondAttribute="leading" id="hRT-G2-aiE"/>
+                            <constraint firstItem="1ee-7p-beH" firstAttribute="top" secondItem="5Vn-RX-2U1" secondAttribute="bottom" constant="8" id="x36-l2-Fh8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fWQ-Bp-eyj"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Upcoming" id="T40-US-ZgP"/>
+                    <connections>
+                        <outlet property="collectionView" destination="1ee-7p-beH" id="6Fn-Om-gGa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EH4-9E-JLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="476.81159420289856" y="314.73214285714283"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="mjA-2b-QpN">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="3gf-aB-bye" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="blx-Kj-QIL">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ZAE-QS-Yqi" kind="relationship" relationship="viewControllers" id="Ieu-fH-bj3"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="mKd-Fu-UjY"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iR6-Ca-fUW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="859" y="-456"/>
+        </scene>
+    </scenes>
+</document>
