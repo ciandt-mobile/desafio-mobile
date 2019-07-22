@@ -21,8 +21,6 @@
 		87759DA622E4FE3D00A919CF /* MovieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87759DA522E4FE3D00A919CF /* MovieDetailPresenter.swift */; };
 		87759DA822E5041900A919CF /* PopularMoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87759DA722E5041900A919CF /* PopularMoviesPresenter.swift */; };
 		87759DAA22E5043000A919CF /* UpcomingMoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87759DA922E5043000A919CF /* UpcomingMoviesPresenter.swift */; };
-		87759DAD22E50E2C00A919CF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87759DAC22E50E2C00A919CF /* Network.swift */; };
-		87759DAF22E5100C00A919CF /* MovieRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87759DAE22E5100C00A919CF /* MovieRequester.swift */; };
 		87759DB122E52AB400A919CF /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87759DB022E52AB400A919CF /* utils.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,8 +41,6 @@
 		87759DA522E4FE3D00A919CF /* MovieDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailPresenter.swift; sourceTree = "<group>"; };
 		87759DA722E5041900A919CF /* PopularMoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesPresenter.swift; sourceTree = "<group>"; };
 		87759DA922E5043000A919CF /* UpcomingMoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesPresenter.swift; sourceTree = "<group>"; };
-		87759DAC22E50E2C00A919CF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		87759DAE22E5100C00A919CF /* MovieRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRequester.swift; sourceTree = "<group>"; };
 		87759DB022E52AB400A919CF /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		8EACA8B772D1C6F5995EADA7 /* Pods-desafiomobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-desafiomobile.release.xcconfig"; path = "Target Support Files/Pods-desafiomobile/Pods-desafiomobile.release.xcconfig"; sourceTree = "<group>"; };
 		A9BD042EB75C85A271B88A1B /* Pods-desafiomobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-desafiomobile.debug.xcconfig"; path = "Target Support Files/Pods-desafiomobile/Pods-desafiomobile.debug.xcconfig"; sourceTree = "<group>"; };
@@ -92,7 +88,6 @@
 		87759D8122E4F50000A919CF /* desafiomobile */ = {
 			isa = PBXGroup;
 			children = (
-				87759DAB22E50E1800A919CF /* Network */,
 				87759D9422E4F88900A919CF /* Controllers + Views */,
 				87759D8222E4F50000A919CF /* AppDelegate.swift */,
 				87759D8622E4F50000A919CF /* Main.storyboard */,
@@ -150,15 +145,6 @@
 				87759DA222E4FAB200A919CF /* MovieCell.xib */,
 			);
 			path = CollectionViewCell;
-			sourceTree = "<group>";
-		};
-		87759DAB22E50E1800A919CF /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				87759DAC22E50E2C00A919CF /* Network.swift */,
-				87759DAE22E5100C00A919CF /* MovieRequester.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		98B1AD4684A67F5264D63D4A /* Frameworks */ = {
@@ -297,12 +283,10 @@
 			files = (
 				87759DA822E5041900A919CF /* PopularMoviesPresenter.swift in Sources */,
 				87759DB122E52AB400A919CF /* utils.swift in Sources */,
-				87759DAF22E5100C00A919CF /* MovieRequester.swift in Sources */,
 				87759DA622E4FE3D00A919CF /* MovieDetailPresenter.swift in Sources */,
 				87759D9C22E4F8EF00A919CF /* UpcomingMoviesViewController.swift in Sources */,
 				87759D9722E4F8AC00A919CF /* MovieDetailViewController.swift in Sources */,
 				87759D8322E4F50000A919CF /* AppDelegate.swift in Sources */,
-				87759DAD22E50E2C00A919CF /* Network.swift in Sources */,
 				87759DAA22E5043000A919CF /* UpcomingMoviesPresenter.swift in Sources */,
 				87759DA322E4FAB200A919CF /* MovieCell.swift in Sources */,
 				87759D9E22E4F91000A919CF /* PopularMoviesViewController.swift in Sources */,
