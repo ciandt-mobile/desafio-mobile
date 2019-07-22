@@ -15,35 +15,46 @@ Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para
 #### Filmes Populares
 
 Como usuário, gostaria de ver a lista de de filmes mais populares em cartaz nos cinemas. Os itens dessa lista deverão conter:
- - O banner do filme;
- - O nome do filme;
- - A data de estreia;
+- O banner do filme;
+- O nome do filme;
+- A data de estreia;
 
 #### Em Breve
 
 Como usuário, gostária de conseguir filtrar a lista de filmes populares para que agora mostre os filmes que entrarão em cartaz em breve:
- - O Filtro deverá ser aplicado na lista já existente, implementada na task anterior
+- O Filtro deverá ser aplicado na lista já existente, implementada na task anterior
 
 #### Detalhes do filme
 
 Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do filme:
- - Uma imagem em alta resolução;
- - Nome do filme
- - Generos do filme
- - Ano de estreia
- - Duração
- - Elenco principal 
- - Sinópse
- 
+- Uma imagem em alta resolução;
+- Nome do filme
+- Generos do filme
+- Ano de estreia
+- Duração
+- Elenco principal 
+- Sinópse
+
 ## Requisitos
- - O app deve ser desenvolvido para suportar as orientação Portrait e Landscape
- - Seja criativo, as imagens de referência são apenas exemplos, você pode criar seu próprio layout
- - Use libs e frameworks que você estiver mais acostumado
- - Teste o seu código ;D
- - Utilize a The Movie Database para realizar as consultas 
- -- TMDB (https://www.themoviedb.org)
- -- API (https://www.themoviedb.org/documentation/api)
- 
+- O app deve ser desenvolvido para suportar as orientação Portrait e Landscape
+- Seja criativo, as imagens de referência são apenas exemplos, você pode criar seu próprio layout
+- Use libs e frameworks que você estiver mais acostumado
+- Teste o seu código ;D
+- Utilize a The Movie Database para realizar as consultas 
+-- TMDB (https://www.themoviedb.org)
+-- API (https://www.themoviedb.org/documentation/api)
+
 # BOA SORTE!
- 
- 
+
+
+## Métodos Utilizados
+- Arquitetura: MVC
+- Linguagem: Swift
+- Utilizado protocolo Codable e Decodable para parsear dados
+- Incluído scroll infinito com paginação
+- Incluído testes unitários para parser
+- Incluído testes de UI para navegação no app
+- Incluído tratamento para cenários de erro de conexão, erro na chamada do serviço e parser
+
+
+

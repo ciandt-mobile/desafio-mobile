@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="castCollectionViewCell" id="G0V-5K-SpQ" customClass="CastCollectionViewCell" customModule="MovieApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="238" height="202"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="238" height="202"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rS-8h-Wp9">
+                        <rect key="frame" x="0.0" y="0.0" width="238" height="202"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jnw-ka-LQV">
+                                <rect key="frame" x="0.0" y="0.0" width="238" height="202"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSn-Ro-SSD">
+                                <rect key="frame" x="10" y="152" width="218" height="40"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="2IW-gK-IKR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="LSn-Ro-SSD" firstAttribute="leading" secondItem="Rtm-NP-Skf" secondAttribute="leading" constant="10" id="9q6-Ke-5gp"/>
+                            <constraint firstItem="Jnw-ka-LQV" firstAttribute="top" secondItem="1rS-8h-Wp9" secondAttribute="top" id="IR4-9A-cUB"/>
+                            <constraint firstAttribute="bottom" secondItem="Jnw-ka-LQV" secondAttribute="bottom" id="Ozb-Yl-diE"/>
+                            <constraint firstItem="Rtm-NP-Skf" firstAttribute="trailing" secondItem="LSn-Ro-SSD" secondAttribute="trailing" constant="10" id="qE9-nx-jH8"/>
+                            <constraint firstAttribute="trailing" secondItem="Jnw-ka-LQV" secondAttribute="trailing" id="rv2-se-5pn"/>
+                            <constraint firstItem="Jnw-ka-LQV" firstAttribute="leading" secondItem="1rS-8h-Wp9" secondAttribute="leading" id="vRd-I6-6Zw"/>
+                            <constraint firstItem="LSn-Ro-SSD" firstAttribute="bottom" secondItem="1rS-8h-Wp9" secondAttribute="bottom" constant="-10" id="y4v-ea-Jc9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Rtm-NP-Skf"/>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="1rS-8h-Wp9" firstAttribute="top" secondItem="G0V-5K-SpQ" secondAttribute="top" id="5gd-4P-h5Y"/>
+                <constraint firstItem="1rS-8h-Wp9" firstAttribute="leading" secondItem="G0V-5K-SpQ" secondAttribute="leading" id="CSd-q3-47Y"/>
+                <constraint firstAttribute="trailing" secondItem="1rS-8h-Wp9" secondAttribute="trailing" id="Nce-me-2be"/>
+                <constraint firstAttribute="bottom" secondItem="1rS-8h-Wp9" secondAttribute="bottom" id="XkQ-FU-YBp"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Gb5-u4-14E"/>
+            <size key="customSize" width="238" height="202"/>
+            <connections>
+                <outlet property="uiActorImage" destination="Jnw-ka-LQV" id="vhu-Fn-wqo"/>
+                <outlet property="uiActorName" destination="LSn-Ro-SSD" id="Zym-Al-FvI"/>
+            </connections>
+            <point key="canvasLocation" x="157.97101449275362" y="99.107142857142847"/>
+        </collectionViewCell>
+    </objects>
+</document>
