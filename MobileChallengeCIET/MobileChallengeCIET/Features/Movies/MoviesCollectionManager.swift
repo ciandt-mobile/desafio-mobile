@@ -1,5 +1,5 @@
 //
-//  MoviesCollection.swift
+//  MoviesCollectionManager.swift
 //  MobileChallengeCIET
 //
 //  Created by Guilherme C Rosa on 22/07/19.
@@ -9,28 +9,28 @@
 import Foundation
 import UIKit
 
-enum MoviesCollectionState {
+enum MoviesCollectionManagerState {
     case Loading, Error, Empty, Success
 }
 
-protocol MoviesCollectionProtocol {
+protocol MoviesCollectionManagerProtocol {
     func collectionDidSelectItem(movie: Movie)
 }
 
-class MoviesCollection:NSObject {
+class MoviesCollectionManager:NSObject {
     
-    var delegate: MoviesCollectionProtocol?
+    var delegate: MoviesCollectionManagerProtocol?
     
-    private var state: MoviesCollectionState
+    private var state: MoviesCollectionManagerState
     private var movies: [Movie]?
     private var error: String?
     
-    init(state: MoviesCollectionState, movies: [Movie]?) {
+    init(state: MoviesCollectionManagerState, movies: [Movie]?) {
         self.state = state
         self.movies = movies
     }
     
-    init(state: MoviesCollectionState, error: String?) {
+    init(state: MoviesCollectionManagerState, error: String?) {
         self.state = state
         self.error = error
     }
@@ -45,7 +45,7 @@ class MoviesCollection:NSObject {
     }
 }
 
-extension MoviesCollection: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension MoviesCollectionManager: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return -15
@@ -92,7 +92,7 @@ extension MoviesCollection: UICollectionViewDataSource, UICollectionViewDelegate
 }
 
 
-extension MoviesCollection {
+extension MoviesCollectionManager {
     
     private func cellForItemLoading(_ collectionView: UICollectionView,
                                     cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

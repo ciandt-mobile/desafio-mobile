@@ -20,13 +20,13 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
     
     private var category = MovieCategory.Upcoming
-    private var datasource = MoviesCollection(state: .Loading, movies: nil) {
+    private var manager = MoviesCollectionManager(state: .Loading, movies: nil) {
         didSet { self.setupCollection() }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         self.setupCollection()
         self.serviceMovies()
@@ -34,29 +34,29 @@ class MoviesViewController: UIViewController {
     
     private func setupCollection() {
         
-        self.datasource.delegate = self
-        self.datasource.registerCells(collection: self.collection)
+        self.manager.delegate = self
+        self.manager.registerCells(collection: self.collection)
         
-        self.collection.dataSource = self.datasource
-        self.collection.delegate = self.datasource
+        self.collection.dataSource = self.manager
+        self.collection.delegate = self.manager
     }
     
     private func serviceMovies() {
-        self.datasource = MoviesCollection(state: .Loading, movies: nil)
+        self.manager = MoviesCollectionManager(state: .Loading, movies: nil)
         
         let service = TheMovieDBService()
         service.getMovies(category: self.category) { (list, error) in
             if let err = error {
-                self.datasource = MoviesCollection(state: .Error, error: err.localizedDescription)
+                self.manager = MoviesCollectionManager(state: .Error, error: err.localizedDescription)
             } else {
                 if let movies = list {
                     if movies.isEmpty {
-                        self.datasource = MoviesCollection(state: .Empty, error: "Empty List")
+                        self.manager = MoviesCollectionManager(state: .Empty, error: "Empty List")
                     } else {
-                        self.datasource = MoviesCollection(state: .Success, movies: movies)
+                        self.manager = MoviesCollectionManager(state: .Success, movies: movies)
                     }
                 } else {
-                    self.datasource = MoviesCollection(state: .Error, error: "Parsing Error")
+                    self.manager = MoviesCollectionManager(state: .Error, error: "Parsing Error")
                 }
             }
         }
@@ -78,7 +78,7 @@ class MoviesViewController: UIViewController {
     }
 }
 
-extension MoviesViewController: MoviesCollectionProtocol {
+extension MoviesViewController: MoviesCollectionManagerProtocol {
     func collectionDidSelectItem(movie: Movie) {
         let vc = MovieDetailViewController(movie: movie)
         self.navigationController?.pushViewController(vc, animated: true)
