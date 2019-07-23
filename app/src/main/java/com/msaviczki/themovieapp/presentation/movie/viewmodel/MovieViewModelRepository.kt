@@ -1,4 +1,4 @@
-package com.msaviczki.themovieapp.presentation.home.viewmodel
+package com.msaviczki.themovieapp.presentation.movie.viewmodel
 
 import com.msaviczki.themovieapp.data.MovieMap
 import com.msaviczki.themovieapp.data.MovieResponse
@@ -8,17 +8,17 @@ import com.msaviczki.themovieapp.network.core.Result
 import com.msaviczki.themovieapp.network.networkinterface.MovieApi
 
 
-interface HomeViewModelRepositoryImpl {
+interface MovieViewModelRepository {
     suspend fun requestPopularMovies(): Result<MutableList<MovieMap>>
     suspend fun requestUpcomingMovies(): Result<MutableList<MovieMap>>
 }
 
-class HomeViewModelRepository(private val api: MovieApi) : HomeViewModelRepositoryImpl {
+class MovieViewModelRepositoryImpl(private val api: MovieApi) : MovieViewModelRepository {
 
     override suspend fun requestPopularMovies() =
         safeRequestCall { getPopularMovies() }
 
-    override suspend fun requestUpcomingMovies(): Result<MutableList<MovieMap>> =
+    override suspend fun requestUpcomingMovies() =
         safeRequestCall { getUpComingMovies() }
 
     private suspend fun getPopularMovies(): Result<MutableList<MovieMap>> {

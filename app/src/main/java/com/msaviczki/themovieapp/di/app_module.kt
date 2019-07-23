@@ -2,4 +2,4 @@ package com.msaviczki.themovieapp.di
 
 
 
-val initModule = listOf(networkModule, homeModule)
+val initModule = listOf(networkModule, movieModule)

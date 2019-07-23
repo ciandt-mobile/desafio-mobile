@@ -4,6 +4,10 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+androidExtensions {
+    experimental = true
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -15,8 +19,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        def BASE_URL = 'BASE_URL'
-
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -33,6 +35,8 @@ def koinVersion = '2.0.1'
 def navigationVersion = '1.0.0'
 def coroutineVersion = '1.2.1'
 def coroutineAdapterVersion = '0.9.2'
+def mockkVersion = '1.9'
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -73,7 +77,14 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$coroutineAdapterVersion"
 
+
     testImplementation 'junit:junit:4.12'
+    testImplementation "androidx.arch.core:core-testing:$lifecycleVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+    testImplementation "io.mockk:mockk:$mockkVersion"
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
+

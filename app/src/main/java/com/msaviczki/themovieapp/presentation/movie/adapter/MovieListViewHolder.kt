@@ -1,4 +1,4 @@
-package com.msaviczki.themovieapp.presentation.home.adapter
+package com.msaviczki.themovieapp.presentation.movie.adapter
 
 import android.view.View
 import com.msaviczki.themovieapp.data.MovieMap

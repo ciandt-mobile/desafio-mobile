@@ -1,4 +1,4 @@
-package com.msaviczki.themovieapp.presentation.home.view
+package com.msaviczki.themovieapp.presentation.movie.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,14 +8,14 @@ import com.msaviczki.themovieapp.R
 import com.msaviczki.themovieapp.data.MovieMap
 import com.msaviczki.themovieapp.helper.customview.Toggle
 import com.msaviczki.themovieapp.helper.extension.*
-import com.msaviczki.themovieapp.presentation.home.adapter.MovieListAdapter
-import com.msaviczki.themovieapp.presentation.home.viewmodel.HomeViewModel
+import com.msaviczki.themovieapp.presentation.movie.adapter.MovieListAdapter
+import com.msaviczki.themovieapp.presentation.movie.viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class HomeActivity : AppCompatActivity() {
+class MovieActivity : AppCompatActivity() {
 
-    private val viewModel: HomeViewModel by viewModel()
+    private val viewModel: MovieViewModel by viewModel()
     private val adapter = MovieListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {

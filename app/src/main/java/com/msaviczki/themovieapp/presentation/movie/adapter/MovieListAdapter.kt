@@ -1,4 +1,4 @@
-package com.msaviczki.themovieapp.presentation.home.adapter
+package com.msaviczki.themovieapp.presentation.movie.adapter
 
 import android.view.ViewGroup
 import com.msaviczki.themovieapp.R
