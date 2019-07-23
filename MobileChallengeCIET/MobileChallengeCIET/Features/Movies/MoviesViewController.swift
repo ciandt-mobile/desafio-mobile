@@ -46,8 +46,8 @@ class MoviesViewController: UIViewController {
         
         let service = TheMovieDBService()
         service.getMovies(category: self.category) { (list, error) in
-            if let _ = error {
-                self.datasource = MoviesCollection(state: .Error, error: error.debugDescription)
+            if let err = error {
+                self.datasource = MoviesCollection(state: .Error, error: err.localizedDescription)
             } else {
                 if let movies = list {
                     if movies.isEmpty {
