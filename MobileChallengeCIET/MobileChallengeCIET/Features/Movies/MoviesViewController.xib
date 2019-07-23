@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoviesViewController" customModule="MobileChallengeCIET" customModuleProvider="target">
+            <connections>
+                <outlet property="collection" destination="zM0-GS-UAQ" id="7z9-rB-Lej"/>
+                <outlet property="labelTitle" destination="WBn-Vb-cf4" id="2ht-Aj-V8u"/>
+                <outlet property="segmented" destination="erO-v6-kki" id="tQL-i9-x2T"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="erO-v6-kki">
+                    <rect key="frame" x="107" y="60" width="200" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="EKE-kA-CJx"/>
+                        <constraint firstAttribute="width" constant="200" id="YTz-xR-ZbV"/>
+                    </constraints>
+                    <segments>
+                        <segment title="Upcoming"/>
+                        <segment title="Popular"/>
+                    </segments>
+                    <connections>
+                        <action selector="segmentedAction:" destination="-1" eventType="valueChanged" id="kQa-H0-rGr"/>
+                    </connections>
+                </segmentedControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBn-Vb-cf4">
+                    <rect key="frame" x="8" y="100" width="398" height="52"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="52" id="QPE-AK-dtH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zM0-GS-UAQ">
+                    <rect key="frame" x="0.0" y="160" width="414" height="702"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7im-pl-zAL">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="zM0-GS-UAQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6V7-c8-C6T"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="zM0-GS-UAQ" secondAttribute="bottom" id="9gT-58-b8U"/>
+                <constraint firstAttribute="trailing" secondItem="WBn-Vb-cf4" secondAttribute="trailing" constant="8" id="BVK-lU-rVv"/>
+                <constraint firstItem="zM0-GS-UAQ" firstAttribute="top" secondItem="WBn-Vb-cf4" secondAttribute="bottom" constant="8" id="BdC-SM-XIn"/>
+                <constraint firstItem="WBn-Vb-cf4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="Bs3-tD-GXU"/>
+                <constraint firstItem="erO-v6-kki" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="hdh-n2-VAk"/>
+                <constraint firstItem="WBn-Vb-cf4" firstAttribute="top" secondItem="erO-v6-kki" secondAttribute="bottom" constant="12" id="jhi-fy-Bqf"/>
+                <constraint firstItem="erO-v6-kki" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="js9-MA-ZCc"/>
+                <constraint firstItem="zM0-GS-UAQ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="sSB-Rd-yKU"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>
