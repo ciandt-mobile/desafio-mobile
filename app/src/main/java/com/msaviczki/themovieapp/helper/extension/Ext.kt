@@ -1,16 +1,33 @@
 package com.msaviczki.themovieapp.helper.extension
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
+import android.os.Build
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.msaviczki.themovieapp.network.core.ApiConstants
+
+inline fun <reified T : Any> AppCompatActivity.start(
+    requestCode: Int = -1,
+    options: Bundle? = null,
+    noinline init: Intent.() -> Unit = {}
+) {
+    val intent = intent<T>(this)
+    intent.init()
+    startActivityForResult(intent, requestCode, options)
+}
+
+inline fun <reified T : Any> intent(context: Context): Intent = Intent(context, T::class.java)
 
 fun View.show() {
     visibility = View.VISIBLE

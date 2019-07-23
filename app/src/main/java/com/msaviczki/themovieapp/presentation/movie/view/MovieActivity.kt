@@ -8,20 +8,21 @@ import com.msaviczki.themovieapp.R
 import com.msaviczki.themovieapp.data.MovieMap
 import com.msaviczki.themovieapp.helper.customview.Toggle
 import com.msaviczki.themovieapp.helper.extension.*
+import com.msaviczki.themovieapp.presentation.detail.view.MovieDetailActivity
 import com.msaviczki.themovieapp.presentation.movie.adapter.MovieListAdapter
+import com.msaviczki.themovieapp.presentation.movie.adapter.MovieListViewHolder
 import com.msaviczki.themovieapp.presentation.movie.viewmodel.MovieViewModel
-import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_movie.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class MovieActivity : AppCompatActivity() {
+class MovieActivity : AppCompatActivity(), MovieListViewHolder.MovieSelectListener {
 
     private val viewModel: MovieViewModel by viewModel()
-    private val adapter = MovieListAdapter()
+    private val adapter = MovieListAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-
+        setContentView(R.layout.activity_movie)
         bindObserver()
         bindViews()
         bindInitRequest()
@@ -80,6 +81,10 @@ class MovieActivity : AppCompatActivity() {
             val snackbar = Snackbar.make(root_coordinator, error, Snackbar.LENGTH_LONG)
             snackbar.show()
         }
+    }
+
+    override fun onMovieSelect(id: Int) {
+        start<MovieDetailActivity>()
     }
 
     private fun showLoading() = loading.show()
