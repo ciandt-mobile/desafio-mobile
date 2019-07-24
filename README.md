@@ -46,4 +46,12 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  
 # BOA SORTE!
  
+
+## Comentários
+ - Implantei um MVP básico.
+ - Eu ia implementar uma classe de request, mas como o site já fornecia um request de demonstração utilizei de copy past.
+ - Loaders não ficaram como eu gostaria, teriam ficado ótimo se eu realmente tivesse implementado a classe de request.
+
+Minha abordagem foi, utilizar de um TAB bar e storyboards pra ganhar tempo na implementação, a parte que exibe os detalhes
+foi feito na customização do init para evitar diversas passagens de parâmetros.
  
