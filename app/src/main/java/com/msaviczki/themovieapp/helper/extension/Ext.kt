@@ -55,7 +55,7 @@ fun String.letIfNotEmpty(call: () -> Unit) {
 infix fun ViewGroup.inflate(layoutResId: Int): View =
     LayoutInflater.from(context).inflate(layoutResId, this, false)
 
-fun ImageView.laodUrlImage(query: String) {
+fun ImageView.loadUrlImage(query: String) {
     val url = ApiConstants.IMAGE_URL + query
     Glide.with(this)
         .load(url)

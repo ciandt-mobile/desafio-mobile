@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.msaviczki.themovieapp.helper.adapter.CoroutineBaseContext
-import com.msaviczki.themovieapp.helper.customview.Toggle
-import com.msaviczki.themovieapp.network.core.Result
+import com.msaviczki.themovieapp.network.core.Result.Success
+import com.msaviczki.themovieapp.network.core.Result.Error
+import com.msaviczki.themovieapp.helper.customview.Toggle.RoundSwitchState.ON_LEFT
 import com.msaviczki.themovieapp.presentation.movie.viewstate.MovieViewState
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -28,7 +29,7 @@ class MovieViewModel(
 
     private val movieLiveData: MutableLiveData<MovieViewState> = MutableLiveData()
 
-    var toggleState = Toggle.RoundSwitchState.ON_LEFT
+    var toggleState = ON_LEFT
 
     init {
         movieLiveData.value = MovieViewState()
@@ -40,10 +41,10 @@ class MovieViewModel(
             val response = repository.requestPopularMovies()
 
             when (response) {
-                is Result.Success -> {
+                is Success -> {
                     postValue(MovieViewState(loading = false, response = response.data))
                 }
-                is Result.Error -> {
+                is Error -> {
                     postValue(MovieViewState(loading = false, error = response.error))
                 }
             }
@@ -56,10 +57,10 @@ class MovieViewModel(
             val response = repository.requestUpcomingMovies()
 
             when (response) {
-                is Result.Success -> {
+                is Success -> {
                     postValue(MovieViewState(loading = false, response = response.data))
                 }
-                is Result.Error -> {
+                is Error -> {
                     postValue(MovieViewState(loading = false, error = response.error))
                 }
             }

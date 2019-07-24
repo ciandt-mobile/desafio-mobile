@@ -21,7 +21,4 @@ interface MovieApi {
         @Query("language") language: String,
         @Query("page") page : Int
     ) : Deferred<MovieListResponse>
-
-    @GET("movie/{id}")
-    fun getMovieById(@Path("id") id:Int)
 }

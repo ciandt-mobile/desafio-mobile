@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.msaviczki.themovieapp.R
 import com.msaviczki.themovieapp.data.MovieMap
-import com.msaviczki.themovieapp.helper.customview.Toggle
+import com.msaviczki.themovieapp.helper.customview.Toggle.RoundSwitchState.ON_LEFT
 import com.msaviczki.themovieapp.helper.extension.*
 import com.msaviczki.themovieapp.presentation.detail.view.MovieDetailActivity
 import com.msaviczki.themovieapp.presentation.movie.adapter.MovieListAdapter
@@ -29,7 +29,7 @@ class MovieActivity : AppCompatActivity(), MovieListViewHolder.MovieSelectListen
     }
 
     private fun bindInitRequest() {
-        if (viewModel.toggleState == Toggle.RoundSwitchState.ON_LEFT) viewModel.requestUpComingMovies()
+        if (viewModel.toggleState == ON_LEFT) viewModel.requestUpComingMovies()
         else viewModel.requestPopularMovies()
     }
 
@@ -37,7 +37,7 @@ class MovieActivity : AppCompatActivity(), MovieListViewHolder.MovieSelectListen
         toggle.select(viewModel.toggleState)
         toggle.setValueChangedAction {
             when (it) {
-                Toggle.RoundSwitchState.ON_LEFT -> {
+                ON_LEFT -> {
                     viewModel.requestUpComingMovies()
                 }
                 else -> {
@@ -84,10 +84,15 @@ class MovieActivity : AppCompatActivity(), MovieListViewHolder.MovieSelectListen
     }
 
     override fun onMovieSelect(id: Int) {
-        start<MovieDetailActivity>()
+        start<MovieDetailActivity> {
+            putExtra(ID, id)
+        }
     }
 
     private fun showLoading() = loading.show()
     private fun hideLoading() = loading.hide()
 
+    companion object {
+        const val ID = "id"
+    }
 }

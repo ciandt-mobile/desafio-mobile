@@ -3,7 +3,7 @@ package com.msaviczki.themovieapp.presentation.movie.adapter
 import android.view.View
 import com.msaviczki.themovieapp.data.MovieMap
 import com.msaviczki.themovieapp.helper.adapter.BaseListAdapter
-import com.msaviczki.themovieapp.helper.extension.laodUrlImage
+import com.msaviczki.themovieapp.helper.extension.loadUrlImage
 import kotlinx.android.synthetic.main.movie_item.view.*
 
 class MovieListViewHolder(private val listener: MovieSelectListener, itemView: View) :
@@ -11,7 +11,7 @@ class MovieListViewHolder(private val listener: MovieSelectListener, itemView: V
 
     override fun bind(item: MovieMap) {
         with(itemView) {
-            img_movie.laodUrlImage(item.image)
+            img_movie.loadUrlImage(item.image)
             txt_date.text = item.realeseDate
             txt_movie_name.text = item.title
             setOnClickListener {

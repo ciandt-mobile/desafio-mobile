@@ -4,6 +4,8 @@ import com.msaviczki.themovieapp.data.MovieMap
 import com.msaviczki.themovieapp.data.MovieResponse
 import com.msaviczki.themovieapp.helper.extension.safeRequestCall
 import com.msaviczki.themovieapp.network.core.ApiConstants
+import com.msaviczki.themovieapp.network.core.Result.Success
+import com.msaviczki.themovieapp.network.core.Result.Error
 import com.msaviczki.themovieapp.network.core.Result
 import com.msaviczki.themovieapp.network.networkinterface.MovieApi
 
@@ -29,9 +31,9 @@ class MovieViewModelRepositoryImpl(private val api: MovieApi) : MovieViewModelRe
         ).await()
 
         response.results?.let {
-            return Result.Success(response.results.map())
+            return Success(response.results.map())
         }
-        return Result.Error("Erro ao fazer requisição")
+        return Error("Erro ao fazer requisição")
     }
 
     private suspend fun getUpComingMovies(): Result<MutableList<MovieMap>> {
@@ -42,9 +44,9 @@ class MovieViewModelRepositoryImpl(private val api: MovieApi) : MovieViewModelRe
         ).await()
 
         response.results?.let {
-            return Result.Success(response.results.map())
+            return Success(response.results.map())
         }
-        return Result.Error("Erro ao fazer requisição")
+        return Error("Erro ao fazer requisição")
     }
 
     private fun MutableList<MovieResponse>.map(): MutableList<MovieMap> {
