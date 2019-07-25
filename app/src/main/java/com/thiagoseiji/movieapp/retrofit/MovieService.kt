@@ -1,5 +1,6 @@
 package com.thiagoseiji.movieapp.retrofit
 
+import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.thiagoseiji.movieapp.data.Movie
 import com.thiagoseiji.movieapp.data.api.MovieResponse
@@ -19,13 +20,14 @@ interface MovieService {
 
     companion object {
         fun create(): MovieService {
+
             val apiKeyInterceptor = Interceptor{ chain ->
                 val original = chain.request()
                 val httpUrl = original.url()
 
-                val newHttpUrl = httpUrl.newBuilder().addQueryParameter(
-                    "api_key", "31243b71dfc271e73433b9f97d059e7f"
-                ).build()
+                val newHttpUrl = httpUrl.newBuilder()
+                    .addQueryParameter("api_key", "31243b71dfc271e73433b9f97d059e7f")
+                    .addQueryParameter("language", "pt-BR").build()
 
                 val requestBuilder = original.newBuilder().url(newHttpUrl)
 
@@ -34,12 +36,14 @@ interface MovieService {
                 chain.proceed(request)
             }
 
+            val gson = GsonBuilder().setDateFormat("yyyy-MM-dd").create()
+
             return Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org/3/")
                 .client(OkHttpClient.Builder()
                     .addInterceptor(apiKeyInterceptor)
                     .build())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .build()
                 .create(MovieService::class.java)
