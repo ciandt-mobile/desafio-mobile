@@ -11,11 +11,18 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface MovieService {
 
-    @GET("discover/movie")
-    fun getMoviewsAsync(): Deferred<Response<MovieResponse>>
+    @GET("movie/popular")
+    fun getPopularMoviesAsync(): Deferred<Response<MovieResponse>>
+
+    @GET("movie/upcoming")
+    fun getUpcomingMoviesAsync(): Deferred<Response<MovieResponse>>
+
+    @GET("movie/{id}")
+    fun getMovieById(@Path("id") id: Int): Deferred<Response<Movie>>
 
 
     companion object {

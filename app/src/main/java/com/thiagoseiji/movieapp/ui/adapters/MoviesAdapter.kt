@@ -8,13 +8,14 @@ import com.bumptech.glide.Glide
 import com.thiagoseiji.movieapp.R
 
 import com.thiagoseiji.movieapp.data.Movie
+import com.thiagoseiji.movieapp.ui.listeners.MovieListListener
 import kotlinx.android.synthetic.main.item_movie.view.*
 import java.text.SimpleDateFormat
 
-class MoviesAdapter( val data: MutableList<Movie> = mutableListOf()): RecyclerView.Adapter<MoviesViewHolder>(){
+class MoviesAdapter( val data: MutableList<Movie> = mutableListOf(), val listener: MovieListListener): RecyclerView.Adapter<MoviesViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
-        return MoviesViewHolder(view)
+        return MoviesViewHolder(view, listener)
     }
 
     override fun getItemCount(): Int = data.size
@@ -31,7 +32,7 @@ class MoviesAdapter( val data: MutableList<Movie> = mutableListOf()): RecyclerVi
 
 }
 
-class MoviesViewHolder(val view: View): RecyclerView.ViewHolder(view){
+class MoviesViewHolder(val view: View, val listener: MovieListListener): RecyclerView.ViewHolder(view){
 
     fun bindView(item: Movie){
         with(view){
@@ -44,6 +45,10 @@ class MoviesViewHolder(val view: View): RecyclerView.ViewHolder(view){
                 .load("https://image.tmdb.org/t/p/w200/${item.posterImage}")
                 .centerCrop()
                 .into(item_movie_poster)
+
+            setOnClickListener {
+                listener.onMovieClicked(item.id)
+            }
         }
     }
 }

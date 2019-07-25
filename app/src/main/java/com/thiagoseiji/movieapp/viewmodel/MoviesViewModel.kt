@@ -1,21 +1,24 @@
 package com.thiagoseiji.movieapp.viewmodel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.thiagoseiji.movieapp.data.api.MovieResponse
 import com.thiagoseiji.movieapp.repository.MovieRepository
 
-class MoviesViewModel(private val repository: MovieRepository): BaseViewModel<MovieResponse>() {
+class MoviesViewModel(private val repository: MovieRepository): ViewModel() {
 
-    private lateinit var moviesList: LiveData<MovieResponse>
+    private lateinit var moviesList: MutableLiveData<MovieResponse>
 
-    override fun getData(): LiveData<MovieResponse> {
-        moviesList = repository.loadData()
+    fun getPopularMovies(): LiveData<MovieResponse> {
+        moviesList = repository.loadPopularMovies()
         return moviesList
     }
 
-    override fun saveToDatabase(data: MovieResponse) {
+    fun getUpcomingMovies(): LiveData<MovieResponse> {
+        moviesList = repository.loadUpcomingMovies()
+        return moviesList
+
     }
-
-
 
 }

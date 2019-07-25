@@ -10,9 +10,7 @@ import timber.log.Timber
 
 abstract class BaseRepository<T>(@PublishedApi internal val service: MovieService) {
 
-    abstract fun loadData() : LiveData<T>
-
-    inline fun <reified T: Any> fetchData(crossinline call: (MovieService) -> Deferred<Response<T>>): LiveData<T> {
+    inline fun <reified T: Any> fetchData(crossinline call: (MovieService) -> Deferred<Response<T>>): MutableLiveData<T> {
         val result = MutableLiveData<T>()
 
         CoroutineScope(Dispatchers.IO).launch {

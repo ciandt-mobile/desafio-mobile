@@ -12,8 +12,15 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.activities.MainActivity"
-        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <activity
+                android:name=".ui.activities.MovieDetailsActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:label="@string/title_activity_movie_details"
+                android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+        </activity>
+        <activity
+                android:name=".ui.activities.MainActivity"
+                android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
