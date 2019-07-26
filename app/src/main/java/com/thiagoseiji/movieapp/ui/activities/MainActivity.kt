@@ -12,6 +12,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.thiagoseiji.movieapp.R
 import com.thiagoseiji.movieapp.ui.listeners.MovieListListener
+import com.thiagoseiji.movieapp.util.ItemDecoratorColums
 
 
 class MainActivity : AppCompatActivity(), MovieListListener {
@@ -28,15 +29,18 @@ class MainActivity : AppCompatActivity(), MovieListListener {
         main_recycler_view.adapter = moviesAdapter
         main_recycler_view.layoutManager = GridLayoutManager(this, resources.getInteger(R.integer.columns))
 
-        val dividerItemDecoration = DividerItemDecoration(this,
-            GridLayoutManager.HORIZONTAL
+        main_recycler_view.addItemDecoration(
+            ItemDecoratorColums(
+                resources.getInteger(R.integer.columns_divider),
+                resources.getInteger(R.integer.columns)
+            )
         )
-        dividerItemDecoration.setDrawable(resources.getDrawable(R.drawable.divider_horizontal))
+
         val dividerItemDecoration2 = DividerItemDecoration(this,
             GridLayoutManager.VERTICAL
         )
         dividerItemDecoration2.setDrawable(resources.getDrawable(R.drawable.divider_vertical))
-        main_recycler_view.addItemDecoration(dividerItemDecoration)
+
         main_recycler_view.addItemDecoration(dividerItemDecoration2)
 
        getPopularMovies()

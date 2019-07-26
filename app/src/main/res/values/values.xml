@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="columns">3</integer>
+    <integer name="columns_divider">24</integer>
 </resources>
