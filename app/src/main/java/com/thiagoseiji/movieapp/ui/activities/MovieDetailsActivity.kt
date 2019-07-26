@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.thiagoseiji.movieapp.R
 import com.thiagoseiji.movieapp.ui.adapters.CastAdapter
+import com.thiagoseiji.movieapp.util.ItemDecoratorColums
 import com.thiagoseiji.movieapp.viewmodel.MovieDetailViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_movie_details.*
@@ -27,18 +28,23 @@ class MovieDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_movie_details)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            val w = window
-            w.setFlags(
+            window.setFlags(
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
             )
         }
 
-
         val id = intent.getIntExtra("id", 0)
 
         movie_details_cast_rv.adapter = castAdapter
         movie_details_cast_rv.layoutManager = GridLayoutManager(this, 3)
+
+        movie_details_cast_rv.addItemDecoration(
+            ItemDecoratorColums(
+                resources.getInteger(R.integer.columns_divider),
+                3
+            )
+        )
 
         movieDetailsVM.getMovie(id).observe(this, Observer { data ->
             if (data != null) {
@@ -54,7 +60,7 @@ class MovieDetailsActivity : AppCompatActivity() {
                 movie_details_duration_and_genre.text = "${data.duration}m | $commaSeperatedString"
 
                 Glide.with(this)
-                    .load("https://image.tmdb.org/t/p/w300/${data.backdropImage}")
+                    .load("https://image.tmdb.org/t/p/w500/${data.backdropImage}")
                     .centerCrop()
                     .into(movie_details_header)
             }
@@ -63,11 +69,16 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         movieDetailsVM.getCast(id).observe(this, Observer { data ->
             if (data != null) {
-                castAdapter.updateCastList(data.results.subList(0,3))
+                castAdapter.updateCastList(data.results.subList(0, 3))
             }
 
         })
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        castAdapter.notifyDataSetChanged()
     }
 
 }

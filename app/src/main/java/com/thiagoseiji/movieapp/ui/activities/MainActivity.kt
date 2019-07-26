@@ -29,14 +29,11 @@ class MainActivity : AppCompatActivity(), MovieListListener {
         setContentView(com.thiagoseiji.movieapp.R.layout.activity_main)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            val w = window
-            w.setFlags(
+            window.setFlags(
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
             )
         }
-
-
 
         main_recycler_view.adapter = moviesAdapter
         main_recycler_view.layoutManager = GridLayoutManager(this, resources.getInteger(R.integer.columns))
@@ -96,4 +93,6 @@ class MainActivity : AppCompatActivity(), MovieListListener {
             }
         })
     }
+
+
 }
