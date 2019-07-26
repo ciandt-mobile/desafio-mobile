@@ -38,7 +38,7 @@ interface MovieService {
 
                 val newHttpUrl = httpUrl.newBuilder()
                     .addQueryParameter("api_key", "31243b71dfc271e73433b9f97d059e7f")
-                    .addQueryParameter("language", "pt-BR").build()
+                    .addQueryParameter("language", "en-US").build()
 
                 val requestBuilder = original.newBuilder().url(newHttpUrl)
 
