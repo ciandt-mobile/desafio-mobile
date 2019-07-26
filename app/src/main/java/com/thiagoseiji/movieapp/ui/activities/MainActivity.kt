@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import com.thiagoseiji.movieapp.R
 import com.thiagoseiji.movieapp.ui.listeners.MovieListListener
 import com.thiagoseiji.movieapp.util.ItemDecoratorColums
+import android.view.WindowManager
+import android.os.Build
 
 
 class MainActivity : AppCompatActivity(), MovieListListener {
@@ -24,7 +26,17 @@ class MainActivity : AppCompatActivity(), MovieListListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(com.thiagoseiji.movieapp.R.layout.activity_main)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            val w = window
+            w.setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+            )
+        }
+
+
 
         main_recycler_view.adapter = moviesAdapter
         main_recycler_view.layoutManager = GridLayoutManager(this, resources.getInteger(R.integer.columns))
