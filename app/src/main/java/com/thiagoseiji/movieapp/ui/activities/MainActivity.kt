@@ -62,6 +62,10 @@ class MainActivity : AppCompatActivity(), MovieListListener {
 
     //TODO refactor code to use just one observer
     fun getUpcomingMovies(){
+        main_popular.isSelected = false
+        main_upcoming.isSelected = true
+        main_list_title.text = "Upcoming Movies"
+
         moviesVM.getUpcomingMovies().observe(this, Observer { data ->
             if (data != null) {
                 moviesAdapter.updateMovieList(data.results)
@@ -70,6 +74,10 @@ class MainActivity : AppCompatActivity(), MovieListListener {
     }
 
     fun getPopularMovies(){
+        main_popular.isSelected = true
+        main_upcoming.isSelected = false
+        main_list_title.text = "Popular Movies"
+
         moviesVM.getPopularMovies().observe(this, Observer { data ->
             if (data != null) {
                 moviesAdapter.updateMovieList(data.results)
