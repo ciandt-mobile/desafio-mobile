@@ -8,7 +8,7 @@ import java.util.*
 data class Movie(
     @Id(assignable = true) val id: Int,
     @SerializedName("title") val title: String,
-    @SerializedName("genre_ids") val genre: List<Int>,
+    @SerializedName("genres") val genre: List<Genre>,
     @SerializedName("release_date") val releaseDate: Date,
     @SerializedName("runtime") val duration: Int,
     @SerializedName("overview") val overview: String,

@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), MovieListListener {
         setContentView(R.layout.activity_main)
 
         main_recycler_view.adapter = moviesAdapter
-        main_recycler_view.layoutManager = GridLayoutManager(this, 3)
+        main_recycler_view.layoutManager = GridLayoutManager(this, resources.getInteger(R.integer.columns))
 
         val dividerItemDecoration = DividerItemDecoration(this,
             GridLayoutManager.HORIZONTAL

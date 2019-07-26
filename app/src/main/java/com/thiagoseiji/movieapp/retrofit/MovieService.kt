@@ -3,6 +3,7 @@ package com.thiagoseiji.movieapp.retrofit
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.thiagoseiji.movieapp.data.Movie
+import com.thiagoseiji.movieapp.data.api.CastResponse
 import com.thiagoseiji.movieapp.data.api.MovieResponse
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
@@ -23,6 +24,9 @@ interface MovieService {
 
     @GET("movie/{id}")
     fun getMovieById(@Path("id") id: Int): Deferred<Response<Movie>>
+
+    @GET("movie/{id}/credits")
+    fun getMovieCast(@Path("id") id: Int): Deferred<Response<CastResponse>>
 
 
     companion object {

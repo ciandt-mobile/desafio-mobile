@@ -2,6 +2,7 @@ package com.thiagoseiji.movieapp.repository
 
 import androidx.lifecycle.MutableLiveData
 import com.thiagoseiji.movieapp.data.Movie
+import com.thiagoseiji.movieapp.data.api.CastResponse
 import com.thiagoseiji.movieapp.data.api.MovieResponse
 import com.thiagoseiji.movieapp.retrofit.MovieService
 
@@ -17,6 +18,10 @@ class MovieRepository(service: MovieService) : BaseRepository<MovieResponse>(ser
 
     fun loadMovie(id: Int): MutableLiveData<Movie> {
         return fetchData { service.getMovieById(id) }
+    }
+
+    fun loadCast(id: Int): MutableLiveData<CastResponse> {
+        return fetchData { service.getMovieCast(id) }
     }
 
 
