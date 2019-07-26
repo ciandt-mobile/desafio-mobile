@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">MovieApp</string>
 
-    <string name="title_activity_movie_details">MovieDetailsActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_movie_details">Movie Details</string>
+    <string name="title_activity_home">Movies List</string>
+    <string name="home_upcoming">Upcoming</string>
+    <string name="home_popular">Popular</string>
+    <string name="home_upcoming_movies">Upcoming Movies</string>
+    <string name="home_popular_movies">Popular Movies</string>
+    <string name="year_date_pattern">yyyy</string>
 </resources>

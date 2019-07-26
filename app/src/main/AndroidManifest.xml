@@ -21,6 +21,7 @@
         </activity>
         <activity
                 android:name=".ui.activities.MainActivity"
+                android:label="@string/title_activity_home"
                 android:theme="@style/AppTheme"
                 android:fitsSystemWindows="true">
             <intent-filter>

@@ -13,31 +13,33 @@
             android:id="@+id/main_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="48dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-    <TextView
+    <Button
             android:id="@+id/main_upcoming"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Upcoming"
+            android:text="@string/home_upcoming"
             android:textColor="@drawable/home_button_text_color"
             android:background="@drawable/upcoming_box"
             android:textSize="16sp"
+            android:textAllCaps="false"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:paddingRight="18dp"
             android:paddingLeft="18dp"/>
 
-    <TextView
+    <Button
             android:id="@+id/main_popular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Popular"
+            android:text="@string/home_popular"
             android:textColor="@drawable/home_button_text_color"
             android:background="@drawable/popular_box"
             android:textSize="16sp"
+            android:textAllCaps="false"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:paddingRight="18dp"
@@ -49,7 +51,6 @@
             android:id="@+id/main_list_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Upcoming Movies"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="32sp"

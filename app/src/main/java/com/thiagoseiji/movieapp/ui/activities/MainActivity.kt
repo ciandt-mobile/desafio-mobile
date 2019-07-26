@@ -35,6 +35,23 @@ class MainActivity : AppCompatActivity(), MovieListListener {
             )
         }
 
+        setupRecyclerView()
+        getPopularMovies()
+        setupListeners()
+    }
+
+
+    fun setupListeners(){
+        main_upcoming.setOnClickListener {
+            getUpcomingMovies()
+        }
+
+        main_popular.setOnClickListener {
+            getPopularMovies()
+        }
+    }
+
+    fun setupRecyclerView(){
         main_recycler_view.adapter = moviesAdapter
         main_recycler_view.layoutManager = GridLayoutManager(this, resources.getInteger(R.integer.columns))
 
@@ -51,21 +68,11 @@ class MainActivity : AppCompatActivity(), MovieListListener {
         dividerItemDecoration2.setDrawable(resources.getDrawable(R.drawable.divider_vertical))
 
         main_recycler_view.addItemDecoration(dividerItemDecoration2)
-
-       getPopularMovies()
-
-        main_upcoming.setOnClickListener {
-            getUpcomingMovies()
-        }
-
-        main_popular.setOnClickListener {
-            getPopularMovies()
-        }
     }
 
     override fun onMovieClicked(id: Int) {
         val intent = Intent(this, MovieDetailsActivity::class.java)
-        intent.putExtra("id", id)
+        intent.putExtra(MovieDetailsActivity.MOVIE_ID, id)
         startActivity(intent)
     }
 
@@ -73,7 +80,7 @@ class MainActivity : AppCompatActivity(), MovieListListener {
     fun getUpcomingMovies(){
         main_popular.isSelected = false
         main_upcoming.isSelected = true
-        main_list_title.text = "Upcoming Movies"
+        main_list_title.text = getString(R.string.home_upcoming_movies)
 
         moviesVM.getUpcomingMovies().observe(this, Observer { data ->
             if (data != null) {
@@ -85,7 +92,7 @@ class MainActivity : AppCompatActivity(), MovieListListener {
     fun getPopularMovies(){
         main_popular.isSelected = true
         main_upcoming.isSelected = false
-        main_list_title.text = "Popular Movies"
+        main_list_title.text = getString(R.string.home_popular_movies)
 
         moviesVM.getPopularMovies().observe(this, Observer { data ->
             if (data != null) {
