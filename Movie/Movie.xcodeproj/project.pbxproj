@@ -125,7 +125,6 @@
 				3456A23122EA440200487A66 /* AppDelegate.swift */,
 				3456A23D22EA440300487A66 /* Info.plist */,
 				345E661922EA5E7C00A3BEAA /* Constants.swift */,
-				345E662B22EB3B1B00A3BEAA /* BaseViewController.swift */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -142,10 +141,9 @@
 		345E660C22EA491500A3BEAA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3456A23322EA440200487A66 /* MoviesListViewController.swift */,
-				345E662F22EB6FC400A3BEAA /* MoviesListCollectionViewCell.swift */,
-				345E663522EBA22500A3BEAA /* MovieDetailViewController.swift */,
-				345E665522EBE5CA00A3BEAA /* MovieDetailCollectionViewCell.swift */,
+				345E666322EE535700A3BEAA /* MovieList */,
+				345E666422EE536300A3BEAA /* MovieDetail */,
+				345E666222EE534D00A3BEAA /* Base */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -233,6 +231,32 @@
 				345E665E22EC823000A3BEAA /* PopularMovies.swift */,
 			);
 			path = "Popular Movie";
+			sourceTree = "<group>";
+		};
+		345E666222EE534D00A3BEAA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				345E662B22EB3B1B00A3BEAA /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		345E666322EE535700A3BEAA /* MovieList */ = {
+			isa = PBXGroup;
+			children = (
+				3456A23322EA440200487A66 /* MoviesListViewController.swift */,
+				345E662F22EB6FC400A3BEAA /* MoviesListCollectionViewCell.swift */,
+			);
+			path = MovieList;
+			sourceTree = "<group>";
+		};
+		345E666422EE536300A3BEAA /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				345E663522EBA22500A3BEAA /* MovieDetailViewController.swift */,
+				345E665522EBE5CA00A3BEAA /* MovieDetailCollectionViewCell.swift */,
+			);
+			path = MovieDetail;
 			sourceTree = "<group>";
 		};
 		747A4BE142BC3CE24562F52F /* Pods */ = {
