@@ -10,7 +10,7 @@ Desafio Mobile CI&T 2019 - Desenvolver um App de filmes populares e lançamentos
  
 ## Bibliotecas externas utilizadas
  - Kingfisher (https://github.com/onevcat/Kingfisher)
-   Utilizado apenas para fazer download das imagens.
+   Utilizado para fazer download e cache das imagens.
  - Alamofire (https://github.com/Alamofire/Alamofire)
    Utilizado na comunicação com 'The Movie Database'
  
