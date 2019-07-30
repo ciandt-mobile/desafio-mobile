@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Rt-oK-htV">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Favorites-->
+        <scene sceneID="U0m-Kj-BDA">
+            <objects>
+                <viewController title="Favorites" id="9Rt-oK-htV" customClass="FavoriteMoviesViewController" customModule="TheMovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y43-8K-02g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3y-k8-0pF" customClass="StateFullView" customModule="TheMovieApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kpd-jZ-UAy">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Kpd-jZ-UAy" secondAttribute="bottom" id="FOo-0B-OKI"/>
+                                    <constraint firstItem="Kpd-jZ-UAy" firstAttribute="top" secondItem="i3y-k8-0pF" secondAttribute="top" id="IDZ-Bs-xs9"/>
+                                    <constraint firstItem="Kpd-jZ-UAy" firstAttribute="leading" secondItem="i3y-k8-0pF" secondAttribute="leading" id="S2n-ao-Lfb"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kpd-jZ-UAy" secondAttribute="trailing" id="nBe-ZT-480"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vqt-IK-bNY" firstAttribute="trailing" secondItem="i3y-k8-0pF" secondAttribute="trailing" id="2Yv-h9-Dmp"/>
+                            <constraint firstItem="i3y-k8-0pF" firstAttribute="leading" secondItem="vqt-IK-bNY" secondAttribute="leading" id="SD5-OH-EYY"/>
+                            <constraint firstItem="vqt-IK-bNY" firstAttribute="bottom" secondItem="i3y-k8-0pF" secondAttribute="bottom" id="ity-kh-HMb"/>
+                            <constraint firstItem="i3y-k8-0pF" firstAttribute="top" secondItem="vqt-IK-bNY" secondAttribute="top" id="qyu-yF-UU2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vqt-IK-bNY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Favorites" id="5VY-YK-eA7" userLabel="Favorites">
+                        <barButtonItem key="rightBarButtonItem" image="icon_filter" id="vQV-7u-Ni7">
+                            <connections>
+                                <segue destination="puQ-MW-gHZ" kind="presentation" identifier="showMovieFilter" id="jh1-yf-KKi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="moviesTableView" destination="Kpd-jZ-UAy" id="W6y-r6-dol"/>
+                        <outlet property="stateView" destination="i3y-k8-0pF" id="dBF-F4-1ZK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3jx-O2-nCT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="101" y="125"/>
+        </scene>
+        <!--Movie Filter View Controller-->
+        <scene sceneID="ovA-0l-Wjb">
+            <objects>
+                <viewController id="puQ-MW-gHZ" customClass="MovieFilterViewController" customModule="TheMovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sc1-0G-bg5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RxK-WF-L0D">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.80784313725490198" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A72-VB-KHd">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Favorites Filter" id="Fwo-Hl-nFM">
+                                        <barButtonItem key="leftBarButtonItem" image="icon_close" id="ehb-Y5-Y3z">
+                                            <connections>
+                                                <action selector="closeButtonClicked:" destination="puQ-MW-gHZ" id="d23-O1-Vbq"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CgR-bn-K46">
+                                <rect key="frame" x="0.0" y="64" width="375" height="527"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvd-6U-QWj">
+                                <rect key="frame" x="0.0" y="591" width="375" height="76"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohm-Gv-hZZ" customClass="AppButton" customModule="TheMovieApp" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="16" width="343" height="44"/>
+                                        <state key="normal" title="Select Filters"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="appButtonType">
+                                                <integer key="value" value="0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ohm-Gv-hZZ" secondAttribute="trailing" constant="16" id="Aiv-br-gqf"/>
+                                    <constraint firstAttribute="bottom" secondItem="ohm-Gv-hZZ" secondAttribute="bottom" constant="16" id="M8r-Et-dVv"/>
+                                    <constraint firstItem="ohm-Gv-hZZ" firstAttribute="leading" secondItem="cvd-6U-QWj" secondAttribute="leading" constant="16" id="VEq-ny-imU"/>
+                                    <constraint firstItem="ohm-Gv-hZZ" firstAttribute="top" secondItem="cvd-6U-QWj" secondAttribute="top" constant="16" id="W71-oX-qmL"/>
+                                    <constraint firstAttribute="height" constant="76" id="fDX-UL-0L4"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="A72-VB-KHd" firstAttribute="leading" secondItem="FYs-Nd-ARg" secondAttribute="leading" id="BYJ-nR-2a7"/>
+                            <constraint firstItem="A72-VB-KHd" firstAttribute="trailing" secondItem="FYs-Nd-ARg" secondAttribute="trailing" id="ID4-Sm-oGH"/>
+                            <constraint firstItem="A72-VB-KHd" firstAttribute="top" secondItem="RxK-WF-L0D" secondAttribute="bottom" id="LcM-a9-WbY"/>
+                            <constraint firstItem="FYs-Nd-ARg" firstAttribute="trailing" secondItem="CgR-bn-K46" secondAttribute="trailing" id="MxQ-ne-6vk"/>
+                            <constraint firstItem="A72-VB-KHd" firstAttribute="top" secondItem="FYs-Nd-ARg" secondAttribute="top" id="OWQ-Ez-Mc7"/>
+                            <constraint firstItem="cvd-6U-QWj" firstAttribute="top" secondItem="CgR-bn-K46" secondAttribute="bottom" id="PDx-S5-fUi"/>
+                            <constraint firstItem="FYs-Nd-ARg" firstAttribute="bottom" secondItem="cvd-6U-QWj" secondAttribute="bottom" id="PUd-Bl-oWK"/>
+                            <constraint firstItem="RxK-WF-L0D" firstAttribute="top" secondItem="Sc1-0G-bg5" secondAttribute="top" id="Pbk-PS-z8E"/>
+                            <constraint firstItem="cvd-6U-QWj" firstAttribute="leading" secondItem="FYs-Nd-ARg" secondAttribute="leading" id="SdO-AP-RBY"/>
+                            <constraint firstItem="FYs-Nd-ARg" firstAttribute="trailing" secondItem="cvd-6U-QWj" secondAttribute="trailing" id="XVw-ek-cCH"/>
+                            <constraint firstItem="cvd-6U-QWj" firstAttribute="top" secondItem="CgR-bn-K46" secondAttribute="bottom" id="bjL-Ca-kT5"/>
+                            <constraint firstItem="CgR-bn-K46" firstAttribute="leading" secondItem="FYs-Nd-ARg" secondAttribute="leading" id="fQC-wD-S3Q"/>
+                            <constraint firstItem="RxK-WF-L0D" firstAttribute="leading" secondItem="Sc1-0G-bg5" secondAttribute="leading" id="gvz-Wc-4UK"/>
+                            <constraint firstItem="CgR-bn-K46" firstAttribute="top" secondItem="A72-VB-KHd" secondAttribute="bottom" id="mZH-tv-PYW"/>
+                            <constraint firstAttribute="trailing" secondItem="RxK-WF-L0D" secondAttribute="trailing" id="wSn-NC-taU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FYs-Nd-ARg"/>
+                    </view>
+                    <connections>
+                        <outlet property="movieFilterTableView" destination="CgR-bn-K46" id="kKk-yi-sZp"/>
+                        <outlet property="navigationBar" destination="A72-VB-KHd" id="fbz-sD-8ra"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YPw-Me-4Dg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944.79999999999995" y="124.58770614692655"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_close" width="24" height="24"/>
+        <image name="icon_filter" width="24" height="24"/>
+    </resources>
+</document>

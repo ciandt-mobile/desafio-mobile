@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmptyView" customModule="benisStore" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="Wat-4r-zwU" id="BNB-se-r2E"/>
+                <outlet property="errorMessageLabel" destination="4U2-i8-hL5" id="0Nc-T8-yhC"/>
+                <outlet property="mainImageView" destination="zdu-B6-Dyo" id="6et-KN-v33"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="337" height="254"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VjM-ik-qL9">
+                    <rect key="frame" x="0.0" y="0.0" width="337" height="254"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wat-4r-zwU">
+                    <rect key="frame" x="32.333333333333343" y="37.666666666666671" width="272.66666666666663" height="178.66666666666663"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_error_alert" translatesAutoresizingMaskIntoConstraints="NO" id="zdu-B6-Dyo">
+                            <rect key="frame" x="91.333333333333343" y="16" width="90" height="90"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="Nrs-nq-R5a"/>
+                                <constraint firstAttribute="height" constant="90" id="eSl-nS-YVD"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Não há conteúdo no momento. Tente novamente mais tarde" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4U2-i8-hL5">
+                            <rect key="frame" x="15.999999999999986" y="122.00000000000001" width="240.66666666666663" height="40.666666666666671"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="4U2-i8-hL5" firstAttribute="leading" secondItem="Wat-4r-zwU" secondAttribute="leading" constant="16" id="1pe-0b-y55"/>
+                        <constraint firstItem="4U2-i8-hL5" firstAttribute="top" secondItem="zdu-B6-Dyo" secondAttribute="bottom" constant="16" id="Oo5-MS-2Ht"/>
+                        <constraint firstAttribute="trailing" secondItem="4U2-i8-hL5" secondAttribute="trailing" constant="16" id="VAM-IO-EhK"/>
+                        <constraint firstItem="zdu-B6-Dyo" firstAttribute="top" secondItem="Wat-4r-zwU" secondAttribute="top" constant="16" id="XQ5-RV-BBT"/>
+                        <constraint firstItem="zdu-B6-Dyo" firstAttribute="centerX" secondItem="Wat-4r-zwU" secondAttribute="centerX" id="YaT-Cq-n9S"/>
+                        <constraint firstAttribute="bottom" secondItem="4U2-i8-hL5" secondAttribute="bottom" constant="16" id="mlA-QJ-kk8"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Wat-4r-zwU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="3D0-mR-jqF"/>
+                <constraint firstItem="Wat-4r-zwU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="3av-tn-8DZ"/>
+                <constraint firstItem="Wat-4r-zwU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="6vz-0k-g2e"/>
+                <constraint firstItem="Wat-4r-zwU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Bty-b8-fed"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VjM-ik-qL9" secondAttribute="trailing" id="LCp-OR-Pb5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Wat-4r-zwU" secondAttribute="trailing" constant="24" id="R4W-Xr-daJ"/>
+                <constraint firstItem="VjM-ik-qL9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="cHO-lx-mwW"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="VjM-ik-qL9" secondAttribute="bottom" id="fto-lR-jUd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Wat-4r-zwU" secondAttribute="bottom" constant="24" id="kuu-1h-RzY"/>
+                <constraint firstItem="VjM-ik-qL9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="uI8-2M-qsQ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="81.884057971014499" y="467.11956521739137"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_error_alert" width="52" height="45"/>
+    </resources>
+</document>

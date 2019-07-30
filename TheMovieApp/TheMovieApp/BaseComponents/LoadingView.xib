@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingView" customModule="benisStore" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="fva-cp-H7O" id="CPn-Dz-UwC"/>
+                <outlet property="containerView" destination="b94-OT-Oiw" id="hqN-ol-D2c"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="e5C-Km-UhW"/>
+                <outlet property="messageLabel" destination="7fC-4f-Scc" id="9Sb-KD-DKu"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="421" height="297"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YbP-Rk-uON">
+                    <rect key="frame" x="0.0" y="0.0" width="421" height="297"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b94-OT-Oiw">
+                    <rect key="frame" x="85" y="92.5" width="251.5" height="112.5"/>
+                    <subviews>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fva-cp-H7O">
+                            <rect key="frame" x="115.5" y="24" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="Jcn-Q7-R9n"/>
+                                <constraint firstAttribute="height" constant="20" id="QFh-rY-v8c"/>
+                            </constraints>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carregando informações..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fC-4f-Scc">
+                            <rect key="frame" x="24" y="68" width="203.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="fva-cp-H7O" firstAttribute="top" secondItem="b94-OT-Oiw" secondAttribute="top" constant="24" id="8ch-PJ-SRu"/>
+                        <constraint firstAttribute="trailing" secondItem="7fC-4f-Scc" secondAttribute="trailing" constant="24" id="8ex-nr-lE1"/>
+                        <constraint firstItem="7fC-4f-Scc" firstAttribute="centerX" secondItem="b94-OT-Oiw" secondAttribute="centerX" id="GnL-Oe-Kgk"/>
+                        <constraint firstItem="fva-cp-H7O" firstAttribute="centerX" secondItem="b94-OT-Oiw" secondAttribute="centerX" id="Ob1-qT-hjt"/>
+                        <constraint firstItem="7fC-4f-Scc" firstAttribute="leading" secondItem="b94-OT-Oiw" secondAttribute="leading" constant="24" id="dfj-Bm-7DX"/>
+                        <constraint firstAttribute="bottom" secondItem="7fC-4f-Scc" secondAttribute="bottom" constant="24" id="r9m-19-nXf"/>
+                        <constraint firstItem="7fC-4f-Scc" firstAttribute="top" secondItem="fva-cp-H7O" secondAttribute="bottom" constant="24" id="vFX-0Q-ZGM"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="b94-OT-Oiw" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2Mb-EO-PHH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="b94-OT-Oiw" secondAttribute="trailing" constant="24" id="6MH-xF-OM9"/>
+                <constraint firstItem="YbP-Rk-uON" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="976-56-Rez"/>
+                <constraint firstItem="YbP-Rk-uON" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Fw2-mF-vF1"/>
+                <constraint firstAttribute="bottom" secondItem="YbP-Rk-uON" secondAttribute="bottom" id="VSP-0U-b7n"/>
+                <constraint firstAttribute="trailing" secondItem="YbP-Rk-uON" secondAttribute="trailing" id="hXG-6G-bo0"/>
+                <constraint firstItem="b94-OT-Oiw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ivZ-QQ-gsh"/>
+                <constraint firstItem="b94-OT-Oiw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="s1u-XM-AyB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="175.19999999999999" y="335.98200899550227"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kIJ-oY-ILF">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Movies-->
+        <scene sceneID="EVO-11-8vs">
+            <objects>
+                <navigationController id="J7t-BN-wNP" customClass="BaseNavigationViewController" customModule="TheMovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Movies" image="icon_movie_list" id="yMg-8H-gc3"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SXj-PX-tFn">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="b4b-2u-HrW" kind="relationship" relationship="rootViewController" id="kXe-6a-I3c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2H2-m5-c6l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="534" y="-173"/>
+        </scene>
+        <!--Movies-->
+        <scene sceneID="inj-yI-NYf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Movies" id="b4b-2u-HrW" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Ttz-bp-XCh"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OUk-zW-deu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1127" y="-174"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="g7W-Os-QeK">
+            <objects>
+                <navigationController id="6Nr-uf-A2z" customClass="BaseNavigationViewController" customModule="TheMovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="icon_favorites" id="NRh-1l-Phv"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zbp-e3-IW6">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="u22-Qd-65N" kind="relationship" relationship="rootViewController" id="p3e-Uq-1VD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ECR-Kr-vQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="534" y="513"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="i1g-eb-6aY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Favorites" id="u22-Qd-65N" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gr4-fP-Q4L"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IXc-su-sLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1198" y="512"/>
+        </scene>
+        <!--Base Tab Bar View Controller-->
+        <scene sceneID="eXB-wo-N7O">
+            <objects>
+                <tabBarController id="kIJ-oY-ILF" customClass="BaseTabBarViewController" customModule="TheMovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="tSv-L1-1kL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="J7t-BN-wNP" kind="relationship" relationship="viewControllers" id="uzk-Jg-3n6"/>
+                        <segue destination="6Nr-uf-A2z" kind="relationship" relationship="viewControllers" id="cqz-PU-dC2"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d5n-d0-C70" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-543" y="136"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_favorites" width="24" height="24"/>
+        <image name="icon_movie_list" width="24" height="24"/>
+    </resources>
+</document>

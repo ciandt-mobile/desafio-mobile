@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="gTV-IL-0wX" customClass="MovieListCollectionViewCell" customModule="TheMovieApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="220" height="245"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="220" height="245"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nsq-1G-2ST" customClass="ShadowView" customModule="TheMovieApp" customModuleProvider="target">
+                        <rect key="frame" x="8" y="8" width="204" height="229"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5P-BO-IRC">
+                        <rect key="frame" x="8" y="8" width="204" height="229"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ghw-L0-Fpk">
+                                <rect key="frame" x="0.0" y="0.0" width="204" height="169"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="135" placeholderIntrinsicHeight="60" translatesAutoresizingMaskIntoConstraints="NO" id="ECc-F1-06B">
+                                <rect key="frame" x="0.0" y="169" width="204" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="bgi-zc-r1B">
+                                        <rect key="frame" x="16" y="16" width="140" height="28"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZV-Oy-2AE" customClass="FavoriteButton" customModule="TheMovieApp" customModuleProvider="target">
+                                        <rect key="frame" x="164" y="18" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="9vt-a9-U45"/>
+                                            <constraint firstAttribute="width" constant="24" id="f3F-Gz-r7C"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="favoriteMovieButtonClicked:" destination="gTV-IL-0wX" eventType="touchUpInside" id="gaR-II-T7R"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="bgi-zc-r1B" firstAttribute="top" secondItem="ECc-F1-06B" secondAttribute="top" constant="16" id="8wJ-xI-CpT"/>
+                                    <constraint firstAttribute="trailing" secondItem="VZV-Oy-2AE" secondAttribute="trailing" constant="16" id="Cxl-yE-d9P"/>
+                                    <constraint firstItem="bgi-zc-r1B" firstAttribute="leading" secondItem="ECc-F1-06B" secondAttribute="leading" constant="16" id="ZxM-iF-GNV"/>
+                                    <constraint firstItem="VZV-Oy-2AE" firstAttribute="leading" secondItem="bgi-zc-r1B" secondAttribute="trailing" constant="8" id="aGM-ff-Sxo"/>
+                                    <constraint firstItem="VZV-Oy-2AE" firstAttribute="centerY" secondItem="ECc-F1-06B" secondAttribute="centerY" id="oRU-54-zal"/>
+                                    <constraint firstAttribute="bottom" secondItem="bgi-zc-r1B" secondAttribute="bottom" constant="16" id="sPf-N1-QUo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ECc-F1-06B" firstAttribute="leading" secondItem="O5P-BO-IRC" secondAttribute="leading" id="1bd-3F-sxT"/>
+                            <constraint firstAttribute="trailing" secondItem="Ghw-L0-Fpk" secondAttribute="trailing" id="Hji-yA-Bym"/>
+                            <constraint firstItem="Ghw-L0-Fpk" firstAttribute="top" secondItem="O5P-BO-IRC" secondAttribute="top" id="LJH-wR-P4K"/>
+                            <constraint firstItem="ECc-F1-06B" firstAttribute="top" secondItem="Ghw-L0-Fpk" secondAttribute="bottom" id="PRH-V2-JAV"/>
+                            <constraint firstItem="Ghw-L0-Fpk" firstAttribute="leading" secondItem="O5P-BO-IRC" secondAttribute="leading" id="Pv8-Jf-tpB"/>
+                            <constraint firstAttribute="trailing" secondItem="ECc-F1-06B" secondAttribute="trailing" id="QKK-iy-z3W"/>
+                            <constraint firstAttribute="bottom" secondItem="ECc-F1-06B" secondAttribute="bottom" id="uxP-lK-YyA"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Nsq-1G-2ST" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="614-QW-fXX"/>
+                <constraint firstItem="O5P-BO-IRC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="GiL-Iy-k36"/>
+                <constraint firstAttribute="trailing" secondItem="Nsq-1G-2ST" secondAttribute="trailing" constant="8" id="KPg-wM-hix"/>
+                <constraint firstAttribute="bottom" secondItem="Nsq-1G-2ST" secondAttribute="bottom" constant="8" id="Ol2-UB-Uef"/>
+                <constraint firstItem="O5P-BO-IRC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="WOi-lA-syf"/>
+                <constraint firstAttribute="bottom" secondItem="O5P-BO-IRC" secondAttribute="bottom" constant="8" id="lZF-PR-m5f"/>
+                <constraint firstItem="Nsq-1G-2ST" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="oQB-ms-2nv"/>
+                <constraint firstAttribute="trailing" secondItem="O5P-BO-IRC" secondAttribute="trailing" constant="8" id="upo-6H-t9D"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="220" height="245"/>
+            <connections>
+                <outlet property="containerView" destination="O5P-BO-IRC" id="pch-JP-Se5"/>
+                <outlet property="favoriteButton" destination="VZV-Oy-2AE" id="bdj-n9-71N"/>
+                <outlet property="labelContainer" destination="ECc-F1-06B" id="s9r-vG-HB9"/>
+                <outlet property="mainImageView" destination="Ghw-L0-Fpk" id="1na-yp-tLa"/>
+                <outlet property="movieNameLabel" destination="bgi-zc-r1B" id="e1O-V9-52U"/>
+            </connections>
+            <point key="canvasLocation" x="259.4202898550725" y="130.24553571428572"/>
+        </collectionViewCell>
+    </objects>
+</document>
