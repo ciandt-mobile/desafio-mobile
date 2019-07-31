@@ -14,6 +14,8 @@
 		7CA3FABD22F0D4CF0090D36E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA3FABB22F0D4CF0090D36E /* LaunchScreen.storyboard */; };
 		7CA3FAC822F0D4D00090D36E /* Desafio_CI_TTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3FAC722F0D4D00090D36E /* Desafio_CI_TTests.swift */; };
 		7CA3FAD322F0D4D00090D36E /* Desafio_CI_TUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3FAD222F0D4D00090D36E /* Desafio_CI_TUITests.swift */; };
+		7CA3FAE222F0DC5F0090D36E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3FAE122F0DC5F0090D36E /* Movie.swift */; };
+		7CA3FAE422F0E0300090D36E /* CastMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3FAE322F0E0300090D36E /* CastMember.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		7CA3FACE22F0D4D00090D36E /* Desafio CI&TUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio CI&TUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA3FAD222F0D4D00090D36E /* Desafio_CI_TUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_CI_TUITests.swift; sourceTree = "<group>"; };
 		7CA3FAD422F0D4D00090D36E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CA3FAE122F0DC5F0090D36E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		7CA3FAE322F0E0300090D36E /* CastMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastMember.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		7CA3FAB122F0D4CD0090D36E /* Desafio CI&T */ = {
 			isa = PBXGroup;
 			children = (
+				7CA3FAE022F0DC400090D36E /* Model */,
 				7CA3FAB222F0D4CD0090D36E /* AppDelegate.swift */,
 				7CA3FAB422F0D4CD0090D36E /* ViewController.swift */,
 				7CA3FAB622F0D4CD0090D36E /* Main.storyboard */,
@@ -123,6 +128,15 @@
 				7CA3FAD422F0D4D00090D36E /* Info.plist */,
 			);
 			path = "Desafio CI&TUITests";
+			sourceTree = "<group>";
+		};
+		7CA3FAE022F0DC400090D36E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7CA3FAE122F0DC5F0090D36E /* Movie.swift */,
+				7CA3FAE322F0E0300090D36E /* CastMember.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +272,8 @@
 			files = (
 				7CA3FAB522F0D4CD0090D36E /* ViewController.swift in Sources */,
 				7CA3FAB322F0D4CD0090D36E /* AppDelegate.swift in Sources */,
+				7CA3FAE422F0E0300090D36E /* CastMember.swift in Sources */,
+				7CA3FAE222F0DC5F0090D36E /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
