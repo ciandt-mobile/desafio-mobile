@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C6CAD9E22F23182002D1A5F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6CAD9D22F23182002D1A5F /* Network.swift */; };
 		7CA3FAB322F0D4CD0090D36E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3FAB222F0D4CD0090D36E /* AppDelegate.swift */; };
 		7CA3FAB522F0D4CD0090D36E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3FAB422F0D4CD0090D36E /* ViewController.swift */; };
 		7CA3FAB822F0D4CD0090D36E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA3FAB622F0D4CD0090D36E /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C6CAD9D22F23182002D1A5F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		7CA3FAAF22F0D4CD0090D36E /* Desafio CI&T.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio CI&T.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA3FAB222F0D4CD0090D36E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CA3FAB422F0D4CD0090D36E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				7CA3FAE122F0DC5F0090D36E /* Movie.swift */,
 				7CA3FAE322F0E0300090D36E /* CastMember.swift */,
+				7C6CAD9D22F23182002D1A5F /* Network.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C6CAD9E22F23182002D1A5F /* Network.swift in Sources */,
 				7CA3FAB522F0D4CD0090D36E /* ViewController.swift in Sources */,
 				7CA3FAB322F0D4CD0090D36E /* AppDelegate.swift in Sources */,
 				7CA3FAE422F0E0300090D36E /* CastMember.swift in Sources */,
