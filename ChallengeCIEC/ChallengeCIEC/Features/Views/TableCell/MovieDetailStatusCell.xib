@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieDetailStatusCell" rowHeight="108" id="KGk-i7-Jjw" customClass="MovieDetailStatusCell" customModule="ChallengeCIEC" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="107.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QsT-j7-Edo">
+                        <rect key="frame" x="150" y="44" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="J6n-uO-lxn"/>
+                            <constraint firstAttribute="height" constant="20" id="hLa-7H-t8n"/>
+                        </constraints>
+                    </activityIndicatorView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0n-fA-A9B">
+                        <rect key="frame" x="16" y="16" width="288" height="75.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="QsT-j7-Edo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1v9-pW-yeF"/>
+                    <constraint firstItem="P0n-fA-A9B" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="EJ2-dc-9CM"/>
+                    <constraint firstItem="QsT-j7-Edo" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="H5h-dV-7A3"/>
+                    <constraint firstAttribute="bottom" secondItem="P0n-fA-A9B" secondAttribute="bottom" constant="16" id="QBI-Mq-o61"/>
+                    <constraint firstAttribute="trailing" secondItem="P0n-fA-A9B" secondAttribute="trailing" constant="16" id="VbA-mP-xIc"/>
+                    <constraint firstItem="P0n-fA-A9B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="XDk-9V-UaA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="labelStatus" destination="P0n-fA-A9B" id="HkA-Jf-12Y"/>
+                <outlet property="loader" destination="QsT-j7-Edo" id="Uau-L1-Nwf"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="169.41964285714286"/>
+        </tableViewCell>
+    </objects>
+</document>

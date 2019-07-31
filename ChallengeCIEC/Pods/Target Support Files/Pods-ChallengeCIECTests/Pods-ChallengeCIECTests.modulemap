@@ -1,0 +1,6 @@
+framework module Pods_ChallengeCIECTests {
+  umbrella header "Pods-ChallengeCIECTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
