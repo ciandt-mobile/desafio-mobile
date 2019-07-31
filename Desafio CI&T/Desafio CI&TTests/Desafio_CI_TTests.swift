@@ -13,12 +13,14 @@ class Desafio_CI_TTests: XCTestCase {
 
     var network: Network!
     
-    var movies: [[String: Any]]?
-    var movieDetails: [String: Any]?
-    var movieCredits: [String: Any]?
+    var moviesJson: [[String: Any]]?
+    var movieDetailsJson: [String: Any]?
+    var movieCreditsJson: [String: Any]?
+    var movies: [Movie]?
     var moviesExpectation: XCTestExpectation?
     var movieDetailsExpectation: XCTestExpectation?
     var movieCreditsExpectation: XCTestExpectation?
+    var moviesParsingExpectation: XCTestExpectation?
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -33,7 +35,7 @@ class Desafio_CI_TTests: XCTestCase {
         moviesExpectation = expectation(description: "movies")
         network.getPopularMovies()
         waitForExpectations(timeout: 10) { (error) in
-            XCTAssertNotNil(self.movies)
+            XCTAssertNotNil(self.moviesJson)
         }
     }
     
@@ -41,7 +43,7 @@ class Desafio_CI_TTests: XCTestCase {
         movieDetailsExpectation = expectation(description: "movieDetails")
         network.getMovieDetails(420818)
         waitForExpectations(timeout: 10) { (error) in
-            XCTAssertNotNil(self.movieDetails)
+            XCTAssertNotNil(self.movieDetailsJson)
         }
     }
     
@@ -49,7 +51,7 @@ class Desafio_CI_TTests: XCTestCase {
         movieCreditsExpectation = expectation(description: "movieCredits")
         network.getMovieCredits(420818)
         waitForExpectations(timeout: 10) { (error) in
-            XCTAssertNotNil(self.movieCredits)
+            XCTAssertNotNil(self.movieCreditsJson)
         }
     }
 }
@@ -58,17 +60,31 @@ extension Desafio_CI_TTests: NetworkDelegate {
     
     func didFinishGettingPopularMovies(_ dictionary: [String : Any]) {
         guard let movies = dictionary["results"] as? [[String: Any]] else { return }
-        self.movies = movies
+        self.moviesJson = movies
         self.moviesExpectation?.fulfill()
+        
+        if movies.count > 0 {
+            self.movies = [Movie]()
+            for movieJson in movies {
+                let movie = Movie(movieJson)
+                self.movies?.append(movie)
+            }
+            XCTAssertGreaterThan(self.movies!.count, 0)
+        }
     }
     
     func didFinishGettingMovieDetails(_ dictionary: [String : Any]) {
-        self.movieDetails = dictionary
+        self.movieDetailsJson = dictionary
         self.movieDetailsExpectation?.fulfill()
+        let movie = Movie(dictionary)
+        XCTAssertNotNil(movie.overview!)
     }
     
     func didFinishGettingMovieCredits(_ dictionary: [String : Any]) {
-        self.movieCredits = dictionary
+        self.movieCreditsJson = dictionary
         self.movieCreditsExpectation?.fulfill()
+        let movie = Movie(id: 0, title: "Test", releaseDate: Date(), posterPath: "")
+        movie.setCast(dictionary)
+        XCTAssertGreaterThan(movie.cast!.count, 0)
     }
 }

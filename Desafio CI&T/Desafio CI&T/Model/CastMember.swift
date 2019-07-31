@@ -10,12 +10,22 @@ import Foundation
 
 class CastMember {
     
+    let kNameKey = "name"
+    let kProfilePathKey = "profile_path"
+    
     let name: String
-    let profilePath: String
+    var profilePath: String?
     
     init(name: String, profilePath: String) {
         self.name = name
         self.profilePath = profilePath
+    }
+    
+    init(_ dictionary: [String: Any]) {
+        self.name = dictionary[kNameKey] as! String
+        if let profilePath = dictionary[kProfilePathKey] as? String {
+            self.profilePath = profilePath
+        }
     }
     
 }
