@@ -10,8 +10,8 @@ import Foundation
 
 class CastMember {
     
-    let kNameKey = "name"
-    let kProfilePathKey = "profile_path"
+    private let kNameKey = "name"
+    private let kProfilePathKey = "profile_path"
     
     let name: String
     var profilePath: String?

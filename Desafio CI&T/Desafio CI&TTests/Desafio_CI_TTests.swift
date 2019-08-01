@@ -76,7 +76,8 @@ extension Desafio_CI_TTests: NetworkDelegate {
     func didFinishGettingMovieDetails(_ dictionary: [String : Any]) {
         self.movieDetailsJson = dictionary
         self.movieDetailsExpectation?.fulfill()
-        let movie = Movie(dictionary)
+        let movie = Movie(id: 0, title: "Test", releaseDate: Date(), posterPath: "")
+        movie.setMovieDetails(dictionary)
         XCTAssertNotNil(movie.overview!)
     }
     

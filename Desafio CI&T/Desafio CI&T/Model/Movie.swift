@@ -10,20 +10,22 @@ import Foundation
 
 class Movie {
     
-    let kIdKey = "id"
-    let kTitleKey = "title"
-    let kReleaseDateKey = "release_date"
-    let kPosterPathKey = "poster_path"
-    let kGenresKey = "genres"
-    let kGenreNameKey = "name"
-    let kRuntimeKey = "runtime"
-    let kOverviewKey = "overview"
-    let kCastKey = "cast"
+    private let kIdKey = "id"
+    private let kTitleKey = "title"
+    private let kReleaseDateKey = "release_date"
+    private let kPosterPathKey = "poster_path"
+    private let kGenresKey = "genres"
+    private let kGenreNameKey = "name"
+    private let kRuntimeKey = "runtime"
+    private let kOverviewKey = "overview"
+    private let kCastKey = "cast"
+    private let kBackdropPathKey = "backdrop_path"
     
     let id: Int
     let title: String
     let releaseDate: Date
     let posterPath: String
+    var backdropPath: String?
     var genres: [String]?
     var runtime: Int?
     var overview: String?
@@ -47,6 +49,12 @@ class Movie {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
         self.releaseDate = dateFormatter.date(from:releaseDateString)!
         
+        if let backdropPath = dictionary[kBackdropPathKey] as? String {
+            self.backdropPath = backdropPath
+        }
+    }
+    
+    func setMovieDetails(_ dictionary: [String: Any]) {
         if let genres = dictionary[kGenresKey] as? [[String: Any]], genres.count > 0 {
             self.genres = [String]()
             

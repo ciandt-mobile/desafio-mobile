@@ -15,6 +15,7 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var viewModel: MoviesViewModel!
+    var selectedMovie: Movie!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +28,11 @@ class MoviesViewController: UIViewController {
         self.collectionView.reloadData()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let movieDetailsVC = segue.destination as! MovieDetailsViewController
+        let movieDetailsViewModel = MovieDetailsViewModel(self.selectedMovie, delegate: movieDetailsVC)
+        movieDetailsVC.viewModel = movieDetailsViewModel
     }
-    */
-
 }
 
 extension MoviesViewController: MoviesViewModelDelegate {
@@ -69,5 +65,10 @@ extension MoviesViewController: UICollectionViewDataSource {
 }
 
 extension MoviesViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedMovie = self.viewModel.movies[indexPath.row]
+        self.performSegue(withIdentifier: "MovieDetailsSegue", sender: self)
+    }
     
 }
