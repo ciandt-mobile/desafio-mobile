@@ -42,5 +42,27 @@ class Desafio_CI_TUITests: XCTestCase {
         let secondCellsCount = app.collectionViews.cells.count
         XCTAssertNotEqual(firstCellsCount, secondCellsCount)
     }
+    
+    func testMovieDetailsElements() {
+        let app = XCUIApplication()
+        
+        expectation(for: NSPredicate(format: "count > 0"), evaluatedWith: app.collectionViews.cells, handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
+        
+        app.collectionViews.firstMatch.cells.firstMatch.tap()
+        
+        expectation(for: NSPredicate(format: "count > 0"), evaluatedWith: app.tables.cells, handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
+        
+        XCTAssertTrue(app.images.firstMatch.exists)
+        XCTAssertTrue(app.textViews.firstMatch.exists)
+        XCTAssertTrue(app.tables.firstMatch.exists)
+        
+        XCUIDevice.shared.orientation = .landscapeLeft
+        
+        XCTAssertTrue(app.images.firstMatch.exists)
+        XCTAssertTrue(app.textViews.firstMatch.exists)
+        XCTAssertTrue(app.tables.firstMatch.exists)
+    }
 
 }
