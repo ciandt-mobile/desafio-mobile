@@ -25,9 +25,10 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "Movie Details"
         self.informationLabel.text = ""
         self.textView.text = ""
-        self.titleLabel.text = self.viewModel.movie.title
+        self.titleLabel.text = self.viewModel.movieTitle
     }
     
 }
@@ -75,7 +76,7 @@ extension MovieDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.movie.cast?.count ?? 0
+        return self.viewModel.castCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -16,13 +16,22 @@ protocol MoviesViewModelDelegate {
 
 class MoviesViewModel {
     
-    let kResultsKey = "results"
+    private let kResultsKey = "results"
+    private let delegate: MoviesViewModelDelegate
     
-    var network: Network!
-    let delegate: MoviesViewModelDelegate
-    var movies: [Movie]!
-    var allMovies: [Movie]!
-    var isFilteringUpcomingMovies = false
+    private var network: Network!
+    private var movies: [Movie]!
+    private var allMovies: [Movie]!
+    private var isFilteringUpcomingMovies = false
+    
+    var selectedMovieIndex: Int!
+    var moviesCount: Int {
+        guard let movies = self.movies else { return 0 }
+        return movies.count
+    }
+    var selectedMovie: Movie {
+        return self.movies[selectedMovieIndex]
+    }
     
     init(delegate: MoviesViewModelDelegate) {
         self.delegate = delegate
@@ -54,8 +63,8 @@ class MoviesViewModel {
         }
     }
     
-    func setIsFilteringUpcomingMovies(_ isFilteringUpcomingMovies: Bool) {
-        self.isFilteringUpcomingMovies = isFilteringUpcomingMovies
+    func toggleUpcomingMoviesFilter() {
+        self.isFilteringUpcomingMovies = !self.isFilteringUpcomingMovies
         
         if isFilteringUpcomingMovies {
             self.movies = self.allMovies.filter() {

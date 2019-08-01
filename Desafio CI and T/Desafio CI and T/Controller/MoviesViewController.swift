@@ -16,7 +16,6 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var loadingView: UIView!
     
     var viewModel: MoviesViewModel!
-    var selectedMovie: Movie!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +24,13 @@ class MoviesViewController: UIViewController {
     }
     
     @IBAction func upcomingMoviesSwitchValueChanged(_ sender: Any) {
-        self.viewModel.setIsFilteringUpcomingMovies(!self.viewModel.isFilteringUpcomingMovies)
+        self.viewModel.toggleUpcomingMoviesFilter()
         self.collectionView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let movieDetailsVC = segue.destination as! MovieDetailsViewController
-        let movieDetailsViewModel = MovieDetailsViewModel(self.selectedMovie, delegate: movieDetailsVC)
+        let movieDetailsViewModel = MovieDetailsViewModel(self.viewModel.selectedMovie, delegate: movieDetailsVC)
         movieDetailsVC.viewModel = movieDetailsViewModel
     }
 }
@@ -60,7 +59,7 @@ extension MoviesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.movies.count
+        return self.viewModel.moviesCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -74,7 +73,7 @@ extension MoviesViewController: UICollectionViewDataSource {
 extension MoviesViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectedMovie = self.viewModel.movies[indexPath.row]
+        self.viewModel.selectedMovieIndex = indexPath.row
         self.performSegue(withIdentifier: "MovieDetailsSegue", sender: self)
     }
     

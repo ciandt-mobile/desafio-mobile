@@ -19,12 +19,20 @@ protocol MovieDetailsViewModelDelegate {
 
 class MovieDetailsViewModel {
     
-    var network: Network!
-    let movie: Movie
-    let delegate: MovieDetailsViewModelDelegate
+    private var network: Network!
+    private let movie: Movie
+    private let delegate: MovieDetailsViewModelDelegate
+    
+    var movieTitle: String {
+        return movie.title
+    }
     var movieInformation = ""
     var overview = ""
     var image: UIImage?
+    var castCount: Int {
+        guard let cast = movie.cast else { return 0 }
+        return cast.count
+    }
     
     init(_ movie: Movie, delegate: MovieDetailsViewModelDelegate) {
         self.movie = movie
