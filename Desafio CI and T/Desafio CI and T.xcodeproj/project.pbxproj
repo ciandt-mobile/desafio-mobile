@@ -45,16 +45,16 @@
 /* Begin PBXFileReference section */
 		7C0566DD22F3550300A17994 /* UIViewController+TryAgainAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TryAgainAlert.swift"; sourceTree = "<group>"; };
 		7C6CAD9D22F23182002D1A5F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		7CA3FAAF22F0D4CD0090D36E /* Desafio CI&T.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio CI&T.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CA3FAAF22F0D4CD0090D36E /* Desafio CI and T.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio CI and T.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA3FAB222F0D4CD0090D36E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CA3FAB722F0D4CD0090D36E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CA3FAB922F0D4CF0090D36E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CA3FABC22F0D4CF0090D36E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CA3FABE22F0D4CF0090D36E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7CA3FAC322F0D4CF0090D36E /* Desafio CI&TTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio CI&TTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CA3FAC322F0D4CF0090D36E /* Desafio CI and TTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio CI and TTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA3FAC722F0D4D00090D36E /* Desafio_CI_TTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_CI_TTests.swift; sourceTree = "<group>"; };
 		7CA3FAC922F0D4D00090D36E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7CA3FACE22F0D4D00090D36E /* Desafio CI&TUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio CI&TUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CA3FACE22F0D4D00090D36E /* Desafio CI and TUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio CI and TUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA3FAD222F0D4D00090D36E /* Desafio_CI_TUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_CI_TUITests.swift; sourceTree = "<group>"; };
 		7CA3FAD422F0D4D00090D36E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CA3FAE122F0DC5F0090D36E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -124,9 +124,9 @@
 		7CA3FAA622F0D4CD0090D36E = {
 			isa = PBXGroup;
 			children = (
-				7CA3FAB122F0D4CD0090D36E /* Desafio CI&T */,
-				7CA3FAC622F0D4D00090D36E /* Desafio CI&TTests */,
-				7CA3FAD122F0D4D00090D36E /* Desafio CI&TUITests */,
+				7CA3FAB122F0D4CD0090D36E /* Desafio CI and T */,
+				7CA3FAC622F0D4D00090D36E /* Desafio CI and TTests */,
+				7CA3FAD122F0D4D00090D36E /* Desafio CI and TUITests */,
 				7CA3FAB022F0D4CD0090D36E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -134,14 +134,14 @@
 		7CA3FAB022F0D4CD0090D36E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7CA3FAAF22F0D4CD0090D36E /* Desafio CI&T.app */,
-				7CA3FAC322F0D4CF0090D36E /* Desafio CI&TTests.xctest */,
-				7CA3FACE22F0D4D00090D36E /* Desafio CI&TUITests.xctest */,
+				7CA3FAAF22F0D4CD0090D36E /* Desafio CI and T.app */,
+				7CA3FAC322F0D4CF0090D36E /* Desafio CI and TTests.xctest */,
+				7CA3FACE22F0D4D00090D36E /* Desafio CI and TUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7CA3FAB122F0D4CD0090D36E /* Desafio CI&T */ = {
+		7CA3FAB122F0D4CD0090D36E /* Desafio CI and T */ = {
 			isa = PBXGroup;
 			children = (
 				7CA3FAE022F0DC400090D36E /* Model */,
@@ -153,25 +153,25 @@
 				7CA3FABB22F0D4CF0090D36E /* LaunchScreen.storyboard */,
 				7CA3FABE22F0D4CF0090D36E /* Info.plist */,
 			);
-			path = "Desafio CI&T";
+			path = "Desafio CI and T";
 			sourceTree = "<group>";
 		};
-		7CA3FAC622F0D4D00090D36E /* Desafio CI&TTests */ = {
+		7CA3FAC622F0D4D00090D36E /* Desafio CI and TTests */ = {
 			isa = PBXGroup;
 			children = (
 				7CA3FAC722F0D4D00090D36E /* Desafio_CI_TTests.swift */,
 				7CA3FAC922F0D4D00090D36E /* Info.plist */,
 			);
-			path = "Desafio CI&TTests";
+			path = "Desafio CI and TTests";
 			sourceTree = "<group>";
 		};
-		7CA3FAD122F0D4D00090D36E /* Desafio CI&TUITests */ = {
+		7CA3FAD122F0D4D00090D36E /* Desafio CI and TUITests */ = {
 			isa = PBXGroup;
 			children = (
 				7CA3FAD222F0D4D00090D36E /* Desafio_CI_TUITests.swift */,
 				7CA3FAD422F0D4D00090D36E /* Info.plist */,
 			);
-			path = "Desafio CI&TUITests";
+			path = "Desafio CI and TUITests";
 			sourceTree = "<group>";
 		};
 		7CA3FAE022F0DC400090D36E /* Model */ = {
@@ -187,9 +187,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7CA3FAAE22F0D4CD0090D36E /* Desafio CI&T */ = {
+		7CA3FAAE22F0D4CD0090D36E /* Desafio CI and T */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7CA3FAD722F0D4D00090D36E /* Build configuration list for PBXNativeTarget "Desafio CI&T" */;
+			buildConfigurationList = 7CA3FAD722F0D4D00090D36E /* Build configuration list for PBXNativeTarget "Desafio CI and T" */;
 			buildPhases = (
 				7CA3FAAB22F0D4CD0090D36E /* Sources */,
 				7CA3FAAC22F0D4CD0090D36E /* Frameworks */,
@@ -199,14 +199,14 @@
 			);
 			dependencies = (
 			);
-			name = "Desafio CI&T";
+			name = "Desafio CI and T";
 			productName = "Desafio CI&T";
-			productReference = 7CA3FAAF22F0D4CD0090D36E /* Desafio CI&T.app */;
+			productReference = 7CA3FAAF22F0D4CD0090D36E /* Desafio CI and T.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7CA3FAC222F0D4CF0090D36E /* Desafio CI&TTests */ = {
+		7CA3FAC222F0D4CF0090D36E /* Desafio CI and TTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7CA3FADA22F0D4D00090D36E /* Build configuration list for PBXNativeTarget "Desafio CI&TTests" */;
+			buildConfigurationList = 7CA3FADA22F0D4D00090D36E /* Build configuration list for PBXNativeTarget "Desafio CI and TTests" */;
 			buildPhases = (
 				7CA3FABF22F0D4CF0090D36E /* Sources */,
 				7CA3FAC022F0D4CF0090D36E /* Frameworks */,
@@ -217,14 +217,14 @@
 			dependencies = (
 				7CA3FAC522F0D4CF0090D36E /* PBXTargetDependency */,
 			);
-			name = "Desafio CI&TTests";
+			name = "Desafio CI and TTests";
 			productName = "Desafio CI&TTests";
-			productReference = 7CA3FAC322F0D4CF0090D36E /* Desafio CI&TTests.xctest */;
+			productReference = 7CA3FAC322F0D4CF0090D36E /* Desafio CI and TTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7CA3FACD22F0D4D00090D36E /* Desafio CI&TUITests */ = {
+		7CA3FACD22F0D4D00090D36E /* Desafio CI and TUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7CA3FADD22F0D4D00090D36E /* Build configuration list for PBXNativeTarget "Desafio CI&TUITests" */;
+			buildConfigurationList = 7CA3FADD22F0D4D00090D36E /* Build configuration list for PBXNativeTarget "Desafio CI and TUITests" */;
 			buildPhases = (
 				7CA3FACA22F0D4D00090D36E /* Sources */,
 				7CA3FACB22F0D4D00090D36E /* Frameworks */,
@@ -235,9 +235,9 @@
 			dependencies = (
 				7CA3FAD022F0D4D00090D36E /* PBXTargetDependency */,
 			);
-			name = "Desafio CI&TUITests";
+			name = "Desafio CI and TUITests";
 			productName = "Desafio CI&TUITests";
-			productReference = 7CA3FACE22F0D4D00090D36E /* Desafio CI&TUITests.xctest */;
+			productReference = 7CA3FACE22F0D4D00090D36E /* Desafio CI and TUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -263,7 +263,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7CA3FAAA22F0D4CD0090D36E /* Build configuration list for PBXProject "Desafio CI&T" */;
+			buildConfigurationList = 7CA3FAAA22F0D4CD0090D36E /* Build configuration list for PBXProject "Desafio CI and T" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -276,9 +276,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7CA3FAAE22F0D4CD0090D36E /* Desafio CI&T */,
-				7CA3FAC222F0D4CF0090D36E /* Desafio CI&TTests */,
-				7CA3FACD22F0D4D00090D36E /* Desafio CI&TUITests */,
+				7CA3FAAE22F0D4CD0090D36E /* Desafio CI and T */,
+				7CA3FAC222F0D4CF0090D36E /* Desafio CI and TTests */,
+				7CA3FACD22F0D4D00090D36E /* Desafio CI and TUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -350,12 +350,12 @@
 /* Begin PBXTargetDependency section */
 		7CA3FAC522F0D4CF0090D36E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7CA3FAAE22F0D4CD0090D36E /* Desafio CI&T */;
+			target = 7CA3FAAE22F0D4CD0090D36E /* Desafio CI and T */;
 			targetProxy = 7CA3FAC422F0D4CF0090D36E /* PBXContainerItemProxy */;
 		};
 		7CA3FAD022F0D4D00090D36E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7CA3FAAE22F0D4CD0090D36E /* Desafio CI&T */;
+			target = 7CA3FAAE22F0D4CD0090D36E /* Desafio CI and T */;
 			targetProxy = 7CA3FACF22F0D4D00090D36E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -502,7 +502,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L86J8X38JC;
-				INFOPLIST_FILE = "Desafio CI&T/Info.plist";
+				INFOPLIST_FILE = "Desafio CI and T/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -520,7 +520,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L86J8X38JC;
-				INFOPLIST_FILE = "Desafio CI&T/Info.plist";
+				INFOPLIST_FILE = "Desafio CI and T/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,7 +539,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L86J8X38JC;
-				INFOPLIST_FILE = "Desafio CI&TTests/Info.plist";
+				INFOPLIST_FILE = "Desafio CI and TTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -549,7 +549,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Desafio CI&T.app/Desafio CI&T";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Desafio CI and T.app/Desafio CI and T";
 			};
 			name = Debug;
 		};
@@ -560,7 +560,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L86J8X38JC;
-				INFOPLIST_FILE = "Desafio CI&TTests/Info.plist";
+				INFOPLIST_FILE = "Desafio CI and TTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -570,7 +570,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Desafio CI&T.app/Desafio CI&T";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Desafio CI and T.app/Desafio CI and T";
 			};
 			name = Release;
 		};
@@ -580,7 +580,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L86J8X38JC;
-				INFOPLIST_FILE = "Desafio CI&TUITests/Info.plist";
+				INFOPLIST_FILE = "Desafio CI and TUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -588,9 +588,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.mateuskamoei.Desafio-CI-TUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Desafio CI&T";
+				TEST_TARGET_NAME = "Desafio CI and T";
 			};
 			name = Debug;
 		};
@@ -600,7 +601,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L86J8X38JC;
-				INFOPLIST_FILE = "Desafio CI&TUITests/Info.plist";
+				INFOPLIST_FILE = "Desafio CI and TUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -608,16 +609,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.mateuskamoei.Desafio-CI-TUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Desafio CI&T";
+				TEST_TARGET_NAME = "Desafio CI and T";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7CA3FAAA22F0D4CD0090D36E /* Build configuration list for PBXProject "Desafio CI&T" */ = {
+		7CA3FAAA22F0D4CD0090D36E /* Build configuration list for PBXProject "Desafio CI and T" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7CA3FAD522F0D4D00090D36E /* Debug */,
@@ -626,7 +628,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7CA3FAD722F0D4D00090D36E /* Build configuration list for PBXNativeTarget "Desafio CI&T" */ = {
+		7CA3FAD722F0D4D00090D36E /* Build configuration list for PBXNativeTarget "Desafio CI and T" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7CA3FAD822F0D4D00090D36E /* Debug */,
@@ -635,7 +637,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7CA3FADA22F0D4D00090D36E /* Build configuration list for PBXNativeTarget "Desafio CI&TTests" */ = {
+		7CA3FADA22F0D4D00090D36E /* Build configuration list for PBXNativeTarget "Desafio CI and TTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7CA3FADB22F0D4D00090D36E /* Debug */,
@@ -644,7 +646,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7CA3FADD22F0D4D00090D36E /* Build configuration list for PBXNativeTarget "Desafio CI&TUITests" */ = {
+		7CA3FADD22F0D4D00090D36E /* Build configuration list for PBXNativeTarget "Desafio CI and TUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7CA3FADE22F0D4D00090D36E /* Debug */,

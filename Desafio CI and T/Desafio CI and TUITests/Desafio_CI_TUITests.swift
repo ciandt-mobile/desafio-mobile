@@ -26,9 +26,21 @@ class Desafio_CI_TUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testPopularMoviesLoading() {
+        expectation(for: NSPredicate(format: "count > 0"), evaluatedWith: XCUIApplication().collectionViews.cells, handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
+    }
+    
+    func testFilterUpcomingMovies() {
+        let app = XCUIApplication()
+        
+        expectation(for: NSPredicate(format: "count > 0"), evaluatedWith: app.collectionViews.cells, handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
+        
+        let firstCellsCount = app.collectionViews.cells.count
+        app.switches.firstMatch.tap()
+        let secondCellsCount = app.collectionViews.cells.count
+        XCTAssertNotEqual(firstCellsCount, secondCellsCount)
     }
 
 }

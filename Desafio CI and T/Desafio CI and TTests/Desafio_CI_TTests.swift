@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Desafio_CI_T
+@testable import Desafio_CI_and_T
 
 class Desafio_CI_TTests: XCTestCase {
 
