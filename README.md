@@ -46,4 +46,15 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  
 # BOA SORTE!
  
- 
+> This is a sample app for the CI&T code challenge
+
+This app shows popular movies and can filter for upcoming movies. Can also show movie details like runtime, genres, cast and release year. Developed using Swift 5 and MVVM architecture. Implemented basic unit and UI tests.
+
+## Requirements
+
+- iOS 10.2+
+- Xcode 12.2
+
+## Installation
+
+Just clone the repo and run the app. You can also run the tests to make sure everything is in order.
