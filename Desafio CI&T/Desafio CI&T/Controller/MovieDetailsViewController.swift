@@ -17,12 +17,16 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var informationLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var castActivityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var movieDetailsActivityIndicatorView: UIActivityIndicatorView!
     
     var viewModel: MovieDetailsViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.informationLabel.text = ""
+        self.textView.text = ""
         self.titleLabel.text = self.viewModel.movie.title
     }
     
@@ -32,23 +36,29 @@ extension MovieDetailsViewController: MovieDetailsViewModelDelegate {
     
     func didFinishGettingMovieDetails(_ viewModel: MovieDetailsViewModel) {
         DispatchQueue.main.async {
+            self.movieDetailsActivityIndicatorView.stopAnimating()
             self.informationLabel.text = self.viewModel.movieInformation
             self.textView.text = self.viewModel.overview
         }
     }
     
     func didFailGettingMovieDetails(_ viewModel: MovieDetailsViewModel, error: Error?) {
-        
+        self.presentTryAgainAlert(with: "An error occurred when loading the movie details") {
+            self.viewModel.getMovieDetails()
+        }
     }
     
     func didFinishGettingMovieCredits(_ viewModel: MovieDetailsViewModel) {
         DispatchQueue.main.async {
+            self.castActivityIndicatorView.stopAnimating()
             self.tableView.reloadData()
         }
     }
     
     func didFailGettingMovieCredits(_ viewModel: MovieDetailsViewModel, error: Error?) {
-        
+        self.presentTryAgainAlert(with: "An error occurred when loading the movie cast") {
+            self.viewModel.getMovieCredits()
+        }
     }
     
     func didFinishGettingImage(_ viewModel: MovieDetailsViewModel) {

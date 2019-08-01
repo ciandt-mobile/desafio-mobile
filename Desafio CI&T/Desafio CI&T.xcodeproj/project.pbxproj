@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C0566DE22F3550300A17994 /* UIViewController+TryAgainAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0566DD22F3550300A17994 /* UIViewController+TryAgainAlert.swift */; };
 		7C6CAD9E22F23182002D1A5F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6CAD9D22F23182002D1A5F /* Network.swift */; };
 		7CA3FAB322F0D4CD0090D36E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3FAB222F0D4CD0090D36E /* AppDelegate.swift */; };
 		7CA3FAB822F0D4CD0090D36E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA3FAB622F0D4CD0090D36E /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C0566DD22F3550300A17994 /* UIViewController+TryAgainAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TryAgainAlert.swift"; sourceTree = "<group>"; };
 		7C6CAD9D22F23182002D1A5F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		7CA3FAAF22F0D4CD0090D36E /* Desafio CI&T.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio CI&T.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA3FAB222F0D4CD0090D36E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				7CE65C1422F24CD80068147D /* MoviesViewController.swift */,
 				7CE65C1A22F26DB90068147D /* MovieDetailsViewController.swift */,
+				7C0566DD22F3550300A17994 /* UIViewController+TryAgainAlert.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				7CA3FAB322F0D4CD0090D36E /* AppDelegate.swift in Sources */,
 				7CE65C1922F252290068147D /* MovieCollectionViewCell.swift in Sources */,
 				7CA3FAE422F0E0300090D36E /* CastMember.swift in Sources */,
+				7C0566DE22F3550300A17994 /* UIViewController+TryAgainAlert.swift in Sources */,
 				7CA3FAE222F0DC5F0090D36E /* Movie.swift in Sources */,
 				7CE65C1D22F278DA0068147D /* MovieDetailsViewModel.swift in Sources */,
 			);

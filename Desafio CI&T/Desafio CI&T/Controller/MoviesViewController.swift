@@ -13,6 +13,7 @@ class MoviesViewController: UIViewController {
     private let reuseIdentifier = "MovieCell"
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var loadingView: UIView!
     
     var viewModel: MoviesViewModel!
     var selectedMovie: Movie!
@@ -38,12 +39,18 @@ class MoviesViewController: UIViewController {
 extension MoviesViewController: MoviesViewModelDelegate {
     func didFinishGettingPopularMovies(_ viewModel: MoviesViewModel, dictionary: [String : Any]) {
         DispatchQueue.main.async {
+            self.loadingView.isHidden = true
             self.collectionView.reloadData()
         }
     }
     
     func didFailGettingPopularMovies(_ viewModel: MoviesViewModel, error: Error?) {
-        
+        DispatchQueue.main.async {
+            self.loadingView.isHidden = true
+            self.presentTryAgainAlert(with: "An error occurred when loading the movies", and: {
+                self.viewModel.getPopularMovies()
+            })
+        }
     }
 }
 
