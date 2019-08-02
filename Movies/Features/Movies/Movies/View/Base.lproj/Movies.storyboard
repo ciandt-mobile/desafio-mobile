@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uUF-Ux-pfk">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Movies Controller-->
+        <scene sceneID="meT-BY-YMr">
+            <objects>
+                <collectionViewController id="2XL-eT-n2y" customClass="MoviesController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" id="Nzy-j3-YCl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.13332402709999999" green="0.1333397925" blue="0.13331079479999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lAh-dE-dWI">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="2XL-eT-n2y" id="1yS-xG-F3z"/>
+                            <outlet property="delegate" destination="2XL-eT-n2y" id="BOW-mt-Wzc"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="cQX-oL-lUT">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="eGq-C0-YHP">
+                            <rect key="frame" x="117.5" y="7.5" width="179" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Now Playing"/>
+                                <segment title="Upcoming"/>
+                            </segments>
+                            <color key="tintColor" white="1" alpha="0.84754621478873238" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="loadMoviews" destination="2XL-eT-n2y" eventType="valueChanged" id="Ndr-n4-jzV"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="segmentedControl" destination="eGq-C0-YHP" id="TwA-9B-RDv"/>
+                        <segue destination="LCl-s4-9c5" kind="presentation" identifier="showPoster" id="LbB-rh-xBb"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R64-cQ-8e5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1635" y="-388"/>
+        </scene>
+        <!--Movies-->
+        <scene sceneID="7u9-rE-gLs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uUF-Ux-pfk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Movies" image="Movies Tab Icon (Deselected)" selectedImage="Movies Tab Icon (Selected)" id="Oxp-ov-WIc">
+                        <color key="badgeColor" white="1" alpha="0.84754621480000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="BaO-j1-6tD">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2XL-eT-n2y" kind="relationship" relationship="rootViewController" id="ADG-Yv-hDG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kuq-mi-krS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="747.82608695652175" y="-388.39285714285711"/>
+        </scene>
+        <!--Poster-->
+        <scene sceneID="Vua-W3-PA1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Poster" id="LCl-s4-9c5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fSk-KD-5Qr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2239" y="-388"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Movies Tab Icon (Deselected)" width="22" height="19"/>
+        <image name="Movies Tab Icon (Selected)" width="22" height="19"/>
+    </resources>
+</document>

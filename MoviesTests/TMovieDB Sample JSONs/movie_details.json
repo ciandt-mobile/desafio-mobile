@@ -1,0 +1,532 @@
+{
+    "adult": false,
+    "backdrop_path": "\/1TUg5pO1VZ4B0Q1amk3OlXvlpXV.jpg",
+    "belongs_to_collection": null,
+    "budget": 260000000,
+    "genres": [
+        {
+            "id": 12,
+            "name": "Adventure"
+        },
+        {
+            "id": 16,
+            "name": "Animation"
+        },
+        {
+            "id": 10751,
+            "name": "Family"
+        },
+        {
+            "id": 18,
+            "name": "Drama"
+        },
+        {
+            "id": 28,
+            "name": "Action"
+        }
+    ],
+    "homepage": "https:\/\/movies.disney.com\/the-lion-king-2019",
+    "id": 420818,
+    "imdb_id": "tt6105098",
+    "original_language": "en",
+    "original_title": "The Lion King",
+    "overview": "Simba idolises his father, King Mufasa, and takes to heart his own royal destiny. But not everyone in the kingdom celebrates the new cub's arrival. Scar, Mufasa's brother\u2014and former heir to the throne\u2014has plans of his own. The battle for Pride Rock is ravaged with betrayal, tragedy and drama, ultimately resulting in Simba's exile. With help from a curious pair of newfound friends, Simba will have to figure out how to grow up and take back what is rightfully his.",
+    "popularity": 521.298,
+    "poster_path": "\/dzBtMocZuJbjLOXvrl4zGYigDzh.jpg",
+    "production_companies": [
+        {
+            "id": 2,
+            "logo_path": "\/wdrCwmRnLFJhEoH8GSfymY85KHT.png",
+            "name": "Walt Disney Pictures",
+            "origin_country": "US"
+        },
+        {
+            "id": 7297,
+            "logo_path": "\/l29JYQVZbTcjZXoz4CUYFpKRmM3.png",
+            "name": "Fairview Entertainment",
+            "origin_country": ""
+        }
+    ],
+    "production_countries": [
+        {
+            "iso_3166_1": "US",
+            "name": "United States of America"
+        }
+    ],
+    "release_date": "2019-07-12",
+    "revenue": 713650600,
+    "runtime": 118,
+    "spoken_languages": [
+        {
+            "iso_639_1": "en",
+            "name": "English"
+        }
+    ],
+    "status": "Released",
+    "tagline": "The King has Returned.",
+    "title": "The Lion King",
+    "video": false,
+    "vote_average": 7.2,
+    "vote_count": 992,
+    "videos": {
+        "results": [
+            {
+                "id": "5bf75c2f0e0a26266f0e1e04",
+                "iso_639_1": "en",
+                "iso_3166_1": "US",
+                "key": "4CbLXeGSDxg",
+                "name": "The Lion King Official Teaser Trailer",
+                "site": "YouTube",
+                "size": 1080,
+                "type": "Teaser"
+            },
+            {
+                "id": "5c7364950e0a262c09800374",
+                "iso_639_1": "en",
+                "iso_3166_1": "US",
+                "key": "aQN75AKDwks",
+                "name": "The Lion King | Long Live the King",
+                "site": "YouTube",
+                "size": 1080,
+                "type": "Teaser"
+            },
+            {
+                "id": "5cade34d0e0a26310d5a7bc5",
+                "iso_639_1": "en",
+                "iso_3166_1": "US",
+                "key": "7TavVZMewpY",
+                "name": "The Lion King Official Trailer",
+                "site": "YouTube",
+                "size": 1080,
+                "type": "Trailer"
+            },
+            {
+                "id": "5cfe4318c3a3680e921e7e17",
+                "iso_639_1": "en",
+                "iso_3166_1": "US",
+                "key": "hoGhxfndjpM",
+                "name": "The Lion King Sneak Peek | \"Come Home\"",
+                "site": "YouTube",
+                "size": 1080,
+                "type": "Featurette"
+            },
+            {
+                "id": "5d2632d0a698cf0010acf6e0",
+                "iso_639_1": "en",
+                "iso_3166_1": "US",
+                "key": "CA-gC-PaF48",
+                "name": "The Lion King - \"Circle of Life\" Official Teaser Trailer",
+                "site": "YouTube",
+                "size": 1080,
+                "type": "Teaser"
+            },
+            {
+                "id": "5d26332637b3a9747d5463b4",
+                "iso_639_1": "en",
+                "iso_3166_1": "US",
+                "key": "SPuZoFTxHuw",
+                "name": "Lion King - \"Can You Feel The Love Tonight?\" Official Teaser Trailer",
+                "site": "YouTube",
+                "size": 1080,
+                "type": "Teaser"
+            },
+            {
+                "id": "5d263354a698cf2b76a6acd4",
+                "iso_639_1": "en",
+                "iso_3166_1": "US",
+                "key": "hV0WtrFc3jc",
+                "name": "The Lion King Official Teaser (2019) Beyonc\u00e9 as Nala",
+                "site": "YouTube",
+                "size": 1080,
+                "type": "Featurette"
+            },
+            {
+                "id": "5d26336c37b3a9747d546430",
+                "iso_639_1": "en",
+                "iso_3166_1": "US",
+                "key": "flXkOTJBtvU",
+                "name": "\"The King Returns\" Featurette | The Lion King",
+                "site": "YouTube",
+                "size": 1080,
+                "type": "Featurette"
+            }
+        ]
+    },
+    "credits": {
+        "cast": [
+            {
+                "cast_id": 1,
+                "character": "Simba (voice)",
+                "credit_id": "58a79add9251417ee8000f5d",
+                "gender": 2,
+                "id": 119589,
+                "name": "Donald Glover",
+                "order": 0,
+                "profile_path": "\/36o5mpbQVdxOf9kUxWw7SllOuk.jpg"
+            },
+            {
+                "cast_id": 19,
+                "character": "Nala (voice)",
+                "credit_id": "59fa5b48925141137f001c68",
+                "gender": 1,
+                "id": 14386,
+                "name": "Beyonc\u00e9 Knowles",
+                "order": 1,
+                "profile_path": "\/9MgDCYBBVBl4lM1DuxNIIbCHlKy.jpg"
+            },
+            {
+                "cast_id": 2,
+                "character": "Mufasa (voice)",
+                "credit_id": "58a7a1719251417ef40014ab",
+                "gender": 2,
+                "id": 15152,
+                "name": "James Earl Jones",
+                "order": 2,
+                "profile_path": "\/oqMPIsXrl9SZkRfIKN08eFROmH6.jpg"
+            },
+            {
+                "cast_id": 17,
+                "character": "Scar (voice)",
+                "credit_id": "59890a509251414bfa006d1e",
+                "gender": 2,
+                "id": 5294,
+                "name": "Chiwetel Ejiofor",
+                "order": 3,
+                "profile_path": "\/kq5DDnqqofoRI0t6ddtRlsJnNPT.jpg"
+            },
+            {
+                "cast_id": 16,
+                "character": "Sarabi (voice)",
+                "credit_id": "59890978c3a36875260061d1",
+                "gender": 1,
+                "id": 1981,
+                "name": "Alfre Woodard",
+                "order": 4,
+                "profile_path": "\/aCAjUOrV2WG3OaLUvQHVkyk8S2P.jpg"
+            },
+            {
+                "cast_id": 14,
+                "character": "Zazu (voice)",
+                "credit_id": "59640ace9251410bfa103ac8",
+                "gender": 2,
+                "id": 84292,
+                "name": "John Oliver",
+                "order": 5,
+                "profile_path": "\/t1smh9XiGfVof4ep5ZSD8CEFQLk.jpg"
+            },
+            {
+                "cast_id": 18,
+                "character": "Rafiki (voice)",
+                "credit_id": "59890a689251414bd1006da5",
+                "gender": 2,
+                "id": 51878,
+                "name": "John Kani",
+                "order": 6,
+                "profile_path": "\/iOKWcdeCNbEREAWMWIZBy6p805j.jpg"
+            },
+            {
+                "cast_id": 11,
+                "character": "Pumbaa (voice)",
+                "credit_id": "58ffb01692514161aa001fd6",
+                "gender": 2,
+                "id": 19274,
+                "name": "Seth Rogen",
+                "order": 7,
+                "profile_path": "\/aQc8O52P4vWDRfuxCLsz9rvnwf3.jpg"
+            },
+            {
+                "cast_id": 12,
+                "character": "Timon (voice)",
+                "credit_id": "58ffb02ec3a3680fa7001fa6",
+                "gender": 2,
+                "id": 973651,
+                "name": "Billy Eichner",
+                "order": 8,
+                "profile_path": "\/c2mZrcLl1w9DmgQXwhKeFaxS7MS.jpg"
+            },
+            {
+                "cast_id": 20,
+                "character": "Azizi (voice)",
+                "credit_id": "59fa5b8d92514113dd001adf",
+                "gender": 2,
+                "id": 934159,
+                "name": "Eric Andr\u00e9",
+                "order": 9,
+                "profile_path": "\/oHBzNeRgBXBGmuVqeTEfMDC8fX3.jpg"
+            },
+            {
+                "cast_id": 21,
+                "character": "Shenzi (voice)",
+                "credit_id": "59fa5ba2c3a3681acd001bbd",
+                "gender": 1,
+                "id": 139900,
+                "name": "Florence Kasumba",
+                "order": 10,
+                "profile_path": "\/oLKR9435H3sjeCWWvD0rLGsL5t9.jpg"
+            },
+            {
+                "cast_id": 22,
+                "character": "Kamari (voice)",
+                "credit_id": "59fa5bad92514113bb001b66",
+                "gender": 2,
+                "id": 298410,
+                "name": "Keegan-Michael Key",
+                "order": 11,
+                "profile_path": "\/gqPRozx8ppAg2TSjW3ww56LnIZr.jpg"
+            },
+            {
+                "cast_id": 13,
+                "character": "Young Simba (voice)",
+                "credit_id": "5934c7539251417dd402b433",
+                "gender": 2,
+                "id": 1828695,
+                "name": "JD McCrary",
+                "order": 12,
+                "profile_path": "\/iOr3HQgtXoG1NeLxCux8fU5XOcQ.jpg"
+            },
+            {
+                "cast_id": 23,
+                "character": "Young Nala (voice)",
+                "credit_id": "59fa5bda925141138b001c8f",
+                "gender": 1,
+                "id": 1915962,
+                "name": "Shahadi Wright Joseph",
+                "order": 13,
+                "profile_path": "\/czIRGtcbXty1oZp7GtRi2oMgHkC.jpg"
+            },
+            {
+                "cast_id": 35,
+                "character": "Guinea Fowl (voice)",
+                "credit_id": "5bfcfad80e0a263821025392",
+                "gender": 1,
+                "id": 12110,
+                "name": "Amy Sedaris",
+                "order": 14,
+                "profile_path": "\/pNbYqv1vdYZCp68bhT6VWXsA8nt.jpg"
+            },
+            {
+                "cast_id": 36,
+                "character": "Hyena (voice)",
+                "credit_id": "5d3230dd1d78f2000ee19551",
+                "gender": 2,
+                "id": 1817724,
+                "name": "J. Lee",
+                "order": 15,
+                "profile_path": "\/y7lED1RdCatEtPMu5cWlhLAjjmU.jpg"
+            },
+            {
+                "cast_id": 37,
+                "character": "Sarafina (voice)",
+                "credit_id": "5d3231296a300b1834a88cc0",
+                "gender": 1,
+                "id": 1218219,
+                "name": "Penny Johnson",
+                "order": 16,
+                "profile_path": "\/kdj8nqf7ouk436ZwtiHpCllfulN.jpg"
+            },
+            {
+                "cast_id": 38,
+                "character": "Bush Baby (voice)",
+                "credit_id": "5d323163caab6d1dfc99f433",
+                "gender": 2,
+                "id": 1199905,
+                "name": "Chance the Rapper",
+                "order": 17,
+                "profile_path": "\/cXlzPkVu1T1g9mMnXRCOrEgERB5.jpg"
+            },
+            {
+                "cast_id": 39,
+                "character": "Elephant Shrew (voice)",
+                "credit_id": "5d3231991d78f2000ee196e1",
+                "gender": 0,
+                "id": 2365785,
+                "name": "Josh McCrary",
+                "order": 18,
+                "profile_path": null
+            },
+            {
+                "cast_id": 40,
+                "character": "Impala (voice)",
+                "credit_id": "5d3231af1d78f2000fe1ab21",
+                "gender": 2,
+                "id": 31549,
+                "name": "Phil LaMarr",
+                "order": 19,
+                "profile_path": "\/2rYa0M1bOSAATGbF5oe5pmoNeDn.jpg"
+            }
+        ],
+        "crew": [
+            {
+                "credit_id": "57fd9cf79251410b25002826",
+                "department": "Directing",
+                "gender": 2,
+                "id": 15277,
+                "job": "Director",
+                "name": "Jon Favreau",
+                "profile_path": "\/rOVBKURoR7TrG8MYxTuNUFj3E68.jpg"
+            },
+            {
+                "credit_id": "58b2f909c3a3685297004e40",
+                "department": "Writing",
+                "gender": 2,
+                "id": 2689,
+                "job": "Screenplay",
+                "name": "Jeff Nathanson",
+                "profile_path": null
+            },
+            {
+                "credit_id": "58b2f93492514177b800517b",
+                "department": "Writing",
+                "gender": 1,
+                "id": 56041,
+                "job": "Characters",
+                "name": "Irene Mecchi",
+                "profile_path": null
+            },
+            {
+                "credit_id": "58b2f94792514177b00054c3",
+                "department": "Writing",
+                "gender": 2,
+                "id": 7933,
+                "job": "Characters",
+                "name": "Jonathan Roberts",
+                "profile_path": null
+            },
+            {
+                "credit_id": "58b2f95892514177ac005406",
+                "department": "Writing",
+                "gender": 1,
+                "id": 38792,
+                "job": "Characters",
+                "name": "Linda Woolverton",
+                "profile_path": "\/AagHXmW37oiLSCsUYIifAaFfkz.jpg"
+            },
+            {
+                "credit_id": "58b2f97292514177a4005401",
+                "department": "Production",
+                "gender": 2,
+                "id": 15277,
+                "job": "Producer",
+                "name": "Jon Favreau",
+                "profile_path": "\/rOVBKURoR7TrG8MYxTuNUFj3E68.jpg"
+            },
+            {
+                "credit_id": "58b2f99492514177b400572b",
+                "department": "Production",
+                "gender": 2,
+                "id": 20908,
+                "job": "Producer",
+                "name": "Jeffrey Silver",
+                "profile_path": null
+            },
+            {
+                "credit_id": "58b2f9a692514177ac00544e",
+                "department": "Production",
+                "gender": 2,
+                "id": 1760516,
+                "job": "Co-Producer",
+                "name": "John Bartnicki",
+                "profile_path": null
+            },
+            {
+                "credit_id": "5ac469b70e0a260c01043329",
+                "department": "Camera",
+                "gender": 2,
+                "id": 8750,
+                "job": "Director of Photography",
+                "name": "Caleb Deschanel",
+                "profile_path": "\/2TsYnZibZRfHY3vcmEdLTJSR4kl.jpg"
+            },
+            {
+                "credit_id": "5ac469efc3a3682d9a0456e9",
+                "department": "Sound",
+                "gender": 2,
+                "id": 947,
+                "job": "Music",
+                "name": "Hans Zimmer",
+                "profile_path": "\/wugKWf9vuqZYuHCk5Wwec6355TM.jpg"
+            },
+            {
+                "credit_id": "5ac46a379251412712046365",
+                "department": "Editing",
+                "gender": 2,
+                "id": 10574,
+                "job": "Editor",
+                "name": "Mark Livolsi",
+                "profile_path": null
+            },
+            {
+                "credit_id": "5ac46a8b0e0a260c2a04c688",
+                "department": "Writing",
+                "gender": 1,
+                "id": 59803,
+                "job": "Story",
+                "name": "Brenda Chapman",
+                "profile_path": "\/3wEdiMLQObBcBbtg131ZRQG2hfK.jpg"
+            },
+            {
+                "credit_id": "5ac46ae1c3a3682d9a045824",
+                "department": "Art",
+                "gender": 2,
+                "id": 9546,
+                "job": "Production Design",
+                "name": "James Chinlund",
+                "profile_path": "\/nP78vzM96ULDkFlrLP8VYMUVsQ6.jpg"
+            },
+            {
+                "credit_id": "5ac46b2892514127120464c2",
+                "department": "Production",
+                "gender": 0,
+                "id": 1511803,
+                "job": "Associate Producer",
+                "name": "Debbi Bossi",
+                "profile_path": null
+            },
+            {
+                "credit_id": "5ac46b6292514126be04622c",
+                "department": "Production",
+                "gender": 1,
+                "id": 1291656,
+                "job": "Producer",
+                "name": "Karen Gilchrist",
+                "profile_path": null
+            },
+            {
+                "credit_id": "5ac46bc992514126be0462a2",
+                "department": "Production",
+                "gender": 2,
+                "id": 122609,
+                "job": "Executive Producer",
+                "name": "Thomas Schumacher",
+                "profile_path": null
+            },
+            {
+                "credit_id": "5ac46bee0e0a260c2a04c8ca",
+                "department": "Production",
+                "gender": 0,
+                "id": 1102209,
+                "job": "Executive Producer",
+                "name": "Tom C. Peitzman",
+                "profile_path": null
+            },
+            {
+                "credit_id": "5ac46c3ac3a3682db5046ffb",
+                "department": "Production",
+                "gender": 2,
+                "id": 83071,
+                "job": "Associate Producer",
+                "name": "David H. Venghaus Jr.",
+                "profile_path": null
+            },
+            {
+                "credit_id": "5b5345450e0a262312011b46",
+                "department": "Production",
+                "gender": 2,
+                "id": 1434566,
+                "job": "Production Supervisor",
+                "name": "Donald Dowd",
+                "profile_path": "\/AtufbHCCn4kjExbGRLwz3n8oOD2.jpg"
+            }
+        ]
+    }
+}

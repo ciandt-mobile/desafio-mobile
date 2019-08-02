@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCell" id="FEP-XQ-8q1" customClass="MovieCell" customModule="Movies" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="202" height="198"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="202" height="198"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WGd-q0-7r7" userLabel="Poster">
+                        <rect key="frame" x="0.0" y="0.0" width="202" height="198"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a87-Ao-mzs" userLabel="Movie info">
+                        <rect key="frame" x="0.0" y="139.5" width="202" height="58.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kUa-4e-SHo">
+                                <rect key="frame" x="6" y="6" width="190" height="46.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1m3-KM-Ypk" userLabel="Title">
+                                        <rect key="frame" x="0.0" y="0.0" width="35.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" white="1" alpha="0.84754621480000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Release date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0V-0I-gXc" userLabel="Release date">
+                                        <rect key="frame" x="0.0" y="28.5" width="88.5" height="18"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <color key="textColor" white="1" alpha="0.84754621480000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <viewLayoutGuide key="safeArea" id="Teb-wh-SPB"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.75110035211267601" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kUa-4e-SHo" firstAttribute="centerY" secondItem="a87-Ao-mzs" secondAttribute="centerY" id="GY4-7Y-Fe6"/>
+                            <constraint firstItem="kUa-4e-SHo" firstAttribute="centerX" secondItem="a87-Ao-mzs" secondAttribute="centerX" id="Gn0-6V-lpY"/>
+                            <constraint firstItem="kUa-4e-SHo" firstAttribute="height" secondItem="a87-Ao-mzs" secondAttribute="height" constant="-12" id="RxE-pS-Gq3"/>
+                            <constraint firstItem="kUa-4e-SHo" firstAttribute="width" secondItem="a87-Ao-mzs" secondAttribute="width" constant="-12" id="kzZ-BL-aZu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="a87-Ao-mzs" firstAttribute="leading" secondItem="FEP-XQ-8q1" secondAttribute="leading" id="1rI-hN-0us"/>
+                <constraint firstItem="WGd-q0-7r7" firstAttribute="leading" secondItem="FEP-XQ-8q1" secondAttribute="leading" id="DMf-61-jEQ"/>
+                <constraint firstItem="a87-Ao-mzs" firstAttribute="bottom" secondItem="FEP-XQ-8q1" secondAttribute="bottom" id="I8b-yn-MdF"/>
+                <constraint firstItem="WGd-q0-7r7" firstAttribute="trailing" secondItem="FEP-XQ-8q1" secondAttribute="trailing" id="TX0-Sr-shJ"/>
+                <constraint firstItem="a87-Ao-mzs" firstAttribute="trailing" secondItem="FEP-XQ-8q1" secondAttribute="trailing" id="iYy-bT-v6V"/>
+                <constraint firstItem="WGd-q0-7r7" firstAttribute="bottom" secondItem="FEP-XQ-8q1" secondAttribute="bottom" id="rDT-lT-QFa"/>
+                <constraint firstItem="WGd-q0-7r7" firstAttribute="top" secondItem="FEP-XQ-8q1" secondAttribute="top" id="vxm-hT-hRx"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="693-30-ZoU"/>
+            <size key="customSize" width="202" height="198"/>
+            <connections>
+                <outlet property="posterImageView" destination="WGd-q0-7r7" id="S58-BD-wAK"/>
+                <outlet property="releaseDateLabel" destination="H0V-0I-gXc" id="Cci-fV-qCL"/>
+                <outlet property="titleLabel" destination="1m3-KM-Ypk" id="gJT-zP-M98"/>
+            </connections>
+            <point key="canvasLocation" x="89.855072463768124" y="38.839285714285715"/>
+        </collectionViewCell>
+    </objects>
+</document>
