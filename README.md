@@ -19,13 +19,13 @@ When in portrait mode, the app takes full advantage of the device's screen size 
 
 Users are then able to page through the list of movies, and when one of the movies is tapped, it flips around to reveal the chosen movie details:
 
-<div style="text-align:center" style="width:100%;"><img src="https://github.com/pieromattos/desafio-mobile/blob/master/Docs/GIFs/PortraitBrowsing.gif" /></div>
+<p align="center"><img src="https://github.com/pieromattos/desafio-mobile/blob/master/Docs/GIFs/PortraitBrowsing.gif" /></p>
 
 ---
 
 When viewing details about a movie, the user can scroll within the flipped poster to view more information:
 
-<div style="text-align:center" style="width:100%;"><img src="https://github.com/pieromattos/desafio-mobile/blob/master/Docs/GIFs/PortraitDetails.gif" /></div>
+<p align="center"><img src="https://github.com/pieromattos/desafio-mobile/blob/master/Docs/GIFs/PortraitDetails.gif" /></p>
 
 ---
 
@@ -33,13 +33,13 @@ When viewing details about a movie, the user can scroll within the flipped poste
 
 When in landscape mode, the app adjusts the layout of the movie poster to provide a coverflow-like experience. The user can see more than one movie poster at once, and can more easily find an interesting one:
 
-<div style="text-align:center" style="width:100%;"><img src="https://github.com/pieromattos/desafio-mobile/blob/master/Docs/GIFs/LandscapeBrowsing.gif" /></div>
+<p align="center"><img src="https://github.com/pieromattos/desafio-mobile/blob/master/Docs/GIFs/LandscapeBrowsing.gif" /></p>
 
 ---
 
 Since the poster are now too small to flip around to display the movie details, this presentation takes the form of a full-screen modal with the same information that's available in portrait mode:
 
-<div style="text-align:center" style="width:100%;"><img src="https://github.com/pieromattos/desafio-mobile/blob/master/Docs/GIFs/LandscapeDetails.gif" /></div>
+<p align="center"><img src="https://github.com/pieromattos/desafio-mobile/blob/master/Docs/GIFs/LandscapeDetails.gif" /></p>
 
 ---
 
@@ -47,7 +47,7 @@ Since the poster are now too small to flip around to display the movie details, 
 
 When viewing details about a movie, users can tap the small poster thumbnail on the upper right corner to get a better view of the movie poster:
 
-<div style="text-align:center" style="width:100%;"><img src="https://github.com/pieromattos/desafio-mobile/blob/master/Docs/GIFs/PortraitFullScreenPoster.gif" /></div>
+<p align="center"><img src="https://github.com/pieromattos/desafio-mobile/blob/master/Docs/GIFs/PortraitFullScreenPoster.gif" /></p>
 
 ---
 
@@ -55,7 +55,7 @@ When viewing details about a movie, users can tap the small poster thumbnail on 
 
 Users can also scroll down and watch the movie's trailer directly from YouTube:
 
-<div style="text-align:center" style="width:100%;"><img src="https://github.com/pieromattos/desafio-mobile/blob/master/Docs/GIFs/LandscapeMovieTrailer.gif" /></div>
+<p align="center"><img src="https://github.com/pieromattos/desafio-mobile/blob/master/Docs/GIFs/LandscapeMovieTrailer.gif" /></p>
 
 ---
 
@@ -63,7 +63,7 @@ Users can also scroll down and watch the movie's trailer directly from YouTube:
 
 Finally, at the end of the details information, there is a link to the movie's entry on IMDB, which opens Safari so users can get even more information about the film:
 
-<div style="text-align:center" style="width:100%;"><img src="https://github.com/pieromattos/desafio-mobile/blob/master/Docs/GIFs/PortraitLinkToImdb.gif" /></div>
+<p align="center"><img src="https://github.com/pieromattos/desafio-mobile/blob/master/Docs/GIFs/PortraitLinkToImdb.gif" /></p>
 
 ---
 
