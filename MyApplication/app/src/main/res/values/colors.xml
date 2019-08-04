@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#333333</color>
+    <color name="colorPrimaryDark">#333333</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="colorBackground">#262626</color>
+    <color name="colorBackgroundDeteail">#333333</color>
+    <color name="colorBackgroudDeteailLine">#4A4849</color>
+    <color name="colorTitleMove">#c6c6c6</color>
+    <color name="colorTitleMoveDescription">#FFFFFFFF</color>
+    <color name="colorDateMove">#FFFFFFFF</color>
+
+
+    <color name="colorWhite">#FFFFFFFF</color>
+</resources>
