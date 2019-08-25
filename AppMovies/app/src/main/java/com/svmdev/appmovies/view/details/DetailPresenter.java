@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.squareup.picasso.Picasso;
 import com.svmdev.appmovies.R;
 import com.svmdev.appmovies.data.model.Cast;
 import com.svmdev.appmovies.data.model.MovieDetail;
@@ -143,7 +144,26 @@ public class DetailPresenter {
         }
         mActivity.genres().setText(show.getListedGenres());
 
-        ImageLoader.load(mActivity.context(), show.getBackdropPathFormated(), mActivity.image());
+        if(!show.getBackdropPathFormated().isEmpty()) {
+            Picasso.with(mActivity.context()).load(show.getBackdropPathFormated())
+                    .placeholder(R.drawable.download)
+                    .error(R.drawable.no_image)
+                    .into(mActivity.image(), new com.squareup.picasso.Callback() {
+
+                        @Override
+                        public void onSuccess() {
+                        }
+
+                        @Override
+                        public void onError() {
+                        }
+
+
+                    });
+        } else {
+            mActivity.image().setImageResource(R.drawable.no_image);
+        }
+
     }
 
 }

@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 
 import com.svmdev.appmovies.R;
 import com.svmdev.appmovies.data.model.Cast;
@@ -20,11 +22,12 @@ import com.svmdev.appmovies.view.details.DetailActivity;
 
 import java.text.ParseException;
 
-
 public class UpcommingFragment extends Fragment implements UpcommingInterface {
 
     private ListView upcommingList;
+    private Spinner upcommingPageSpinner;
     private MovieAdapter adapter;
+    private ArrayAdapter arrayAdapter;
     private ProgressBar progressBar;
     private UpcommingPresenter mPresenter;
 
@@ -36,6 +39,7 @@ public class UpcommingFragment extends Fragment implements UpcommingInterface {
         View view = inflater.inflate(R.layout.fragment_upcomming, container, false);
 
         upcommingList = view.findViewById(R.id.upcomming_list);
+        upcommingPageSpinner = view.findViewById(R.id.upcomming_page_spinner);
         progressBar = view.findViewById(R.id.upcomming_progressbar_loading);
         mPresenter = new UpcommingPresenter(this);
 
@@ -47,6 +51,7 @@ public class UpcommingFragment extends Fragment implements UpcommingInterface {
         if (Variables.upcommingList.isEmpty()) {
             mPresenter.loadList(1);
         }
+        this.setSpinnerAdpater();
         this.setListAdapter();
     }
 
@@ -63,6 +68,33 @@ public class UpcommingFragment extends Fragment implements UpcommingInterface {
                 }
             }
         });
+    }
+
+    public void setSpinnerAdpater() {
+        this.arrayAdapter = new ArrayAdapter<>(getActivity(),R.layout.spinner_item_text,Variables.upcommingPages);
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_select_text);
+        upcommingPageSpinner.setAdapter(this.arrayAdapter);
+
+        upcommingPageSpinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (position == Variables.lastPageUpcomming){
+                            return;
+                        }
+
+                        Variables.lastPageUpcomming = position;
+                        int page = Variables.upcommingPages.get(position);
+                        mPresenter.loadList(page);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) { }
+                }
+        );
+
+        arrayAdapter.notifyDataSetChanged();
+
     }
 
     private void loadDetais(int pos) throws ParseException {
@@ -97,6 +129,11 @@ public class UpcommingFragment extends Fragment implements UpcommingInterface {
     @Override
     public MovieAdapter adapter() {
         return this.adapter;
+    }
+
+    @Override
+    public Spinner pageSpinner() {
+        return this.upcommingPageSpinner;
     }
 
     @Override

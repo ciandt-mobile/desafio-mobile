@@ -29,6 +29,9 @@ public class MovieDetail {
     private String posterPath;
 
     public String getBackdropPathFormated() {
+        if (backdropPath == null){
+            return "";
+        }
         String replace = backdropPath.replace("'\'", "");
         return URLs.imageUrl + replace;
     }
@@ -51,6 +54,9 @@ public class MovieDetail {
     }
 
     public String getListedGenres() {
+        if (genres.isEmpty()){
+            return "Nenhum gênero disponível";
+        }
         StringBuilder genres = new StringBuilder("| " + this.genres.get(0).getName());
 
         for (int i = 1; i < this.genres.size(); i++){

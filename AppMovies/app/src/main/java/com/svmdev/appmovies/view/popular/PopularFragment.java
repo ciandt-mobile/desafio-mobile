@@ -1,9 +1,7 @@
 package com.svmdev.appmovies.view.popular;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -11,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -26,7 +25,9 @@ import java.text.ParseException;
 public class PopularFragment extends Fragment implements PopularInterface {
 
     private ListView popularList;
+    private Spinner popularPageSpinner;
     private MovieAdapter adapter;
+    private ArrayAdapter arrayAdapter;
     private ProgressBar progressBar;
     private PopularPresenter mPresenter;
 
@@ -37,6 +38,7 @@ public class PopularFragment extends Fragment implements PopularInterface {
         View view = inflater.inflate(R.layout.fragment_popular, container, false);
 
         popularList = view.findViewById(R.id.popular_list);
+        popularPageSpinner = view.findViewById(R.id.popular_page_spinner);
         progressBar = view.findViewById(R.id.popular_progressbar_loading);
         mPresenter = new PopularPresenter(this);
         initData();
@@ -52,6 +54,7 @@ public class PopularFragment extends Fragment implements PopularInterface {
         if (Variables.popularList.isEmpty()) {
             mPresenter.loadList( 1);
         }
+        this.setSpinnerAdpater();
         this.setListAdapter();
     }
 
@@ -68,6 +71,33 @@ public class PopularFragment extends Fragment implements PopularInterface {
                 }
             }
         });
+    }
+
+    public void setSpinnerAdpater() {
+        this.arrayAdapter = new ArrayAdapter<>(getActivity(),R.layout.spinner_item_text,Variables.popularPages);
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_select_text);
+        popularPageSpinner.setAdapter(this.arrayAdapter);
+
+        popularPageSpinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (position == Variables.lastPagePopular){
+                            return;
+                        }
+
+                        Variables.lastPagePopular = position;
+                        int page = Variables.popularPages.get(position);
+                        mPresenter.loadList(page);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) { }
+                }
+        );
+
+        arrayAdapter.notifyDataSetChanged();
+
     }
 
     private void loadDetais(int pos) throws ParseException {
@@ -92,11 +122,6 @@ public class PopularFragment extends Fragment implements PopularInterface {
     }
 
     @Override
-    public Activity activity() {
-        return this.getActivity();
-    }
-
-    @Override
     public ListView listView() {
         return this.popularList;
     }
@@ -104,6 +129,11 @@ public class PopularFragment extends Fragment implements PopularInterface {
     @Override
     public MovieAdapter adapter() {
         return this.adapter;
+    }
+
+    @Override
+    public Spinner pageSpinner() {
+        return this.popularPageSpinner;
     }
 
     @Override

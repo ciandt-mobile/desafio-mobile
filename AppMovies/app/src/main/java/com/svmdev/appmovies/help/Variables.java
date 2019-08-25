@@ -15,6 +15,7 @@ public class Variables {
 
     public static ArrayList<Cast> movieCast;
     public static int lastPagePopular;
+    public static int lastPageUpcomming;
 
     public static void init(){
         popularList = new ArrayList<>();
@@ -22,7 +23,8 @@ public class Variables {
         popularPages = new ArrayList<>();
         upcommingPages = new ArrayList<>();
         movieCast = new ArrayList<>();
-        lastPagePopular = 0;
+        lastPagePopular = -1;
+        lastPageUpcomming = -1;
     }
 
 }

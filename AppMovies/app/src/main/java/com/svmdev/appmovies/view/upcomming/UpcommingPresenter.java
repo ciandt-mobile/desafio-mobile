@@ -57,6 +57,7 @@ public class UpcommingPresenter {
 
                     if (Variables.upcommingPages.isEmpty()) {
                         setUpcommingpages(movieResult.totalPages);
+                        mFrag.setSpinnerAdpater();
                     }
 
                     mFrag.adapter().notifyDataSetChanged();
@@ -82,6 +83,7 @@ public class UpcommingPresenter {
 
     private void loading(boolean isLoading) {
         mFrag.listView().setEnabled(!isLoading);
+        mFrag.pageSpinner().setEnabled(!isLoading);
         mFrag.progress().setIndeterminate(isLoading);
         if (isLoading) {
             mFrag.progress().setVisibility(View.VISIBLE);

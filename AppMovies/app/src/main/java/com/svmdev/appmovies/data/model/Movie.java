@@ -22,6 +22,9 @@ public class Movie {
     }
 
     public String getPosterPath() {
+        if(posterPath == null) {
+            return "";
+        }
         String replace = posterPath.replace("'\'","");
         return URLs.imageUrl + replace;
     }

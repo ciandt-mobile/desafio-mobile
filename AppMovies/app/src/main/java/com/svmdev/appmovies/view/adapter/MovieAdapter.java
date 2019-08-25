@@ -41,19 +41,25 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
         title.setText(movie.getTitle());
         date.setText(movie.getFormatedReleaseDate());
 
-        Picasso.with(context).load(movie.getPosterPath())
-                .placeholder(R.drawable.download)
-                .error(R.drawable.download)
-                .into(picture, new com.squareup.picasso.Callback() {
+        if(!movie.getPosterPath().isEmpty()) {
+            Picasso.with(context).load(movie.getPosterPath())
+                    .placeholder(R.drawable.download)
+                    .error(R.drawable.no_image)
+                    .into(picture, new com.squareup.picasso.Callback() {
 
-                    @Override
-                    public void onSuccess() {
-                    }
+                        @Override
+                        public void onSuccess() {
+                        }
 
-                    @Override
-                    public void onError() {
-                    }
-                });
+                        @Override
+                        public void onError() {
+                        }
+
+
+                    });
+        } else {
+            picture.setImageResource(R.drawable.no_image);
+        }
 
         return view;
     }

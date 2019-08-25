@@ -56,11 +56,12 @@ public class PopularPresenter {
                     MovieResult movieResult = gson.fromJson(response.body(), MovieResult.class);
                     setMovieList(movieResult.results);
 
+                    mFrag.adapter().notifyDataSetChanged();
+
                     if (Variables.popularPages.isEmpty()) {
                         setPopularPages(movieResult.totalPages);
+                        mFrag.setSpinnerAdpater();
                     }
-
-                    mFrag.adapter().notifyDataSetChanged();
 
                 } else {
                     try {
@@ -83,6 +84,7 @@ public class PopularPresenter {
 
     private void loading(boolean isLoading) {
         mFrag.listView().setEnabled(!isLoading);
+        mFrag.pageSpinner().setEnabled(!isLoading);
         mFrag.progress().setIndeterminate(isLoading);
         if (isLoading) {
             mFrag.progress().setVisibility(View.VISIBLE);
