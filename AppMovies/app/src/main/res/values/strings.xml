@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AppMovies</string>
+    <string name="title_popular">Populares</string>
+    <string name="title_upcomming">Em Cartaz</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="select_page">Página</string>
+    <string name="no_resume">Não há sinopse disponível para este filme.</string>>
+</resources>

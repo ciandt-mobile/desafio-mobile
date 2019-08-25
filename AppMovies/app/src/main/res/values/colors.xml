@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#BE0056</color>
+    <color name="colorPrimaryDark">#E0E0E0</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="start_gradient_color">#16164B</color>
+    <color name="end_gradient_color">#BF0056</color>
+    <color name="colorSnackbarBg">#F6F6F4</color>
+    <color name="colorSnackbarText">#ccc</color>
+    <color name="colorText">#B3B3B3</color>
+
+    <color name="background_a">#25747474</color>
+</resources>

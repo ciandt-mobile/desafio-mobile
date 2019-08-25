@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="600px"
+    android:background="@color/background_a">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/adapt_movie_pic"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toTopOf="@+id/movie_guideline_h95"
+            app:layout_constraintEnd_toEndOf="@+id/movie_guideline_v48"
+            app:layout_constraintStart_toStartOf="@+id/movie_guideline_v07"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/adapt_movie_title"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:lines="10"
+            android:maxLines="10"
+            android:minLines="1"
+            android:singleLine="false"
+            android:text="titulo"
+            android:textAlignment="gravity"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:autoSizeMaxTextSize="40dp"
+            app:autoSizeMinTextSize="10dp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/movie_guideline_h10"
+            app:layout_constraintEnd_toStartOf="@+id/movie_guideline_v95"
+            app:layout_constraintStart_toStartOf="@+id/movie_guideline_v50"
+            app:layout_constraintTop_toTopOf="@+id/movie_guideline_h05" />
+
+        <TextView
+            android:id="@+id/adapt_movie_release"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="center"
+            android:lines="10"
+            android:maxLines="10"
+            android:minLines="1"
+            android:singleLine="false"
+            android:text="dd/mm/yyyy"
+            android:textAlignment="gravity"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textStyle="bold"
+            app:autoSizeMaxTextSize="30dp"
+            app:autoSizeMinTextSize="10dp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/movie_guideline_h80"
+            app:layout_constraintEnd_toStartOf="@+id/movie_guideline_v80"
+            app:layout_constraintStart_toStartOf="@+id/movie_guideline_v70"
+            app:layout_constraintTop_toTopOf="@+id/movie_guideline_h70" />
+
+        <!-- horizontal -->
+        <android.support.constraint.Guideline
+            android:id="@+id/movie_guideline_h05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/movie_guideline_h10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.48" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/movie_guideline_h70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.70" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/movie_guideline_h80"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/movie_guideline_h95"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.98" />
+
+        <!-- vertical -->
+        <android.support.constraint.Guideline
+            android:id="@+id/movie_guideline_v07"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/movie_guideline_v48"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.48" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/movie_guideline_v50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.50" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/movie_guideline_v70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.60" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/movie_guideline_v80"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/movie_guideline_v95"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</FrameLayout>

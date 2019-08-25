@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_popular"
+        android:icon="@drawable/ic_popular"
+        android:title="@string/title_popular" />
+
+    <item
+        android:id="@+id/navigation_upcomming"
+        android:icon="@drawable/ic_upcomming"
+        android:title="@string/title_upcomming" />
+
+</menu>
