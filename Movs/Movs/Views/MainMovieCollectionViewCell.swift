@@ -10,9 +10,6 @@ import UIKit
 @IBDesignable
 
 class MainMovieCollectionViewCell: UICollectionViewCell {
-    
-    static let cellHeight = UIScreen.main.bounds.height*0.6
-    static let cellWidth = UIScreen.main.bounds.width*0.8
     static let reuseIdentifier = "MainCollectionCell"
     
     let posterImage: UIImageView = {

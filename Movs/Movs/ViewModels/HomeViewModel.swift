@@ -15,7 +15,7 @@ class HomeViewModel:NSObject{
     var didSelect:((CollectionCellViewModel)->Void)?
     var uiHandler:(()->Void)?
     var backgroundImage = UIImage(named: "black_background")
-    
+   // private var cellSize:CGSize
     init(dataAcess:DataAcess,uiHandler:(()->Void)? = nil) {
         self.dataAcess = dataAcess
         self.uiHandler = uiHandler
@@ -33,6 +33,7 @@ class HomeViewModel:NSObject{
         }
         uiHandler?()
     }
+    
 }
 
 extension HomeViewModel:UICollectionViewDataSource{
@@ -49,7 +50,7 @@ extension HomeViewModel:UICollectionViewDataSource{
     }
     
 }
-extension HomeViewModel:UICollectionViewDelegate{
+extension HomeViewModel:UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //TODO: review
         self.didSelect?(data[indexPath.item])
@@ -60,4 +61,7 @@ extension HomeViewModel:UICollectionViewDelegate{
             uiHandler?()
         }
     }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return cellSize
+//    }
 }
