@@ -9,8 +9,9 @@
 import UIKit
 
 class HomeViewModel:NSObject{
-    var page = 1
+    private var page = 1
     var dataAcess:DataAcess
+    private var currentRequest = Request.popular
     var data:[CollectionCellViewModel] = []
     var displayPage:(()->Void)?
     var didSelect:((CollectionCellViewModel)->Void)?
@@ -40,13 +41,20 @@ class HomeViewModel:NSObject{
         navController?.navigationBar.isTranslucent = true
         navController?.view.backgroundColor = .clear
     }
-    func resetPage(){
+    private func resetPage(){
         self.page = 1
     }
     func changeData(request:Request){
         resetPage()
+        currentRequest = request
         dataAcess.getMovies(request: request, page: self.page) { [weak self](results) in
             self?.data = []
+            self?.appendMovies(movies: results)
+        }
+    }
+    private func addPage(){
+        self.page += 1
+        dataAcess.getMovies(request: currentRequest, page: self.page) { [weak self](results) in
             self?.appendMovies(movies: results)
         }
     }
@@ -74,8 +82,7 @@ extension HomeViewModel:UICollectionViewDelegate,UICollectionViewDelegateFlowLay
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.item == data.count - 3{
-            //paginação
-            uiHandler?()
+            self.addPage()
         }
     }
 }

@@ -25,7 +25,9 @@ class MainCollectionView: UICollectionView {
     override func layoutMarginsDidChange() {
         resizeCells(size: self.bounds.size)
     }
- 
+    func scrollToStart(){
+        self.scrollToItem(at: IndexPath.init(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+    }
     func resizeCells(size:CGSize){
         let ratio = size.height/size.width
         if(ratio>=1){

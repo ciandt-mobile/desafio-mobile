@@ -50,7 +50,9 @@ class HomeController:UIViewController{
         default:
             break
         }
+        collection.scrollToStart()
     }
+    
     
 }
 extension HomeController:ViewCoding{

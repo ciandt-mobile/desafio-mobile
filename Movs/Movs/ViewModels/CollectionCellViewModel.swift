@@ -12,11 +12,20 @@ import UIKit
 class CollectionCellViewModel{
     var image:UIImage? = UIImage(named: "image_not_found")
     var title:NSAttributedString
-    var release_data:NSAttributedString
     private let movie:Movie
     init(movie:Movie,dataAcess:DataAcess,uiHandler:(()->Void)?){
-        self.title = NSAttributedString(string:  movie.title ?? "" , attributes: Typography.title(Color.black).attributes())
-        self.release_data = NSAttributedString(string:  movie.release_date ?? "" , attributes: Typography.title(Color.black).attributes())
+       // self.title = NSAttributedString(string:  movie.title ?? "" , attributes: Typography.title(Color.black).attributes())
+        let title = NSMutableAttributedString()
+        title.append(NSAttributedString(string:  (movie.title ?? "" ) + "\n" , attributes: Typography.title(Color.black).attributes()))
+        var dateString = "No Date"
+        if let date = movie.release_date {
+            var substring = date.split(separator: "-")
+            substring.reverse()
+            dateString = substring.joined(separator: "-")
+        }
+         title.append(NSAttributedString(string: dateString, attributes: Typography.title(Color.scarlet).attributes()))
+       
+        self.title = title
         self.movie = movie
         dataAcess.getImage(path: movie.poster_path ?? "") {[weak self] (image) in
             self?.image = image

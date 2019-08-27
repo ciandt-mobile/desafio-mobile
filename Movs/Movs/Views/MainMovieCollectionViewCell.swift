@@ -20,10 +20,9 @@ class MainMovieCollectionViewCell: UICollectionViewCell {
     }()
     let titleLabel:UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .white
         label.layer.borderWidth = 0
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         label.textAlignment = NSTextAlignment.center
         return label
     }()
@@ -52,14 +51,11 @@ extension MainMovieCollectionViewCell:ViewCoding{
 
     func setUpConstraints() {
         titleLabel.anchor(top: self.contentView.topAnchor, leading: self.contentView.leadingAnchor, bottom: nil, trailing: self.contentView.trailingAnchor)
-        titleLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 50).isActive = true
-        posterImage.anchor(top: titleLabel.bottomAnchor, leading: self.contentView.leadingAnchor, bottom: self.contentView.bottomAnchor, trailing: self.contentView.trailingAnchor)
+        posterImage.anchor(top: self.contentView.topAnchor, leading: self.contentView.leadingAnchor, bottom: self.contentView.bottomAnchor, trailing: self.contentView.trailingAnchor)
        
     }
 
-    func additionalConfigs() {
-       
-    }
+
     
 
 
