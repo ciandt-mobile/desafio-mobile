@@ -15,95 +15,20 @@ import UIKit
     fileprivate let genresUrl = "https://api.themoviedb.org/3/genre/movie/list?\(apiKey)"
 
 
-/**
- Parameter for discover call on API
- */
-enum DiscoverParameters{
-    case genre([Int])
-    case releaseYear(String)
-    func toString()->String{
-        switch self {
-        case .genre(let genres):
-            var result = "with_genres="
-            genres.forEach { (genre) in
-                result.append("\(genre),")
-            }
-            result.removeLast()
-            return result
-        case .releaseYear(let year):
-            return "primary_release_year=\(year)"
-        }
-    }
-    
-}
-/**
- Parameter for sort call on API
- */
-enum SortParameters {
-    case voteAverage
-    case popularity
-    case revenue
-    func toString()->String{
-        switch self {
-        case .voteAverage:
-            return "vote_average"
-        case .popularity:
-            return "popularity"
-        case .revenue:
-            return "revenue"
-        }
-    }
-    
-}
-/**
- Sort cases on API call
- */
-enum Sort{
-    case asc(SortParameters)
-    case desc(SortParameters)
-    
-    func toString()->String{
-        switch self {
-        case .asc(let parameter):
-            return "sort_by=\(parameter).asc"
-        case .desc(let parameter):
-            return "sort_by=\(parameter).desc"
-        }
-    }
-}
 
 /**
  Possible requests from API
  */
 enum Request{
-    case search(String)
-    case discover([DiscoverParameters])
-    case find(String)
-    case popular(Int)
+    case upcoming
+    case popular
     
     func toString()->String{
         switch self {
-        case .search(let text):
-            let parameter = text.split { (character) -> Bool in
-                return character == " "
-            }
-            var result = "\(baseUrl)/search/movie?\(apiKey)&query="
-            parameter.forEach { (string) in
-                result.append("\(string)+")
-            }
-            result.removeLast()
-            return result
-        case .discover(let parameters):
-            
-            var simpleUrl = "\(baseUrl)/discover/movie?\(apiKey)"
-            for parameter in parameters{
-                simpleUrl.append("&\(parameter.toString())")
-            }
-            return simpleUrl
-        case .find(let id):
-            return  "\(baseUrl)/find/\(id)?\(apiKey)&language=en-US&external_source=imdb_id"
-        case .popular(let page):
-            return "\(baseUrl)/movie/popular?\(apiKey)&language=en-US&page=\(page)"
+        case .upcoming:
+            return "\(baseUrl)/movie/upcoming?\(apiKey)&language=en-US"
+        case .popular:
+            return "\(baseUrl)/movie/popular?\(apiKey)&language=en-US"
         }
     }
 }
@@ -111,7 +36,6 @@ enum Request{
 final class MovieAPI {
  
     var genre:[Genre] = []
-    var page = 1
     /**
      Build and validate URL construction
      
@@ -252,11 +176,9 @@ final class MovieAPI {
     /**
      Custom request for movies
      */
-    func movieRequest(mode:Request,sort:Sort? = nil,onComplete:@escaping ([Movie],Error?)->Void){
+    func movieRequest(mode:Request,page:Int,onComplete:@escaping ([Movie],Error?)->Void){
         var path = mode.toString()
-        if let sort = sort {
-            path.append("&\(sort.toString())")
-        }
+        path.append("&page=\(page)")
         request(path: path) { (data,err) in
             
             guard let data = data else{
@@ -275,8 +197,8 @@ final class MovieAPI {
     }
 }
 extension MovieAPI:DataAcess{
-    func getMovies(_ fetch: @escaping ([Movie]) -> ()) {
-        movieRequest(mode: Request.popular(page)) { (result, error) in
+    func getMovies(request:Request,page:Int,_ fetch: @escaping ([Movie]) -> ()) {
+        movieRequest(mode: request, page: page) { (result, error) in
             if error != nil{
                 return
             }
@@ -284,16 +206,6 @@ extension MovieAPI:DataAcess{
         }
     }
     
- 
-//    func addPage(fetch: @escaping ([Movie]) -> Void) {
-//        page += 1
-//        movieRequest(mode: Request.popular(page)) { (result, error) in
-//            if error != nil{
-//                return
-//            }
-//            fetch(result)
-//        }
-//    }
     
     func getImage(path: String, _ fetch: @escaping (UIImage?) -> Void) {
         getPosterImage(width: 400, path: path) { (image) in
@@ -315,10 +227,6 @@ extension MovieAPI:DataAcess{
 //            }
 //        }
 //    }
-    func resetPages() {
-        self.page = 1
-    }
-    
 }
 
 

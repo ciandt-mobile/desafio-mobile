@@ -10,6 +10,5 @@ import UIKit
 
 protocol DataAcess:AnyObject{
     func getImage(path:String,_ fetch:@escaping(UIImage?)->())
-    func getMovies(_ fetch:@escaping([Movie])->())
-    
+    func getMovies(request:Request,page:Int,_ fetch: @escaping ([Movie]) -> ())
 }

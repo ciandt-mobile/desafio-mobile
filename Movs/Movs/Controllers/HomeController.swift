@@ -12,6 +12,7 @@ class HomeController:UIViewController{
     let dataAcess:DataAcess
     let backgroundImage = UIImageView()
     let collection = MainCollectionView()
+    var segment = UISegmentedControl()
     let viewModel:HomeViewModel
     init(dataAcess:DataAcess) {
         viewModel = HomeViewModel(dataAcess: dataAcess)
@@ -30,8 +31,25 @@ class HomeController:UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewCoding()
+        viewModel.configureNavBar(navController: self.navigationController)
         collection.delegate = viewModel
         collection.dataSource = viewModel
+        segment = SimpleSegment(items: viewModel.segmentItens)
+        segment.addTarget(self, action: #selector(self.indexChanged(_:)), for: .valueChanged)
+        self.navigationItem.titleView = segment
+    }
+    
+    @objc func indexChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex{
+        case 0:
+            viewModel.changeData(request: Request.upcoming)
+            break
+        case 1:
+            viewModel.changeData(request: Request.popular)
+            break
+        default:
+            break
+        }
     }
     
 }

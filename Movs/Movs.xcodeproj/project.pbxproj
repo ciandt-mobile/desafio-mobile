@@ -28,6 +28,7 @@
 		FBF0D1B72314962E008ABC65 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0D1B62314962D008ABC65 /* Error.swift */; };
 		FBF0D1B92314963A008ABC65 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0D1B82314963A008ABC65 /* Genre.swift */; };
 		FBF0D1BB23149647008ABC65 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0D1BA23149647008ABC65 /* Video.swift */; };
+		FBF0D1BE23156DCD008ABC65 /* SimpleSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0D1BD23156DCD008ABC65 /* SimpleSegment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		FBF0D1B62314962D008ABC65 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		FBF0D1B82314963A008ABC65 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		FBF0D1BA23149647008ABC65 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		FBF0D1BD23156DCD008ABC65 /* SimpleSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleSegment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			children = (
 				FBF0D19C23148BD9008ABC65 /* MainCollectionView.swift */,
 				FBF0D19B23148BD8008ABC65 /* MainMovieCollectionViewCell.swift */,
+				FBF0D1BD23156DCD008ABC65 /* SimpleSegment.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				FBF0D1B2231491C8008ABC65 /* HomeController.swift in Sources */,
 				FBF0D1B92314963A008ABC65 /* Genre.swift in Sources */,
 				FBF0D1A623148C69008ABC65 /* ViewCoding.swift in Sources */,
+				FBF0D1BE23156DCD008ABC65 /* SimpleSegment.swift in Sources */,
 				FBF0D1A523148C69008ABC65 /* MainCollectionLayout.swift in Sources */,
 				FBF0D1B523149379008ABC65 /* HomeViewModel.swift in Sources */,
 				FBF0D1BB23149647008ABC65 /* Video.swift in Sources */,

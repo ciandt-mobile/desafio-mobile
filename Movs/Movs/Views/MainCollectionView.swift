@@ -11,6 +11,7 @@ import UIKit
 class MainCollectionView: UICollectionView {
     private let customLayout:MainCollectionLayout
     init() {
+        //user layout as parameter
         let layout = MainCollectionLayout()
         layout.scrollDirection = .horizontal
         self.customLayout = layout

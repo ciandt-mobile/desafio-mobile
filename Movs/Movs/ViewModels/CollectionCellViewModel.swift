@@ -14,12 +14,13 @@ class CollectionCellViewModel{
     var title:NSAttributedString
     var release_data:NSAttributedString
     private let movie:Movie
-    init(movie:Movie,dataAcess:DataAcess){
+    init(movie:Movie,dataAcess:DataAcess,uiHandler:(()->Void)?){
         self.title = NSAttributedString(string:  movie.title ?? "" , attributes: Typography.title(Color.black).attributes())
         self.release_data = NSAttributedString(string:  movie.release_date ?? "" , attributes: Typography.title(Color.black).attributes())
         self.movie = movie
         dataAcess.getImage(path: movie.poster_path ?? "") {[weak self] (image) in
             self?.image = image
+            uiHandler?()
         }
     }
 
