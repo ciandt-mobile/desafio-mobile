@@ -34,6 +34,13 @@ class HomeController:UIViewController{
         viewModel.configureNavBar(navController: self.navigationController)
         collection.delegate = viewModel
         collection.dataSource = viewModel
+        viewModel.didSelect = { [weak self](cellViewModel) in
+            guard let self = self else{
+                return
+            }
+            let detailController = DetailController(model: cellViewModel.getMovie(), dataAcess: self.dataAcess)
+            self.navigationController?.pushViewController(detailController, animated: true)
+        }
         segment = SimpleSegment(items: viewModel.segmentItens)
         segment.addTarget(self, action: #selector(self.indexChanged(_:)), for: .valueChanged)
         self.navigationItem.titleView = segment

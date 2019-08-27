@@ -22,20 +22,43 @@ import UIKit
 enum Request{
     case upcoming
     case popular
-    
+    case find(Int)
     func toString()->String{
         switch self {
         case .upcoming:
             return "\(baseUrl)/movie/upcoming?\(apiKey)&language=en-US"
         case .popular:
             return "\(baseUrl)/movie/popular?\(apiKey)&language=en-US"
+        case .find(let id):
+            return  "\(baseUrl)/movie/\(id)?\(apiKey)&language=en-US"
         }
     }
 }
 
-final class MovieAPI {
- 
-    var genre:[Genre] = []
+final class MovieAPI:DataAcess {
+    func getDuration(id: Int, _ fetch: @escaping (Int?) -> ()) {
+        self.request(path: Request.find(id).toString()) { (data, error) in
+            guard let data = data else{
+                return
+            }
+            let decoder = JSONDecoder()
+            do{
+                let movieRequest = try decoder.decode(Movie.self, from: data)
+                fetch(movieRequest.runtime)
+            }catch _{
+                fetch(nil)
+            }
+
+        }
+    }
+    
+    var genres: [Genre] = []
+    
+    init() {
+        getGenres { [weak self](result) in
+            self?.genres = result
+        }
+    }
     /**
      Build and validate URL construction
      
@@ -49,10 +72,41 @@ final class MovieAPI {
         }
         return url
     }
+    
+    func getImage(path: String, width: Int, _ fetch: @escaping (UIImage?) -> ()) {
+        getPosterImage(width: width, path: path) { (image) in
+            fetch(image)
+        }
+    }
+    
+    func getMovies(request:Request,page:Int,_ fetch: @escaping ([Movie]) -> ()) {
+        movieRequest(mode: request, page: page) { (result, error) in
+            if error != nil{
+                return
+            }
+            fetch(result)
+        }
+    }
+    
+    
+    func getGenres(fetch: @escaping ([Genre]) -> Void) {
+        request(path:genresUrl ) { (data,err)  in
+            guard let data = data else{
+                return
+            }
+            do{
+                //validate self
+                let result = try JSONDecoder().decode(GenreRequest.self, from: data)
+                fetch(result.genres)
+            }catch let err{
+                print(err)
+            }
+        }
+    }
     /**
      Generic function for requests
      */
-    private func request(path:String,_ code:@escaping (Data?,Error?) ->Void){
+     func request(path:String,_ code:@escaping (Data?,Error?) ->Void){
         do {
             let url = try BuildURL(path: path)
             URLSession.shared.dataTask(with: url) { (data, response, err) in
@@ -196,38 +250,5 @@ final class MovieAPI {
         }
     }
 }
-extension MovieAPI:DataAcess{
-    func getMovies(request:Request,page:Int,_ fetch: @escaping ([Movie]) -> ()) {
-        movieRequest(mode: request, page: page) { (result, error) in
-            if error != nil{
-                return
-            }
-            fetch(result)
-        }
-    }
-    
-    
-    func getImage(path: String, _ fetch: @escaping (UIImage?) -> Void) {
-        getPosterImage(width: 400, path: path) { (image) in
-            fetch(image)
-        }
-    }
-
-//    func getGenres(fetch: @escaping ([Genre]) -> Void) {
-//        request(path:genresUrl ) { (data,err)  in
-//            guard let data = data else{
-//                return
-//            }
-//            do{
-//                //validate self
-//                let result = try JSONDecoder().decode(GenreRequest.self, from: data)
-//                fetch(result.genres)
-//            }catch let err{
-//                print(err)
-//            }
-//        }
-//    }
-}
-
 
 

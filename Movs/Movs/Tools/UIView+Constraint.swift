@@ -89,3 +89,19 @@ extension UIView{
     }
     
 }
+extension UIView {
+    
+    public func removeAllConstraints() {
+
+        if let superview = self.superview{
+            for constraint in superview.constraints {
+
+                if let second = constraint.secondItem as? UIView, second == self {
+                    superview.removeConstraint(constraint)
+                }
+            }
+
+        }
+    self.removeConstraints(self.constraints)
+    }
+}

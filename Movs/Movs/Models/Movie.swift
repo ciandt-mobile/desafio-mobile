@@ -28,5 +28,6 @@ struct Movie:Codable {
     let adult:Bool?
     let overview:String?
     let release_date:String?
+    let runtime:Int?
     
 }
