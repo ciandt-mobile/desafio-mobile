@@ -12,9 +12,9 @@ class HomeViewModel:NSObject{
     private var page = 1
     var dataAcess:DataAcess
     private var currentRequest = Request.popular
-    var data:[CollectionCellViewModel] = []
+    var data:[MovieCellViewModel] = []
     var displayPage:(()->Void)?
-    var didSelect:((CollectionCellViewModel)->Void)?
+    var didSelect:((MovieCellViewModel)->Void)?
     var uiHandler:(()->Void)?
     var backgroundImage = UIImage(named: "black_background")
     //Could use NSlocalizable string to have more languages
@@ -30,7 +30,7 @@ class HomeViewModel:NSObject{
     }
     func appendMovies(movies:[Movie]) {
         movies.forEach { (movie) in
-            let model = CollectionCellViewModel(movie: movie, dataAcess: dataAcess, uiHandler: uiHandler)
+            let model = MovieCellViewModel(movie: movie, dataAcess: dataAcess, uiHandler: uiHandler)
             self.data.append(model)
         }
         uiHandler?()
@@ -67,8 +67,8 @@ extension HomeViewModel:UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainMovieCollectionViewCell.reuseIdentifier, for: indexPath) as? MainMovieCollectionViewCell else{
-            return MainMovieCollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.reuseIdentifier, for: indexPath) as? MovieCollectionViewCell else{
+            return MovieCollectionViewCell()
         }
         cell.setUpCell(movie: data[indexPath.item])
         return cell

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewModel {
+class DetailViewModel:NSObject {
     private let model:Movie
     //let genre:NSAttributedString
     //let trailerPath:String
@@ -19,6 +19,7 @@ class DetailViewModel {
     var uiHandler:(()->Void)?
     let dataAcess:DataAcess
     var genre = NSMutableAttributedString()
+    var data:[CastCellViewModel] = []
     //artist
     
     init(model:Movie,dataAcess:DataAcess,uiHandler:(()->Void)? = nil) {
@@ -29,14 +30,25 @@ class DetailViewModel {
         self.title.append(NSAttributedString(string:" \(model.title ?? "") ", attributes: Typography.title(Color.white, 19).attributes()))
         
         title.append(NSAttributedString(string: String(model.release_date?.split(separator: "-").first ?? ""), attributes: Typography.description(Color.white, 17).attributes()))
-       
+       super.init()
         
-            getImage()
+        
         dataAcess.getDuration(id: model.id) { [weak self](duration) in
             self?.genre.append(NSAttributedString(string: "\(duration ?? 0)m - ", attributes: Typography.description(Color.white, nil).attributes()))
             self?.getGenre()
+           
             self?.uiHandler?()
         }
+        dataAcess.getCast(id: String(model.id)) { [weak self](cast) in
+            guard let self = self else{
+                return
+            }
+            cast.forEach({ (actor) in
+                
+                self.data.append(CastCellViewModel(cast: actor, dataAcess: dataAcess, uiHandler: self.uiHandler))
+            })
+        }
+        getImage()
         
        
         
@@ -64,5 +76,22 @@ class DetailViewModel {
         }
     }
 
+
+}
+extension DetailViewModel:UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastCellView.reuseIdentifier, for: indexPath) as? CastCellView else{
+            return CastCellView()
+        }
+        cell.setUpCell(cast: data[indexPath.item])
+        return cell
+    }
+    
+}
+extension DetailViewModel:UICollectionViewDelegate{
 
 }

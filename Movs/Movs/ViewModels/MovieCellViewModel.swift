@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CollectionCellViewModel{
+class MovieCellViewModel{
     var image:UIImage? = UIImage(named: "image_not_found")
     var title:NSAttributedString
     private let movie:Movie

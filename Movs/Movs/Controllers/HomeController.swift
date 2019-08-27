@@ -11,7 +11,12 @@ import UIKit
 class HomeController:UIViewController{
     let dataAcess:DataAcess
     let backgroundImage = UIImageView()
-    let collection = MainCollectionView()
+    let collection:MainCollectionView = {
+        let collection = MainCollectionView(registerCell: { (collection) in
+            collection.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier:MovieCollectionViewCell.reuseIdentifier )
+        })
+        return collection
+    }()
     var segment = UISegmentedControl()
     let viewModel:HomeViewModel
     init(dataAcess:DataAcess) {

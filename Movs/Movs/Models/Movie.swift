@@ -11,6 +11,15 @@ import Foundation
 struct APIRequest<T:Decodable>:Decodable{
     let results:[T]
 }
+struct CastRequest:Decodable{
+    let cast:[Cast]
+}
+struct Cast:Codable {
+    let character:String?
+    let name:String?
+    let profile_path:String?
+}
+
 
 struct Movie:Codable {
     //parameters needed

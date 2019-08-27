@@ -7,12 +7,14 @@
 //
 
 import UIKit
-    fileprivate let apiKey = "api_key=4d0fcba3ff303036e7acc80cc54f5f24"
-    fileprivate let baseUrl = "https://api.themoviedb.org/3"
-    fileprivate let imageURL = "http://image.tmdb.org/t/p/w@/"
-    fileprivate let trailerURL = "http://api.themoviedb.org/3/movie/@/videos?\(apiKey)"
-    fileprivate let youtubeUrl  = "https://www.youtube.com/watch?v="
-    fileprivate let genresUrl = "https://api.themoviedb.org/3/genre/movie/list?\(apiKey)"
+
+fileprivate let apiKey = "api_key=4d0fcba3ff303036e7acc80cc54f5f24"
+fileprivate let baseUrl = "https://api.themoviedb.org/3"
+fileprivate let imageURL = "http://image.tmdb.org/t/p/w@/"
+fileprivate let trailerURL = "http://api.themoviedb.org/3/movie/@/videos?\(apiKey)"
+fileprivate let youtubeUrl  = "https://www.youtube.com/watch?v="
+fileprivate let genresUrl = "https://api.themoviedb.org/3/genre/movie/list?\(apiKey)"
+fileprivate let creditUrl = "\(baseUrl)/movie/@/credits?\(apiKey)"
 
 
 
@@ -36,6 +38,21 @@ enum Request{
 }
 
 final class MovieAPI:DataAcess {
+    func getCast(id: String, _ fetch: @escaping ([Cast]) -> ()) {
+        let path = creditUrl.replacingOccurrences(of: "@", with: "\(id)")
+        request(path: path) { (data, error) in
+            guard let data = data else{
+                return
+            }
+            let decoder = JSONDecoder()
+            do{
+                let castRequest = try decoder.decode(CastRequest.self, from: data)
+                fetch(castRequest.cast)
+            }catch _{
+                fetch([])
+            }
+        }
+    }
     func getDuration(id: Int, _ fetch: @escaping (Int?) -> ()) {
         self.request(path: Request.find(id).toString()) { (data, error) in
             guard let data = data else{

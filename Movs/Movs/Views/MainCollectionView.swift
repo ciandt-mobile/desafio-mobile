@@ -10,14 +10,14 @@ import UIKit
 
 class MainCollectionView: UICollectionView {
     private let customLayout:MainCollectionLayout
-    init() {
+    init(registerCell:(UICollectionView)->Void) {
         //user layout as parameter
         let layout = MainCollectionLayout()
         layout.scrollDirection = .horizontal
         self.customLayout = layout
         super.init(frame: CGRect.zero
             , collectionViewLayout:layout )
-        self.register(MainMovieCollectionViewCell.self, forCellWithReuseIdentifier:MainMovieCollectionViewCell.reuseIdentifier )
+        registerCell(self)
         self.backgroundColor = .clear
         
        

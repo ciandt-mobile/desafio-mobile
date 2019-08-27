@@ -18,12 +18,20 @@ class DetailController: UIViewController {
     }
     init(model:Movie,dataAcess:DataAcess){
         super.init(nibName: nil, bundle: nil)
-        viewModel = DetailViewModel(model: model, dataAcess: dataAcess,uiHandler: {[weak self] in
-            guard let self = self else{
-                return
+        viewModel = DetailViewModel(model: model, dataAcess: dataAcess,uiHandler: {
+            DispatchQueue.main.async {
+                [weak self] in
+                guard let self = self else{
+                    return
+                }
+                self.detailView.setup(viewModel: self.viewModel)
+                self.detailView.reloadCollection()
             }
-            self.detailView.setup(viewModel: self.viewModel)
+          
+            
         } )
+        detailView.artistCollection.delegate = viewModel
+        detailView.artistCollection.dataSource = viewModel
         
     }
     

@@ -10,7 +10,12 @@ import UIKit
 
 class DetailView: UIView {
     let backgroundImage = UIImageView()
-    let artistCollection = MainCollectionView()
+    let artistCollection:MainCollectionView = {
+        let collection = MainCollectionView(registerCell: { (collection) in
+            collection.register(CastCellView.self, forCellWithReuseIdentifier:CastCellView.reuseIdentifier )
+        })
+        return collection
+    }()
     let topImageView :UIImageView = {
         let view = UIImageView()
         view.contentMode = UIView.ContentMode.scaleAspectFill
@@ -39,14 +44,15 @@ class DetailView: UIView {
 
     }
     func setup(viewModel:DetailViewModel){
-        DispatchQueue.main.async {[weak self] in
-            self?.topImageView.image = viewModel.backdropImage
-            self?.titleLabel.attributedText = viewModel.title
-            self?.genreLabel.attributedText = viewModel.genre
-            self?.overview.attributedText = viewModel.overview
-            self?.backgroundImage.image = viewModel.backgroundImage
-        }
+            self.topImageView.image = viewModel.backdropImage
+            self.titleLabel.attributedText = viewModel.title
+            self.genreLabel.attributedText = viewModel.genre
+            self.overview.attributedText = viewModel.overview
+            self.backgroundImage.image = viewModel.backgroundImage
        
+    }
+    func reloadCollection(){
+        self.artistCollection.reloadData()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
