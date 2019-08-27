@@ -1,0 +1,17 @@
+target 'DesafioMobile' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for DesafioMobile
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'SnapKit', '~> 5.0.0'
+
+  target 'DesafioMobileTests' do
+    inherit! :search_paths
+    # Pods for testing
+    pod 'Quick'
+    pod 'Nimble'
+    pod 'Nimble-Snapshots'
+  end
+
+end
