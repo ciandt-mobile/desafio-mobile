@@ -14,7 +14,7 @@ class HomeController:UIViewController{
     let collection:MainCollectionView = {
         let collection = MainCollectionView(registerCell: { (collection) in
             collection.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier:MovieCollectionViewCell.reuseIdentifier )
-        })
+        },layout: MainCollectionLayout())
         return collection
     }()
     var segment = UISegmentedControl()
@@ -64,6 +64,7 @@ class HomeController:UIViewController{
         }
         collection.scrollToStart()
     }
+ 
     
     
 }

@@ -15,6 +15,7 @@ class DetailController: UIViewController {
         initViewCoding()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        viewModel.configureNavBar(navController: self.navigationController)
     }
     init(model:Movie,dataAcess:DataAcess){
         super.init(nibName: nil, bundle: nil)

@@ -11,9 +11,13 @@ import UIKit
 class DetailView: UIView {
     let backgroundImage = UIImageView()
     let artistCollection:MainCollectionView = {
+        let layout = MainCollectionLayout()
+        layout.sideItemAlpha = 1.0
+        layout.sideItemScale = 1.0
+        layout.beginOnMidle = false
         let collection = MainCollectionView(registerCell: { (collection) in
             collection.register(CastCellView.self, forCellWithReuseIdentifier:CastCellView.reuseIdentifier )
-        })
+        },layout: layout)
         return collection
     }()
     let topImageView :UIImageView = {
@@ -33,8 +37,8 @@ class DetailView: UIView {
         return label
     }()
     let trailerButton = UIButton()
-    private lazy var imageHeight = self.topImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height*0.4)
-    private lazy var imageWidth = self.topImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.height*0.4)
+    private lazy var imageHeight = self.topImageView.heightAnchor.constraint(equalToConstant: max(UIScreen.main.bounds.height,UIScreen.main.bounds.width)*0.4)
+    private lazy var imageWidth = self.topImageView.widthAnchor.constraint(equalToConstant: max(UIScreen.main.bounds.height,UIScreen.main.bounds.width)*0.4)
    
     
     override init(frame: CGRect) {
@@ -57,7 +61,9 @@ class DetailView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     override func layoutMarginsDidChange() {
+      
         removeAllConstraints()
         let ratio = self.bounds.height/self.bounds.width
         if ratio < 1 {
@@ -66,6 +72,7 @@ class DetailView: UIView {
             setUpPortrait()
         }
         layoutIfNeeded()
+        artistCollection.resizeCells(size: self.artistCollection.bounds.size)
 
     }
     func setUpPortrait(){
@@ -74,7 +81,7 @@ class DetailView: UIView {
         self.topImageView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
         self.titleLabel.anchor(top: topImageView.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
         self.genreLabel.anchor(top: titleLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
-        self.artistCollection.anchor(top: genreLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor,size:CGSize(width: 0, height: 50))
+        self.artistCollection.anchor(top: genreLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor,size:CGSize(width: 0, height: 200))
          self.overview.anchor(top: artistCollection.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
     }
     func setUpLandscape(){
@@ -83,7 +90,7 @@ class DetailView: UIView {
        self.topImageView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: nil)
         self.titleLabel.anchor(top: self.topAnchor, leading: topImageView.trailingAnchor, bottom: nil, trailing: self.trailingAnchor)
         self.genreLabel.anchor(top: titleLabel.bottomAnchor, leading: topImageView.trailingAnchor, bottom: nil, trailing: self.trailingAnchor)
-        self.artistCollection.anchor(top: self.genreLabel.bottomAnchor, leading: self.topImageView.trailingAnchor, bottom: nil, trailing: self.trailingAnchor,size:CGSize(width: 0, height: 50))
+        self.artistCollection.anchor(top: self.genreLabel.bottomAnchor, leading: self.topImageView.trailingAnchor, bottom: nil, trailing: self.trailingAnchor,size:CGSize(width: 0, height: 200))
         self.overview.anchor(top: artistCollection.bottomAnchor, leading: self.topImageView.trailingAnchor, bottom: nil, trailing: self.trailingAnchor)
     }
     func removeConstraints(){

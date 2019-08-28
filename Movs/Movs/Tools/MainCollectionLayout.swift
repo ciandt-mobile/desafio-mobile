@@ -15,6 +15,7 @@ class MainCollectionLayout: UICollectionViewFlowLayout {
    var sideItemScale: CGFloat = 0.8
    var sideItemAlpha: CGFloat = 1.0
    var sideItemShift: CGFloat = 0.0
+    var beginOnMidle:Bool = true
    var spacing:CGFloat = 10
     override func prepare() {
         super.prepare()
@@ -26,8 +27,11 @@ class MainCollectionLayout: UICollectionViewFlowLayout {
         //size on screen for collection
         let collectionSize = collectionView.bounds.size
         //make so item stay on the middle of collection with X inset
-        let xInset = (collectionSize.width - self.itemSize.width) / 2
-        self.sectionInset = UIEdgeInsets.init(top: 0, left: xInset, bottom: 0, right: 0)
+        if beginOnMidle {
+            let xInset = (collectionSize.width - self.itemSize.width) / 2
+            self.sectionInset = UIEdgeInsets.init(top: 0, left: xInset, bottom: 0, right: 0)
+        }
+   
         
         //calculate line spacing with scale
         let side = self.itemSize.width

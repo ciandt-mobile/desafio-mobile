@@ -22,6 +22,7 @@ class CastCellViewModel{
         title.append(NSAttributedString(string: cast.character ?? "", attributes: Typography.title(Color.scarlet, nil).attributes()))
         
     }
+   
 
 }
 

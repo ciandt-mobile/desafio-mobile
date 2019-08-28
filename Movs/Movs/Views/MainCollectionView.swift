@@ -9,10 +9,9 @@
 import UIKit
 
 class MainCollectionView: UICollectionView {
-    private let customLayout:MainCollectionLayout
-    init(registerCell:(UICollectionView)->Void) {
+    private let customLayout:UICollectionViewFlowLayout
+    init(registerCell:(UICollectionView)->Void,layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()) {
         //user layout as parameter
-        let layout = MainCollectionLayout()
         layout.scrollDirection = .horizontal
         self.customLayout = layout
         super.init(frame: CGRect.zero

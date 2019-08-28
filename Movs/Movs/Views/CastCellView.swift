@@ -22,6 +22,7 @@ class CastCellView: UICollectionViewCell {
         label.backgroundColor = .white
         label.layer.borderWidth = 0
         label.numberOfLines = 0
+        label.alpha = 0.6
         label.textAlignment = NSTextAlignment.center
         return label
     }()
@@ -49,7 +50,7 @@ extension CastCellView:ViewCoding{
     }
     
     func setUpConstraints() {
-        titleLabel.anchor(top: self.contentView.topAnchor, leading: self.contentView.leadingAnchor, bottom: nil, trailing: self.contentView.trailingAnchor)
+        titleLabel.anchor(top: nil, leading: self.contentView.leadingAnchor, bottom: self.contentView.bottomAnchor, trailing: self.contentView.trailingAnchor)
         posterImage.anchor(top: self.contentView.topAnchor, leading: self.contentView.leadingAnchor, bottom: self.contentView.bottomAnchor, trailing: self.contentView.trailingAnchor)
         
     }

@@ -35,14 +35,15 @@ class HomeViewModel:NSObject{
         }
         uiHandler?()
     }
+    private func resetPage(){
+        self.page = 1
+    }
     func configureNavBar(navController:UINavigationController?){
         navController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navController?.navigationBar.shadowImage = UIImage()
         navController?.navigationBar.isTranslucent = true
         navController?.view.backgroundColor = .clear
-    }
-    private func resetPage(){
-        self.page = 1
+        
     }
     func changeData(request:Request){
         resetPage()
