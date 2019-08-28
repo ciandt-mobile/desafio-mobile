@@ -34,6 +34,7 @@
 		FBF0D1C423158CAF008ABC65 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0D1C323158CAF008ABC65 /* DetailView.swift */; };
 		FBF0D1C62315F0F4008ABC65 /* CastCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0D1C52315F0F4008ABC65 /* CastCellView.swift */; };
 		FBF0D1C82315F194008ABC65 /* CastCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0D1C72315F194008ABC65 /* CastCellViewModel.swift */; };
+		FBF0D1CA231610B9008ABC65 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0D1C9231610B9008ABC65 /* Cast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		FBF0D1C323158CAF008ABC65 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		FBF0D1C52315F0F4008ABC65 /* CastCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCellView.swift; sourceTree = "<group>"; };
 		FBF0D1C72315F194008ABC65 /* CastCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCellViewModel.swift; sourceTree = "<group>"; };
+		FBF0D1C9231610B9008ABC65 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				FBF0D1B82314963A008ABC65 /* Genre.swift */,
 				FBF0D1B62314962D008ABC65 /* Error.swift */,
 				FBF0D1AB23148D8C008ABC65 /* Movie.swift */,
+				FBF0D1C9231610B9008ABC65 /* Cast.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				FBF0D1A523148C69008ABC65 /* MainCollectionLayout.swift in Sources */,
 				FBF0D1B523149379008ABC65 /* HomeViewModel.swift in Sources */,
 				FBF0D1BB23149647008ABC65 /* Video.swift in Sources */,
+				FBF0D1CA231610B9008ABC65 /* Cast.swift in Sources */,
 				FBF0D19E23148BD9008ABC65 /* MainCollectionView.swift in Sources */,
 				FBF0D1C62315F0F4008ABC65 /* CastCellView.swift in Sources */,
 				FBF0D19823148B3C008ABC65 /* Typography.swift in Sources */,

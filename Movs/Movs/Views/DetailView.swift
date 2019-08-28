@@ -36,7 +36,12 @@ class DetailView: UIView {
         label.numberOfLines = 0
         return label
     }()
-    let trailerButton = UIButton()
+    let youtbeButton:UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "play_button")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = Color.scarlet
+        return button
+    }()
     private lazy var imageHeight = self.topImageView.heightAnchor.constraint(equalToConstant: max(UIScreen.main.bounds.height,UIScreen.main.bounds.width)*0.4)
     private lazy var imageWidth = self.topImageView.widthAnchor.constraint(equalToConstant: max(UIScreen.main.bounds.height,UIScreen.main.bounds.width)*0.4)
    
@@ -78,11 +83,15 @@ class DetailView: UIView {
     func setUpPortrait(){
         imageHeight.isActive = true
         imageWidth.isActive = false
+        //TO DO: review this
         self.topImageView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
         self.titleLabel.anchor(top: topImageView.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
         self.genreLabel.anchor(top: titleLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
         self.artistCollection.anchor(top: genreLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor,size:CGSize(width: 0, height: 200))
          self.overview.anchor(top: artistCollection.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
+        self.youtbeButton.anchor(top: overview.bottomAnchor, leading: nil, bottom: nil, trailing: nil,size:CGSize(width: 100, height: 100))
+        
+        youtbeButton.centerXAnchor.constraint(equalTo: overview.centerXAnchor).isActive = true
     }
     func setUpLandscape(){
         imageHeight.isActive = false
@@ -92,6 +101,8 @@ class DetailView: UIView {
         self.genreLabel.anchor(top: titleLabel.bottomAnchor, leading: topImageView.trailingAnchor, bottom: nil, trailing: self.trailingAnchor)
         self.artistCollection.anchor(top: self.genreLabel.bottomAnchor, leading: self.topImageView.trailingAnchor, bottom: nil, trailing: self.trailingAnchor,size:CGSize(width: 0, height: 200))
         self.overview.anchor(top: artistCollection.bottomAnchor, leading: self.topImageView.trailingAnchor, bottom: nil, trailing: self.trailingAnchor)
+        self.youtbeButton.anchor(top: overview.bottomAnchor, leading: nil, bottom: nil, trailing: nil,size:CGSize(width: 100, height: 100))
+          youtbeButton.centerXAnchor.constraint(equalTo: overview.centerXAnchor).isActive = true
     }
     func removeConstraints(){
         self.topImageView.removeAllConstraints()
@@ -99,6 +110,7 @@ class DetailView: UIView {
         self.genreLabel.removeAllConstraints()
         self.artistCollection.removeAllConstraints()
         self.overview.removeAllConstraints()
+        self.youtbeButton.removeAllConstraints()
     }
 
 
@@ -111,7 +123,7 @@ extension DetailView:ViewCoding{
         self.addSubview(genreLabel)
         self.addSubview(artistCollection)
         self.addSubview(overview)
-//        self.addSubview(trailerButton)
+        self.addSubview(youtbeButton)
        
     }
     
