@@ -19,19 +19,3 @@ struct Color {
     static let scarletNoAlpha = UIColor(red: 111/255, green: 5/255, blue: 21/255, alpha: 0.2)
 }
 
-/**
- Color for cell cases
- */
-enum TitleColors{
-    case favorite
-    case normal
-    
-    func dictionary()->[String:UIColor]{
-        switch self {
-        case .favorite:
-            return ["background":Color.scarlet,"title":Color.lightgray]
-        default:
-            return ["background":Color.lightgray,"title":Color.black]
-        }
-    }
-}

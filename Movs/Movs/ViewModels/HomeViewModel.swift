@@ -38,13 +38,7 @@ class HomeViewModel:NSObject{
     private func resetPage(){
         self.page = 1
     }
-    func configureNavBar(navController:UINavigationController?){
-        navController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navController?.navigationBar.shadowImage = UIImage()
-        navController?.navigationBar.isTranslucent = true
-        navController?.view.backgroundColor = .clear
-        
-    }
+
     func changeData(request:Request){
         resetPage()
         currentRequest = request
@@ -58,6 +52,12 @@ class HomeViewModel:NSObject{
         dataAcess.getMovies(request: currentRequest, page: self.page) { [weak self](results) in
             self?.appendMovies(movies: results)
         }
+    }
+    func configureNavBar(navController:UINavigationController?){
+        navController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navController?.navigationBar.shadowImage = UIImage()
+        navController?.navigationBar.isTranslucent = true
+        navController?.view.backgroundColor = .clear
     }
     
 }

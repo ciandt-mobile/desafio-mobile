@@ -3,12 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A36A639123F1D23C27A360C8 /* Pods_MovsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2194B717B70DF85DF582C738 /* Pods_MovsTests.framework */; };
 		A4BEBEBA9F81A8C530875E4A /* Pods_Movs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5BD1BC7BF44130307A0328 /* Pods_Movs.framework */; };
+		FB1108F02316E50500B702F0 /* DataAcessMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1108EF2316E50500B702F0 /* DataAcessMock.swift */; };
+		FB110900231701B300B702F0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1108FF231701B300B702F0 /* HomeView.swift */; };
 		FBF0D17E231489D6008ABC65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0D17D231489D6008ABC65 /* AppDelegate.swift */; };
 		FBF0D188231489D9008ABC65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF0D186231489D9008ABC65 /* LaunchScreen.storyboard */; };
 		FBF0D19023148B24008ABC65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF0D18F23148B24008ABC65 /* Assets.xcassets */; };
@@ -37,7 +39,7 @@
 		FBF0D1C62315F0F4008ABC65 /* CastCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0D1C52315F0F4008ABC65 /* CastCellView.swift */; };
 		FBF0D1C82315F194008ABC65 /* CastCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0D1C72315F194008ABC65 /* CastCellViewModel.swift */; };
 		FBF0D1CA231610B9008ABC65 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0D1C9231610B9008ABC65 /* Cast.swift */; };
-		FBF0D1D22316D893008ABC65 /* MovsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0D1D12316D893008ABC65 /* MovsTests.swift */; };
+		FBF0D1D22316D893008ABC65 /* MovsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0D1D12316D893008ABC65 /* MovsSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,10 +54,15 @@
 
 /* Begin PBXFileReference section */
 		2194B717B70DF85DF582C738 /* Pods_MovsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B9FC0B74B83BA4A527A6E26 /* Pods-MovsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovsUITests.debug.xcconfig"; path = "Target Support Files/Pods-MovsUITests/Pods-MovsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3814EBFA6D08FAC17ECFFDF4 /* Pods_MovsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		497ABD5F6FE0EBC2798B7756 /* Pods-MovsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovsTests.release.xcconfig"; path = "Target Support Files/Pods-MovsTests/Pods-MovsTests.release.xcconfig"; sourceTree = "<group>"; };
 		615C1CEDB70D1486A131DC52 /* Pods-Movs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movs.debug.xcconfig"; path = "Target Support Files/Pods-Movs/Pods-Movs.debug.xcconfig"; sourceTree = "<group>"; };
+		A58695BCF432518A72C4B7BA /* Pods-MovsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovsUITests.release.xcconfig"; path = "Target Support Files/Pods-MovsUITests/Pods-MovsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C559FFF3DCD714E5A9CCA5F1 /* Pods-MovsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovsTests.debug.xcconfig"; path = "Target Support Files/Pods-MovsTests/Pods-MovsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EA1B7A3900D456631A082029 /* Pods-Movs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movs.release.xcconfig"; path = "Target Support Files/Pods-Movs/Pods-Movs.release.xcconfig"; sourceTree = "<group>"; };
+		FB1108EF2316E50500B702F0 /* DataAcessMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAcessMock.swift; sourceTree = "<group>"; };
+		FB1108FF231701B300B702F0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		FBF0D17A231489D6008ABC65 /* Movs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF0D17D231489D6008ABC65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF0D187231489D9008ABC65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,7 +94,7 @@
 		FBF0D1C72315F194008ABC65 /* CastCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCellViewModel.swift; sourceTree = "<group>"; };
 		FBF0D1C9231610B9008ABC65 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
 		FBF0D1CF2316D892008ABC65 /* MovsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FBF0D1D12316D893008ABC65 /* MovsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovsTests.swift; sourceTree = "<group>"; };
+		FBF0D1D12316D893008ABC65 /* MovsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovsSpec.swift; sourceTree = "<group>"; };
 		FBF0D1D32316D893008ABC65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF5BD1BC7BF44130307A0328 /* Pods_Movs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -117,6 +124,7 @@
 			children = (
 				FF5BD1BC7BF44130307A0328 /* Pods_Movs.framework */,
 				2194B717B70DF85DF582C738 /* Pods_MovsTests.framework */,
+				3814EBFA6D08FAC17ECFFDF4 /* Pods_MovsUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -128,9 +136,18 @@
 				EA1B7A3900D456631A082029 /* Pods-Movs.release.xcconfig */,
 				C559FFF3DCD714E5A9CCA5F1 /* Pods-MovsTests.debug.xcconfig */,
 				497ABD5F6FE0EBC2798B7756 /* Pods-MovsTests.release.xcconfig */,
+				2B9FC0B74B83BA4A527A6E26 /* Pods-MovsUITests.debug.xcconfig */,
+				A58695BCF432518A72C4B7BA /* Pods-MovsUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FB1108EE2316E4AD00B702F0 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				FB1108EF2316E50500B702F0 /* DataAcessMock.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		FBF0D171231489D6008ABC65 = {
@@ -232,6 +249,7 @@
 				FBF0D1BD23156DCD008ABC65 /* SimpleSegment.swift */,
 				FBF0D1C52315F0F4008ABC65 /* CastCellView.swift */,
 				FBF0D1C323158CAF008ABC65 /* DetailView.swift */,
+				FB1108FF231701B300B702F0 /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -256,7 +274,8 @@
 		FBF0D1D02316D893008ABC65 /* MovsTests */ = {
 			isa = PBXGroup;
 			children = (
-				FBF0D1D12316D893008ABC65 /* MovsTests.swift */,
+				FB1108EE2316E4AD00B702F0 /* Mock */,
+				FBF0D1D12316D893008ABC65 /* MovsSpec.swift */,
 				FBF0D1D32316D893008ABC65 /* Info.plist */,
 			);
 			path = MovsTests;
@@ -434,6 +453,7 @@
 				FBF0D19D23148BD9008ABC65 /* MovieCollectionViewCell.swift in Sources */,
 				FBF0D1A223148C4B008ABC65 /* UIView+Constraint.swift in Sources */,
 				FBF0D17E231489D6008ABC65 /* AppDelegate.swift in Sources */,
+				FB110900231701B300B702F0 /* HomeView.swift in Sources */,
 				FBF0D1C22315890D008ABC65 /* DetailViewModel.swift in Sources */,
 				FBF0D1B023149027008ABC65 /* MovieAPI.swift in Sources */,
 				FBF0D1A023148BF2008ABC65 /* MovieCellViewModel.swift in Sources */,
@@ -462,7 +482,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBF0D1D22316D893008ABC65 /* MovsTests.swift in Sources */,
+				FBF0D1D22316D893008ABC65 /* MovsSpec.swift in Sources */,
+				FB1108F02316E50500B702F0 /* DataAcessMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,25 +10,21 @@ import UIKit
 
 class HomeController:UIViewController{
     let dataAcess:DataAcess
-    let backgroundImage = UIImageView()
-    let collection:MainCollectionView = {
-        let collection = MainCollectionView(registerCell: { (collection) in
-            collection.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier:MovieCollectionViewCell.reuseIdentifier )
-        },layout: MainCollectionLayout())
-        return collection
-    }()
-    var segment = UISegmentedControl()
+    let homeView:HomeView
     let viewModel:HomeViewModel
+    
     init(dataAcess:DataAcess) {
         viewModel = HomeViewModel(dataAcess: dataAcess)
+        self.homeView = HomeView()
         self.dataAcess = dataAcess
         super.init(nibName: nil, bundle: nil)
-        
+       
         viewModel.uiHandler = {
             DispatchQueue.main.async {[weak self] in
-                 self?.collection.reloadData()
+                 self?.homeView.collection.reloadData()
             }
         }
+        homeView.setUp(viewModel: viewModel)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -37,8 +33,6 @@ class HomeController:UIViewController{
         super.viewDidLoad()
         initViewCoding()
         viewModel.configureNavBar(navController: self.navigationController)
-        collection.delegate = viewModel
-        collection.dataSource = viewModel
         viewModel.didSelect = { [weak self](cellViewModel) in
             guard let self = self else{
                 return
@@ -46,11 +40,9 @@ class HomeController:UIViewController{
             let detailController = DetailController(model: cellViewModel.getMovie(), dataAcess: self.dataAcess)
             self.navigationController?.pushViewController(detailController, animated: true)
         }
-        segment = SimpleSegment(items: viewModel.segmentItens)
-        segment.addTarget(self, action: #selector(self.indexChanged(_:)), for: .valueChanged)
-        self.navigationItem.titleView = segment
+        homeView.segment.addTarget(self, action: #selector(self.indexChanged(_:)), for: .valueChanged)
+        self.navigationItem.titleView = homeView.segment
     }
-    
     @objc func indexChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex{
         case 0:
@@ -62,21 +54,20 @@ class HomeController:UIViewController{
         default:
             break
         }
-        collection.scrollToStart()
+        self.homeView.collection.scrollToStart()
     }
  
-    
-    
 }
 extension HomeController:ViewCoding{
     func buildViewHierarchy() {
-        self.view.addSubview(backgroundImage)
-        self.view.addSubview(collection)
+        self.view.addSubview(homeView)
+       
     }
     
     func setUpConstraints() {
-        backgroundImage.fillSuperview()
-        collection.fillSuperview()
+         homeView.fillSuperview()
     }
     
+    
 }
+

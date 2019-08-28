@@ -26,10 +26,10 @@ class DetailViewModel:NSObject {
         self.model = model
         self.dataAcess = dataAcess
         self.uiHandler = uiHandler
-        self.overview = NSAttributedString(string: model.overview ?? "", attributes: Typography.description(Color.white, nil).attributes())
-        self.title.append(NSAttributedString(string:" \(model.title ?? "") ", attributes: Typography.title(Color.white, 19).attributes()))
+        self.overview = NSAttributedString(string: model.overview ?? "No overview", attributes: Typography.description(Color.white, nil).attributes())
+        self.title.append(NSAttributedString(string:" \(model.title ?? "No title") ", attributes: Typography.title(Color.white, 19).attributes()))
         
-        title.append(NSAttributedString(string: String(model.release_date?.split(separator: "-").first ?? ""), attributes: Typography.description(Color.white, 17).attributes()))
+        title.append(NSAttributedString(string: String(model.release_date?.split(separator: "-").first ?? "No data"), attributes: Typography.description(Color.white, 17).attributes()))
        super.init()
         
         
@@ -67,11 +67,14 @@ class DetailViewModel:NSObject {
         
     }
     private func getImage(){
-        if let backdropPath = model.backdrop_path{
-            dataAcess.getImage(path: backdropPath, width: 1280) { [weak self](image) in
+        dataAcess.getImage(path: model.backdrop_path ?? "", width: 1280) { [weak self](image) in
+            if let image = image{
                 self?.backdropImage = image
-                self?.uiHandler?()
+                
+            }else{
+                self?.backdropImage = UIImage(named: "image_not_found")
             }
+           self?.uiHandler?()
         }
     }
     private func getGenre(){

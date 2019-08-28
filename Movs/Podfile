@@ -11,6 +11,7 @@ target 'Movs' do
     # Pods for testing
         pod 'Quick'
         pod 'Nimble'
+        pod 'Nimble-Snapshots'
     end
 
 

@@ -13,9 +13,9 @@ class DetailController: UIViewController {
     let detailView = DetailView()
     let dataAcess:DataAcess
     override func viewDidLoad() {
-        initViewCoding()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        initViewCoding()
         viewModel.configureNavBar(navController: self.navigationController)
     }
     init(model:Movie,dataAcess:DataAcess){
