@@ -20,6 +20,7 @@ class DetailViewModel:NSObject {
     let dataAcess:DataAcess
     var genre = NSMutableAttributedString()
     var data:[CastCellViewModel] = []
+    var youtubeURL:String?
     //artist
     
     init(model:Movie,dataAcess:DataAcess,uiHandler:(()->Void)? = nil) {
@@ -33,10 +34,20 @@ class DetailViewModel:NSObject {
        super.init()
         
         
-        dataAcess.getDuration(id: model.id) { [weak self](duration) in
-            self?.genre.append(NSAttributedString(string: "\(duration ?? 0)m - ", attributes: Typography.description(Color.white, nil).attributes()))
-            self?.getGenre()
-           
+        dataAcess.getDetail(id: model.id) { [weak self](movie) in
+            self?.genre.append(NSAttributedString(string: "\(movie?.runtime ?? 0)m - ", attributes: Typography.description(Color.white, nil).attributes()))
+            if let video = movie?.videos?.results.first?.key{
+                self?.youtubeURL = "https://www.youtube.com/watch?v=\(video)"
+            }
+            guard let genres = movie?.genres else{
+                return
+            }
+            var resultString:[String] = []
+            for genre in genres{
+              resultString.append(genre.name)
+            }
+            let string = NSAttributedString(string: resultString.joined(separator: ", "), attributes: Typography.description(Color.white, nil).attributes())
+            self?.genre.append(string)
             self?.uiHandler?()
         }
         dataAcess.getCast(id: String(model.id)) { [weak self](cast) in
@@ -55,7 +66,14 @@ class DetailViewModel:NSObject {
         
     }
     func requestYoutube(){
-        dataAcess.requestYoutube(id: String(model.id))
+        guard let url = URL(string:self.youtubeURL!)else{
+            return
+        }
+        DispatchQueue.main.async {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
     }
     func configureNavBar(navController:UINavigationController?){
         navController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -77,20 +95,6 @@ class DetailViewModel:NSObject {
            self?.uiHandler?()
         }
     }
-    private func getGenre(){
-        if let genreIds = model.genre_ids{
-            var resultString:[String] = []
-            for id in genreIds{
-                let genre = dataAcess.genres.first { (genre) -> Bool in
-                    return genre.id == id
-                }
-                resultString.append(genre?.name ?? "Not found")
-            }
-            let string = NSAttributedString(string: resultString.joined(separator: ", "), attributes: Typography.description(Color.white, nil).attributes())
-            self.genre.append(string)
-        }
-    }
-
 
 }
 extension DetailViewModel:UICollectionViewDataSource{

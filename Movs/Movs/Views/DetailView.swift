@@ -59,6 +59,11 @@ class DetailView: UIView {
             self.genreLabel.attributedText = viewModel.genre
             self.overview.attributedText = viewModel.overview
             self.backgroundImage.image = viewModel.backgroundImage
+            if viewModel.youtubeURL == nil{
+                self.youtbeButton.isHidden = true
+            }else{
+                self.youtbeButton.isHidden = false
+            }
        
     }
     func reloadCollection(){

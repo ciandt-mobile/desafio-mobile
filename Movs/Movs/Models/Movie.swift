@@ -12,22 +12,16 @@ struct APIRequest<T:Decodable>:Decodable{
     let results:[T]
 }
 
-struct Movie:Codable {
+struct Movie:Decodable {
     //parameters needed
-    let vote_count:Int?
     let id:Int
-    let video:Bool
-    let vote_average:Float
     let title:String?
     let popularity:Float?
     let poster_path:String?
-    let original_language:String?
-    let original_title:String?
-    let genre_ids:[Int]?
+    let genres:[Genre]?
     let backdrop_path:String?
-    let adult:Bool?
     let overview:String?
     let release_date:String?
     let runtime:Int?
-    
+    let videos:APIRequest<Video>?
 }

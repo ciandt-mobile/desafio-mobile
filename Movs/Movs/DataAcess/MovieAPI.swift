@@ -11,8 +11,6 @@ import UIKit
 fileprivate let apiKey = "api_key=4d0fcba3ff303036e7acc80cc54f5f24"
 fileprivate let baseUrl = "https://api.themoviedb.org/3"
 fileprivate let imageURL = "http://image.tmdb.org/t/p/w@/"
-fileprivate let trailerURL = "http://api.themoviedb.org/3/movie/@/videos?\(apiKey)"
-fileprivate let youtubeUrl  = "https://www.youtube.com/watch?v="
 fileprivate let genresUrl = "https://api.themoviedb.org/3/genre/movie/list?\(apiKey)"
 fileprivate let creditUrl = "\(baseUrl)/movie/@/credits?\(apiKey)"
 
@@ -32,50 +30,13 @@ enum Request{
         case .popular:
             return "\(baseUrl)/movie/popular?\(apiKey)&language=en-US"
         case .find(let id):
-            return  "\(baseUrl)/movie/\(id)?\(apiKey)&language=en-US"
+            return  "\(baseUrl)/movie/\(id)?\(apiKey)&append_to_response=videos"
         }
     }
 }
 
-final class MovieAPI:DataAcess {
+final class MovieAPI {
 
-    var genres: [Genre] = []
-    
-    func getCast(id: String, _ fetch: @escaping ([Cast]) -> ()) {
-        let path = creditUrl.replacingOccurrences(of: "@", with: "\(id)")
-        request(path: path) { (data, error) in
-            guard let data = data else{
-                return
-            }
-            let decoder = JSONDecoder()
-            do{
-                let castRequest = try decoder.decode(CastRequest.self, from: data)
-                fetch(castRequest.cast)
-            }catch _{
-                fetch([])
-            }
-        }
-    }
-    func getDuration(id: Int, _ fetch: @escaping (Int?) -> ()) {
-        self.request(path: Request.find(id).toString()) { (data, error) in
-            guard let data = data else{
-                return
-            }
-            let decoder = JSONDecoder()
-            do{
-                let movieRequest = try decoder.decode(Movie.self, from: data)
-                fetch(movieRequest.runtime)
-            }catch _{
-                fetch(nil)
-            }
-
-        }
-    }
-    init() {
-        getGenres { [weak self](result) in
-            self?.genres = result
-        }
-    }
     /**
      Build and validate URL construction
      
@@ -90,35 +51,8 @@ final class MovieAPI:DataAcess {
         return url
     }
     
-    func getImage(path: String, width: Int, _ fetch: @escaping (UIImage?) -> ()) {
-        getPosterImage(width: width, path: path) { (image) in
-            fetch(image)
-        }
-    }
+
     
-    func getMovies(request:Request,page:Int,_ fetch: @escaping ([Movie]) -> ()) {
-        movieRequest(mode: request, page: page) { (result, error) in
-            if error != nil{
-                return
-            }
-            fetch(result)
-        }
-    }
-    
-    func getGenres(fetch: @escaping ([Genre]) -> Void) {
-        request(path:genresUrl ) { (data,err)  in
-            guard let data = data else{
-                return
-            }
-            do{
-                //validate self
-                let result = try JSONDecoder().decode(GenreRequest.self, from: data)
-                fetch(result.genres)
-            }catch let err{
-                print(err)
-            }
-        }
-    }
     /**
      Generic function for requests
      */
@@ -138,36 +72,7 @@ final class MovieAPI:DataAcess {
         
         
     }
-    /**
-     Call for a trailer on youtube
-     - Parameter id: id from the movie
-     
-     */
-    func requestYoutube(id:String){
-        //validade self
-             getYoutubeUrl(id: id) { path,err  in
-                if let error = err,let _ = path{
-                    print(error)
-                    return
-                }
-                do{
-                    let url = try self.BuildURL(path: path!)
-                    DispatchQueue.main.async {
-                        if UIApplication.shared.canOpenURL(url) {
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        }
-                    }
-                }catch let err{
-                    //TODO:Criar alerta de video indisponivel
-                    print(err)
-                    return
-                }
-                
-        }
-    }
 
-    
-   
     /**
      Get poster image from the API
      
@@ -191,58 +96,7 @@ final class MovieAPI:DataAcess {
         
         
         }
-    /**
-     Get results on request for movies on the api
-     - Parameter id: id from the movie
-     
-    */
-    private func getMovieTrailer(id:String,onComplete:@escaping (APIRequest<Video>?,NetworkError?)->Void){
-        let adjustedPath = trailerURL.replacingOccurrences(of: "@", with: id)
-        request(path: adjustedPath) { (data,err) in
-            guard let data = data else{
-                return
-            }
-            do{
-                let videos = try JSONDecoder().decode(APIRequest<Video>.self, from: data)
-                //API return an empty array for no results :(
-                if videos.results.isEmpty{
-                    onComplete(nil,NetworkError.invalidVideo("Videos not found"))
-                }else{
-                      onComplete(videos,nil)
-                }
-               
-            }catch let err{
-                print(err)
-            }
-           
-        }
-    }
-    /**
-     Get youtube url for the id given on video requests
-     - Parameter id: id from the trailer at youtube
-     
-     */
-    func getYoutubeUrl(id:String,onComplete:@escaping (String?,NetworkError?)->Void){
-        getMovieTrailer(id: id) { (request,err) in
-            if let firstResult = request?.results.first{
-                    var err:NetworkError? = nil
-                    var url = ""
-                    if let key = firstResult.key{
-                         url = "\(youtubeUrl)\(key)"
-                    } else{
-                        err = NetworkError.invalidVideo("Video not Found")
-                    }
-                        onComplete(url, err)
-                    
-                    
-            }else{
-                 onComplete(nil, err)
-            }
-            
-            
-            }
-        
-    }
+
     /**
      Custom request for movies
      */
@@ -263,6 +117,53 @@ final class MovieAPI:DataAcess {
             }catch let err{
                 onComplete([], err)
             }
+        }
+    }
+}
+extension MovieAPI:DataAcess{
+
+    func getCast(id: String, _ fetch: @escaping ([Cast]) -> ()) {
+        let path = creditUrl.replacingOccurrences(of: "@", with: "\(id)")
+        request(path: path) { (data, error) in
+            guard let data = data else{
+                return
+            }
+            let decoder = JSONDecoder()
+            do{
+                let castRequest = try decoder.decode(CastRequest.self, from: data)
+                fetch(castRequest.cast)
+            }catch _{
+                fetch([])
+            }
+        }
+    }
+    func getDetail(id: Int, _ fetch: @escaping (Movie?) -> ()){
+        self.request(path: Request.find(id).toString()) { (data, error) in
+            guard let data = data else{
+                return
+            }
+            let decoder = JSONDecoder()
+            do{
+                let movieRequest = try decoder.decode(Movie.self, from: data)
+                fetch(movieRequest)
+            }catch _{
+                fetch(nil)
+            }
+            
+        }
+    }
+    func getImage(path: String, width: Int, _ fetch: @escaping (UIImage?) -> ()) {
+        getPosterImage(width: width, path: path) { (image) in
+            fetch(image)
+        }
+    }
+    
+    func getMovies(request:Request,page:Int,_ fetch: @escaping ([Movie]) -> ()) {
+        movieRequest(mode: request, page: page) { (result, error) in
+            if error != nil{
+                return
+            }
+            fetch(result)
         }
     }
 }
