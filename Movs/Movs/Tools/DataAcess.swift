@@ -14,4 +14,5 @@ protocol DataAcess:AnyObject{
     func getMovies(request:Request,page:Int,_ fetch: @escaping ([Movie]) -> ())
     func getDuration(id: Int, _ fetch: @escaping (Int?) -> ())
     func getCast(id:String,_ fetch: @escaping ([Cast]) ->())
+    func requestYoutube(id:String)
 }

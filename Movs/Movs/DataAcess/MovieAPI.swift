@@ -38,6 +38,9 @@ enum Request{
 }
 
 final class MovieAPI:DataAcess {
+
+    var genres: [Genre] = []
+    
     func getCast(id: String, _ fetch: @escaping ([Cast]) -> ()) {
         let path = creditUrl.replacingOccurrences(of: "@", with: "\(id)")
         request(path: path) { (data, error) in
@@ -68,9 +71,6 @@ final class MovieAPI:DataAcess {
 
         }
     }
-    
-    var genres: [Genre] = []
-    
     init() {
         getGenres { [weak self](result) in
             self?.genres = result
@@ -104,7 +104,6 @@ final class MovieAPI:DataAcess {
             fetch(result)
         }
     }
-    
     
     func getGenres(fetch: @escaping ([Genre]) -> Void) {
         request(path:genresUrl ) { (data,err)  in

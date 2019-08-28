@@ -19,7 +19,7 @@ class CastCellViewModel{
             uiHandler?()
         }
         title.append(NSAttributedString(string: "\(cast.name ?? "")\n", attributes: Typography.title(Color.black, nil).attributes()))
-        title.append(NSAttributedString(string: cast.character ?? "", attributes: Typography.title(Color.scarlet, nil).attributes()))
+        title.append(NSAttributedString(string: "\"\(cast.character ?? "")\"" , attributes: Typography.title(Color.scarlet, nil).attributes()))
         
     }
    

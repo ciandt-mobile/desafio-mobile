@@ -9,6 +9,7 @@
 import UIKit
 
 class DetailView: UIView {
+    
     let backgroundImage = UIImageView()
     let artistCollection:MainCollectionView = {
         let layout = MainCollectionLayout()
@@ -48,8 +49,8 @@ class DetailView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         initViewCoding()
-        overview.numberOfLines = 0
 
     }
     func setup(viewModel:DetailViewModel){

@@ -54,6 +54,9 @@ class DetailViewModel:NSObject {
         
         
     }
+    func requestYoutube(){
+        dataAcess.requestYoutube(id: String(model.id))
+    }
     func configureNavBar(navController:UINavigationController?){
         navController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navController?.navigationBar.shadowImage = UIImage()

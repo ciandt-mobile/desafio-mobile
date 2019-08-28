@@ -35,7 +35,6 @@ class MainCollectionView: UICollectionView {
             customLayout.itemSize = CGSize(width: size.width * 0.3, height: size.height * 0.8)
         }
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

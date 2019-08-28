@@ -11,6 +11,7 @@ import UIKit
 class DetailController: UIViewController {
     var viewModel:DetailViewModel!
     let detailView = DetailView()
+    let dataAcess:DataAcess
     override func viewDidLoad() {
         initViewCoding()
         super.viewDidLoad()
@@ -18,6 +19,7 @@ class DetailController: UIViewController {
         viewModel.configureNavBar(navController: self.navigationController)
     }
     init(model:Movie,dataAcess:DataAcess){
+        self.dataAcess  = dataAcess
         super.init(nibName: nil, bundle: nil)
         viewModel = DetailViewModel(model: model, dataAcess: dataAcess,uiHandler: {
             DispatchQueue.main.async {
@@ -28,30 +30,21 @@ class DetailController: UIViewController {
                 self.detailView.setup(viewModel: self.viewModel)
                 self.detailView.reloadCollection()
             }
-          
-            
         } )
-        
+        detailView.youtbeButton.addTarget(self, action: #selector(self.requestYoutube), for: .touchUpInside)
         detailView.artistCollection.delegate = viewModel
         detailView.artistCollection.dataSource = viewModel
         
+    }
+    @objc
+    func requestYoutube(){
+        viewModel.requestYoutube()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 extension DetailController:ViewCoding{
     func buildViewHierarchy() {
