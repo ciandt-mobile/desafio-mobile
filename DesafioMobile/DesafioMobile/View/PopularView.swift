@@ -24,24 +24,23 @@ class PopularView: UIView{
     
     lazy var loadRoll: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(frame: .zero)
-        view.color = UsedColors.black.color
+        view.color = UsedColors.white.color
         return view
     }()
     
     lazy var loadingLabel: UILabel = {
         let view = UILabel()
         view.text = "Loading movies!"
-        view.textColor = UsedColors.purple.color
+        view.textColor = UsedColors.white.color
         view.font = UIFont.systemFont(ofSize: 35)
         view.numberOfLines = 0
         view.textAlignment = .center
-        view.textColor = .black
         view.isHidden = false
         return view
     }()
     
     lazy var customSC: UISegmentedControl = {
-        let items = ["Popular","Tavindoai"]
+        let items = ["Popular","Upcoming"]
         let control = UISegmentedControl(items: items)
         control.tintColor = UsedColors.black.color
         control.selectedSegmentIndex = 0
@@ -52,6 +51,29 @@ class PopularView: UIView{
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+
+extension PopularView{
+    func resetGrid(){
+        let index = IndexPath(row: 0, section: 0)
+        gridView.scrollToItem(at: index, at: UICollectionView.ScrollPosition.top, animated: false)
+        gridView.isHidden = true
+        loadRoll.isHidden = false
+        loadingLabel.isHidden = false
+        gridView.reloadData()
+        loadRoll.startAnimating()
+    }
+    
+    func loadGrid(){
+        gridView.reloadData()
+        loadRoll.stopAnimating()
+        loadRoll.isHidden = true
+        loadingLabel.isHidden = true
+        gridView.isHidden = false
+    }
+}
+
+
 
 //MARK: - Extension to define the cell constraints
 extension PopularView: CodeView{

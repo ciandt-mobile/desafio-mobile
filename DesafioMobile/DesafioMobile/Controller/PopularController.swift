@@ -11,7 +11,7 @@ import UIKit
 
 
 //MARK: - Protocols
-protocol MovieGridViewModelDelegate: class{
+protocol PopularGridViewModelDelegate: class{
     func refreshMovieData()
 }
 
@@ -35,7 +35,8 @@ class PopularController: UIViewController {
     override func viewDidLoad(){
         self.view = screen
         
-        navigationItem.title = "Populares"
+        navigationItem.title = "Popular Moveis"
+        screen.customSC.addTarget(self, action: #selector(loadUpcoming), for: UIControl.Event.valueChanged)
         navigationItem.titleView = screen.customSC
         
         screen.gridView.delegate = self
@@ -43,32 +44,45 @@ class PopularController: UIViewController {
         screen.loadRoll.startAnimating()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        screen.gridView.reloadData()
-    }
 }
 
 
 //MARK: - View Model delegate
-extension PopularController: MovieGridViewModelDelegate{
+extension PopularController: PopularGridViewModelDelegate{
     func refreshMovieData() {
         DispatchQueue.main.async { [weak self] in
-            self?.screen.gridView.reloadData()
-            self?.screen.loadRoll.stopAnimating()
-            self?.screen.loadRoll.isHidden = true
-            self?.screen.loadingLabel.isHidden = true
-            self?.screen.gridView.isHidden = false
+            self?.screen.loadGrid()
         }
     }
 }
 
 
+
 //MARK: - Transition
 extension PopularController{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-     
+        let selectedMovie = viewModel.movies[indexPath.row]
+        let detailsVC = DetailsController(selectedMovie: selectedMovie)
+        navigationController?.pushViewController(detailsVC, animated: true)
+    }
+    
+    @objc func loadUpcoming(){
+        if screen.customSC.selectedSegmentIndex == 0 {
+            viewModel.resetMovies()
+            screen.resetGrid()
+            navigationItem.title = "Popular Moveis"
+            viewModel.loadMovies(type: viewModel.atualType)
+            
+        }else{
+            viewModel.resetMovies()
+            screen.resetGrid()
+            navigationItem.title = "Upcoming Moveis"
+            viewModel.loadMovies(type: viewModel.atualType)
+        }
     }
 }
+
+
 
 //MARK: - CollectionView DataSource
 extension PopularController: UICollectionViewDataSource{
@@ -89,18 +103,18 @@ extension PopularController: UICollectionViewDataSource{
 extension PopularController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     // Loads more movies when the scrool gets near the end
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if(indexPath.row == viewModel.movies.count - 5){
-            viewModel.loadMovies()
+        if(indexPath.row > 15 && indexPath.row == viewModel.movies.count - 3){
+            viewModel.loadMovies(type: viewModel.atualType)
         }
     }
     
     // Distance to the screen sides
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10,left: 3,bottom: 10,right: 3)
+        return UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
     }
     // Set the size of the cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 115, height: 230)
+        return CGSize(width: 150, height: 300)
     }
 }
 

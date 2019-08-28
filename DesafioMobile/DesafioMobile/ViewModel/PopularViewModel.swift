@@ -13,15 +13,17 @@ import UIKit
 protocol PopularInterface: class{
     var pageCount: Int {get set}
     var movies: [PresentableMovieInterface] {get set}
-    func loadMovies()
+    func loadMovies(type: String)
+    func resetMovies()
 }
 
 
 //MARK: - Init
 class PopularViewModel{
     public var pageCount = 0
-    weak var refresh: MovieGridViewModelDelegate?
+    weak var refresh: PopularGridViewModelDelegate?
     var apiAccess: APIClientInterface
+    var atualType: String = "popular"
     
     
     var movies: [PresentableMovieInterface] = [] {
@@ -32,7 +34,7 @@ class PopularViewModel{
     
     init(apiAccess: APIClientInterface) {
         self.apiAccess = apiAccess
-        loadMovies()
+        loadMovies(type: atualType)
     }
 }
 
@@ -50,10 +52,10 @@ extension PopularViewModel: PopularInterface{
     }
     
     //Loads the movies from the API
-    func loadMovies(){
+    func loadMovies(type: String){
         pageCount += 1
         var tempImage = UIImage()
-        apiAccess.fetchData(path: ApiPaths.movies(page: pageCount), type: Populares.self) { [weak self] (fetchedMovies,error) in
+        apiAccess.fetchData(path: ApiPaths.movies(page: pageCount,type: type), type: Populares.self) { [weak self] (fetchedMovies,error) in
             guard let checkMovies = fetchedMovies.results else {fatalError("Error fetching the movies form the API")}
             if error == nil {
                 checkMovies.forEach({ (movie) in
@@ -68,6 +70,18 @@ extension PopularViewModel: PopularInterface{
             }else{
                 self?.movies = []
             }
+        }
+    }
+    
+    //Reset the movie array
+    func resetMovies(){
+        pageCount = 0
+        movies.removeAll()
+        
+        if atualType == "popular" {
+            atualType = "upcoming"
+        }else{
+            atualType = "popular"
         }
     }
 }
