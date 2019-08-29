@@ -75,15 +75,12 @@ class DetailViewModel:NSObject {
             }
         }
     }
-    func configureNavBar(navController:UINavigationController?){
-        navController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navController?.navigationBar.shadowImage = UIImage()
-        navController?.navigationBar.isTranslucent = true
-        navController?.view.backgroundColor = .clear
-        navController?.navigationBar.tintColor = Color.oldPaper
+    func configureNavBar(controller:UIViewController){
+        controller.navigationController?.navigationBar.isHidden = true
 
         
     }
+
     private func getImage(){
         dataAcess.getImage(path: model.backdrop_path ?? "", width: 1280) { [weak self](image) in
             if let image = image{
@@ -94,6 +91,10 @@ class DetailViewModel:NSObject {
             }
            self?.uiHandler?()
         }
+    }
+    @objc
+    func back(){
+        
     }
 
 }

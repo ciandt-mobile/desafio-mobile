@@ -16,7 +16,15 @@ class DetailController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         initViewCoding()
-        viewModel.configureNavBar(navController: self.navigationController)
+        viewModel.configureNavBar(controller: self)
+       
+        
+       
+        
+    }
+    @objc
+    func pop(){
+        self.navigationController?.popViewController(animated: true)
     }
     init(model:Movie,dataAcess:DataAcess){
         self.dataAcess  = dataAcess
@@ -32,6 +40,7 @@ class DetailController: UIViewController {
             }
         } )
         detailView.youtbeButton.addTarget(self, action: #selector(self.requestYoutube), for: .touchUpInside)
+        detailView.backButton.addTarget(self, action: #selector(self.pop), for: .touchUpInside)
         detailView.artistCollection.delegate = viewModel
         detailView.artistCollection.dataSource = viewModel
         

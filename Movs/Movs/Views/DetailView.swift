@@ -37,6 +37,13 @@ class DetailView: UIView {
         label.numberOfLines = 0
         return label
     }()
+    let backButton:UIButton = {
+        let button = UIButton()
+        let image = UIImage(named: "back_button")?.withRenderingMode(.alwaysOriginal)
+        button.setImage(image, for: .normal)
+        return button
+    }()
+
     let youtbeButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "play_button")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -96,7 +103,7 @@ class DetailView: UIView {
         self.artistCollection.anchor(top: genreLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor,size:CGSize(width: 0, height: 200))
          self.overview.anchor(top: artistCollection.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
         self.youtbeButton.anchor(top: overview.bottomAnchor, leading: nil, bottom: nil, trailing: nil,size:CGSize(width: 100, height: 100))
-        
+        backButton.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: layoutMargins.top*0.75, left: layoutMargins.left, bottom: 0, right: 0),size:CGSize(width: 50, height: 50))
         youtbeButton.centerXAnchor.constraint(equalTo: overview.centerXAnchor).isActive = true
     }
     func setUpLandscape(){
@@ -109,6 +116,8 @@ class DetailView: UIView {
         self.overview.anchor(top: artistCollection.bottomAnchor, leading: self.topImageView.trailingAnchor, bottom: nil, trailing: self.trailingAnchor)
         self.youtbeButton.anchor(top: overview.bottomAnchor, leading: nil, bottom: nil, trailing: nil,size:CGSize(width: 100, height: 100))
           youtbeButton.centerXAnchor.constraint(equalTo: overview.centerXAnchor).isActive = true
+       // backButton.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: backgroundImage.leadingAnchor, bottom: nil, trailing: nil,size:CGSize(width: 30, height: 30))
+        backButton.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: layoutMargins.top * 0.25, left: layoutMargins.left, bottom: 0, right: 0),size:CGSize(width: 50, height: 50))
     }
     func removeConstraints(){
         self.topImageView.removeAllConstraints()
@@ -117,6 +126,7 @@ class DetailView: UIView {
         self.artistCollection.removeAllConstraints()
         self.overview.removeAllConstraints()
         self.youtbeButton.removeAllConstraints()
+        self.backButton.removeAllConstraints()
     }
 
 
@@ -130,11 +140,13 @@ extension DetailView:ViewCoding{
         self.addSubview(artistCollection)
         self.addSubview(overview)
         self.addSubview(youtbeButton)
+        self.addSubview(backButton)
        
     }
     
     func setUpConstraints() {
         backgroundImage.fillSuperview()
+//        backButton.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: self.layoutMarginsGuide.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0),size:CGSize(width: 50, height: 50))
 
     }
     

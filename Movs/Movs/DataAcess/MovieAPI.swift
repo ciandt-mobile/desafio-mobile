@@ -59,8 +59,13 @@ final class MovieAPI {
      func request(path:String,_ code:@escaping (Data?,Error?) ->Void){
         do {
             let url = try BuildURL(path: path)
-            URLSession.shared.dataTask(with: url) { (data, response, err) in
+            URLSession.shared.dataTask(with: url) {(data, response, err) in
                 //check for data
+                guard let httpResponse = response as? HTTPURLResponse,
+                    (200...299).contains(httpResponse.statusCode) else {
+                        code(nil,NetworkError.badRequest("Request failed"))
+                        return
+                }
                 guard let data = data else{return}
                 code(data,nil)
                 }.resume()

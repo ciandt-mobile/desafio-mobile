@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let homeController = HomeController(dataAcess: acess)
         let navigation = UINavigationController(rootViewController: homeController)
+     
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
         
