@@ -21,14 +21,14 @@ protocol PopularInterface: class{
 //MARK: - Init
 class PopularViewModel{
     public var pageCount = 0
-    weak var refresh: PopularGridViewModelDelegate?
+    weak var refreshDelegate: PopularGridViewModelDelegate?
     var apiAccess: APIClientInterface
     var atualType: String = "popular"
     
     
     var movies: [PresentableMovieInterface] = [] {
         didSet{
-            refresh?.refreshMovieData()
+            refreshDelegate?.refreshMovieData()
         }
     }
     

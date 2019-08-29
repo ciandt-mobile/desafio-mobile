@@ -31,6 +31,14 @@ class DetailsView: UIView {
     
     lazy var titleLabel: UILabel = {
         let view = UILabel(frame: .zero)
+        view.font = UIFont(name: "Kailase", size: 10)
+        view.textColor = UsedColors.gold.color
+        view.numberOfLines = 0
+        return view
+    }()
+    
+    lazy var yearLabel: UILabel = {
+        let view = UILabel(frame: .zero)
         view.textAlignment = .center
         view.textColor = UsedColors.white.color
         view.numberOfLines = 0
@@ -39,9 +47,10 @@ class DetailsView: UIView {
     
     lazy var genresLabel: UILabel = {
         let view = UILabel(frame: .zero)
-        view.textAlignment = .center
+        view.font = UIFont(name: "Kailase", size: 3)
         view.textColor = UsedColors.white.color
-        view.numberOfLines = 0
+        view.adjustsFontSizeToFitWidth = true
+        view.numberOfLines = 1
         return view
     }()
     
@@ -63,10 +72,11 @@ class DetailsView: UIView {
 
 //MARK: - Extension to define the cell constraints
 extension DetailsView{
-    func configure(detailedMovie: PresentableMovieInterface,genreNames: String){
+    func configure(detailedMovie: PresentableMovieInterface,movieYear: String,genreNames: String, runtime: Int){
         descLabel.text = detailedMovie.description
-        genresLabel.text = genreNames
+        genresLabel.text = "\(runtime) | \(genreNames)"
         titleLabel.text = detailedMovie.name
+        yearLabel.text = movieYear
         imageView.image = detailedMovie.bannerImage
     }
 }
@@ -77,6 +87,7 @@ extension DetailsView: CodeView{
     func buildViewHierarchy() {
         verticalContainer.addSubview(titleLabel)
         verticalContainer.addSubview(genresLabel)
+        verticalContainer.addSubview(yearLabel)
         addSubview(verticalContainer)
         addSubview(imageView)
         addSubview(descLabel)
@@ -91,24 +102,31 @@ extension DetailsView: CodeView{
         }
         
         titleLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.5)
+            make.left.equalToSuperview().offset(15)
+            make.right.equalToSuperview().multipliedBy(0.7)
+            make.height.equalToSuperview().multipliedBy(0.6)
+            make.top.equalToSuperview().offset(2)
+        }
+        
+        yearLabel.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().inset(15)
+            make.left.equalTo(titleLabel.snp.right)
+            make.height.equalToSuperview().multipliedBy(0.6)
             make.top.equalToSuperview().offset(2)
         }
         
         genresLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
+            make.left.equalToSuperview().offset(15)
+            make.right.equalToSuperview().inset(15)
             make.top.equalTo(titleLabel.snp.bottom)
-            make.bottom.equalTo(verticalContainer.snp.bottom)
+            make.bottom.equalToSuperview()
         }
         
         verticalContainer.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
             make.left.equalToSuperview()
             make.top.equalTo(imageView.snp.bottom)
-            make.height.equalToSuperview().multipliedBy(0.15)
+            make.height.equalToSuperview().multipliedBy(0.1)
         }
         
         

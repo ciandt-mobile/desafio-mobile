@@ -24,7 +24,7 @@ class PopularController: UIViewController {
     init(apiAccess: APIClientInterface) {
         viewModel = PopularViewModel(apiAccess: apiAccess)
         super.init(nibName: nil, bundle: nil)
-        viewModel.refresh = self
+        viewModel.refreshDelegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,7 +35,6 @@ class PopularController: UIViewController {
     override func viewDidLoad(){
         self.view = screen
         
-        navigationItem.title = "Popular Moveis"
         screen.customSC.addTarget(self, action: #selector(loadUpcoming), for: UIControl.Event.valueChanged)
         navigationItem.titleView = screen.customSC
         
@@ -62,7 +61,7 @@ extension PopularController: PopularGridViewModelDelegate{
 extension PopularController{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedMovie = viewModel.movies[indexPath.row]
-        let detailsVC = DetailsController(selectedMovie: selectedMovie)
+        let detailsVC = DetailsController(selectedMovie: selectedMovie,apiAccess: viewModel.apiAccess)
         navigationController?.pushViewController(detailsVC, animated: true)
     }
     
@@ -70,13 +69,11 @@ extension PopularController{
         if screen.customSC.selectedSegmentIndex == 0 {
             viewModel.resetMovies()
             screen.resetGrid()
-            navigationItem.title = "Popular Moveis"
             viewModel.loadMovies(type: viewModel.atualType)
             
         }else{
             viewModel.resetMovies()
             screen.resetGrid()
-            navigationItem.title = "Upcoming Moveis"
             viewModel.loadMovies(type: viewModel.atualType)
         }
     }
@@ -103,7 +100,7 @@ extension PopularController: UICollectionViewDataSource{
 extension PopularController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     // Loads more movies when the scrool gets near the end
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if(indexPath.row > 15 && indexPath.row == viewModel.movies.count - 3){
+        if(indexPath.row > 15 && indexPath.row == viewModel.movies.count - 4){
             viewModel.loadMovies(type: viewModel.atualType)
         }
     }

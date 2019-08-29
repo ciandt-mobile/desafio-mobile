@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationAppearence = UINavigationBar.appearance()
         navigationAppearence.barTintColor = UsedColors.gray.color
-        navigationAppearence.prefersLargeTitles = true
         
         return true
     }

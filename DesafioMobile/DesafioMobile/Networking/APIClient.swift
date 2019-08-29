@@ -14,8 +14,8 @@ fileprivate let api_key: String = "142734ae2d8944d42c389ce088b2e253"
 //MARK: - The paths to access the API
 enum ApiPaths{
     case image
-    case genre
     case movies(page: Int,type: String)
+    case detailMovie(id: Int)
     
     var path: String{
         switch self {
@@ -23,8 +23,8 @@ enum ApiPaths{
             return "http://image.tmdb.org/t/p/w500"
         case .movies(let page, let type):
             return "https://api.themoviedb.org/3/movie/\(type)?api_key=\(api_key)&language=en-US&page=\(page)"
-        case .genre:
-            return "https://api.themoviedb.org/3/genre/movie/list?api_key=\(api_key)&language=en-US"
+        case .detailMovie(let id):
+            return "https://api.themoviedb.org/3/movie/\(id)?api_key=\(api_key)"
         }
     }
 }
@@ -37,10 +37,6 @@ protocol APIClientInterface{
 
 //MARK: - API Acess Methods
 class APIClient: APIClientInterface{
-    
-    init() {
-    }
-    
     
     // Fetch the popular movies in the API
     func fetchData<T:Codable>(path: ApiPaths,type: T.Type,completion: @escaping (T,Error?) -> Void){

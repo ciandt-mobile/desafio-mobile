@@ -15,11 +15,8 @@ protocol PresentableMovieInterface {
     var name: String {get}
     var bannerImage: UIImage? {get}
     var description: String {get}
-//    var genres: [Genre] {get}
+    var genres: [Int] {get}
     var date: String {get}
-    
-    func getYear(completeDate: String) -> String
- //   func getGenres(genresIDS: [Int]) -> [Genre]
 }
 
 
@@ -29,7 +26,7 @@ class PresentableMovie: PresentableMovieInterface{
     var name: String = ""
     var bannerImage: UIImage?
     var description: String = ""
-   // var genres: [Genre] = []
+    var genres: [Int] = []
     var date: String = ""
     
     init(movieID: Int,movieTitle: String,movieOverview: String,movieGenres: [Int],movieDate: String,image: UIImage?) {
@@ -38,31 +35,18 @@ class PresentableMovie: PresentableMovieInterface{
         self.name = movieTitle
         self.description = movieOverview
         self.date = movieDate
-       // self.genres = getGenres(genresIDS: movieGenres)
+        self.genres = movieGenres
         
         
         if let image = image {
             self.bannerImage = image
         }else{
-            self.bannerImage = UIImage(named: "Splash")
+            self.bannerImage = UIImage()
         }
     }
     
     convenience init(){
         self.init(movieID: 0,movieTitle: "",movieOverview: "",movieGenres: [],movieDate: "",image: nil)
     }
-    
-    
-    //Transform the date in a year
-    func getYear(completeDate: String) -> String{
-        let prefixDate = completeDate.prefix(4)
-        return String(prefixDate)
-    }
-    
-    //Transforms the ids in genres
-//    func getGenres(genresIDS: [Int]) -> [Genre]{
-//        return APIClient.allGenres.filter {genresIDS.contains($0.id)}
-//    }
-    
 }
 

@@ -14,7 +14,7 @@ enum UsedColors {
     case gray
     case white
     case purple
-    case orange
+    case gold
     
     var color: UIColor{
         switch self {
@@ -30,8 +30,8 @@ enum UsedColors {
         case .purple:
             return UIColor.flatPurple
             
-        case .orange:
-            return UIColor.flatOrange
+        case .gold:
+            return UIColor.flatYellowDark
         }
     }
 }
