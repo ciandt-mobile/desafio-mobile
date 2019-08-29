@@ -93,17 +93,17 @@ class DetailView: UIView {
         artistCollection.resizeCells(size: self.artistCollection.bounds.size)
 
     }
+    //Tried to do with stack view,it workrd but cold not remove the constraints error from the console
     func setUpPortrait(){
         imageHeight.isActive = true
         imageWidth.isActive = false
-        //TO DO: review this
         self.topImageView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
         self.titleLabel.anchor(top: topImageView.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
         self.genreLabel.anchor(top: titleLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
-        self.artistCollection.anchor(top: genreLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor,size:CGSize(width: 0, height: 200))
+        self.artistCollection.anchor(top: genreLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
          self.overview.anchor(top: artistCollection.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
-        self.youtbeButton.anchor(top: overview.bottomAnchor, leading: nil, bottom: nil, trailing: nil,size:CGSize(width: 100, height: 100))
-        backButton.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: layoutMargins.top*0.75, left: layoutMargins.left, bottom: 0, right: 0),size:CGSize(width: 50, height: 50))
+        self.youtbeButton.anchor(top: overview.bottomAnchor, leading: nil, bottom: nil, trailing: nil)
+        backButton.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: layoutMargins.top*0.75, left: layoutMargins.left, bottom: 0, right: 0))
         youtbeButton.centerXAnchor.constraint(equalTo: overview.centerXAnchor).isActive = true
     }
     func setUpLandscape(){
@@ -112,12 +112,11 @@ class DetailView: UIView {
        self.topImageView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: nil)
         self.titleLabel.anchor(top: self.topAnchor, leading: topImageView.trailingAnchor, bottom: nil, trailing: self.trailingAnchor)
         self.genreLabel.anchor(top: titleLabel.bottomAnchor, leading: topImageView.trailingAnchor, bottom: nil, trailing: self.trailingAnchor)
-        self.artistCollection.anchor(top: self.genreLabel.bottomAnchor, leading: self.topImageView.trailingAnchor, bottom: nil, trailing: self.trailingAnchor,size:CGSize(width: 0, height: 200))
+        self.artistCollection.anchor(top: self.genreLabel.bottomAnchor, leading: self.topImageView.trailingAnchor, bottom: nil, trailing: self.trailingAnchor)
         self.overview.anchor(top: artistCollection.bottomAnchor, leading: self.topImageView.trailingAnchor, bottom: nil, trailing: self.trailingAnchor)
-        self.youtbeButton.anchor(top: overview.bottomAnchor, leading: nil, bottom: nil, trailing: nil,size:CGSize(width: 100, height: 100))
+        self.youtbeButton.anchor(top: overview.bottomAnchor, leading: nil, bottom: nil, trailing: nil)
           youtbeButton.centerXAnchor.constraint(equalTo: overview.centerXAnchor).isActive = true
-       // backButton.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: backgroundImage.leadingAnchor, bottom: nil, trailing: nil,size:CGSize(width: 30, height: 30))
-        backButton.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: layoutMargins.top * 0.25, left: layoutMargins.left, bottom: 0, right: 0),size:CGSize(width: 50, height: 50))
+        backButton.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: layoutMargins.top * 0.25, left: layoutMargins.left, bottom: 0, right: 0))
     }
     func removeConstraints(){
         self.topImageView.removeAllConstraints()
@@ -146,7 +145,11 @@ extension DetailView:ViewCoding{
     
     func setUpConstraints() {
         backgroundImage.fillSuperview()
-//        backButton.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: self.layoutMarginsGuide.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0),size:CGSize(width: 50, height: 50))
+        //Could not find a way to remove size constraint so here i added only then
+        artistCollection.anchor(top: nil, leading: nil, bottom: nil, trailing: nil,size:CGSize(width: 0, height: 200))
+        youtbeButton.anchor(top: nil, leading: nil, bottom: nil, trailing: nil,size:CGSize(width: 50, height: 50))
+        backButton.anchor(top: nil, leading: nil, bottom: nil, trailing: nil,size:CGSize(width: 50, height: 50))
+
 
     }
     
