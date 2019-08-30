@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let homeController = HomeController(dataAcess: acess)
         let navigation = UINavigationController(rootViewController: homeController)
-     
+        
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
         
@@ -54,3 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension UINavigationController {
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}

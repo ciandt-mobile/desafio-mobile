@@ -58,9 +58,7 @@ class HomeViewModel:NSObject{
         navController?.navigationBar.shadowImage = UIImage()
         navController?.navigationBar.isTranslucent = true
         navController?.view.backgroundColor = .clear
-        
-
-        
+        navController?.navigationBar.isHidden = false
     }
 
     

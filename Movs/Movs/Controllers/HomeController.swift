@@ -29,10 +29,15 @@ class HomeController:UIViewController{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        viewModel.configureNavBar(navController: self.navigationController)
+        updateViewConstraints()
+       
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewCoding()
-        viewModel.configureNavBar(navController: self.navigationController)
         viewModel.didSelect = { [weak self](cellViewModel) in
             guard let self = self else{
                 return
@@ -41,7 +46,8 @@ class HomeController:UIViewController{
             self.navigationController?.pushViewController(detailController, animated: true)
         }
         homeView.segment.addTarget(self, action: #selector(self.indexChanged(_:)), for: .valueChanged)
-        self.navigationItem.titleView = homeView.segment
+         self.navigationItem.titleView = homeView.segment
+        
     }
     @objc func indexChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex{
@@ -57,6 +63,7 @@ class HomeController:UIViewController{
         self.homeView.collection.scrollToStart()
     }
  
+ 
 }
 extension HomeController:ViewCoding{
     func buildViewHierarchy() {
@@ -70,4 +77,5 @@ extension HomeController:ViewCoding{
     
     
 }
+
 
