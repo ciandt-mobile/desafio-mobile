@@ -26,6 +26,8 @@
 		4396B6A42315F9A000683BFF /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396B6A32315F9A000683BFF /* DetailsViewModel.swift */; };
 		4396B6A62315FA5100683BFF /* DetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396B6A52315FA5100683BFF /* DetailsController.swift */; };
 		4396B6A92316E68D00683BFF /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396B6A82316E68D00683BFF /* Genre.swift */; };
+		4396B6AB231823B000683BFF /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396B6AA231823B000683BFF /* Cast.swift */; };
+		4396B6AD23182A1900683BFF /* CastViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396B6AC23182A1900683BFF /* CastViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		4396B6A32315F9A000683BFF /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		4396B6A52315FA5100683BFF /* DetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsController.swift; sourceTree = "<group>"; };
 		4396B6A82316E68D00683BFF /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		4396B6AA231823B000683BFF /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
+		4396B6AC23182A1900683BFF /* CastViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastViewCell.swift; sourceTree = "<group>"; };
 		46F0FD4E88AB8731AAD410A1 /* Pods-DesafioMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioMobile.debug.xcconfig"; path = "Target Support Files/Pods-DesafioMobile/Pods-DesafioMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		5AD176B0FA63F3AFFE153E58 /* Pods-DesafioMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioMobileTests.release.xcconfig"; path = "Target Support Files/Pods-DesafioMobileTests/Pods-DesafioMobileTests.release.xcconfig"; sourceTree = "<group>"; };
 		7D9F70B593710A54D9DF1714 /* Pods-DesafioMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-DesafioMobileTests/Pods-DesafioMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				4396B6862315A88A00683BFF /* PopularView.swift */,
 				4396B68F2315AA6B00683BFF /* PopularViewCell.swift */,
 				4396B6A12315F98C00683BFF /* DetailsView.swift */,
+				4396B6AC23182A1900683BFF /* CastViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 		4396B6802315A6ED00683BFF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4396B6AA231823B000683BFF /* Cast.swift */,
 				4396B6952315CEDF00683BFF /* Movie.swift */,
 				4396B6A82316E68D00683BFF /* Genre.swift */,
 				4396B6972315CF0A00683BFF /* PresentableMovie.swift */,
@@ -397,10 +403,12 @@
 				4396B6A62315FA5100683BFF /* DetailsController.swift in Sources */,
 				4396B65F2315A67500683BFF /* AppDelegate.swift in Sources */,
 				4396B6A22315F98C00683BFF /* DetailsView.swift in Sources */,
+				4396B6AD23182A1900683BFF /* CastViewCell.swift in Sources */,
 				4396B68B2315A8D700683BFF /* PopularViewModel.swift in Sources */,
 				4396B6982315CF0A00683BFF /* PresentableMovie.swift in Sources */,
 				4396B6892315A8C600683BFF /* PopularController.swift in Sources */,
 				4396B6A02315F16200683BFF /* ColorScheme.swift in Sources */,
+				4396B6AB231823B000683BFF /* Cast.swift in Sources */,
 				4396B6962315CEDF00683BFF /* Movie.swift in Sources */,
 				4396B68E2315A8F200683BFF /* CodeView.swift in Sources */,
 				4396B6A42315F9A000683BFF /* DetailsViewModel.swift in Sources */,

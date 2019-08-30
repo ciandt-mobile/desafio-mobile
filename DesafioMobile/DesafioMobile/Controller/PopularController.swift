@@ -38,8 +38,8 @@ class PopularController: UIViewController {
         screen.customSC.addTarget(self, action: #selector(loadUpcoming), for: UIControl.Event.valueChanged)
         navigationItem.titleView = screen.customSC
         
-        screen.gridView.delegate = self
-        screen.gridView.dataSource = self
+        screen.collectionView.delegate = self
+        screen.collectionView.dataSource = self
         screen.loadRoll.startAnimating()
     }
     
@@ -68,12 +68,12 @@ extension PopularController{
     @objc func loadUpcoming(){
         if screen.customSC.selectedSegmentIndex == 0 {
             viewModel.resetMovies()
-            screen.resetGrid()
+            screen.changeCollection()
             viewModel.loadMovies(type: viewModel.atualType)
             
         }else{
             viewModel.resetMovies()
-            screen.resetGrid()
+            screen.changeCollection()
             viewModel.loadMovies(type: viewModel.atualType)
         }
     }
@@ -89,8 +89,7 @@ extension PopularController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularViewCell.reuseIdentifier, for: indexPath) as! PopularViewCell
-        let movie = viewModel.movies[indexPath.row]
-        cell.configure(withViewModel: movie)
+        cell.configure(withViewModel: viewModel.movies[indexPath.row])
         return cell
     }
 }

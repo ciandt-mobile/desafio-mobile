@@ -54,15 +54,14 @@ extension PopularViewModel: PopularInterface{
     //Loads the movies from the API
     func loadMovies(type: String){
         pageCount += 1
-        var tempImage = UIImage()
+        
         apiAccess.fetchData(path: ApiPaths.movies(page: pageCount,type: type), type: Populares.self) { [weak self] (fetchedMovies,error) in
             guard let checkMovies = fetchedMovies.results else {fatalError("Error fetching the movies form the API")}
             if error == nil {
                 checkMovies.forEach({ (movie) in
                     if let path = movie.poster_path{
                         self?.loadImage(path: path, completion: { [weak self] (image) in
-                            tempImage = image
-                            self?.movies.append(PresentableMovie(movieID: movie.id, movieTitle: movie.title, movieOverview: movie.overview, movieGenres: movie.genre_ids, movieDate: movie.release_date, image: tempImage))
+                            self?.movies.append(PresentableMovie(movieID: movie.id, movieTitle: movie.title, movieOverview: movie.overview, movieGenres: movie.genre_ids, movieDate: movie.release_date, image: image))
                             
                         })
                     }

@@ -11,6 +11,7 @@ import UIKit
 
 protocol DetailsLoadDelegate: class{
     func refreshScreen()
+    func refreshCastView()
 }
 
 class DetailsController: UIViewController {
@@ -36,7 +37,14 @@ class DetailsController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = .clear
-        viewModel.getData()
+        
+        
+        screen.castView.delegate = self
+        screen.castView.dataSource = self
+        
+        viewModel.getData(completion: { [weak self] in
+            self?.screen.castView.reloadData()
+        })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -48,10 +56,18 @@ class DetailsController: UIViewController {
 }
 
 
+//MARK: - Protocol Methods
 extension DetailsController: DetailsLoadDelegate{
+    
     func refreshScreen() {
         DispatchQueue.main.async { [weak self] in
             self?.loadData()
+        }
+    }
+    
+    func refreshCastView(){
+        DispatchQueue.main.async { [weak self] in
+            self?.screen.castView.reloadData()
         }
     }
     
@@ -59,3 +75,32 @@ extension DetailsController: DetailsLoadDelegate{
         screen.configure(detailedMovie: viewModel.movie, movieYear: viewModel.movieYear, genreNames: viewModel.detailsGenres(), runtime: viewModel.runtime)
     }
 }
+
+
+//MARK: - Collection DataSource
+extension DetailsController: UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       return viewModel.castImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastViewCell.reuseIdentifier, for: indexPath) as! CastViewCell
+       cell.configure(withViewModel: viewModel.movieCast[indexPath.row], actorImage: viewModel.castImages[indexPath.row])
+       return cell
+    } 
+}
+
+
+//MARK: - CollectionView Layout
+extension DetailsController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    // Distance to the screen sides
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
+    }
+    // Set the size of the cells
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: collectionView.bounds.size.height)
+    }
+}
+

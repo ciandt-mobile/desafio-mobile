@@ -16,7 +16,7 @@ class PopularView: UIView{
         setupView()
     }
     
-    lazy var gridView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return view
@@ -54,22 +54,21 @@ class PopularView: UIView{
 
 
 extension PopularView{
-    func resetGrid(){
+    func changeCollection(){
         let index = IndexPath(row: 0, section: 0)
-        gridView.scrollToItem(at: index, at: UICollectionView.ScrollPosition.top, animated: false)
-        gridView.isHidden = true
+        collectionView.scrollToItem(at: index, at: UICollectionView.ScrollPosition.top, animated: false)
+        collectionView.reloadData()
+        collectionView.isHidden = true
         loadRoll.isHidden = false
         loadingLabel.isHidden = false
-        gridView.reloadData()
         loadRoll.startAnimating()
     }
     
     func loadGrid(){
-        gridView.reloadData()
+        collectionView.reloadData()
         loadRoll.stopAnimating()
-        loadRoll.isHidden = true
         loadingLabel.isHidden = true
-        gridView.isHidden = false
+        collectionView.isHidden = false
     }
 }
 
@@ -78,14 +77,14 @@ extension PopularView{
 //MARK: - Extension to define the cell constraints
 extension PopularView: CodeView{
     func buildViewHierarchy() {
-        addSubview(gridView)
+        addSubview(collectionView)
         addSubview(loadingLabel)
         addSubview(loadRoll)
         bringSubviewToFront(loadRoll)
     }
     
     func setupConstrains() {
-        gridView.snp.makeConstraints { (make) in
+        collectionView.snp.makeConstraints { (make) in
             make.left.right.top.bottom.equalToSuperview()
         }
         
@@ -102,8 +101,8 @@ extension PopularView: CodeView{
     }
     
     func setupAdditionalConfiguration() {
-        gridView.backgroundColor = UsedColors.black.color
-        gridView.register(PopularViewCell.self, forCellWithReuseIdentifier: PopularViewCell.reuseIdentifier)
+        collectionView.backgroundColor = UsedColors.black.color
+        collectionView.register(PopularViewCell.self, forCellWithReuseIdentifier: PopularViewCell.reuseIdentifier)
     }
 }
 

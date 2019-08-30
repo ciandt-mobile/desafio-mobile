@@ -54,6 +54,13 @@ class DetailsView: UIView {
         return view
     }()
     
+    lazy var castView: UICollectionView = {
+       let layout = UICollectionViewFlowLayout()
+       layout.scrollDirection = .horizontal
+       let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+       return view
+    }()
+    
     lazy var verticalContainer: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = UsedColors.black.color
@@ -90,6 +97,7 @@ extension DetailsView: CodeView{
         verticalContainer.addSubview(yearLabel)
         addSubview(verticalContainer)
         addSubview(imageView)
+        addSubview(castView)
         addSubview(descLabel)
     }
     
@@ -129,15 +137,22 @@ extension DetailsView: CodeView{
             make.height.equalToSuperview().multipliedBy(0.1)
         }
         
+        castView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(verticalContainer.snp.bottom)
+            make.height.equalToSuperview().multipliedBy(0.2)
+            make.bottom.equalTo(descLabel.snp.top)
+        }
         
         descLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview().offset(5)
-            make.top.equalTo(verticalContainer.snp.bottom)
+            make.top.equalTo(castView.snp.bottom)
             make.bottom.equalTo(snp.bottomMargin)
         }
     }
     
     func setupAdditionalConfiguration() {
         backgroundColor = UsedColors.black.color
+        castView.register(CastViewCell.self, forCellWithReuseIdentifier: CastViewCell.reuseIdentifier)
     }
 }

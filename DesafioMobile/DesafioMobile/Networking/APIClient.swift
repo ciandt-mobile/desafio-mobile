@@ -16,6 +16,7 @@ enum ApiPaths{
     case image
     case movies(page: Int,type: String)
     case detailMovie(id: Int)
+    case cast(id: Int)
     
     var path: String{
         switch self {
@@ -25,6 +26,8 @@ enum ApiPaths{
             return "https://api.themoviedb.org/3/movie/\(type)?api_key=\(api_key)&language=en-US&page=\(page)"
         case .detailMovie(let id):
             return "https://api.themoviedb.org/3/movie/\(id)?api_key=\(api_key)"
+        case .cast(let id):
+            return "https://api.themoviedb.org/3/movie/\(id)/credits?api_key=\(api_key)"
         }
     }
 }
@@ -48,6 +51,7 @@ class APIClient: APIClientInterface{
         let dataTask = session.dataTask(with: request,completionHandler: { (data, response, error) -> Void in
             guard let data = data else{return}
             do{
+              //  print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
                 let result = try JSONDecoder().decode(T.self, from: data)
                 completion(result,error)
             }catch{
