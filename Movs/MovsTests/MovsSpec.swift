@@ -50,15 +50,20 @@ class MovsSpec: QuickSpec {
                 }
                 context("User want to go details"){
                     acessMock.getMovies(request: Request.popular, page: 1, { (result) in
-                        let detailController = DetailController(model: result[0], dataAcess: acessMock)
-                        detailController.viewDidLoad()
-                        expect(detailController.viewModel).toNot(beNil())
-                        homeController.navigationController?.pushViewController(detailController, animated: false)
-                        let view = detailController.detailView
-                        it("Shoul have right View"){
-                            view.layoutMarginsDidChange()
-                            expect(view) == snapshot()
+                        if let result = result?.first {
                             
+                            let detailController = DetailController(model: result, dataAcess: acessMock)
+                            detailController.viewDidLoad()
+                            expect(detailController.viewModel).toNot(beNil())
+                            homeController.navigationController?.pushViewController(detailController, animated: false)
+                            let view = detailController.detailView
+                            it("Shoul have right View"){
+                                view.layoutMarginsDidChange()
+                                expect(view) == snapshot()
+                                
+                            }
+                        }else{
+                            fail("check acess mock")
                         }
                         
                     })

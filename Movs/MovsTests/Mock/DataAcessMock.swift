@@ -19,11 +19,11 @@ class DataAcessMock: DataAcess {
         fetch(nil)
     }
     
-    func getMovies(request: Request, page: Int, _ fetch: @escaping ([Movie]) -> ()) {
+    func getMovies(request: Request, page: Int, _ fetch: @escaping ([Movie]?) -> ()) {
         fetch([Movie(id: 0, title: nil, popularity: nil, poster_path: nil, genres: nil, backdrop_path: nil, overview: nil, release_date: nil, runtime: nil, videos: nil)])
     }
     
-    func getCast(id: String, _ fetch: @escaping ([Cast]) -> ()) {
+    func getCast(id: String, _ fetch: @escaping ([Cast]?) -> ()) {
         fetch([Cast(character: "None", name: "None", profile_path: nil)])
     }    
     
