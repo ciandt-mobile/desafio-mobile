@@ -11,19 +11,17 @@ import UIKit
 class HomeController:UIViewController{
     let dataAcess:DataAcess
     let homeView:HomeView
-    let viewModel:HomeViewModel
-    
+    lazy var viewModel:HomeViewModel = {
+        return HomeViewModel(dataAcess: self.dataAcess, uiHandler: {
+            DispatchQueue.main.async {[weak self] in
+                self?.homeView.collection.reloadData()
+            }
+        },refreshHandler: homeView)
+    }()
     init(dataAcess:DataAcess) {
-        viewModel = HomeViewModel(dataAcess: dataAcess)
         self.homeView = HomeView()
         self.dataAcess = dataAcess
         super.init(nibName: nil, bundle: nil)
-       
-        viewModel.uiHandler = {
-            DispatchQueue.main.async {[weak self] in
-                 self?.homeView.collection.reloadData()
-            }
-        }
         homeView.setUp(viewModel: viewModel)
     }
     required init?(coder aDecoder: NSCoder) {

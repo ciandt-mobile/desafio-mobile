@@ -7,7 +7,10 @@
 //
 
 import UIKit
-
+protocol Refresh:AnyObject {
+    func removeRefresher()
+    func addRefresher()
+}
 class HomeViewModel:NSObject{
     private var page = 1
     var dataAcess:DataAcess
@@ -16,16 +19,24 @@ class HomeViewModel:NSObject{
     var displayPage:(()->Void)?
     var didSelect:((MovieCellViewModel)->Void)?
     var uiHandler:(()->Void)?
+    var refreshHandler:Refresh?
     var backgroundImage = UIImage(named: "black_background")
     //Could use NSlocalizable string to have more languages
     var segmentItens = ["Upcoming","Popular"]
    // private var cellSize:CGSize
-    init(dataAcess:DataAcess,uiHandler:(()->Void)? = nil) {
+    
+    init(dataAcess:DataAcess,uiHandler:(()->Void)? = nil,refreshHandler:Refresh? = nil) {
         self.dataAcess = dataAcess
         self.uiHandler = uiHandler
+        self.refreshHandler = refreshHandler
         super.init()
+        refreshHandler?.addRefresher()
         dataAcess.getMovies(request: Request.popular, page: page) { [weak self](result) in
-            self?.appendMovies(movies: result)
+            guard let self = self,let result = result else{
+                return
+            }
+            self.refreshHandler?.removeRefresher()
+            self.appendMovies(movies: result)
         }
     }
     func appendMovies(movies:[Movie]) {
@@ -37,20 +48,30 @@ class HomeViewModel:NSObject{
     }
     private func resetPage(){
         self.page = 1
+      
     }
 
     func changeData(request:Request){
         resetPage()
+        self.data = []
+        uiHandler?()
+        refreshHandler?.addRefresher()
         currentRequest = request
         dataAcess.getMovies(request: request, page: self.page) { [weak self](results) in
-            self?.data = []
-            self?.appendMovies(movies: results)
+            guard let self = self,let results = results else{
+                return
+            }
+            self.refreshHandler?.removeRefresher()
+            self.appendMovies(movies: results)
         }
     }
     private func addPage(){
         self.page += 1
         dataAcess.getMovies(request: currentRequest, page: self.page) { [weak self](results) in
-            self?.appendMovies(movies: results)
+            guard let self = self,let results = results else{
+                return
+            }
+            self.appendMovies(movies: results)
         }
     }
     func configureNavBar(navController:UINavigationController?){

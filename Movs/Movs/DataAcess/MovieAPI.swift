@@ -127,7 +127,7 @@ final class MovieAPI {
 }
 extension MovieAPI:DataAcess{
 
-    func getCast(id: String, _ fetch: @escaping ([Cast]) -> ()) {
+    func getCast(id: String, _ fetch: @escaping ([Cast]?) -> ()) {
         let path = creditUrl.replacingOccurrences(of: "@", with: "\(id)")
         request(path: path) { (data, error) in
             guard let data = data else{
@@ -138,7 +138,7 @@ extension MovieAPI:DataAcess{
                 let castRequest = try decoder.decode(CastRequest.self, from: data)
                 fetch(castRequest.cast)
             }catch _{
-                fetch([])
+                fetch(nil)
             }
         }
     }
@@ -163,9 +163,10 @@ extension MovieAPI:DataAcess{
         }
     }
     
-    func getMovies(request:Request,page:Int,_ fetch: @escaping ([Movie]) -> ()) {
+    func getMovies(request:Request,page:Int,_ fetch: @escaping ([Movie]?) -> ()) {
         movieRequest(mode: request, page: page) { (result, error) in
             if error != nil{
+                fetch(nil)
                 return
             }
             fetch(result)

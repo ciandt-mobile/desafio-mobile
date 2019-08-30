@@ -11,6 +11,13 @@ import UIKit
 class DetailView: UIView {
     
     let backgroundImage = UIImageView()
+    private let activityControl:UIActivityIndicatorView = {
+        let activityView = UIActivityIndicatorView()
+        activityView.hidesWhenStopped = true
+        activityView.backgroundColor = .clear
+        activityView.style = UIActivityIndicatorView.Style.whiteLarge
+        return activityView
+    }()
     let artistCollection:MainCollectionView = {
         let layout = MainCollectionLayout()
         layout.sideItemAlpha = 1.0
@@ -56,8 +63,8 @@ class DetailView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         initViewCoding()
+        activityControl.startAnimating()
 
     }
     func setup(viewModel:DetailViewModel){
@@ -105,6 +112,7 @@ class DetailView: UIView {
         self.youtbeButton.anchor(top: overview.bottomAnchor, leading: nil, bottom: nil, trailing: nil)
         backButton.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: layoutMargins.top*0.75, left: layoutMargins.left, bottom: 0, right: 0))
         youtbeButton.centerXAnchor.constraint(equalTo: overview.centerXAnchor).isActive = true
+        activityControl.anchor(top: artistCollection.topAnchor, leading: artistCollection.leadingAnchor, bottom: artistCollection.bottomAnchor, trailing: artistCollection.trailingAnchor)
     }
     func setUpLandscape(){
         imageHeight.isActive = false
@@ -117,6 +125,7 @@ class DetailView: UIView {
         self.youtbeButton.anchor(top: overview.bottomAnchor, leading: nil, bottom: nil, trailing: nil)
           youtbeButton.centerXAnchor.constraint(equalTo: overview.centerXAnchor).isActive = true
         backButton.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: layoutMargins.top * 0.25, left: layoutMargins.left, bottom: 0, right: 0))
+        activityControl.anchor(top: artistCollection.topAnchor, leading: artistCollection.leadingAnchor, bottom: artistCollection.bottomAnchor, trailing: artistCollection.trailingAnchor)
     }
     func removeConstraints(){
         self.topImageView.removeAllConstraints()
@@ -126,6 +135,13 @@ class DetailView: UIView {
         self.overview.removeAllConstraints()
         self.youtbeButton.removeAllConstraints()
         self.backButton.removeAllConstraints()
+        self.activityControl.removeAllConstraints()
+    }
+    func stopRefresher(){
+        DispatchQueue.main.async {
+             self.activityControl.stopAnimating()
+        }
+       
     }
 
 
@@ -140,7 +156,8 @@ extension DetailView:ViewCoding{
         self.addSubview(overview)
         self.addSubview(youtbeButton)
         self.addSubview(backButton)
-       
+        self.addSubview(activityControl)
+        
     }
     
     func setUpConstraints() {
@@ -149,9 +166,27 @@ extension DetailView:ViewCoding{
         artistCollection.anchor(top: nil, leading: nil, bottom: nil, trailing: nil,size:CGSize(width: 0, height: 200))
         youtbeButton.anchor(top: nil, leading: nil, bottom: nil, trailing: nil,size:CGSize(width: 50, height: 50))
         backButton.anchor(top: nil, leading: nil, bottom: nil, trailing: nil,size:CGSize(width: 50, height: 50))
-
+        
 
     }
     
     
 }
+extension DetailView:Refresh{
+    func removeRefresher() {
+        DispatchQueue.main.async {
+            self.activityControl.stopAnimating()
+        }
+    }
+    
+    func addRefresher() {
+        DispatchQueue.main.async {
+            self.activityControl.isHidden = true
+            self.activityControl.startAnimating()
+        }
+        
+    }
+    
+    
+}
+

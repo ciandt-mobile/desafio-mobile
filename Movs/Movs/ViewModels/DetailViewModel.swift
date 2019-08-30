@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class DetailViewModel:NSObject {
     private let model:Movie
     //let genre:NSAttributedString
@@ -21,12 +22,14 @@ class DetailViewModel:NSObject {
     var genre = NSMutableAttributedString()
     var data:[CastCellViewModel] = []
     var youtubeURL:String?
+    var refreshHandler:Refresh?
     //artist
-    
-    init(model:Movie,dataAcess:DataAcess,uiHandler:(()->Void)? = nil) {
+  
+    init(model:Movie,dataAcess:DataAcess,uiHandler:(()->Void)? = nil,refreshHandler:Refresh? = nil) {
         self.model = model
         self.dataAcess = dataAcess
         self.uiHandler = uiHandler
+        self.refreshHandler = refreshHandler
         self.overview = NSAttributedString(string: model.overview ?? "No overview", attributes: Typography.description(Color.white, nil).attributes())
         self.title.append(NSAttributedString(string:" \(model.title ?? "No title") ", attributes: Typography.title(Color.white, 19).attributes()))
         
@@ -48,16 +51,19 @@ class DetailViewModel:NSObject {
             }
             let string = NSAttributedString(string: resultString.joined(separator: ", "), attributes: Typography.description(Color.white, nil).attributes())
             self?.genre.append(string)
-            self?.uiHandler?()
+            
         }
         dataAcess.getCast(id: String(model.id)) { [weak self](cast) in
-            guard let self = self else{
+            guard let self = self,let cast = cast else{
                 return
             }
+            self.refreshHandler?.removeRefresher()
             cast.forEach({ (actor) in
                 
                 self.data.append(CastCellViewModel(cast: actor, dataAcess: dataAcess, uiHandler: self.uiHandler))
+                
             })
+           
         }
         getImage()
         

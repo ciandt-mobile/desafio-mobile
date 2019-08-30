@@ -10,6 +10,13 @@ import UIKit
 
 class HomeView:UIView{
     let backgroundImage = UIImageView()
+    private let activityControl:UIActivityIndicatorView = {
+        let activityView = UIActivityIndicatorView()
+        activityView.hidesWhenStopped = true
+        activityView.backgroundColor = .clear
+        activityView.style = UIActivityIndicatorView.Style.whiteLarge
+        return activityView
+    }()
     let collection:MainCollectionView = {
         let collection = MainCollectionView(registerCell: { (collection) in
             collection.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier:MovieCollectionViewCell.reuseIdentifier )
@@ -20,7 +27,6 @@ class HomeView:UIView{
     override init(frame: CGRect) {
         super.init(frame: frame)
         initViewCoding()
-        
     }
     func setUp(viewModel:HomeViewModel){
         collection.delegate = viewModel
@@ -38,11 +44,30 @@ extension HomeView:ViewCoding{
     func buildViewHierarchy() {
         self.addSubview(backgroundImage)
         self.addSubview(collection)
+        self.addSubview(activityControl)
     }
     
     func setUpConstraints() {
         backgroundImage.fillSuperview()
         collection.fillSuperview()
+        activityControl.fillSuperview()
     }
+    
+}
+extension HomeView:Refresh{
+    func removeRefresher() {
+        DispatchQueue.main.async {
+            self.activityControl.stopAnimating()
+        }
+    }
+    
+    func addRefresher() {
+        DispatchQueue.main.async {
+            self.activityControl.isHidden = true
+            self.activityControl.startAnimating()
+        }
+        
+    }
+    
     
 }

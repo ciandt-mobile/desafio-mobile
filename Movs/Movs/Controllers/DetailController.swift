@@ -12,13 +12,13 @@ class DetailController: UIViewController {
     var viewModel:DetailViewModel!
     let detailView = DetailView()
     let dataAcess:DataAcess
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         initViewCoding()
         viewModel.configureNavBar(controller: self)
        
-        
        
         
     }
@@ -38,7 +38,7 @@ class DetailController: UIViewController {
                 self.detailView.setup(viewModel: self.viewModel)
                 self.detailView.reloadCollection()
             }
-        } )
+        },refreshHandler:detailView)
         detailView.youtbeButton.addTarget(self, action: #selector(self.requestYoutube), for: .touchUpInside)
         detailView.backButton.addTarget(self, action: #selector(self.pop), for: .touchUpInside)
         detailView.artistCollection.delegate = viewModel

@@ -20,7 +20,6 @@ class CastCellViewModel{
             }else{
                 self?.image = UIImage(named: "image_not_found")
             }
-          
             uiHandler?()
         }
         title.append(NSAttributedString(string: "\(cast.name ?? "")\n", attributes: Typography.title(Color.black, nil).attributes()))

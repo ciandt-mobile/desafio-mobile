@@ -14,7 +14,6 @@ class MovieCellViewModel{
     var title:NSAttributedString
     private let movie:Movie
     init(movie:Movie,dataAcess:DataAcess,uiHandler:(()->Void)?){
-       // self.title = NSAttributedString(string:  movie.title ?? "" , attributes: Typography.title(Color.black).attributes())
         let title = NSMutableAttributedString()
         title.append(NSAttributedString(string:  (movie.title ?? "None" ) + "\n" , attributes: Typography.title(Color.black, nil).attributes()))
         var dateString = "No Date"
