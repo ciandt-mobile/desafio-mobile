@@ -10,8 +10,14 @@ Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para
 
 ## O App
 
-<img src="screenshots/homePreview1.png?raw=true" width="250"><img src="screenshots/detailPreview1.png?raw=true" width="250"> <img src="screenshots/homePreview2.png?raw=true" width="500">
- <img src="screenshots/detailPreview2.png?raw=true" width="500">
+### Portrait
+
+<img src="screenshots/homePreview1.png?raw=true" width="250"> <img src="screenshots/detailPreview1.png?raw=true" width="250">
+
+### Landscape
+
+<img src="screenshots/homePreview2.png?raw=true" width="500"> <img src="screenshots/detailPreview2.png?raw=true" width="500">
+
 
 #### Filmes Populares
 
@@ -46,5 +52,12 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  -- API (https://www.themoviedb.org/documentation/api)
  
 # BOA SORTE!
+
+## Ferramentas
+ - Arquitetura MVVM
+ - Quick/Nimble para os testes
+ - Nimble-Snapshots para snapshots
+ - CocoaPods como gerenciador de dependência 
+
  
  
