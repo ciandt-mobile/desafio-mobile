@@ -58,7 +58,7 @@ class CastViewCell: UICollectionViewCell{
 extension CastViewCell {
     func configure(withViewModel actor: Actor, actorImage: UIImage){
         nameLabel.text = actor.name
-        charLabel.text = actor.character
+        charLabel.text = "\"\(actor.character ?? "")\""
         imageView.image = actorImage
     }
 }

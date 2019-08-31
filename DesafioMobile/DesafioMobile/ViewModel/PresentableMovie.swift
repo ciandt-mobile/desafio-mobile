@@ -14,6 +14,7 @@ protocol PresentableMovieInterface {
     var id: Int {get}
     var name: String {get}
     var bannerImage: UIImage? {get}
+    var backDropImage: UIImage? {get}
     var description: String {get}
     var genres: [Int] {get}
     var date: String {get}
@@ -23,11 +24,13 @@ protocol PresentableMovieInterface {
 //MARK: - Init
 class PresentableMovie: PresentableMovieInterface{
     
+    
     var apiAccess: APIClientInterface
     
     var id: Int = 0
     var name: String = ""
     var bannerImage: UIImage?
+    var backDropImage: UIImage?
     var description: String = ""
     var genres: [Int] = []
     var date: String = ""
@@ -48,6 +51,14 @@ class PresentableMovie: PresentableMovieInterface{
             }
         }else{
             bannerImage = UIImage()
+        }
+        
+        if let path = movie.backdrop_path {
+            loadImage(path: path) { [weak self] (image) in
+                self?.backDropImage = image
+            }
+        }else{
+            backDropImage = UIImage()
         }
     }
     

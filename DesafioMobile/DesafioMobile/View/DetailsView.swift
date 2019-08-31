@@ -29,7 +29,7 @@ class DetailsView: UIView {
     
     lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         return view
     }()
@@ -91,7 +91,7 @@ extension DetailsView{
         genresLabel.text = "\(runtime) | \(genreNames)"
         titleLabel.text = detailedMovie.name
         yearLabel.text = movieYear
-        imageView.image = detailedMovie.bannerImage
+        imageView.image = detailedMovie.backDropImage
     }
     
 }
@@ -159,7 +159,7 @@ extension DetailsView: CodeView{
         castView.snp.makeConstraints { (make) in
             make.left.equalTo(self.snp.left)
             make.right.equalTo(self.snp.right)
-            make.top.equalTo(verticalContainer.snp.bottom).offset(50)
+            make.top.equalTo(verticalContainer.snp.bottom).offset(30)
             make.height.equalTo(200)
             make.bottom.equalTo(descLabel.snp.top)
         }
