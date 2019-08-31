@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ fragment_movies.xml
+  ~ DesafioMobile
+  ~
+  ~ Created by Flavio Campos on 31/08/19 01:54
+  ~ Copyright © 2019 Codigo ZeroUm. All rights reserved.
+  -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#68FFFFFF"
+    tools:context=".features.view.MoviesFragment"
+    tools:background="@drawable/background_main">
+
+
+    <TextView
+        android:id="@+id/testeLabel"
+        tools:text="jabfebadb"
+        android:gravity="center"
+        android:textSize="22sp"
+        android:textColor="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <GridView
+        android:id="@+id/gridView"
+        android:numColumns="3"
+        android:horizontalSpacing="3dp"
+        android:verticalSpacing="3dp"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</FrameLayout>

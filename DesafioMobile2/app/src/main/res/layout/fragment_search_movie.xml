@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ fragment_search_movie.xml
+  ~ DesafioMobile
+  ~
+  ~ Created by Flavio Campos on 31/08/19 02:53
+  ~ Copyright © 2019 Codigo ZeroUm. All rights reserved.
+  -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00FFFFFF"
+    tools:context=".features.view.SearchMovieFragment"
+    tools:background="@drawable/background_main">
+
+    <TextView
+        android:id="@+id/testeLabel"
+        android:text="search"
+        android:gravity="center"
+        android:textSize="22sp"
+        android:textColor="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</FrameLayout>

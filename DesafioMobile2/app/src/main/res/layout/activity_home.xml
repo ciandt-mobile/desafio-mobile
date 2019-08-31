@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swiperefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    tools:context=".features.view.HomeActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- TAB/Botoes Superiores-->
+        <LinearLayout
+            android:id="@+id/tabBtnsLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_64dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!--Left-->
+            <Button
+                android:id="@+id/btnUpcoming"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/background_tab_button_left"
+                android:padding="4dp"
+                android:text="@string/upcomming"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="12sp"
+                tools:ignore="ButtonStyle" />
+
+            <!--Middle-->
+            <Button
+                android:id="@+id/btnTopRated"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/background_tab_button_middle"
+                android:padding="4dp"
+                android:text="@string/top_rated"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="12sp"
+                tools:ignore="ButtonStyle" />
+
+            <!--Middle-->
+            <Button
+                android:id="@+id/btnPopular"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="-2dp"
+                android:background="@drawable/background_tab_button_middle"
+                android:padding="4dp"
+                android:text="@string/popular"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="12sp"
+                tools:ignore="ButtonStyle" />
+
+            <!--Right-->
+            <Button
+                android:id="@+id/btnSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/background_tab_button_right"
+                android:drawableStart="@drawable/ic_search_24px"
+                android:drawableTint="#ffffff"
+                android:padding="4dp"
+                android:text="@string/search"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="12sp"
+                tools:ignore="ButtonStyle"
+                tools:targetApi="m" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tabSelectedLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tabBtnsLayout"
+            app:layout_constraintTop_toBottomOf="@+id/tabBtnsLayout"
+            android:text="Upcoming Movies" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8dp"
+            app:layout_constraintStart_toStartOf="@id/tabSelectedLabel"
+            app:layout_constraintEnd_toEndOf="@id/tabBtnsLayout"
+            app:layout_constraintTop_toBottomOf="@id/tabSelectedLabel"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+

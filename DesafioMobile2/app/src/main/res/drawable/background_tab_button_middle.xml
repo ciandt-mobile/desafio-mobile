@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ background_tab_button_middle.xml
+  ~ DesafioMobile
+  ~
+  ~ Created by Flavio Campos on 30/08/19 23:33
+  ~ Copyright © 2019 Codigo ZeroUm. All rights reserved.
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item android:state_selected="false">
+            <shape android:shape="rectangle">
+                <solid android:color="#00ffffff" />
+                <!--<corners android:radius="16dp" />-->
+                <stroke android:width="2dp" android:color="#ffffff"/>
+            </shape>
+        </item>
+
+        <item android:state_selected="true">
+            <shape android:shape="rectangle">
+                <solid android:color="#ffffff" />
+                <!--<corners android:radius="16dp" />-->
+            </shape>
+        </item>
+
+</selector>
