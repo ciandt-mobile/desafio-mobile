@@ -1,5 +1,5 @@
 /*
- * Result.kt
+ * ResultItem.ktm.kt
  * DesafioMobile
  *
  * Created by Flavio Campos on 30/08/19 06:59
@@ -8,7 +8,7 @@
 
 package br.com.codigozeroum.desafiomobile.features.model
 
-data class Result(
+data class ResultItem(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,

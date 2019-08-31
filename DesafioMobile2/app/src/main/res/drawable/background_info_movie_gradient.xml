@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ background_info_movie_gradient.xml.xml
+  ~ DesafioMobile
+  ~
+  ~ Created by Flavio Campos on 31/08/19 19:19
+  ~ Copyright © 2019 Codigo ZeroUm. All rights reserved.
+  -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <gradient
+                android:angle="270"
+                android:startColor="#00000000"
+                android:endColor="#E9000000" />
+        </shape>
+    </item>
+</layer-list>

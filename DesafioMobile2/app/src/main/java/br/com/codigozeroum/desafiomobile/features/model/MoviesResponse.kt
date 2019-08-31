@@ -1,5 +1,5 @@
 /*
- * PopularResponse.kt
+ * MoviesResponsekt
  * DesafioMobile
  *
  * Created by Flavio Campos on 31/08/19 03:14
@@ -8,9 +8,9 @@
 
 package br.com.codigozeroum.desafiomobile.features.model
 
-data class PopularResponse(
+data class MoviesResponse(
     val page: Int? = null,
-    val results: MutableList<Result>? = mutableListOf(),
+    val results: MutableList<ResultItem>? = mutableListOf(),
     val total_pages: Int? = null,
     val total_results: Int? = null
 )

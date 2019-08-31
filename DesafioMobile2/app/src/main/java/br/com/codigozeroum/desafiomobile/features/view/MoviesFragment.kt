@@ -15,12 +15,15 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import br.com.codigozeroum.desafiomobile.R
+import br.com.codigozeroum.desafiomobile.features.model.MoviesResponse
+import br.com.codigozeroum.desafiomobile.features.model.ResultItem
 import br.com.codigozeroum.desafiomobile.features.viewModel.MoviesFragmentViewModel
 import br.com.codigozeroum.desafiomobile.projectStructure.BaseFragment
+import br.com.codigozeroum.desafiomobile.projectStructure.RecyclerViewDelegate
 import br.com.codigozeroum.desafiomobile.projectStructure.ViewModelState
 import kotlinx.android.synthetic.main.fragment_movies.*
 
-class MoviesFragment : BaseFragment() {
+class MoviesFragment : BaseFragment() , RecyclerViewDelegate<ResultItem>{
 
     lateinit var viewModel: MoviesFragmentViewModel
 
@@ -60,6 +63,10 @@ class MoviesFragment : BaseFragment() {
 
     override fun bindView() {
         testeLabel.text = tab
+    }
+
+    override fun onItemClickListener(view: View, position: Int, obj: ResultItem?) {
+        showSnackBarWithoutAction((activity as HomeActivity), obj!!.title)
     }
 
 

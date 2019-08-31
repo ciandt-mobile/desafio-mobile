@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ item_movie_grid.xml
+  ~ DesafioMobile
+  ~
+  ~ Created by Flavio Campos on 31/08/19 18:58
+  ~ Copyright © 2019 Codigo ZeroUm. All rights reserved.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="0dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/movie_folder_example"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/bkgGradient"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_margin="0dp"
+        android:contentDescription="@string/app_name"
+        android:padding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/background_info_movie_gradient" />
+
+    <TextView
+        android:id="@+id/releaseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_12dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:background="@drawable/background_date_movie"
+        android:padding="3dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="8sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/bkgGradient"
+        app:layout_constraintTop_toTopOf="@+id/bkgGradient"
+        tools:text="28-09-2018" />
+
+    <TextView
+        android:id="@+id/voteAverage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_star"
+        android:drawablePadding="2dp"
+        android:drawableTint="#FFD700"
+        android:textColor="@color/colorAccent"
+        android:textSize="9sp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/margin_2dp"
+        app:layout_constraintStart_toStartOf="@+id/releaseDate"
+        app:layout_constraintTop_toBottomOf="@+id/releaseDate"
+        tools:text="6.4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_8dp"
+        android:drawableLeft="@drawable/ic_people"
+        android:drawablePadding="2dp"
+        android:drawableTint="@color/colorAccent"
+        android:textColor="@color/colorAccent"
+        android:textSize="9sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/voteAverage"
+        app:layout_constraintStart_toEndOf="@+id/voteAverage"
+        app:layout_constraintTop_toTopOf="@+id/voteAverage"
+        tools:text="299.795" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/margin_4dp"
+        android:textSize="11sp"
+        android:paddingEnd="@dimen/margin_8dp"
+        android:textColor="@color/colorAccent"
+        android:lineHeight="12dp"
+        android:letterSpacing="1sp"
+        app:layout_constraintStart_toStartOf="@+id/voteAverage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voteAverage"
+        tools:text="The Old Man and the Gun"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

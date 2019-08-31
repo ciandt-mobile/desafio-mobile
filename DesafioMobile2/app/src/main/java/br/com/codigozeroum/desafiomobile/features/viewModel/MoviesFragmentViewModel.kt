@@ -8,15 +8,19 @@
 
 package br.com.codigozeroum.desafiomobile.features.viewModel
 
-import br.com.codigozeroum.desafiomobile.features.model.PopularResponse
+import br.com.codigozeroum.desafiomobile.R
+import br.com.codigozeroum.desafiomobile.features.model.MoviesResponse
+import br.com.codigozeroum.desafiomobile.features.model.ResultItem
 import br.com.codigozeroum.desafiomobile.features.model.repository.MoviesRepository
 import br.com.codigozeroum.desafiomobile.projectStructure.BaseViewModel
+import br.com.codigozeroum.desafiomobile.projectStructure.RecyclerViewDataSource
 import br.com.codigozeroum.desafiomobile.projectStructure.ViewModelState
 
-class MoviesFragmentViewModel: BaseViewModel() {
+class MoviesFragmentViewModel: BaseViewModel(), RecyclerViewDataSource<ResultItem> {
 
     private val repository = MoviesRepository()
-    lateinit var response: PopularResponse
+    lateinit var response: MoviesResponse
+    var results: MutableList<ResultItem> = mutableListOf()
 
     fun getUpacomingMovies(){
 
@@ -24,7 +28,10 @@ class MoviesFragmentViewModel: BaseViewModel() {
             .subscribe({result ->
 
                 if(result.results != null){
+
                     response =  result
+                    results = response.results!!
+
                     postNewState(ViewModelState.Success)
                 }else{
                     postNewState(ViewModelState.Error)
@@ -34,5 +41,10 @@ class MoviesFragmentViewModel: BaseViewModel() {
             })
         addToDisposeBag(disposable)
     }
+
+
+    override fun getItemCount(): Int = results.size
+    override fun getViewTypeFor(position: Int): Int = R.layout.item_movie_grid
+    override fun getItemFor(position: Int): ResultItem  = results[position]
 
 }

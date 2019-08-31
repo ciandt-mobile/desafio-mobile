@@ -8,7 +8,6 @@
 
 package br.com.codigozeroum.desafiomobile.projectStructure
 
-import android.content.Context
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
