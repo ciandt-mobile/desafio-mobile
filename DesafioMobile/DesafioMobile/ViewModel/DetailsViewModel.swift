@@ -34,7 +34,7 @@ class DetailsViewModel: DetailsInterface{
 //MARK: - Methods
     func getData(completion: @escaping () -> Void){
         
-        movieYear = String(movie.date.prefix(4))
+        movieYear = String(movie.date.suffix(4))
         apiAccess.fetchData(path: ApiPaths.detailMovie(id: movie.id), type: DetailedMovie.self) { [weak self] (fetchedData, error) in
             if error == nil {
                 self?.movieGenres = fetchedData.genres ?? []
@@ -45,8 +45,7 @@ class DetailsViewModel: DetailsInterface{
         
         apiAccess.fetchData(path: ApiPaths.cast(id: movie.id), type: Cast.self) { [weak self] (cast, error) in
             if error == nil {
-                self?.movieCast = cast.cast
-                self?.movieCast.forEach({ [weak self] (actor) in 
+                cast.cast.forEach({ [weak self] (actor) in
                     if let imagePath = actor.profile_path {
                         self?.apiAccess.downloadImage(path: imagePath, completion: { (image) in
                             if let img = image {
@@ -54,7 +53,7 @@ class DetailsViewModel: DetailsInterface{
                             }else{
                                 self?.castImages.append(UIImage())
                             }
-                            
+                            self?.movieCast.append(actor)
                             self?.loadDelegate?.refreshCastView()
                         })
                     }

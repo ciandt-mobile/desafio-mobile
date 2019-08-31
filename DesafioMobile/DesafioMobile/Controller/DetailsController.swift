@@ -96,11 +96,30 @@ extension DetailsController: UICollectionViewDataSource{
 extension DetailsController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     // Distance to the screen sides
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
+        return UIEdgeInsets(top: 0,left: 10,bottom: 0,right: 10)
     }
+    
     // Set the size of the cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: collectionView.bounds.size.height)
+        
+        let width = (collectionView.frame.size.width - 12 * 3)/3
+        let height = collectionView.frame.size.height
+        
+        return CGSize(width: width, height: height)
     }
+    
+    override func viewLayoutMarginsDidChange() {
+        
+        super.viewLayoutMarginsDidChange()
+        
+        let flow = screen.castView.collectionViewLayout as? UICollectionViewFlowLayout
+        let width = (screen.castView.frame.size.width - 12 * 3)/3
+        let height = screen.castView.frame.size.height
+        
+        if (width != 0 && height != 0){
+            flow?.itemSize = CGSize(width: width, height: height)
+        }
+    }
+    
 }
 

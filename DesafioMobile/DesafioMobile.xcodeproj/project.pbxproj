@@ -153,6 +153,7 @@
 			children = (
 				4396B68A2315A8D700683BFF /* PopularViewModel.swift */,
 				4396B6A32315F9A000683BFF /* DetailsViewModel.swift */,
+				4396B6972315CF0A00683BFF /* PresentableMovie.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -163,7 +164,6 @@
 				4396B6AA231823B000683BFF /* Cast.swift */,
 				4396B6952315CEDF00683BFF /* Movie.swift */,
 				4396B6A82316E68D00683BFF /* Genre.swift */,
-				4396B6972315CF0A00683BFF /* PresentableMovie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

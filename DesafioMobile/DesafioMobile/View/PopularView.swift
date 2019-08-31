@@ -19,19 +19,20 @@ class PopularView: UIView{
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.backgroundColor = UsedColors.black.color
         return view
     }()
     
     lazy var loadRoll: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(frame: .zero)
-        view.color = UsedColors.white.color
+        view.color = UsedColors.gold.color
         return view
     }()
     
     lazy var loadingLabel: UILabel = {
         let view = UILabel()
         view.text = "Loading movies!"
-        view.textColor = UsedColors.white.color
+        view.textColor = UsedColors.gold.color
         view.font = UIFont.systemFont(ofSize: 35)
         view.numberOfLines = 0
         view.textAlignment = .center
@@ -54,21 +55,20 @@ class PopularView: UIView{
 
 
 extension PopularView{
-    func changeCollection(){
+    func beginLoadMovies(){
         let index = IndexPath(row: 0, section: 0)
         collectionView.scrollToItem(at: index, at: UICollectionView.ScrollPosition.top, animated: false)
         collectionView.reloadData()
-        collectionView.isHidden = true
+        
         loadRoll.isHidden = false
         loadingLabel.isHidden = false
         loadRoll.startAnimating()
     }
     
-    func loadGrid(){
+    func hasLoadedMovies(){
         collectionView.reloadData()
         loadRoll.stopAnimating()
         loadingLabel.isHidden = true
-        collectionView.isHidden = false
     }
 }
 
@@ -80,7 +80,6 @@ extension PopularView: CodeView{
         addSubview(collectionView)
         addSubview(loadingLabel)
         addSubview(loadRoll)
-        bringSubviewToFront(loadRoll)
     }
     
     func setupConstrains() {
@@ -101,7 +100,7 @@ extension PopularView: CodeView{
     }
     
     func setupAdditionalConfiguration() {
-        collectionView.backgroundColor = UsedColors.black.color
+        backgroundColor = UsedColors.white.color
         collectionView.register(PopularViewCell.self, forCellWithReuseIdentifier: PopularViewCell.reuseIdentifier)
     }
 }

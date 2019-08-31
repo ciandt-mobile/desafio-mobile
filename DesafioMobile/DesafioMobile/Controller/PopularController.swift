@@ -50,7 +50,7 @@ class PopularController: UIViewController {
 extension PopularController: PopularGridViewModelDelegate{
     func refreshMovieData() {
         DispatchQueue.main.async { [weak self] in
-            self?.screen.loadGrid()
+            self?.screen.hasLoadedMovies()
         }
     }
 }
@@ -68,12 +68,12 @@ extension PopularController{
     @objc func loadUpcoming(){
         if screen.customSC.selectedSegmentIndex == 0 {
             viewModel.resetMovies()
-            screen.changeCollection()
+            screen.beginLoadMovies()
             viewModel.loadMovies(type: viewModel.atualType)
             
         }else{
             viewModel.resetMovies()
-            screen.changeCollection()
+            screen.beginLoadMovies()
             viewModel.loadMovies(type: viewModel.atualType)
         }
     }

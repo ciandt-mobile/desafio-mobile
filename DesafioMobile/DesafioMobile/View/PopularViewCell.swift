@@ -41,7 +41,7 @@ class PopularViewCell: UICollectionViewCell{
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UsedColors.white.color
+        label.textColor = UsedColors.gold.color
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         return label
@@ -49,9 +49,10 @@ class PopularViewCell: UICollectionViewCell{
     
     private lazy var yearLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UsedColors.white.color
+        label.textColor = UsedColors.gold.color
         label.backgroundColor = UsedColors.black.color
         label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
         label.numberOfLines = 1
         return label
     }()

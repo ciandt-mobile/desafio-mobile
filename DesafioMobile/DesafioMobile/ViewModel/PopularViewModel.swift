@@ -26,11 +26,7 @@ class PopularViewModel{
     var atualType: String = "popular"
     
     
-    var movies: [PresentableMovieInterface] = [] {
-        didSet{
-            refreshDelegate?.refreshMovieData()
-        }
-    }
+    var movies: [PresentableMovieInterface] = []
     
     init(apiAccess: APIClientInterface) {
         self.apiAccess = apiAccess
@@ -42,15 +38,6 @@ class PopularViewModel{
 //MARK: - Methods
 extension PopularViewModel: PopularInterface{
     
-    //Loads the movie banner from the api
-    func loadImage(path: String, completion: @escaping (UIImage) -> Void ){
-        apiAccess.downloadImage(path: path) { (fetchedImage) in
-            if let image = fetchedImage{
-                completion(image)
-            }
-        }
-    }
-    
     //Loads the movies from the API
     func loadMovies(type: String){
         pageCount += 1
@@ -58,13 +45,11 @@ extension PopularViewModel: PopularInterface{
         apiAccess.fetchData(path: ApiPaths.movies(page: pageCount,type: type), type: Populares.self) { [weak self] (fetchedMovies,error) in
             guard let checkMovies = fetchedMovies.results else {fatalError("Error fetching the movies form the API")}
             if error == nil {
-                checkMovies.forEach({ (movie) in
-                    if let path = movie.poster_path{
-                        self?.loadImage(path: path, completion: { [weak self] (image) in
-                            self?.movies.append(PresentableMovie(movieID: movie.id, movieTitle: movie.title, movieOverview: movie.overview, movieGenres: movie.genre_ids, movieDate: movie.release_date, image: image))
-                            
-                        })
-                    }
+                checkMovies.forEach({ [weak self] (movie) in
+                        guard let self = self else {return}
+                        self.movies.append(PresentableMovie(movie: movie, apiAccess: self.apiAccess, completion: {
+                        self.refreshDelegate?.refreshMovieData()
+                    }))
                 })
             }else{
                 self?.movies = []
