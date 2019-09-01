@@ -7,10 +7,10 @@ Projeto feito como parte do desafio mobile da CI&T,  o aplicativo foca em aprese
 
 ### Landscape
 
-<img src="screenshots/popular.png?raw=true" width="250"> <img src="screenshots/upcoming.png?raw=true" width="250"> <img src="screenshots/details.png?raw=true" width="250"> 
+<img src="screenshots/popular.PNG?raw=true" width="250"> <img src="screenshots/upcoming.PNG?raw=true" width="250"> <img src="screenshots/details.PNG?raw=true" width="250"> 
 
-###
-<img src="screenshots/rotate.png?raw=true" width="250"> <img src="screenshots/rotatePopular.png?raw=true" width="250">
+### Portrait
+<img src="screenshots/rotate.PNG?raw=true" width="250"> <img src="screenshots/rotatePopular.PNG?raw=true" width="250">
 
 
 
