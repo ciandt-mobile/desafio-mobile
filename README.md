@@ -18,6 +18,7 @@ Projeto feito como parte do desafio mobile da CI&T,  o aplicativo foca em aprese
 
 
 
+## Requisitos
 
 #### Filmes Populares
 
@@ -42,15 +43,5 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  - Elenco principal 
  - Sinópse
  
-## Requisitos
- - O app deve ser desenvolvido para suportar as orientação Portrait e Landscape
- - Seja criativo, as imagens de referência são apenas exemplos, você pode criar seu próprio layout
- - Use libs e frameworks que você estiver mais acostumado
- - Teste o seu código ;D
- - Utilize a The Movie Database para realizar as consultas 
- -- TMDB (https://www.themoviedb.org)
- -- API (https://www.themoviedb.org/documentation/api)
- 
-# BOA SORTE!
  
  
