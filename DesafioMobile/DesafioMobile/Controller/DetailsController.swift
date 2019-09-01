@@ -8,17 +8,17 @@
 
 import UIKit
 
-
+//MARK: - Protocol
 protocol DetailsLoadDelegate: class{
     func refreshScreen()
     func refreshCastView()
 }
 
+//MARK: - Init
 class DetailsController: UIViewController {
     let screen = DetailsView()
     let viewModel: DetailsViewModel
     
-    // MARK: - Inits
     init(selectedMovie: PresentableMovieInterface, apiAccess: APIClientInterface) {
         viewModel = DetailsViewModel(movie: selectedMovie,apiAccess: apiAccess)
         super.init(nibName: nil, bundle: nil)
@@ -37,6 +37,8 @@ class DetailsController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = .clear
+        navigationController?.navigationBar.tintColor = UsedColors.gold.color
+        navigationController?.navigationBar.backgroundColor = UsedColors.black.color
         
         
         screen.castView.delegate = self
@@ -44,6 +46,7 @@ class DetailsController: UIViewController {
         
         viewModel.getData(completion: { [weak self] in
             self?.screen.castView.reloadData()
+            self?.configureScreen()
         })
     }
     
@@ -56,22 +59,25 @@ class DetailsController: UIViewController {
 }
 
 
-//MARK: - Protocol Methods
+//MARK: - Methods
 extension DetailsController: DetailsLoadDelegate{
     
+    /** Refreshs the screen after th requests */
     func refreshScreen() {
         DispatchQueue.main.async { [weak self] in
-            self?.loadData()
+            self?.configureScreen()
         }
     }
     
+    /** Refreshs the castView with the selected movie cast*/
     func refreshCastView(){
         DispatchQueue.main.async { [weak self] in
             self?.screen.castView.reloadData()
         }
     }
     
-    func loadData(){
+    /** Configure the screen with the data from the requests*/
+    func configureScreen(){
         screen.configure(detailedMovie: viewModel.movie, movieYear: viewModel.movieYear, genreNames: viewModel.detailsGenres(), runtime: viewModel.runtime)
     }
 }
@@ -94,7 +100,8 @@ extension DetailsController: UICollectionViewDataSource{
 
 //MARK: - CollectionView Layout
 extension DetailsController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
-    // Distance to the screen sides
+    
+    // Distance of the cells to the screen sides
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0,left: 10,bottom: 0,right: 10)
     }
@@ -108,6 +115,7 @@ extension DetailsController: UICollectionViewDelegate, UICollectionViewDelegateF
         return CGSize(width: width, height: height)
     }
     
+    // Set the size of the cell when the screen rotates
     override func viewLayoutMarginsDidChange() {
         
         super.viewLayoutMarginsDidChange()

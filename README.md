@@ -1,16 +1,23 @@
 # Desafio Mobile - 2019
 
-Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para realizar o desafio 😀.
-
-## Instruções
-
-- Faça um fork desse repositório e crie sua solução para iOS ou Android;
-- Ao terminar a solução realize um Pull Request;
-- Comente no readme do repositório os métodos utilizados, tais como arquitetura, linguagem, soluções técnicas e etc.;
-
 ## O App
 
-<img src="screenshots/ss01.png?raw=true" width="250"> <img src="screenshots/ss02.png?raw=true" width="250"> <img src="screenshots/ss03.png?raw=true" width="250">
+Projeto feito como parte do desafio mobile da CI&T,  o aplicativo foca em apresentar tanto os filmes populares quantos os proximos lançamentos disponiveis na API do TheMovieDB, apresentando os detalhes de filmes selecionados. O app funciona tanto em landscape quanto em portrait e foi desenvolvido usando a arquitetura MVVM.
+
+
+### Landscape
+
+<img src="screenshots/popular.png?raw=true" width="250"> <img src="screenshots/upcoming.png?raw=true" width="250"> <img src="screenshots/details.png?raw=true" width="250"> 
+
+###
+<img src="screenshots/rotate.png?raw=true" width="250"> <img src="screenshots/rotatePopular.png?raw=true" width="250">
+
+
+
+
+
+
+
 
 #### Filmes Populares
 

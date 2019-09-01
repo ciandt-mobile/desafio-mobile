@@ -16,7 +16,7 @@ class PopularSnapshots: QuickSpec{
     
     override func spec() {
         
-        let movie = MovieMock()
+        let movie = PresentableMovieMock()
         
         describe("Popular Grid Visual check") {
             it("Should look like this"){

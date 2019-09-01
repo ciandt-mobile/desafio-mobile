@@ -30,7 +30,7 @@ class CastViewCell: UICollectionViewCell{
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UsedColors.gold.color
-        label.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.66)
+        label.backgroundColor = UsedColors.lowAlphaBlack.color
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -40,7 +40,7 @@ class CastViewCell: UICollectionViewCell{
     private lazy var charLabel: UILabel = {
         let label = UILabel()
         label.textColor = UsedColors.gold.color
-        label.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.66)
+        label.backgroundColor = UsedColors.lowAlphaBlack.color
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -54,8 +54,9 @@ class CastViewCell: UICollectionViewCell{
     
 }
 
-//MARK: - Feeds the data to the elements
+//MARK: - Methods
 extension CastViewCell {
+    /** Called to configure the view with the selected movie casts */
     func configure(withViewModel actor: Actor, actorImage: UIImage){
         nameLabel.text = actor.name
         charLabel.text = "\"\(actor.character ?? "")\""

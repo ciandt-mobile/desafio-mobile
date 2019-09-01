@@ -38,7 +38,7 @@ class PopularViewModel{
 //MARK: - Methods
 extension PopularViewModel: PopularInterface{
     
-    //Loads the movies from the API
+    /** Loads the movies from the API */
     func loadMovies(type: String){
         pageCount += 1
         
@@ -57,7 +57,7 @@ extension PopularViewModel: PopularInterface{
         }
     }
     
-    //Reset the movie array
+    /** Resets the movie array when the type changes*/
     func resetMovies(){
         pageCount = 0
         movies.removeAll()

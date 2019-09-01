@@ -15,12 +15,11 @@ protocol PopularGridViewModelDelegate: class{
     func refreshMovieData()
 }
 
-
+//MARK: - Init
 class PopularController: UIViewController {
     let screen = PopularView()
     let viewModel: PopularViewModel
     
-    //MARK: - Inits
     init(apiAccess: APIClientInterface) {
         viewModel = PopularViewModel(apiAccess: apiAccess)
         super.init(nibName: nil, bundle: nil)
@@ -46,7 +45,7 @@ class PopularController: UIViewController {
 }
 
 
-//MARK: - View Model delegate
+//MARK: - View Model Delegate Methods
 extension PopularController: PopularGridViewModelDelegate{
     func refreshMovieData() {
         DispatchQueue.main.async { [weak self] in
@@ -57,14 +56,17 @@ extension PopularController: PopularGridViewModelDelegate{
 
 
 
-//MARK: - Transition
+//MARK: - Methods
 extension PopularController{
+    
+    // Transition to the DetailsView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedMovie = viewModel.movies[indexPath.row]
         let detailsVC = DetailsController(selectedMovie: selectedMovie,apiAccess: viewModel.apiAccess)
         navigationController?.pushViewController(detailsVC, animated: true)
     }
     
+    /** Called when the segment control change his index */
     @objc func loadUpcoming(){
         if screen.customSC.selectedSegmentIndex == 0 {
             viewModel.resetMovies()
@@ -81,7 +83,7 @@ extension PopularController{
 
 
 
-//MARK: - CollectionView DataSource
+//MARK: - CollectionView DataSource Methods
 extension PopularController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.movies.count
@@ -95,8 +97,9 @@ extension PopularController: UICollectionViewDataSource{
 }
 
 
-//MARK: - CollectionView Layout
+//MARK: - CollectionView Layout Methods
 extension PopularController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    
     // Loads more movies when the scrool gets near the end
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if(indexPath.row > 15 && indexPath.row == viewModel.movies.count - 4){
@@ -104,10 +107,11 @@ extension PopularController: UICollectionViewDelegate, UICollectionViewDelegateF
         }
     }
     
-    // Distance to the screen sides
+    // Distance of the cell elements to the screen sides
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
     }
+    
     // Set the size of the cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 150, height: 300)

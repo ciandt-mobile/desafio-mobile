@@ -31,7 +31,7 @@ class DetailsSnapshots: QuickSpec{
             }
         }
         
-        describe("Popular Grid Cell Visual check") {
+        describe("CastViewCell Visual check") {
             it("Should look like this"){
                 let cell = CastViewCell()
                 

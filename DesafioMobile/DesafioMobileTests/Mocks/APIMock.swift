@@ -27,6 +27,7 @@ class APIMock: APIClientInterface{
     
     func getImageData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         hasDowloadImage = true
+        downloadImage(path: "") { (_) in }
     }
     
 }

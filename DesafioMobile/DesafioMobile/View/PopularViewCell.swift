@@ -64,8 +64,10 @@ class PopularViewCell: UICollectionViewCell{
     
 }
 
-//MARK: - Feeds the data to the elements
+//MARK: - Methods
 extension PopularViewCell {
+    
+    /** Called o configure the cell*/
     func configure(withViewModel viewModel: PresentableMovieInterface){
         nameLabel.text = viewModel.name
         imageView.image = viewModel.bannerImage

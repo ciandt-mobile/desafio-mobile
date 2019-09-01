@@ -84,8 +84,10 @@ class DetailsView: UIView {
     
 }
 
-//MARK: - Extension to define the cell constraints
+//MARK: - Methods
 extension DetailsView{
+    
+    /** Called to configure the cell with the selcted movie */
     func configure(detailedMovie: PresentableMovieInterface,movieYear: String,genreNames: String, runtime: Int){
         descLabel.text = detailedMovie.description
         genresLabel.text = "\(runtime) | \(genreNames)"
@@ -115,8 +117,8 @@ extension DetailsView: CodeView{
     func setupConstrains() {
         
         scrollView.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview().multipliedBy(1)
-            make.top.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.top.equalTo(self.snp_topMargin)
             make.bottom.equalToSuperview()
         }
         
@@ -159,16 +161,15 @@ extension DetailsView: CodeView{
         castView.snp.makeConstraints { (make) in
             make.left.equalTo(self.snp.left)
             make.right.equalTo(self.snp.right)
-            make.top.equalTo(verticalContainer.snp.bottom).offset(30)
+            make.top.equalTo(verticalContainer.snp.bottom).offset(20)
             make.height.equalTo(200)
-            make.bottom.equalTo(descLabel.snp.top)
         }
         
         descLabel.snp.makeConstraints { (make) in
             make.right.equalTo(self.snp.right)
             make.left.equalTo(self.snp.left)
-            make.top.equalTo(castView.snp.bottom)
-            make.height.equalTo(200)
+            make.top.equalTo(castView.snp.bottom).offset(20)
+            make.bottom.equalToSuperview()
         }
     }
     

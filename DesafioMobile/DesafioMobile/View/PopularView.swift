@@ -54,7 +54,10 @@ class PopularView: UIView{
 }
 
 
+//MARK: - Methods
 extension PopularView{
+    
+    /** Called when the movies begin to load */
     func beginLoadMovies(){
         let index = IndexPath(row: 0, section: 0)
         collectionView.scrollToItem(at: index, at: UICollectionView.ScrollPosition.top, animated: false)
@@ -65,6 +68,7 @@ extension PopularView{
         loadRoll.startAnimating()
     }
     
+    /** Called when the movies loaded */
     func hasLoadedMovies(){
         collectionView.reloadData()
         loadRoll.stopAnimating()

@@ -32,6 +32,8 @@ class DetailsViewModel: DetailsInterface{
     }
     
 //MARK: - Methods
+    
+    /** Get all the necessary data to the view */
     func getData(completion: @escaping () -> Void){
         
         movieYear = String(movie.date.suffix(4))
@@ -63,7 +65,7 @@ class DetailsViewModel: DetailsInterface{
     }
     
     
-    //Transformes the genres list in a simple string
+    /** Transformes the genres list in a simple string */
     func detailsGenres() -> String {
         var genreSring = ""
         for genre in movieGenres{

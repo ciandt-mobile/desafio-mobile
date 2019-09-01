@@ -7,10 +7,7 @@
 //
 
 struct Populares: Codable{
-    var page: Int
     var results: [Movie]?
-    var total_results: Int
-    var total_pages: Int
 }
 
 
@@ -23,9 +20,20 @@ class Movie: Codable{
     let id: Int
     var title: String
     var backdrop_path: String?
+    
+    init(id: Int,name: String,genres: [Int], date: String,desc: String,imageP: String, backP: String) {
+        self.id = id
+        self.title = name
+        self.genre_ids = genres
+        self.release_date = date
+        self.overview = desc
+        self.poster_path = imageP
+        self.backdrop_path = backP
+    }
 }
 
 
+//Extra details nedded later in the app
 class DetailedMovie: Codable{
     var runtime: Int?
     var genres: [Genre]?

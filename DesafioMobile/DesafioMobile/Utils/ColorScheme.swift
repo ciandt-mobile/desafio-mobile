@@ -9,8 +9,11 @@
 import UIKit
 import ChameleonFramework
 
+
+//MARK: - Enum with the colors used on the project
 enum UsedColors {
     case black
+    case lowAlphaBlack
     case gray
     case white
     case purple
@@ -20,6 +23,9 @@ enum UsedColors {
         switch self {
         case .black:
             return UIColor.flatBlack
+        
+        case .lowAlphaBlack:
+            return UIColor.flatBlack.withAlphaComponent(0.66)
             
         case .gray:
             return UIColor.flatGray

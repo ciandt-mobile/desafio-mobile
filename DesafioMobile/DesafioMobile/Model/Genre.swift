@@ -7,7 +7,6 @@
 //
 
 
-//A single genre
 class Genre: Codable{
     var id: Int
     var name: String

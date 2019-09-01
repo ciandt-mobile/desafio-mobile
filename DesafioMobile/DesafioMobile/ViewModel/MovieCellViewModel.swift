@@ -20,7 +20,7 @@ protocol PresentableMovieInterface {
     var date: String {get}
     
     func loadImage(path: String, completion: @escaping (UIImage) -> Void)
-    func fixDate(movieDate: String) -> String
+    func formateMovieDate(movieDate: String) -> String
 }
 
 
@@ -44,7 +44,7 @@ class MovieCellViewModel: PresentableMovieInterface{
         self.description = movie.overview
         self.genres = movie.genre_ids
         self.apiAccess = apiAccess
-        self.date = fixDate(movieDate: movie.release_date)
+        self.date = formateMovieDate(movieDate: movie.release_date)
         
         if let path = movie.poster_path {
             loadImage(path: path) { [weak self] (image) in
@@ -68,7 +68,7 @@ class MovieCellViewModel: PresentableMovieInterface{
         self.init(movie: movie,apiAccess: apiAccess, completion: {}) 
     }
 
-    //MARK: - Methods
+//MARK: - Methods with the validation needed in the initial Grid
     
     /** Loads the movie banner from the api */
     func loadImage(path: String, completion: @escaping (UIImage) -> Void ){
@@ -80,7 +80,7 @@ class MovieCellViewModel: PresentableMovieInterface{
     }
     
     /** Formate the date in the movie */
-    func fixDate(movieDate: String) -> String{
+    func formateMovieDate(movieDate: String) -> String{
    
         let dateF = DateFormatter()
         dateF.dateFormat = "yyyy-MM-dd"

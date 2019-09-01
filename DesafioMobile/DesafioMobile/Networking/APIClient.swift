@@ -32,6 +32,8 @@ enum ApiPaths{
     }
 }
 
+
+//MARK: - Interface
 protocol APIClientInterface{
     func fetchData<T:Codable>(path: ApiPaths,type: T.Type,completion: @escaping (T,Error?) -> Void)
     func downloadImage(path: String, completion: @escaping (UIImage?) -> Void)
@@ -41,7 +43,7 @@ protocol APIClientInterface{
 //MARK: - API Acess Methods
 class APIClient: APIClientInterface{
     
-    // Fetch the popular movies in the API
+    /** Fetch data from the API */
     func fetchData<T:Codable>(path: ApiPaths,type: T.Type,completion: @escaping (T,Error?) -> Void){
         
         guard let url = URL(string: path.path) else {return}
@@ -61,7 +63,7 @@ class APIClient: APIClientInterface{
         dataTask.resume()
     }
     
-    //Fetch the image of a specified movie
+    /** Fetch the image in a specified path */
     func downloadImage(path: String, completion: @escaping (UIImage?) -> Void){
         guard let url = URL(string: ApiPaths.image.path + path) else {return}
         
@@ -73,7 +75,7 @@ class APIClient: APIClientInterface{
         }
     }
     
-    //Get the image data
+    /** Get the image data */
     func getImageData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }

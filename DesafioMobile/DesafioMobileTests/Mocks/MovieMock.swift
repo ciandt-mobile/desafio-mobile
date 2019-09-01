@@ -11,7 +11,7 @@ import UIKit
 
 @testable import DesafioMobile
 
-class MovieMock: PresentableMovieInterface{
+class PresentableMovieMock: PresentableMovieInterface{
     
     var backDropImage: UIImage?
     var genres: [Int]
@@ -34,14 +34,19 @@ class MovieMock: PresentableMovieInterface{
         self.genres = []
         
         loadImage(path: "") {_ in }
-        date = fixDate(movieDate: "wd7ye8dehd")
+        date = formateMovieDate(movieDate: "wd7ye8dehd")
     }
     
     func loadImage(path: String, completion: @escaping (UIImage) -> Void) {
         hasLoadedImage = true
     }
     
-    func fixDate(movieDate: String) -> String {
+    func formateMovieDate(movieDate: String) -> String {
         return "2019"
     }
+}
+
+
+class MovieMock{
+    let movie = Movie(id: 429627, name: "Movie", genres: [], date: "2017", desc: "", imageP: "", backP: "")
 }
