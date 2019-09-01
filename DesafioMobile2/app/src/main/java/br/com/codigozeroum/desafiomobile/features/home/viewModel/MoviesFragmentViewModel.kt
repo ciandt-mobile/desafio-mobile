@@ -19,7 +19,7 @@ import br.com.codigozeroum.desafiomobile.projectStructure.ViewModelState
 class MoviesFragmentViewModel: BaseViewModel(), RecyclerViewDataSource<ResultItem> {
 
     private val repository = MoviesRepository()
-    lateinit var response: MoviesResponse
+    //lateinit var response: MoviesResponse
     var results: MutableList<ResultItem> = mutableListOf()
 
     fun getUpacomingMovies(){
@@ -29,8 +29,8 @@ class MoviesFragmentViewModel: BaseViewModel(), RecyclerViewDataSource<ResultIte
 
                 if(result.results != null){
 
-                    response =  result
-                    results = response.results!!
+                    //response =  result
+                    results = result.results
 
                     postNewState(ViewModelState.Success)
                 }else{
@@ -44,7 +44,7 @@ class MoviesFragmentViewModel: BaseViewModel(), RecyclerViewDataSource<ResultIte
 
 
     override fun getItemCount(): Int = results.size
-    override fun getViewTypeFor(position: Int): Int = R.layout.item_movie_grid
+    override fun getViewTypeFor(position: Int): Int = R.layout.item_movie_grid //não utilizado por causa do inflater do Adapter
     override fun getItemFor(position: Int): ResultItem  = results[position]
 
 }
