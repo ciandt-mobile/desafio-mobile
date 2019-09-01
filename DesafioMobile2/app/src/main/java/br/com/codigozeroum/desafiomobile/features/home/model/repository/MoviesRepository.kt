@@ -6,11 +6,11 @@
  * Copyright © 2019 Codigo ZeroUm. All rights reserved.
  */
 
-package br.com.codigozeroum.desafiomobile.features.model.repository
+package br.com.codigozeroum.desafiomobile.features.home.model.repository
 
 import br.com.codigozeroum.desafiomobile.factory.ServiceFactory
-import br.com.codigozeroum.desafiomobile.features.model.service.MovieService
-import br.com.codigozeroum.desafiomobile.features.model.MoviesResponse
+import br.com.codigozeroum.desafiomobile.features.home.model.service.MovieService
+import br.com.codigozeroum.desafiomobile.features.home.model.MoviesResponse
 import br.com.codigozeroum.desafiomobile.projectStructure.BaseRepository
 import io.reactivex.Single
 

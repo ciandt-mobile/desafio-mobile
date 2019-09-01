@@ -6,12 +6,11 @@
  * Copyright © 2019 Codigo ZeroUm. All rights reserved.
  */
 
-package br.com.codigozeroum.desafiomobile.features.viewModel
+package br.com.codigozeroum.desafiomobile.features.home.viewModel
 
 import br.com.codigozeroum.desafiomobile.R
-import br.com.codigozeroum.desafiomobile.features.model.MoviesResponse
-import br.com.codigozeroum.desafiomobile.features.model.ResultItem
-import br.com.codigozeroum.desafiomobile.features.model.repository.MoviesRepository
+import br.com.codigozeroum.desafiomobile.features.home.model.ResultItem
+import br.com.codigozeroum.desafiomobile.features.home.model.repository.MoviesRepository
 import br.com.codigozeroum.desafiomobile.projectStructure.BaseViewModel
 import br.com.codigozeroum.desafiomobile.projectStructure.RecyclerViewDataSource
 import br.com.codigozeroum.desafiomobile.projectStructure.ViewModelState

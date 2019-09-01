@@ -1,9 +1,107 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ activity_movie_detail.xml
+  ~ DesafioMobile
+  ~
+  ~ Created by Flavio Campos on 01/09/19 02:26
+  ~ Copyright © 2019 Codigo ZeroUm. All rights reserved.
+  -->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.MovieDetailActivity">
+    android:background="@drawable/background_main"
+    tools:context=".features.movie_details.MovieDetailActivity">
+
+
+    <ImageView
+        android:id="@+id/poster"
+        android:layout_width="0dp"
+        android:layout_height="390dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/movie_folder_example" />
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/movieTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/poster"
+        tools:text="The Old Man and the Gun" />
+
+    <TextView
+        android:id="@+id/year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#D1D1D1"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/movieTitle"
+        app:layout_constraintTop_toBottomOf="@+id/movieTitle"
+        tools:text="2019" />
+
+    <TextView
+        android:id="@+id/othersInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#D1D1D1"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/year"
+        app:layout_constraintTop_toBottomOf="@+id/year"
+        tools:text="127m | Animation, Adventure, Comedy" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_12dp"
+        android:background="#383838"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/othersInfo">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8dp"
+            android:text="Sinopse:"
+            android:textColor="#D1D1D1"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/sinopse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8dp"
+            android:textColor="#D1D1D1"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@+id/title"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="2019 ciugueiuw wvoubvwubvwbouve wovw vwo vjv owj vwv owjevnwvljwvwv ww wi vw wp vwevw v wmpwrpw gwormvwer ver permer" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

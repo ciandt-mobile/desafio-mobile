@@ -2,17 +2,15 @@
  * MovieViewHolder.kt
  * DesafioMobile
  *
- * Created by Flavio Campos on 01/09/19 01:20
+ * Created by Flavio Campos on 01/09/19 03:41
  * Copyright © 2019 Codigo ZeroUm. All rights reserved.
  */
 
-package br.com.codigozeroum.desafiomobile.features
+package br.com.codigozeroum.desafiomobile.features.home.model
 
 import android.annotation.SuppressLint
-import android.view.TouchDelegate
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import br.com.codigozeroum.desafiomobile.features.model.ResultItem
 import br.com.codigozeroum.desafiomobile.projectStructure.RecyclerViewDelegate
 import br.com.codigozeroum.desafiomobile.utils.ImageLoader
 import kotlinx.android.synthetic.main.item_movie_grid.view.*

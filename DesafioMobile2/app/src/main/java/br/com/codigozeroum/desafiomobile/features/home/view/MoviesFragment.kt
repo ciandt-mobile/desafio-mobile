@@ -6,7 +6,7 @@
  * Copyright © 2019 Codigo ZeroUm. All rights reserved.
  */
 
-package br.com.codigozeroum.desafiomobile.features.view
+package br.com.codigozeroum.desafiomobile.features.home.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,10 +17,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.codigozeroum.desafiomobile.R
-import br.com.codigozeroum.desafiomobile.features.MovieAdapter
-import br.com.codigozeroum.desafiomobile.features.MovieDetailActivity
-import br.com.codigozeroum.desafiomobile.features.model.ResultItem
-import br.com.codigozeroum.desafiomobile.features.viewModel.MoviesFragmentViewModel
+import br.com.codigozeroum.desafiomobile.features.home.model.MovieAdapter
+import br.com.codigozeroum.desafiomobile.features.movie_details.MovieDetailActivity
+import br.com.codigozeroum.desafiomobile.features.home.model.ResultItem
+import br.com.codigozeroum.desafiomobile.features.home.viewModel.MoviesFragmentViewModel
 import br.com.codigozeroum.desafiomobile.projectStructure.BaseFragment
 import br.com.codigozeroum.desafiomobile.projectStructure.RecyclerViewDelegate
 import br.com.codigozeroum.desafiomobile.projectStructure.ViewModelState
@@ -73,7 +73,9 @@ class MoviesFragment : BaseFragment() , RecyclerViewDelegate<ResultItem>{
     }
 
     override fun onItemClickListener(view: View, position: Int, obj: ResultItem?) {
-        startActivity(Intent(context, MovieDetailActivity::class.java))
+        val intent = Intent(context, MovieDetailActivity::class.java)
+        intent.putExtra("movieId", obj!!.id)
+        startActivity(intent)
     }
 
     companion object {

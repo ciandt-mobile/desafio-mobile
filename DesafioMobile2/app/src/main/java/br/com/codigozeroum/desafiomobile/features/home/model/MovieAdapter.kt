@@ -2,17 +2,16 @@
  * MovieAdapter.kt
  * DesafioMobile
  *
- * Created by Flavio Campos on 01/09/19 01:07
+ * Created by Flavio Campos on 01/09/19 03:41
  * Copyright © 2019 Codigo ZeroUm. All rights reserved.
  */
 
-package br.com.codigozeroum.desafiomobile.features
+package br.com.codigozeroum.desafiomobile.features.home.model
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.codigozeroum.desafiomobile.R
-import br.com.codigozeroum.desafiomobile.features.model.ResultItem
 import br.com.codigozeroum.desafiomobile.projectStructure.RecyclerViewDataSource
 import br.com.codigozeroum.desafiomobile.projectStructure.RecyclerViewDelegate
 

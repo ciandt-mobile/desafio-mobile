@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="br.com.codigozeroum.desafiomobile">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <dist:module dist:instant="true" />
 
@@ -16,12 +16,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".features.view.HomeActivity">
+
+        <activity android:name="br.com.codigozeroum.desafiomobile.features.home.view.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".features.movie_details.MovieDetailActivity" android:theme="@style/AppThemeFullScreen"/>
+
     </application>
 
 </manifest>

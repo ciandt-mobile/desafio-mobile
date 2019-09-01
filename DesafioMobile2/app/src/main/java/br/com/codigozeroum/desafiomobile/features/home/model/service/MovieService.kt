@@ -6,9 +6,9 @@
  * Copyright © 2019 Codigo ZeroUm. All rights reserved.
  */
 
-package br.com.codigozeroum.desafiomobile.features.model.service
+package br.com.codigozeroum.desafiomobile.features.home.model.service
 
-import br.com.codigozeroum.desafiomobile.features.model.MoviesResponse
+import br.com.codigozeroum.desafiomobile.features.home.model.MoviesResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -6,7 +6,7 @@
  * Copyright © 2019 Codigo ZeroUm. All rights reserved.
  */
 
-package br.com.codigozeroum.desafiomobile.features.view
+package br.com.codigozeroum.desafiomobile.features.home.view
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
@@ -16,8 +16,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import br.com.codigozeroum.desafiomobile.R
-import br.com.codigozeroum.desafiomobile.features.viewModel.HomeViewModel
-import br.com.codigozeroum.desafiomobile.features.model.ViewPagerAdapter
+import br.com.codigozeroum.desafiomobile.features.home.viewModel.HomeViewModel
+import br.com.codigozeroum.desafiomobile.features.home.model.ViewPagerAdapter
 import br.com.codigozeroum.desafiomobile.projectStructure.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
 

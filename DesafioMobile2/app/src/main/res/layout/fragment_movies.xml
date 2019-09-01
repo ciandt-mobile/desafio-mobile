@@ -11,8 +11,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#68FFFFFF"
-    tools:context=".features.view.MoviesFragment"
+    android:background="#00FFFFFF"
+    tools:context=".features.home.view.MoviesFragment"
     tools:background="@drawable/background_main">
 
 
@@ -25,12 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <GridView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gridView"
-        android:numColumns="3"
-        android:horizontalSpacing="3dp"
-        android:verticalSpacing="3dp"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

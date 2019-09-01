@@ -6,7 +6,7 @@
  * Copyright © 2019 Codigo ZeroUm. All rights reserved.
  */
 
-package br.com.codigozeroum.desafiomobile.features.view
+package br.com.codigozeroum.desafiomobile.features.home.view
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -15,7 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import br.com.codigozeroum.desafiomobile.R
-import br.com.codigozeroum.desafiomobile.features.viewModel.SearchMovieViewModel
+import br.com.codigozeroum.desafiomobile.features.home.viewModel.SearchMovieViewModel
 import br.com.codigozeroum.desafiomobile.projectStructure.BaseFragment
 
 class SearchMovieFragment : BaseFragment() {

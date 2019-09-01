@@ -12,7 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00FFFFFF"
-    tools:context=".features.view.SearchMovieFragment"
+    tools:context=".features.home.view.SearchMovieFragment"
     tools:background="@drawable/background_main">
 
     <TextView

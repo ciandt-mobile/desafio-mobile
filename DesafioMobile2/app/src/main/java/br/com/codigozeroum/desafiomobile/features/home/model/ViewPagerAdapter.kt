@@ -6,7 +6,7 @@
  * Copyright © 2019 Codigo ZeroUm. All rights reserved.
  */
 
-package br.com.codigozeroum.desafiomobile.features.model
+package br.com.codigozeroum.desafiomobile.features.home.model
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
