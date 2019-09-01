@@ -47,7 +47,7 @@ extension PopularViewModel: PopularInterface{
             if error == nil {
                 checkMovies.forEach({ [weak self] (movie) in
                         guard let self = self else {return}
-                        self.movies.append(PresentableMovie(movie: movie, apiAccess: self.apiAccess, completion: {
+                        self.movies.append(MovieCellViewModel(movie: movie, apiAccess: self.apiAccess, completion: {
                         self.refreshDelegate?.refreshMovieData()
                     }))
                 })

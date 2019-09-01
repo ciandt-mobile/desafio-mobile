@@ -18,13 +18,15 @@ protocol PresentableMovieInterface {
     var description: String {get}
     var genres: [Int] {get}
     var date: String {get}
+    
+    func loadImage(path: String, completion: @escaping (UIImage) -> Void)
+    func fixDate(movieDate: String) -> String
 }
 
 
 //MARK: - Init
-class PresentableMovie: PresentableMovieInterface{
-    
-    
+class MovieCellViewModel: PresentableMovieInterface{
+
     var apiAccess: APIClientInterface
     
     var id: Int = 0

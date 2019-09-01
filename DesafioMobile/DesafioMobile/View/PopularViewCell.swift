@@ -43,6 +43,7 @@ class PopularViewCell: UICollectionViewCell{
         let label = UILabel()
         label.textColor = UsedColors.gold.color
         label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
         label.numberOfLines = 0
         return label
     }()

@@ -12,6 +12,12 @@ class Actor: Codable{
     var name: String?
     var profile_path: String?
     var character: String?
+    
+    init(name: String, imagePath: String, char: String){
+        self.profile_path = imagePath
+        self.name = name
+        self.character = char
+    }
 }
 
 class Cast: Codable {
