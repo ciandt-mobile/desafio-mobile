@@ -1,7 +1,7 @@
 # Desafio Mobile - 2019
 
 ## Execução do Desafio
--O desafio foi realizado no total de 14 horas em Kotlin com 'compileSdkVersion' e 'targetSdkVersion' = 29(Android Q).
+-O desafio foi realizado no total de 16 horas em Kotlin com 'compileSdkVersion' e 'targetSdkVersion' = 29(Android Q).
 -Devices testados: OnePlus 5T e Samsung S7
 
 ## Libs / Components

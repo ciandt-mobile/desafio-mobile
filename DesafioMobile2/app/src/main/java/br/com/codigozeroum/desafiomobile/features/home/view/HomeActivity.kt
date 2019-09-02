@@ -12,6 +12,7 @@ import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -50,13 +51,7 @@ class HomeActivity : BaseActivity() {
         swiperefresh.setOnRefreshListener {
             viewPager.removeAllViews()
             viewPager.adapter = null
-
-            upcomingFragment.currentPage = 1
-            topRatedFragment.currentPage = 1
-            popularFragment.currentPage = 1
-
             configureViewPager(currentPosition)
-
             swiperefresh.isRefreshing = false
         }
 

@@ -39,7 +39,7 @@ class MoviesFragment : BaseFragment(), RecyclerViewDelegate<ResultItem>{
         super.onViewCreated(view, savedInstanceState)
 
         tab = arguments?.getString("tab")
-
+        currentPage = 1
         configureView(view)
         configureViewModel()
     }
