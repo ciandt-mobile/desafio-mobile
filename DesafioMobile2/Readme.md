@@ -21,19 +21,19 @@
 
 ## Descrição / Adicionais do Desafio
 
-####Home
+#### Home
 -Listagem de 'Upcoming','TopRated'(adicional),'Popular'
 -Busca de Filmes(adicional)
 -Paginação(adicional)
 
-####Listagem - Item
+#### Listagem - Item
 -Poster
 -Data de release
 -Rating(adicional)
 -Popularidade(adicional)
 -Título
 
-####Detalhes do Filme
+#### Detalhes do Filme
 -Poster ampliado
 -Ano
 -Rating(adicional)
