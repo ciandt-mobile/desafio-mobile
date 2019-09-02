@@ -26,6 +26,12 @@ import kotlinx.android.synthetic.main.activity_home.*
 class HomeActivity : BaseActivity() {
 
     lateinit var viewModel: HomeViewModel
+
+    var upcomingFragment: MoviesFragment = MoviesFragment()
+    var topRatedFragment: MoviesFragment = MoviesFragment()
+    var popularFragment: MoviesFragment = MoviesFragment()
+    var searchFragment: SearchMovieFragment = SearchMovieFragment()
+
     var adapter: ViewPagerAdapter? = null
     private var currentPosition = 0
 
@@ -44,6 +50,11 @@ class HomeActivity : BaseActivity() {
         swiperefresh.setOnRefreshListener {
             viewPager.removeAllViews()
             viewPager.adapter = null
+
+            upcomingFragment.currentPage = 1
+            topRatedFragment.currentPage = 1
+            popularFragment.currentPage = 1
+
             configureViewPager(currentPosition)
 
             swiperefresh.isRefreshing = false
@@ -71,10 +82,10 @@ class HomeActivity : BaseActivity() {
 
     private fun configureViewPager(currentPos: Int){
         val fragmentList = mutableListOf<Fragment>()
-        val upcomingFragment = MoviesFragment.newInstance("upcoming")
-        val topRatedFragment = MoviesFragment.newInstance("top_rated")
-        val popularFragment = MoviesFragment.newInstance("popular")
-        val searchFragment = SearchMovieFragment.newInstance()
+        upcomingFragment = MoviesFragment.newInstance("upcoming")
+        topRatedFragment = MoviesFragment.newInstance("top_rated")
+        popularFragment = MoviesFragment.newInstance("popular")
+        searchFragment = SearchMovieFragment.newInstance()
 
         fragmentList.add(upcomingFragment)
         fragmentList.add(topRatedFragment)
