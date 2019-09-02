@@ -18,17 +18,60 @@ import br.com.codigozeroum.desafiomobile.projectStructure.ViewModelState
 class MoviesFragmentViewModel: BaseViewModel(), RecyclerViewDataSource<ResultItem> {
 
     private val repository = MoviesRepository()
-    //lateinit var response: MoviesResponse
     var results: MutableList<ResultItem> = mutableListOf()
+    var totalPages = 1
 
-    fun getUpacomingMovies(){
+    fun getUpcomingMovies(page: Int = 1){
 
-        val disposable = repository.getUpcomingMovies()
+        val disposable = repository.getUpcomingMovies(page)
             .subscribe({result ->
 
                 if(result.results != null){
 
-                    //response =  result
+                    totalPages =  result.total_pages!!
+                    results = result.results
+
+                    postNewState(ViewModelState.Success)
+                }else{
+                    postNewState(ViewModelState.Error)
+                }
+            },{
+                postNewState(ViewModelState.Error)
+            })
+        addToDisposeBag(disposable)
+    }
+
+
+
+
+    fun getTopRatedMovies(page: Int = 1){
+
+        val disposable = repository.getTopRatedMovies(page)
+            .subscribe({result ->
+
+                if(result.results != null){
+
+                    totalPages =  result.total_pages!!
+                    results = result.results
+
+                    postNewState(ViewModelState.Success)
+                }else{
+                    postNewState(ViewModelState.Error)
+                }
+            },{
+                postNewState(ViewModelState.Error)
+            })
+        addToDisposeBag(disposable)
+    }
+
+    fun getPopularMovies(page: Int = 1){
+
+        val disposable = repository.getPopularMovies(page)
+            .subscribe({result ->
+
+                if(result.results != null){
+
+                    totalPages =  result.total_pages!!
                     results = result.results
 
                     postNewState(ViewModelState.Success)

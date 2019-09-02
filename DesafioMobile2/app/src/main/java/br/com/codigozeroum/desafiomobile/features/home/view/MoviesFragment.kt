@@ -28,10 +28,12 @@ import kotlinx.android.synthetic.main.fragment_movies.*
 import br.com.codigozeroum.desafiomobile.utils.SpacesItemDecoration
 
 
-class MoviesFragment : BaseFragment() , RecyclerViewDelegate<ResultItem>{
+class MoviesFragment : BaseFragment(), RecyclerViewDelegate<ResultItem>{
 
     lateinit var viewModel: MoviesFragmentViewModel
     var tab: String? = null
+    var totalPages = 1
+    var currentPage = 1
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,6 +54,27 @@ class MoviesFragment : BaseFragment() , RecyclerViewDelegate<ResultItem>{
         val spacingInPixels = resources.getDimensionPixelSize(R.dimen.margin_10dp)
         gridView.addItemDecoration(SpacesItemDecoration(spacingInPixels))
 
+        previousPage.setOnClickListener {
+            if(currentPage > 1){
+                currentPage -= 1
+                when(tab){
+                    "upcoming"-> viewModel.getUpcomingMovies(currentPage)
+                    "top_rated"-> viewModel.getTopRatedMovies(currentPage)
+                    "popular"-> viewModel.getPopularMovies(currentPage)
+                }
+            }
+        }
+        nextPage.setOnClickListener {
+            if(currentPage < totalPages){
+                currentPage += 1
+                when(tab){
+                    "upcoming"-> viewModel.getUpcomingMovies(currentPage)
+                    "top_rated"-> viewModel.getTopRatedMovies(currentPage)
+                    "popular"-> viewModel.getPopularMovies(currentPage)
+                }
+            }
+        }
+
     }
 
     override fun configureViewModel() {
@@ -60,16 +83,26 @@ class MoviesFragment : BaseFragment() , RecyclerViewDelegate<ResultItem>{
         viewModel.register(this, Observer { newState->
             when(newState){
                 ViewModelState.Success -> {
+                    totalPages = viewModel.totalPages
                     bindView()
                 }
             }
         })
-        viewModel.getUpacomingMovies()
+        when(tab){
+            "upcoming"-> viewModel.getUpcomingMovies()
+            "top_rated"-> viewModel.getTopRatedMovies()
+            "popular"-> viewModel.getPopularMovies()
+        }
+
     }
 
     override fun bindView() {
+
         val adapter = MovieAdapter(viewModel, this@MoviesFragment)
         gridView.adapter = adapter
+
+        currentPageLabel.text = currentPage.toString()
+        totalPagesLabel.text = " de $totalPages"
     }
 
     override fun onItemClickListener(view: View, position: Int, obj: ResultItem?) {

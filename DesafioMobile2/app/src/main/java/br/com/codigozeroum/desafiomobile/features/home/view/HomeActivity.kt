@@ -12,6 +12,7 @@ import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
@@ -25,6 +26,8 @@ import kotlinx.android.synthetic.main.activity_home.*
 class HomeActivity : BaseActivity() {
 
     lateinit var viewModel: HomeViewModel
+    var adapter: ViewPagerAdapter? = null
+    private var currentPosition = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +42,10 @@ class HomeActivity : BaseActivity() {
     override fun configureView() {
 
         swiperefresh.setOnRefreshListener {
-            toast("Ok Refresh")
+            viewPager.removeAllViews()
+            viewPager.adapter = null
+            configureViewPager(currentPosition)
+
             swiperefresh.isRefreshing = false
         }
 
@@ -51,7 +57,19 @@ class HomeActivity : BaseActivity() {
         btnPopular.setOnClickListener { viewPager.setCurrentItem(2, true) }
         btnSearch.setOnClickListener { viewPager.setCurrentItem(3, true) }
 
+        configureViewPager(0)
 
+    }
+
+    override fun configureViewModel() {
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+    }
+
+    override fun bindView() {
+        tabSelectedLabel.text = getString(R.string.upcomming_movies)
+    }
+
+    private fun configureViewPager(currentPos: Int){
         val fragmentList = mutableListOf<Fragment>()
         val upcomingFragment = MoviesFragment.newInstance("upcoming")
         val topRatedFragment = MoviesFragment.newInstance("top_rated")
@@ -63,35 +81,34 @@ class HomeActivity : BaseActivity() {
         fragmentList.add(popularFragment)
         fragmentList.add(searchFragment)
 
-        val adapter = ViewPagerAdapter(supportFragmentManager, fragmentList)
+        adapter = ViewPagerAdapter(supportFragmentManager, fragmentList)
         viewPager.adapter = adapter
 
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
-            override fun onPageScrollStateChanged(state: Int) {
-            }
-
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-            }
-
+            override fun onPageScrollStateChanged(state: Int) {}
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
             override fun onPageSelected(position: Int) {
-                //toast(position.toString())
+                currentPosition = position
                 bindTabButtons(position)
             }
-
         })
 
+        when(currentPos){
+            0->viewPager.setCurrentItem(0, true)
+            1->viewPager.setCurrentItem(1, true)
+            2->viewPager.setCurrentItem(2, true)
+            3->viewPager.setCurrentItem(3, true)
+        }
     }
-
-    override fun configureViewModel() {
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-    }
-
-    override fun bindView() {}
 
     @SuppressLint("NewApi")
     private fun bindTabButtons(positon: Int){
         when(positon){
             0-> {
+                tabSelectedLabel.visibility = View.VISIBLE
+                tabSelectedLabel.text = getString(R.string.upcomming_movies)
+                swiperefresh.isEnabled = true
+
                 btnUpcoming.isSelected = true
                 btnUpcoming.setTextColor(Color.BLACK)
 
@@ -104,6 +121,10 @@ class HomeActivity : BaseActivity() {
                 btnSearch.compoundDrawableTintList = ColorStateList.valueOf(Color.WHITE)
             }
             1->{
+                tabSelectedLabel.visibility = View.VISIBLE
+                tabSelectedLabel.text = getString(R.string.top_rated_movies)
+                swiperefresh.isEnabled = true
+
                 btnUpcoming.isSelected = false
                 btnUpcoming.setTextColor(Color.WHITE)
 
@@ -118,6 +139,10 @@ class HomeActivity : BaseActivity() {
             }
 
             2->{
+                tabSelectedLabel.visibility = View.VISIBLE
+                tabSelectedLabel.text = getString(R.string.popular_movies)
+                swiperefresh.isEnabled = true
+
                 btnUpcoming.isSelected = false
                 btnUpcoming.setTextColor(Color.WHITE)
                 btnTopRated.isSelected = false
@@ -131,6 +156,10 @@ class HomeActivity : BaseActivity() {
                 btnSearch.compoundDrawableTintList = ColorStateList.valueOf(Color.WHITE)
             }
             3->{
+                tabSelectedLabel.visibility = View.GONE
+                swiperefresh.isRefreshing = false
+                swiperefresh.isEnabled = false
+
                 btnUpcoming.isSelected = false
                 btnUpcoming.setTextColor(Color.WHITE)
                 btnTopRated.isSelected = false

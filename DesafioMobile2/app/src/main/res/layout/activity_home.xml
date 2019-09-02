@@ -91,7 +91,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tabBtnsLayout"
             app:layout_constraintTop_toBottomOf="@+id/tabBtnsLayout"
-            android:text="Upcoming Movies" />
+            tools:text="@string/upcomming_movies" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"

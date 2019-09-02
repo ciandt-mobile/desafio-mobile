@@ -15,13 +15,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object API {
     const val BASE_URL = "https://api.themoviedb.org/3/movie/"
+    const val BASE_SEARCH_URL = "https://api.themoviedb.org/3/search/"
 }
 
 class ServiceFactory {
 
-    inline fun <reified T> create(): T {
+    inline fun <reified T> create(search: Boolean = false): T {
         val restAdapter = Retrofit.Builder()
-            .baseUrl(API.BASE_URL)
+            .baseUrl(if(search)API.BASE_SEARCH_URL else API.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()

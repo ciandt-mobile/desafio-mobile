@@ -24,12 +24,14 @@ class MovieViewHolder(itemView: View, private val delegate: RecyclerViewDelegate
 
         ImageLoader.loadImageWith(itemView.context, "https://image.tmdb.org/t/p/w154${item.poster_path}", itemView.folderImage)
 
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-        val date = LocalDate.parse(item.release_date, formatter)
-
-        val formatterBR = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-
-        itemView.releaseDate.text = date.format(formatterBR)
+        if(item.release_date != null && item.release_date != "") {
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val date = LocalDate.parse(item.release_date, formatter)
+            val formatterBR = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+            itemView.releaseDate.text = date.format(formatterBR)
+        }else{
+            itemView.releaseDate.text = "01-01-2019"
+        }
         itemView.voteAverage.text = item.vote_average.toString()
         itemView.popularity.text = item.popularity.toString()
         itemView.title.text = item.title

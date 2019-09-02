@@ -18,7 +18,7 @@
     <ImageView
         android:id="@+id/poster"
         android:layout_width="0dp"
-        android:layout_height="390dp"
+        android:layout_height="490dp"
         android:contentDescription="@string/app_name"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,13 +61,44 @@
         tools:text="2019" />
 
     <TextView
+        android:id="@+id/voteAverage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_star_big"
+        android:drawablePadding="2dp"
+        android:drawableTint="#FFD700"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/margin_2dp"
+        app:layout_constraintStart_toStartOf="@+id/year"
+        app:layout_constraintTop_toBottomOf="@+id/year"
+        tools:text="6.4" />
+
+    <TextView
+        android:id="@+id/popularity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_8dp"
+        android:drawableLeft="@drawable/ic_people_big"
+        android:drawablePadding="2dp"
+        android:drawableTint="@color/colorAccent"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/voteAverage"
+        app:layout_constraintStart_toEndOf="@+id/voteAverage"
+        app:layout_constraintTop_toTopOf="@+id/voteAverage"
+        tools:text="299.795" />
+
+    <TextView
         android:id="@+id/othersInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#D1D1D1"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/year"
-        app:layout_constraintTop_toBottomOf="@+id/year"
+        app:layout_constraintStart_toStartOf="@+id/voteAverage"
+        app:layout_constraintTop_toBottomOf="@+id/voteAverage"
         tools:text="127m | Animation, Adventure, Comedy" />
 
     <LinearLayout

@@ -18,15 +18,18 @@ class MoviesRepository : BaseRepository() {
 
     private val service: MovieService = ServiceFactory().create()
 
-    fun getPopularMovies(): Single<MoviesResponse>{
-        return doCall(service.getPopularMovies())
+    fun getUpcomingMovies(page: Int): Single<MoviesResponse>{
+        return doCall(service.getUpcomingMovies(page = page))
     }
 
-    fun getTopRatedMovies(): Single<MoviesResponse>{
-        return doCall(service.getTopRatedMovies())
+    fun getTopRatedMovies(page: Int): Single<MoviesResponse>{
+        return doCall(service.getTopRatedMovies(page = page))
     }
 
-    fun getUpcomingMovies(): Single<MoviesResponse>{
-        return doCall(service.getUpcomingMovies())
+    fun getPopularMovies(page: Int): Single<MoviesResponse>{
+        return doCall(service.getPopularMovies(page = page))
     }
+
+
+
 }

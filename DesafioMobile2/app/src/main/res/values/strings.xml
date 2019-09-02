@@ -2,9 +2,14 @@
     <string name="app_name">DesafioMobile</string>
 
     <string name="upcomming">Upcoming</string>
+    <string name="upcomming_movies">Upcoming Movies</string>
     <string name="top_rated">TopRated</string>
+    <string name="top_rated_movies">Top Rated Movies</string>
     <string name="popular">Popular</string>
+    <string name="popular_movies">Popular Movies</string>
     <string name="search">Search</string>
+    <string name="search_movies">Search Movies</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

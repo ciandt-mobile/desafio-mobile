@@ -53,6 +53,8 @@ class MovieDetailActivity : BaseActivity() {
         ImageLoader.loadImageWith(this, viewModel.movieDetail.poster_path, poster)
         movieTitle.text = viewModel.movieDetail.title
         year.text = viewModel.movieDetail.release_date.substring(0, 4)
+        voteAverage.text = viewModel.movieDetail.vote_average.toString()
+        popularity.text = viewModel.movieDetail.popularity.toString()
         var genres = ""
         viewModel.movieDetail.genres.forEach {
             genres += "${it.name}, "

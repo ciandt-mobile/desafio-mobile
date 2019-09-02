@@ -15,5 +15,7 @@ data class MovieDetail(
     var poster_path: String,
     val release_date: String,
     val title: String,
-    val runtime: Int
+    val runtime: Int,
+    val vote_average: Double,
+    val popularity: Double
 )
