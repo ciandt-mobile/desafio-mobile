@@ -1,4 +1,4 @@
-package com.apolo.findmovies.base.model
+package com.apolo.findmovies.data.model
 
 import java.io.Serializable
 

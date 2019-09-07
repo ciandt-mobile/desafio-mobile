@@ -3,13 +3,17 @@ package com.apolo.findmovies.presentation.home.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.apolo.findmovies.R
-import com.apolo.findmovies.base.model.MovieDetailViewModel
-import com.apolo.findmovies.base.model.MovieInfoViewModel
-import com.apolo.findmovies.base.model.MovieViewModel
+import com.apolo.findmovies.data.model.MovieDetailViewModel
+import com.apolo.findmovies.data.model.MovieInfoViewModel
+import com.apolo.findmovies.data.model.MovieViewModel
+import com.apolo.findmovies.presentation.home.viewModel.HomeViewModel
 import com.apolo.findmovies.presentation.movieDetail.view.MovieDetailActivity
 import kotlinx.android.synthetic.main.activity_home.*
+import org.koin.android.ext.android.inject
 
 class HomeActivity : AppCompatActivity() {
+
+    private val homeViewModel: HomeViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,5 +62,7 @@ class HomeActivity : AppCompatActivity() {
                 )
             )
         }
+
+//        homeViewModel.onViewReady()
     }
 }

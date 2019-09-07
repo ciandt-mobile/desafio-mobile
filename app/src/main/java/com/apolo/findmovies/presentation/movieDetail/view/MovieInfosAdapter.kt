@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.apolo.findmovies.R
-import com.apolo.findmovies.base.model.MovieInfoViewModel
+import com.apolo.findmovies.data.model.MovieInfoViewModel
 import kotlinx.android.synthetic.main.view_holder_movie_detail.view.*
 
 class MovieInfosAdapter(private val movieInfoViewModel: List<MovieInfoViewModel>) : RecyclerView.Adapter<MovieInfosAdapter.MovieInfoViewHolder>() {

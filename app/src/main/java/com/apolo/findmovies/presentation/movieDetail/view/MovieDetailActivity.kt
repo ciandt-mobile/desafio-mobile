@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.apolo.findmovies.R
-import com.apolo.findmovies.base.model.MovieDetailViewModel
+import com.apolo.findmovies.data.model.MovieDetailViewModel
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 
 class MovieDetailActivity : AppCompatActivity() {
