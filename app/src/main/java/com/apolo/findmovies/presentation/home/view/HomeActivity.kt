@@ -1,18 +1,17 @@
 package com.apolo.findmovies.presentation.home.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.apolo.findmovies.R
 import com.apolo.findmovies.base.model.MovieViewModel
-import kotlinx.android.synthetic.main.activity_main.*
+import com.apolo.findmovies.presentation.movieDetail.view.MovieDetailActivity
+import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        setContentView(R.layout.activity_home)
 
         movies_list.adapter = MoviesAdapter(listOf(
             MovieViewModel("","Era um vez", "10/12/2020"),
@@ -31,7 +30,7 @@ class HomeActivity : AppCompatActivity() {
             MovieViewModel("","Era um vez", "10/12/2020"),
             MovieViewModel("","Era um vez", "10/12/2020")
         )) {
-            Toast.makeText(this, it.name, Toast.LENGTH_LONG).show()
+            startActivity(MovieDetailActivity.getStartIntent(this))
         }
     }
 }
