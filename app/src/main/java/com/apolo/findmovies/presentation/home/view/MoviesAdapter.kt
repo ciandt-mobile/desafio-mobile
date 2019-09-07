@@ -8,7 +8,7 @@ import com.apolo.findmovies.R
 import com.apolo.findmovies.base.model.MovieViewModel
 import kotlinx.android.synthetic.main.view_holder_movie.view.*
 
-class MoviesAdapter(private val movies : List<MovieViewModel>) : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
+class MoviesAdapter(private val movies : List<MovieViewModel>, private val onMovieClickListener: (MovieViewModel) -> Unit) : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
 
@@ -21,16 +21,18 @@ class MoviesAdapter(private val movies : List<MovieViewModel>) : RecyclerView.Ad
         holder.bind(movies[position])
     }
 
-    class MovieViewHolder(private val viewHolder: View) : RecyclerView.ViewHolder(viewHolder) {
+    inner class MovieViewHolder(private val viewHolder: View) : RecyclerView.ViewHolder(viewHolder) {
 
         fun bind(movie: MovieViewModel) {
 
             viewHolder.apply {
                 movie_name.text = movie.name
                 release_date.text = movie.releaseDate
+
+                setOnClickListener {
+                    onMovieClickListener(movie)
+                }
             }
-
         }
-
     }
 }
