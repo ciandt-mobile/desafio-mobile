@@ -3,6 +3,7 @@ package com.apolo.findmovies.presentation.home.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.apolo.findmovies.R
+import com.apolo.findmovies.base.model.MovieViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeActivity : AppCompatActivity() {
@@ -12,8 +13,22 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-//        movies_list.adapter =
-
-
+        movies_list.adapter = MoviesAdapter(listOf(
+            MovieViewModel("","Era um vez", "10/12/2020"),
+            MovieViewModel("","Era um vez", "10/12/2020"),
+            MovieViewModel("","Era um vez", "10/12/2020"),
+            MovieViewModel("","Era um vez", "10/12/2020"),
+            MovieViewModel("","Era um vez", "10/12/2020"),
+            MovieViewModel("","Era um vez", "10/12/2020"),
+            MovieViewModel("","Era um vez", "10/12/2020"),
+            MovieViewModel("","Era um vez", "10/12/2020"),
+            MovieViewModel("","Era um vez", "10/12/2020"),
+            MovieViewModel("","Era um vez", "10/12/2020"),
+            MovieViewModel("","Era um vez", "10/12/2020"),
+            MovieViewModel("","Era um vez", "10/12/2020"),
+            MovieViewModel("","Era um vez", "10/12/2020"),
+            MovieViewModel("","Era um vez", "10/12/2020"),
+            MovieViewModel("","Era um vez", "10/12/2020")
+        ))
     }
 }

@@ -43,7 +43,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upcoming_option"
-        tools:text="Upcoming Movies" />
+        android:text="Upcoming Movies" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movies_list"
@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selected_option_title"
-        app:spanCount="2"
+        app:spanCount="3"
         tools:itemCount="10"
         tools:spanCount="3"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
