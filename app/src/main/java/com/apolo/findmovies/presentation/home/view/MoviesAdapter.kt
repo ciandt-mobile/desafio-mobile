@@ -30,7 +30,7 @@ class MoviesAdapter(private var movies : MutableList<MovieViewModel>, private va
                 movie_name.text = movie.name
                 release_date.text = movie.releaseDate
 
-                Picasso.with(viewHolder.context).load(movie.image).into(movie_image)
+                Picasso.with(viewHolder.context).load(movie.previousImage).into(movie_image)
 
                 setOnClickListener {
                     onMovieClickListener(movie)

@@ -28,8 +28,6 @@ class WebServiceClient {
         //TODO: Put request on BuildConfig
         private val uri = "https://api.themoviedb.org/3/"
 
-        private val imagesUrl = "https://image.tmdb.org/t/p/w500/"
-
         private fun createWebService(uri: String, gson: Gson ) : WebService {
 
             val requestInterceptor =  object :Interceptor  {

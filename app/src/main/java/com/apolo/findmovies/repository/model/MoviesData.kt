@@ -19,6 +19,7 @@ data class MoviesResponse(
                         movie.id,
                         movie.original_title,
                         movie.overview,
+                        movie.poster_path,
                         movie.backdrop_path,
                         movie.genre_ids,
                         movie.release_date
@@ -35,6 +36,7 @@ data class Dates(
 
 data class Movie(
     val id: Int,
+    val poster_path: String,
     val backdrop_path: String,
     val genre_ids: List<Int>,
     val original_title: String,

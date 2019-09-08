@@ -23,7 +23,7 @@ class MovieInfosAdapter(private val movieInfoViewModel: List<MovieInfoViewModel>
         fun bind(movieInfo : MovieInfoViewModel) {
 
             viewHolder.apply {
-//                this.image TODO
+//                this.bannerImage TODO
                 this.actor_name.text = movieInfo.actorName
                 this.role.text = movieInfo.roleName
             }
