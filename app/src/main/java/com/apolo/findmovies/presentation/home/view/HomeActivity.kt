@@ -60,27 +60,25 @@ class HomeActivity : AppCompatActivity() {
 
     private fun openMovieDetail(movieViewModel: MovieViewModel) : Unit {
         startActivity(
-            MovieDetailActivity.getStartIntent(
-                this,
-                MovieDetailViewModel(
-                    "",
-                    "Titanic",
-                    "13/02",
-                    "196m",
-                    "Science Fiction, Action, Drama",
-                    "Blalblaslbasob f msa mbpsam bsomb pasmbp omasp mbpsam pamspo mpsam bpoasm pbomaspom b",
-                    listOf(
-                        MovieInfoViewModel("", "Apolo", "Herói"),
-                        MovieInfoViewModel("", "Leonardo", "Herói"),
-                        MovieInfoViewModel("", "Luís", "Herói"),
-                        MovieInfoViewModel("", "Henrique", "Herói"),
-                        MovieInfoViewModel("", "Tássio", "Herói"),
-                        MovieInfoViewModel("", "Toníssio", "Herói"),
-                        MovieInfoViewModel("", "Jefferson", "Herói")
-                    )
-                )
-
-            )
+            MovieDetailActivity.getStartIntent(this, movieViewModel)
         )
+
+      /*  MovieDetailViewModel(
+            "",
+            "Titanic",
+            "13/02",
+            "196m",
+            "Science Fiction, Action, Drama",
+            "Blalblaslbasob f msa mbpsam bsomb pasmbp omasp mbpsam pamspo mpsam bpoasm pbomaspom b",
+            listOf(
+                MovieInfoViewModel("", "Apolo", "Herói"),
+                MovieInfoViewModel("", "Leonardo", "Herói"),
+                MovieInfoViewModel("", "Luís", "Herói"),
+                MovieInfoViewModel("", "Henrique", "Herói"),
+                MovieInfoViewModel("", "Tássio", "Herói"),
+                MovieInfoViewModel("", "Toníssio", "Herói"),
+                MovieInfoViewModel("", "Jefferson", "Herói")
+            )
+        )*/
     }
 }
