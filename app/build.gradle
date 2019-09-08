@@ -29,11 +29,13 @@ android {
         dev {
             buildConfigField("String", "API_KEY", "\"29761a0257660d4939df907bdb219919\"")
             buildConfigField("String", "TOKEN", "\"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyOTc2MWEwMjU3NjYwZDQ5MzlkZjkwN2JkYjIxOTkxOSIsInN1YiI6IjVkNmQ4YmU3NjU2ODZlNTJlNzg3OTdmZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.46ieABom1gkxUHfgT-3ADdAl57-iMD1RUiDXcuGA-Aw\"")
+            buildConfigField("String", "BASE_IMAGE_URL", "\"https://image.tmdb.org/\"")
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
         }
         production {
             buildConfigField("String", "API_KEY", "\" \"")
             buildConfigField("String", "TOKEN", "\" \"")
+            buildConfigField("String", "BASE_IMAGE_URL", "\" \"")
             buildConfigField("String", "BASE_URL", "\" \"")
         }
     }
@@ -42,8 +44,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
@@ -53,8 +55,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
 
-    implementation 'com.github.bumptech.glide:glide:4.4.0'
-    kapt 'com.github.bumptech.glide:compiler:4.4.0'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

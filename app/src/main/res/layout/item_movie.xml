@@ -10,9 +10,8 @@
     <ImageView
         android:id="@+id/imageView"
         android:scaleType="fitXY"
-        android:background="@drawable/imagem_teste"
         android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -30,20 +29,26 @@
 
             <TextView
                 android:id="@+id/textViewTitle"
-                android:text="@string/lorem_ipsum"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cabin_sketch"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/lorem_ipsum"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewDate"
-                android:text="@string/lorem_ipsum_date"
-                android:textSize="14sp"
-                android:textColor="@color/gray"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cabin_sketch"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/lorem_ipsum_date"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
 
         </LinearLayout>
 

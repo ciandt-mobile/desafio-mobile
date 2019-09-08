@@ -38,24 +38,6 @@ class BaseListFragment: Fragment(), BaseListContract.View {
     }
 
     private fun initRecyclerView() {
-//        val movieList: MutableList<Movie> = mutableListOf()
-//        movieList.add(Movie("Teste 1", "01/05/2019"))
-//        movieList.add(Movie("Teste 2", "01/06/2019"))
-//        movieList.add(Movie("Teste 3", "01/07/2019"))
-//
-//        recyclerView.layoutManager = GridLayoutManager(context, GridLayoutManager.VERTICAL)
-//        recyclerView.adapter = MovieListAdapter(movieList)
-//
-//        val movieList: MutableList<Movie> = mutableListOf()
-//        movieList.add(Movie("Teste 1", "01/05/2019"))
-//        movieList.add(Movie("Teste 2", "01/06/2019"))
-//        movieList.add(Movie("Teste 3", "01/07/2019"))
-//        movieList.add(Movie("Teste 4", "01/08/2019"))
-//        movieList.add(Movie("Teste 5", "01/09/2019"))
-//        movieList.add(Movie("Teste 6", "01/10/2019"))
-//        movieList.add(Movie("Teste 7", "01/09/2019"))
-//        movieList.add(Movie("Teste 8", "01/10/2019"))
-
         val scrollListener = object : HidingScrollListener() {
             override fun onHide() {
             }
@@ -65,6 +47,8 @@ class BaseListFragment: Fragment(), BaseListContract.View {
         }
 
         val gridLayoutManager = GridLayoutManager(context, GridLayoutManager.VERTICAL)
+
+        // todo fazer a verificacao se está portrait ou landscape
         gridLayoutManager.spanCount = 2
 
         recyclerView.layoutManager = gridLayoutManager
@@ -73,11 +57,11 @@ class BaseListFragment: Fragment(), BaseListContract.View {
     }
 
     override fun showLoading() {
-
+        progressBar.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-
+        progressBar.visibility = View.GONE
     }
 
     override fun updateScreen(movieList: List<Movie>) {
