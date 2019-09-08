@@ -63,6 +63,6 @@ class HomeActivity : AppCompatActivity() {
             )
         }
 
-//        homeViewModel.onViewReady()
+        homeViewModel.onViewReady()
     }
 }

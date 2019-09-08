@@ -6,9 +6,10 @@ import kotlinx.coroutines.withContext
 
 class MoviesRemoteDataSource(private val webService: WebService) {
 
-    suspend fun getUpcominMovies() : Boolean {
+    suspend fun getUpcomingMovies() : Boolean {
         return withContext(Dispatchers.IO){
-            webService.getUpcomingMovies()
+            val request = webService.getUpcomingMovies().execute()
+            request.isSuccessful
         }
     }
 

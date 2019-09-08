@@ -7,7 +7,7 @@ class MoviesRepository(private val moviesRemoteDataSource: MoviesRemoteDataSourc
 
     suspend fun getUpcominMovies() : Boolean {
         return withContext(IO){
-            moviesRemoteDataSource.getUpcominMovies()
+            moviesRemoteDataSource.getUpcomingMovies()
         }
     }
 }
