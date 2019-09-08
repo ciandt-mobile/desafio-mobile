@@ -1,5 +1,6 @@
 package com.apolo.findmovies.presentation.home.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.apolo.findmovies.base.resources.LiveDataResource
 import com.apolo.findmovies.base.resources.Resource
@@ -16,6 +17,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewMo
 
     fun onViewReady() {
         getUpcomingMovies()
+        getGenres()
     }
 
     fun onCategoryChange(isUpcoming: Boolean) {
@@ -49,6 +51,10 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewMo
                 moviesLivedata.postValue(Resource.success(moviesResponse.toViewModelList()))
             }
         }
+    }
+
+    private fun getGenres() = jobs add launch(Dispatchers.IO) {
+        moviesRepository.getGenres()
     }
 
     fun getMoviesLiveData() = moviesLivedata as LiveData<Resource<List<MovieViewModel>>>

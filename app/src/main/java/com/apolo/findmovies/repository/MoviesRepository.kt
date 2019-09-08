@@ -1,11 +1,12 @@
 package com.apolo.findmovies.repository
 
+import com.apolo.findmovies.repository.model.GenresResponse
 import com.apolo.findmovies.repository.model.MoviesResponse
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 import java.lang.Exception
 
-class MoviesRepository(private val moviesRemoteDataSource: MoviesRemoteDataSource) {
+class MoviesRepository(private val moviesRemoteDataSource: MoviesRemoteDataSource, private val moviesLocalDataSource: MoviesLocalDataSource) {
 
     suspend fun getUpcomingMovies() : MoviesResponse? {
         return withContext(IO){
@@ -26,4 +27,23 @@ class MoviesRepository(private val moviesRemoteDataSource: MoviesRemoteDataSourc
             }
         }
     }
+
+    suspend fun getGenres() : Boolean? {
+        if (moviesLocalDataSource.hasGenders()) {
+            return true
+        }
+
+        return withContext(IO){
+            try {
+                moviesRemoteDataSource.getGenres()?.let{
+                    moviesLocalDataSource.saveGenres(it)
+                    true
+                }
+            } catch (exception : Exception) {
+                throw exception
+            }
+        }
+    }
+
+
 }

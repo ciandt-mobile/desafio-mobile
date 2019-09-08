@@ -3,6 +3,10 @@ package com.apolo.findmovies.repository.model
 import com.apolo.findmovies.data.model.MovieViewModel
 import com.google.gson.annotations.SerializedName
 
+/**
+ *  List of Movies Response
+ */
+
 data class MoviesResponse(
     val dates: Dates,
     val page: Int,
@@ -44,3 +48,18 @@ data class Movie(
     val release_date: String,
     val title: String
 )
+
+
+/**
+ *  List of Movies Genres Resposne
+ */
+
+data class GenresResponse(
+    val genres: List<Genre>
+)
+
+data class Genre(
+    val id: Int,
+    val name: String
+)
+

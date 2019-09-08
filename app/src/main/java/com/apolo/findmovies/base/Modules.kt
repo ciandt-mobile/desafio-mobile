@@ -2,6 +2,7 @@ package com.apolo.findmovies.base
 
 import com.apolo.findmovies.data.remote.WebServiceClient
 import com.apolo.findmovies.presentation.home.viewModel.HomeViewModel
+import com.apolo.findmovies.repository.MoviesLocalDataSource
 import com.apolo.findmovies.repository.MoviesRemoteDataSource
 import com.apolo.findmovies.repository.MoviesRepository
 import org.koin.dsl.module
@@ -12,10 +13,11 @@ val viewModelModule = module {
 
 val dataSourceModules = module {
     single { MoviesRemoteDataSource(get()) }
+    single { MoviesLocalDataSource() }
 }
 
 val repositoryModules = module {
-    single { MoviesRepository(get()) }
+    single { MoviesRepository(get(), get()) }
 }
 
 val webServiceModules = module {
