@@ -16,4 +16,14 @@ class MoviesRepository(private val moviesRemoteDataSource: MoviesRemoteDataSourc
             }
         }
     }
+
+    suspend fun getPopularMovies() : MoviesResponse? {
+        return withContext(IO){
+            try {
+                moviesRemoteDataSource.getPopularMovies()
+            } catch (exception : Exception) {
+                throw exception
+            }
+        }
+    }
 }

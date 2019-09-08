@@ -18,6 +18,14 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewMo
         getUpcomingMovies()
     }
 
+    fun onCategoryChange(isUpcoming: Boolean) {
+        if (isUpcoming) {
+            getUpcomingMovies()
+        } else {
+            getPopularMovies()
+        }
+    }
+
 
     private fun getUpcomingMovies() = jobs add launch(Dispatchers.IO) {
         moviesLivedata.postValue(Resource.loading())
@@ -28,9 +36,19 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewMo
                 //TODO: Need to return pages to do pagination
                 moviesLivedata.postValue(Resource.success(moviesResponse.toViewModelList()))
             }
-
         }
+    }
 
+    private fun getPopularMovies() = jobs add launch(Dispatchers.IO) {
+        moviesLivedata.postValue(Resource.loading())
+
+        moviesRepository.getPopularMovies()?.let { moviesResponse ->
+
+            if (moviesResponse.movies.isNotEmpty()) {
+                //TODO: Need to return pages to do pagination
+                moviesLivedata.postValue(Resource.success(moviesResponse.toViewModelList()))
+            }
+        }
     }
 
     fun getMoviesLiveData() = moviesLivedata as LiveData<Resource<List<MovieViewModel>>>

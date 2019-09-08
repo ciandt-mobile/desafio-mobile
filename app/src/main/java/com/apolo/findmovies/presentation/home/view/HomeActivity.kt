@@ -1,6 +1,7 @@
 package com.apolo.findmovies.presentation.home.view
 
 import android.os.Bundle
+import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.apolo.findmovies.R
@@ -39,6 +40,17 @@ class HomeActivity : AppCompatActivity() {
                 }
                 else -> {
 
+                }
+            }
+        })
+
+        category_button.setOnCheckedChangeListener(object : RadioGroup.OnCheckedChangeListener{
+            override fun onCheckedChanged(radioGroup: RadioGroup?, p1: Int) {
+                homeViewModel.onCategoryChange(radioGroup?.checkedRadioButtonId == upcoming_option.id)
+                if (radioGroup?.checkedRadioButtonId == upcoming_option.id) {
+                    selected_option_title.text = resources.getString(R.string.selected_movie_title, getText(R.string.upcoming_option_title))
+                } else {
+                    selected_option_title.text = resources.getString(R.string.selected_movie_title, getText(R.string.popular_option_title))
                 }
             }
         })

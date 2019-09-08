@@ -27,4 +27,21 @@ class MoviesRemoteDataSource(private val webService: WebService) {
         }
     }
 
+    suspend fun getPopularMovies() : MoviesResponse? {
+        return withContext(Dispatchers.IO){
+            try {
+                val request = webService.getPopularMovies().execute()
+
+                if (request.isSuccessful) {
+                    Log.d("Successful Request", "Ok")
+                } else {
+                    Log.d("Error Request", "Error")
+                }
+                request.body()
+            } catch (exception : Exception) {
+                throw exception
+            }
+        }
+    }
+
 }

@@ -10,7 +10,7 @@ interface WebService {
     fun getUpcomingMovies() : Call<MoviesResponse>
 
     @GET("movie/popular")
-    fun getPopularMovies() : Call<Unit>
+    fun getPopularMovies() : Call<MoviesResponse>
 
     //TODO: To populate the generes of movie detail
     @GET("genre/movie/list")
