@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.apolo.findmovies.R
 import com.apolo.findmovies.data.model.MovieViewModel
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.view_holder_movie.view.*
 
-class MoviesAdapter(private val movies : List<MovieViewModel>, private val onMovieClickListener: (MovieViewModel) -> Unit) : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
+class MoviesAdapter(private var movies : MutableList<MovieViewModel>, private val onMovieClickListener: (MovieViewModel) -> Unit) : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
 
@@ -29,10 +30,22 @@ class MoviesAdapter(private val movies : List<MovieViewModel>, private val onMov
                 movie_name.text = movie.name
                 release_date.text = movie.releaseDate
 
+                Picasso.with(viewHolder.context).load(movie.image).into(movie_image)
+
                 setOnClickListener {
                     onMovieClickListener(movie)
                 }
             }
         }
+    }
+
+    fun setMovies(movies : List<MovieViewModel>) {
+        this.movies = movies as MutableList
+        notifyDataSetChanged()
+    }
+
+    fun addMovies(movies : List<MovieViewModel>) {
+        this.movies.addAll(itemCount, movies as MutableList)
+        notifyItemRangeChanged(itemCount, itemCount + movies.size)
     }
 }
