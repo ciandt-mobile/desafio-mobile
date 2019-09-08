@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.apolo.findmovies.R
+import com.apolo.findmovies.base.getYear
 import com.apolo.findmovies.data.model.MovieViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_movie_detail.*
@@ -31,6 +32,8 @@ class MovieDetailActivity : AppCompatActivity() {
         movie_name.text = movieDetails.name
         movie_duration.text = movieDetails.duration
         movie_category.text = movieDetails.genreIds.toString()
+
+        movie_year.text = movieDetails.releaseDate.getYear().toString()
 //        movie_images.adapter = MovieInfosAdapter(movieDetails.moviesInfo)
 
         movie_description.text = movieDetails.overview
