@@ -4,11 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.apolo.findmovies.R
 import com.apolo.findmovies.base.getYear
 import com.apolo.findmovies.data.model.MovieViewModel
+import com.apolo.findmovies.presentation.movieDetail.viewModel.MovieDetailViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_movie_detail.*
+import org.koin.android.ext.android.inject
 
 class MovieDetailActivity : AppCompatActivity() {
 
@@ -19,6 +22,8 @@ class MovieDetailActivity : AppCompatActivity() {
             this.putExtra(EXTRA_MOVIE_DETAILS, movieDetail)
         }
     }
+
+    private val viewModel : MovieDetailViewModel by inject()
 
     private val movieDetails : MovieViewModel by lazy {
         intent.extras.get(EXTRA_MOVIE_DETAILS) as MovieViewModel
@@ -37,6 +42,13 @@ class MovieDetailActivity : AppCompatActivity() {
 //        movie_images.adapter = MovieInfosAdapter(movieDetails.moviesInfo)
 
         movie_description.text = movieDetails.overview
+
+
+        viewModel.getGenresLiveData().observe(this, Observer { genresList ->
+            movie_category.text = genresList.data
+        })
+
+        viewModel.onViewReady(movieDetails)
 
     }
 }

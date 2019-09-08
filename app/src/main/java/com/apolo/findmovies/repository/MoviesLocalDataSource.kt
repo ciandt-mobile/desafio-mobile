@@ -5,8 +5,7 @@ import com.apolo.findmovies.base.AppAplication
 import com.apolo.findmovies.repository.model.GenresResponse
 import com.google.gson.Gson
 
-class MoviesLocalDataSource() {
-
+class MoviesLocalDataSource {
 
     companion object {
         private const val PREFERENCES_MOVIES = "PREFERENCES_MOVIES"
@@ -28,5 +27,5 @@ class MoviesLocalDataSource() {
         return gson.fromJson(genres, GenresResponse::class.java)
     }
 
-    fun hasGenders() = getGenres()?.genres?.isNotEmpty() ?: false
+    fun hasGenres() = getGenres()?.genres?.isNotEmpty() ?: false
 }

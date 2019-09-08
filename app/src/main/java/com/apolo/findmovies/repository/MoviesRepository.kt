@@ -28,16 +28,15 @@ class MoviesRepository(private val moviesRemoteDataSource: MoviesRemoteDataSourc
         }
     }
 
-    suspend fun getGenres() : Boolean? {
-        if (moviesLocalDataSource.hasGenders()) {
-            return true
+    suspend fun getGenres() : GenresResponse? {
+        if (moviesLocalDataSource.hasGenres()) {
+            return moviesLocalDataSource.getGenres()
         }
 
         return withContext(IO){
             try {
-                moviesRemoteDataSource.getGenres()?.let{
-                    moviesLocalDataSource.saveGenres(it)
-                    true
+                moviesRemoteDataSource.getGenres()?.apply {
+                    moviesLocalDataSource.saveGenres(this)
                 }
             } catch (exception : Exception) {
                 throw exception
