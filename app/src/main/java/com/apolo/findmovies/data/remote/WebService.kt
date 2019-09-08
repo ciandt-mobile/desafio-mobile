@@ -20,4 +20,8 @@ interface WebService {
     @GET("/movie/{movie_id}/credits")
     fun getCredits() : Call<Unit>
 
+    //TODO: To get configurations and base urls to laod images.
+    @GET("configuration")
+    fun getConfiguration() : Call<Unit>
+
 }
