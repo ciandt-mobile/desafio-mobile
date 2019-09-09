@@ -16,6 +16,9 @@ import com.conrradocamacho.desafio.presenter.DetailPresenter
 import com.conrradocamacho.desafio.utils.Util
 import com.conrradocamacho.desafio.view.adapter.CreditListAdapter
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.activity_detail.progressBar
+import kotlinx.android.synthetic.main.activity_detail.recyclerView
+import kotlinx.android.synthetic.main.fragment_list.*
 
 /**
  * Created by Conrrado Camacho on 08/09/2019.
@@ -57,9 +60,11 @@ class DetailActivity: AppCompatActivity(), DetailContract.View {
     }
 
     override fun showLoading() {
+        progressBar.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
+        progressBar.visibility = View.GONE
     }
 
     override fun updateScreenWithDetails(detail: Detail) {
