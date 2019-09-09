@@ -1,5 +1,6 @@
 package com.conrradocamacho.desafio.view
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -47,6 +48,9 @@ class DetailActivity: AppCompatActivity(), DetailContract.View {
 
         // todo fazer a verificacao se está portrait ou landscape
         gridLayoutManager.spanCount = 3
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            gridLayoutManager.spanCount = 6
+        }
 
         recyclerView.layoutManager = gridLayoutManager
         recyclerView.adapter = adapter

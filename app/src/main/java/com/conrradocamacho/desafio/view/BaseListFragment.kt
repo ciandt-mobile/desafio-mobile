@@ -1,5 +1,6 @@
 package com.conrradocamacho.desafio.view
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,8 +42,10 @@ class BaseListFragment: Fragment(), BaseListContract.View, MovieListAdapter.Movi
     private fun initRecyclerView() {
         val gridLayoutManager = GridLayoutManager(context, GridLayoutManager.VERTICAL)
 
-        // todo fazer a verificacao se está portrait ou landscape
         gridLayoutManager.spanCount = 2
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            gridLayoutManager.spanCount = 4
+        }
 
         recyclerView.layoutManager = gridLayoutManager
         recyclerView.adapter = adapter
