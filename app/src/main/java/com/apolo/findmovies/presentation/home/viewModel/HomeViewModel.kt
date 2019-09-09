@@ -2,16 +2,14 @@ package com.apolo.findmovies.presentation.home.viewModel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import com.apolo.findmovies.base.connection.ConnectionUseCase
 import com.apolo.findmovies.base.resources.LiveDataResource
 import com.apolo.findmovies.base.resources.Resource
 import com.apolo.findmovies.data.model.BaseViewModel
 import com.apolo.findmovies.data.model.MovieViewModel
 import com.apolo.findmovies.repository.MoviesRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewModel() {
-
 
     private val moviesLivedata = LiveDataResource<List<MovieViewModel>>()
 
@@ -29,6 +27,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewMo
     }
 
     private fun getUpcomingMovies() = runCoroutine {
+        ConnectionUseCase.testInternetConnection()
         moviesLivedata.postValue(Resource.loading())
 
         moviesRepository.getUpcomingMovies()?.let { moviesResponse ->
@@ -43,6 +42,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewMo
     }
 
     private fun getPopularMovies() = runCoroutine {
+        ConnectionUseCase.testInternetConnection()
         moviesLivedata.postValue(Resource.loading())
 
         moviesRepository.getPopularMovies()?.let { moviesResponse ->
@@ -57,6 +57,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewMo
     }
 
     private fun getGenres() = runCoroutine {
+        ConnectionUseCase.testInternetConnection()
         moviesRepository.getGenres()
     }.onError {
         Log.d("","")

@@ -1,11 +1,11 @@
 package com.apolo.findmovies.data.model
 
 import androidx.lifecycle.ViewModel
+import com.apolo.findmovies.repository.UseCaseException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 open class BaseViewModel : ViewModel(), CoroutineScope {
 
@@ -24,14 +24,14 @@ open class BaseViewModel : ViewModel(), CoroutineScope {
 
     class ExceptionDriver(val action: suspend () -> Unit)
 
-    infix fun ExceptionDriver.onError(onError: (Exception) -> Unit) {
+    infix fun ExceptionDriver.onError(onError: (UseCaseException) -> Unit) {
         initializeCoroutine(action, onError)
     }
 
-    private fun initializeCoroutine(run: suspend () -> Unit, onError: (Exception) -> Unit) = jobs.add(launch {
+    private fun initializeCoroutine(run: suspend () -> Unit, onError: (UseCaseException) -> Unit) = jobs.add(launch {
         try {
             run()
-        } catch (e: Exception) {
+        } catch (e: UseCaseException) {
             onError(e)
         }
     })

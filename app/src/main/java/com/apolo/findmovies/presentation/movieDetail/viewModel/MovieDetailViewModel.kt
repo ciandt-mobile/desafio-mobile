@@ -2,6 +2,7 @@ package com.apolo.findmovies.presentation.movieDetail.viewModel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import com.apolo.findmovies.base.connection.ConnectionUseCase
 import com.apolo.findmovies.base.resources.LiveDataResource
 import com.apolo.findmovies.base.resources.Resource
 import com.apolo.findmovies.data.model.BaseViewModel
@@ -9,7 +10,7 @@ import com.apolo.findmovies.data.model.MovieCreditsViewModel
 import com.apolo.findmovies.data.model.MovieViewModel
 import com.apolo.findmovies.repository.MoviesRepository
 
-class MovieDetailViewModel(val moviesRepository: MoviesRepository) : BaseViewModel() {
+class MovieDetailViewModel(private val moviesRepository: MoviesRepository) : BaseViewModel() {
 
     private val genresLiveData = LiveDataResource<String>()
     private val creditsListLiveData = LiveDataResource<List<MovieCreditsViewModel>>()
@@ -21,7 +22,7 @@ class MovieDetailViewModel(val moviesRepository: MoviesRepository) : BaseViewMod
     }
 
     private fun getGenres(genresIds: List<Int>) = runCoroutine {
-
+        ConnectionUseCase.testInternetConnection()
         moviesRepository.getGenres()?.let { genresList ->
 
             val movieGenres = mutableListOf<String>()
