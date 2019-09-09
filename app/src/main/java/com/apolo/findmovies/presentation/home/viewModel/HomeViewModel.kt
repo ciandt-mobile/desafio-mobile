@@ -28,8 +28,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewMo
         }
     }
 
-
-    private fun getUpcomingMovies() = jobs add launch(Dispatchers.IO) {
+    private fun getUpcomingMovies() = runCoroutine {
         moviesLivedata.postValue(Resource.loading())
 
         moviesRepository.getUpcomingMovies()?.let { moviesResponse ->
@@ -39,9 +38,11 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewMo
                 moviesLivedata.postValue(Resource.success(moviesResponse.toViewModelList()))
             }
         }
+    }.onError {
+        Log.d("","")
     }
 
-    private fun getPopularMovies() = jobs add launch(Dispatchers.IO) {
+    private fun getPopularMovies() = runCoroutine {
         moviesLivedata.postValue(Resource.loading())
 
         moviesRepository.getPopularMovies()?.let { moviesResponse ->
@@ -51,10 +52,14 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewMo
                 moviesLivedata.postValue(Resource.success(moviesResponse.toViewModelList()))
             }
         }
+    }.onError {
+        Log.d("","")
     }
 
-    private fun getGenres() = jobs add launch(Dispatchers.IO) {
+    private fun getGenres() = runCoroutine {
         moviesRepository.getGenres()
+    }.onError {
+        Log.d("","")
     }
 
     fun getMoviesLiveData() = moviesLivedata as LiveData<Resource<List<MovieViewModel>>>
