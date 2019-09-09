@@ -1,6 +1,7 @@
 package com.apolo.findmovies.presentation.home.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.apolo.findmovies.R
@@ -28,15 +29,22 @@ class HomeActivity : AppCompatActivity() {
         homeViewModel.getMoviesLiveData().observe(this, Observer { resource ->
             when(resource?.status) {
                 Resource.Status.SUCCESS -> {
+                    category_button.isEnabled = true
+                    loader.visibility = View.GONE
+                    movies_list.visibility = View.VISIBLE
+
                     resource.data?.let {moviesList ->
                         moviesAdapter.setMovies(moviesList)
                     }
                 }
                 Resource.Status.LOADING -> {
-
+                    loader.visibility = View.VISIBLE
+                    category_button.isEnabled = false
                 }
                 else -> {
-
+                    loader.visibility = View.GONE
+                    movies_list.visibility = View.VISIBLE
+                    category_button.isEnabled = true
                 }
             }
         })
@@ -44,8 +52,10 @@ class HomeActivity : AppCompatActivity() {
         category_button.setOnCheckedChangeListener { radioGroup, p1 ->
             homeViewModel.onCategoryChange(radioGroup?.checkedRadioButtonId == upcoming_option.id)
             if (radioGroup?.checkedRadioButtonId == upcoming_option.id) {
+                movies_list.visibility = View.GONE
                 selected_option_title.text = resources.getString(R.string.selected_movie_title, getText(R.string.upcoming_option_title))
             } else {
+                movies_list.visibility = View.GONE
                 selected_option_title.text = resources.getString(R.string.selected_movie_title, getText(R.string.popular_option_title))
             }
         }
@@ -57,23 +67,5 @@ class HomeActivity : AppCompatActivity() {
         startActivity(
             MovieDetailActivity.getStartIntent(this, movieViewModel)
         )
-
-       /* MovieDetailViewModel(
-            "",
-            "Titanic",
-            "13/02",
-            "196m",
-            "Science Fiction, Action, Drama",
-            "Blalblaslbasob f msa mbpsam bsomb pasmbp omasp mbpsam pamspo mpsam bpoasm pbomaspom b",
-            listOf(
-                MovieInfoViewModel("", "Apolo", "Herói"),
-                MovieInfoViewModel("", "Leonardo", "Herói"),
-                MovieInfoViewModel("", "Luís", "Herói"),
-                MovieInfoViewModel("", "Henrique", "Herói"),
-                MovieInfoViewModel("", "Tássio", "Herói"),
-                MovieInfoViewModel("", "Toníssio", "Herói"),
-                MovieInfoViewModel("", "Jefferson", "Herói")
-            )
-        )*/
     }
 }

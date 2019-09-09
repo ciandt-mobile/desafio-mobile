@@ -20,6 +20,16 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:background="@color/colorPrimary" />
 
+        <ProgressBar
+            android:id="@+id/loader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/main_movie_image"
+            app:layout_constraintEnd_toEndOf="@+id/main_movie_image"
+            app:layout_constraintStart_toStartOf="@+id/main_movie_image"
+            app:layout_constraintTop_toTopOf="@+id/main_movie_image" />
+
         <TextView
             android:id="@+id/movie_name"
             android:layout_width="0dp"

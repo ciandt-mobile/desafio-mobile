@@ -3,12 +3,14 @@ package com.apolo.findmovies.presentation.movieDetail.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.apolo.findmovies.R
 import com.apolo.findmovies.base.getYear
 import com.apolo.findmovies.data.model.MovieViewModel
 import com.apolo.findmovies.presentation.movieDetail.viewModel.MovieDetailViewModel
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import org.koin.android.ext.android.inject
@@ -33,7 +35,16 @@ class MovieDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
 
-        Picasso.with(this).load(movieDetails.bannerImage).into(main_movie_image)
+        Picasso.with(this).load(movieDetails.bannerImage).into(main_movie_image, object : Callback {
+            override fun onSuccess() {
+                loader.visibility = View.GONE
+            }
+
+            override fun onError() {
+                loader.visibility = View.GONE
+            }
+        })
+
         movie_name.text = movieDetails.name
         movie_duration.text = movieDetails.duration
         movie_category.text = movieDetails.genreIds.toString()
