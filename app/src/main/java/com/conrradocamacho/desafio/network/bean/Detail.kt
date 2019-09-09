@@ -18,6 +18,6 @@ class Detail(
     val genres: List<Item>?,
     val overview: String?,
 
-    @SerializedName("poster_path")
-    val posterPath: String?
+    @SerializedName("backdrop_path")
+    val backdropPath: String?
 ): Serializable

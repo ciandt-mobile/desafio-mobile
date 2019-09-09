@@ -32,20 +32,13 @@ class BaseListFragment: Fragment(), BaseListContract.View, MovieListAdapter.Movi
         super.onStart()
 
         adapter = MovieListAdapter(mutableListOf(), this)
-        presenter = BaseListPresenter(this, activity)
         initRecyclerView()
+
+        presenter = BaseListPresenter(this, activity)
         presenter.onGetMovies()
     }
 
     private fun initRecyclerView() {
-        val scrollListener = object : HidingScrollListener() {
-            override fun onHide() {
-            }
-
-            override fun onShow() {
-            }
-        }
-
         val gridLayoutManager = GridLayoutManager(context, GridLayoutManager.VERTICAL)
 
         // todo fazer a verificacao se está portrait ou landscape
@@ -53,7 +46,6 @@ class BaseListFragment: Fragment(), BaseListContract.View, MovieListAdapter.Movi
 
         recyclerView.layoutManager = gridLayoutManager
         recyclerView.adapter = adapter
-        recyclerView.addOnScrollListener(scrollListener)
     }
 
     override fun showLoading() {

@@ -18,10 +18,10 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:scaleType="fitCenter"
+                android:scaleType="fitStart"
                 android:adjustViewBounds="true"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"/>
+                android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/movieTitle"
@@ -54,6 +54,11 @@
                 android:background="@color/gray"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

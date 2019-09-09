@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.conrradocamacho.desafio.BuildConfig
 import com.conrradocamacho.desafio.R
 import com.conrradocamacho.desafio.network.bean.Movie
@@ -41,13 +42,15 @@ class MovieListAdapter(private val movieList: MutableList<Movie>, private val li
         notifyDataSetChanged()
     }
 
-    class ViewHolder(itemView: View, private val context: Context, private val listener: MovieListItem): RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View, private val context: Context, private val listener: MovieListItem):
+        RecyclerView.ViewHolder(itemView) {
 
         fun onBind(movie: Movie) {
             itemView.textViewTitle.text = movie.title
             itemView.textViewDate.text = movie.releaseDate
             Glide.with(context)
-                .load("${BuildConfig.BASE_IMAGE_URL}t/p/w300/${movie.posterPath}")
+                .load("${BuildConfig.BASE_IMAGE_URL}t/p/w154/${movie.posterPath}")
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .into(itemView.imageView)
 
             itemView.setOnClickListener {listener.onClickItem(movie)}
