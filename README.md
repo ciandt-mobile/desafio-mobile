@@ -45,5 +45,10 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  -- API (https://www.themoviedb.org/documentation/api)
  
 # BOA SORTE!
+
+## Comentários
+- Linguagem de desenvolvimento: Kotlin
+- Arquitetura VIPER
+- Para a lista de imagens foi usado o Glide *https://github.com/bumptech/glide
  
  
