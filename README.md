@@ -50,5 +50,12 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
 - Linguagem de desenvolvimento: Kotlin
 - Arquitetura VIPER
 - Para a lista de imagens foi usado o Glide *https://github.com/bumptech/glide
+- Na aba "Em breve" foi adicionado uma lógica para exibir somente os filmes com lançamento maior ou igual ao ano atual, foi feita dessa forma pois a api não oferece um campo para isso.
+
+### Melhoramentos
+- Implementar paginação
+- Implementar base de dados (requisitar ao servidor somente uma vez o dia)
+- Exibir pontuação dos filmes
+- Esconder toolbar ao dar scroll
  
  
