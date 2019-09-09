@@ -18,8 +18,8 @@ class MainActivity: AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val fragmentList: MutableList<FragmentMovie> = arrayListOf()
-        fragmentList.add(FragmentMovie(getString(R.string.tab_upcoming), BaseListFragment()))
-        fragmentList.add(FragmentMovie(getString(R.string.tab_popular), BaseListFragment()))
+        fragmentList.add(FragmentMovie(getString(R.string.tab_upcoming), UpcomingFragment()))
+        fragmentList.add(FragmentMovie(getString(R.string.tab_popular), PopularFragment()))
 
         val fragmentAdapter = MoviePagerAdapter(supportFragmentManager, fragmentList)
         viewPager.adapter = fragmentAdapter

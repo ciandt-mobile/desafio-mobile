@@ -21,7 +21,7 @@ interface AppAPI {
         "Authorization: " + BuildConfig.TOKEN
     )
 
-    @GET("discover/movie?sort_by=popularity.desc&api_key=${BuildConfig.API_KEY}")
+    @GET("movie/popular?sort_by=popularity.desc&api_key=${BuildConfig.API_KEY}")
     fun getMovies(): Call<Discover>
 
     @GET("movie/{id}?api_key=${BuildConfig.API_KEY}")

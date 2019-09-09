@@ -10,6 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.conrradocamacho.desafio.BuildConfig
 import com.conrradocamacho.desafio.R
 import com.conrradocamacho.desafio.network.bean.Movie
+import com.conrradocamacho.desafio.utils.Util
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 /**
@@ -47,7 +48,7 @@ class MovieListAdapter(private val movieList: MutableList<Movie>, private val li
 
         fun onBind(movie: Movie) {
             itemView.textViewTitle.text = movie.title
-            itemView.textViewDate.text = movie.releaseDate
+            itemView.textViewDate.text = Util.getBrazilianDateFromDateServer(movie.releaseDate)
             Glide.with(context)
                 .load("${BuildConfig.BASE_IMAGE_URL}t/p/w154/${movie.posterPath}")
                 .diskCacheStrategy(DiskCacheStrategy.DATA)

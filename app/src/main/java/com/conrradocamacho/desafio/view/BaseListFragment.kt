@@ -19,9 +19,9 @@ import kotlinx.android.synthetic.main.fragment_list.*
  * Created by Conrrado Camacho on 01/09/2019.
  * con.webmaster@gmail.com
  */
-class BaseListFragment: Fragment(), BaseListContract.View, MovieListAdapter.MovieListItem {
+abstract class BaseListFragment: Fragment(), BaseListContract.View, MovieListAdapter.MovieListItem {
 
-    private lateinit var adapter: MovieListAdapter
+    protected lateinit var adapter: MovieListAdapter
     private lateinit var presenter: BaseListContract.Presenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -60,7 +60,7 @@ class BaseListFragment: Fragment(), BaseListContract.View, MovieListAdapter.Movi
     }
 
     override fun updateScreen(movieList: List<Movie>) {
-        adapter.updateList(movieList)
+        updateList(movieList)
     }
 
     override fun messageError(message: String) {
@@ -70,5 +70,7 @@ class BaseListFragment: Fragment(), BaseListContract.View, MovieListAdapter.Movi
     override fun onClickItem(movie: Movie) {
         presenter.showDetail(movie)
     }
+
+    abstract fun updateList(movieList: List<Movie>)
 
 }

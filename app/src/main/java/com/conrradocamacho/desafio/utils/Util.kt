@@ -12,8 +12,9 @@ import java.util.*
  */
 object Util {
 
-    private const val formatDateServer = "yyyy-MM-dd"
+    const val formatDateServer = "yyyy-MM-dd"
     private const val formatDateYear = "yyyy"
+    private const val formatBrazilianDate = "dd/MM/yy"
 
     fun getYearFromDateServer(dateServer: String?): String {
         try {
@@ -22,6 +23,22 @@ object Util {
 
             if (date is Date) {
                 format = SimpleDateFormat(formatDateYear, Locale.US)
+                return format.format(date)
+            }
+        }
+        catch (e: Exception) {
+            Log.d("getYearFromDateServer", e.message ?: "")
+        }
+        return ""
+    }
+
+    fun getBrazilianDateFromDateServer(dateServer: String?): String {
+        try {
+            var format = SimpleDateFormat(formatDateServer, Locale.US)
+            val date = format.parse(dateServer ?: "")
+
+            if (date is Date) {
+                format = SimpleDateFormat(formatBrazilianDate, Locale.US)
                 return format.format(date)
             }
         }
