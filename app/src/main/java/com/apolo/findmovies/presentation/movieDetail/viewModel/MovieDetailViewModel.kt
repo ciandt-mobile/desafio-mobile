@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import com.apolo.findmovies.base.resources.LiveDataResource
 import com.apolo.findmovies.base.resources.Resource
 import com.apolo.findmovies.data.model.BaseViewModel
+import com.apolo.findmovies.data.model.MovieCreditsViewModel
 import com.apolo.findmovies.data.model.MovieViewModel
 import com.apolo.findmovies.repository.MoviesRepository
 import kotlinx.coroutines.Dispatchers
@@ -12,6 +13,8 @@ import kotlinx.coroutines.launch
 class MovieDetailViewModel(val moviesRepository: MoviesRepository) : BaseViewModel() {
 
     private val genresLiveData = LiveDataResource<String>()
+    private val creditsListLiveData = LiveDataResource<List<MovieCreditsViewModel>>()
+
 
     fun onViewReady(movie: MovieViewModel) {
         getGenres(movie.genreIds)
@@ -40,10 +43,11 @@ class MovieDetailViewModel(val moviesRepository: MoviesRepository) : BaseViewMod
 
     fun getGenresLiveData() = genresLiveData as LiveData<Resource<String>>
 
+    fun getCreditsLiveData() = creditsListLiveData as LiveData<Resource<List<MovieCreditsViewModel>>>
 
     private fun getCredits(movieId: Int) = jobs add launch(Dispatchers.IO) {
         moviesRepository.getCredits(movieId)?.let { movieCreditsResponse ->
-            movieCreditsResponse
+            creditsListLiveData.postValue(Resource.success(movieCreditsResponse))
         }
     }
 }

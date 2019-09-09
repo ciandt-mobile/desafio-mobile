@@ -1,5 +1,6 @@
 package com.apolo.findmovies.repository.model
 
+import com.apolo.findmovies.data.model.MovieCreditsViewModel
 import com.apolo.findmovies.data.model.MovieViewModel
 import com.google.gson.annotations.SerializedName
 
@@ -72,7 +73,15 @@ data class MovieCreditsResponse(
     val cast: List<Cast>,
     val crew: List<Crew>,
     val id: Int
-)
+) {
+    fun toViewModel() = mutableListOf<MovieCreditsViewModel>().apply {
+        cast.forEach {cast ->
+            cast.profile_path?.let { profilePath ->
+                this.add(MovieCreditsViewModel(profilePath, cast.name, cast.character))
+            }
+        }
+    }
+}
 
 data class Cast(
     val cast_id: Int,
@@ -82,7 +91,7 @@ data class Cast(
     val id: Int,
     val name: String,
     val order: Int,
-    val profile_path: String
+    val profile_path: String?
 )
 
 data class Crew(

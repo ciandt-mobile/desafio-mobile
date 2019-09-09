@@ -8,8 +8,5 @@ class MovieDetailViewModel(
     val releaseDate: String,
     val duration: String,
     val category: String,
-    val description: String,
-    val moviesInfo : List<MovieInfoViewModel>
+    val description: String
 ) : Serializable
-
-class MovieInfoViewModel(val image: String, val actorName: String, val roleName: String) : Serializable

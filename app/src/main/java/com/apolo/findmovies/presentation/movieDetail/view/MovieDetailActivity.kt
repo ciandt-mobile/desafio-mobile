@@ -39,13 +39,18 @@ class MovieDetailActivity : AppCompatActivity() {
         movie_category.text = movieDetails.genreIds.toString()
 
         movie_year.text = movieDetails.releaseDate.getYear().toString()
-//        movie_images.adapter = MovieInfosAdapter(movieDetails.moviesInfo)
 
         movie_description.text = movieDetails.overview
 
 
         viewModel.getGenresLiveData().observe(this, Observer { genresList ->
             movie_category.text = genresList.data
+        })
+
+        viewModel.getCreditsLiveData().observe(this, Observer {
+            it?.data?.let {
+                movie_images.adapter = MovieInfosAdapter(it)
+            }
         })
 
         viewModel.onViewReady(movieDetails)

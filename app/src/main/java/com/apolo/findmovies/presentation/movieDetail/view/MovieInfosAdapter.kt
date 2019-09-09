@@ -5,10 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.apolo.findmovies.R
-import com.apolo.findmovies.data.model.MovieInfoViewModel
+import com.apolo.findmovies.data.model.MovieCreditsViewModel
+import com.squareup.picasso.Picasso
+
 import kotlinx.android.synthetic.main.view_holder_movie_detail.view.*
 
-class MovieInfosAdapter(private val movieInfoViewModel: List<MovieInfoViewModel>) : RecyclerView.Adapter<MovieInfosAdapter.MovieInfoViewHolder>() {
+class MovieInfosAdapter(private val movieInfoViewModel: List<MovieCreditsViewModel>) : RecyclerView.Adapter<MovieInfosAdapter.MovieInfoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         MovieInfoViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_holder_movie_detail, null, false))
@@ -20,10 +22,10 @@ class MovieInfosAdapter(private val movieInfoViewModel: List<MovieInfoViewModel>
     }
 
     inner class MovieInfoViewHolder(private val viewHolder: View) : RecyclerView.ViewHolder(viewHolder) {
-        fun bind(movieInfo : MovieInfoViewModel) {
+        fun bind(movieInfo : MovieCreditsViewModel) {
 
             viewHolder.apply {
-//                this.bannerImage TODO
+                Picasso.with(viewHolder.context).load(movieInfo.image).into(this.image)
                 this.actor_name.text = movieInfo.actorName
                 this.role.text = movieInfo.roleName
             }

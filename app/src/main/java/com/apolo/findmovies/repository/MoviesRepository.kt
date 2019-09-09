@@ -1,5 +1,6 @@
 package com.apolo.findmovies.repository
 
+import com.apolo.findmovies.data.model.MovieCreditsViewModel
 import com.apolo.findmovies.repository.model.GenresResponse
 import com.apolo.findmovies.repository.model.MovieCreditsResponse
 import com.apolo.findmovies.repository.model.MoviesResponse
@@ -45,10 +46,10 @@ class MoviesRepository(private val moviesRemoteDataSource: MoviesRemoteDataSourc
         }
     }
 
-    suspend fun getCredits(movieId : Int) : MovieCreditsResponse? {
+    suspend fun getCredits(movieId : Int) : List<MovieCreditsViewModel>? {
         return withContext(IO){
             try {
-                moviesRemoteDataSource.getCredits(movieId)
+                moviesRemoteDataSource.getCredits(movieId)?.toViewModel()
             } catch (exception : Exception) {
                 throw exception
             }
