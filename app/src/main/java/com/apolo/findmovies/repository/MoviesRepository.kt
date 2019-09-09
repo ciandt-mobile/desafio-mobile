@@ -1,6 +1,7 @@
 package com.apolo.findmovies.repository
 
 import com.apolo.findmovies.repository.model.GenresResponse
+import com.apolo.findmovies.repository.model.MovieCreditsResponse
 import com.apolo.findmovies.repository.model.MoviesResponse
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
@@ -38,6 +39,16 @@ class MoviesRepository(private val moviesRemoteDataSource: MoviesRemoteDataSourc
                 moviesRemoteDataSource.getGenres()?.apply {
                     moviesLocalDataSource.saveGenres(this)
                 }
+            } catch (exception : Exception) {
+                throw exception
+            }
+        }
+    }
+
+    suspend fun getCredits(movieId : Int) : MovieCreditsResponse? {
+        return withContext(IO){
+            try {
+                moviesRemoteDataSource.getCredits(movieId)
             } catch (exception : Exception) {
                 throw exception
             }

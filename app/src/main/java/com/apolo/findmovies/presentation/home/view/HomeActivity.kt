@@ -63,7 +63,7 @@ class HomeActivity : AppCompatActivity() {
             MovieDetailActivity.getStartIntent(this, movieViewModel)
         )
 
-      /*  MovieDetailViewModel(
+       /* MovieDetailViewModel(
             "",
             "Titanic",
             "13/02",

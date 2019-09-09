@@ -9,26 +9,26 @@ import com.apolo.findmovies.repository.MoviesRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MovieDetailViewModel(val repository: MoviesRepository) : BaseViewModel() {
+class MovieDetailViewModel(val moviesRepository: MoviesRepository) : BaseViewModel() {
 
     private val genresLiveData = LiveDataResource<String>()
 
     fun onViewReady(movie: MovieViewModel) {
         getGenres(movie.genreIds)
+        getCredits(movie.movieId)
     }
 
     private fun getGenres(genresIds: List<Int>) = jobs add launch(Dispatchers.IO) {
 
-        repository.getGenres()?.let { genresList ->
-
+        moviesRepository.getGenres()?.let { genresList ->
 
             val movieGenres = mutableListOf<String>()
 
-            genresList.genres.find { localGenres ->
+            genresList.genres.find { genre ->
 
                 genresIds.forEach {
-                    if (localGenres.id == it) {
-                        movieGenres.add(localGenres.name)
+                    if (genre.id == it) {
+                        movieGenres.add(genre.name)
                     }
                 }
                 false
@@ -39,4 +39,11 @@ class MovieDetailViewModel(val repository: MoviesRepository) : BaseViewModel() {
     }
 
     fun getGenresLiveData() = genresLiveData as LiveData<Resource<String>>
+
+
+    private fun getCredits(movieId: Int) = jobs add launch(Dispatchers.IO) {
+        moviesRepository.getCredits(movieId)?.let { movieCreditsResponse ->
+            movieCreditsResponse
+        }
+    }
 }
