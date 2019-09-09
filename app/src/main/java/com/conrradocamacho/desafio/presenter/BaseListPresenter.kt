@@ -2,6 +2,7 @@ package com.conrradocamacho.desafio.presenter
 
 import android.app.Activity
 import androidx.fragment.app.FragmentActivity
+import com.conrradocamacho.desafio.R
 import com.conrradocamacho.desafio.contract.BaseListContract
 import com.conrradocamacho.desafio.interactor.BaseListInteractor
 import com.conrradocamacho.desafio.network.bean.Movie
@@ -34,11 +35,11 @@ class BaseListPresenter(private val view: BaseListContract.View?,
 
     override fun getMoviesError() {
         view?.hideLoading()
-        view?.messageError("")
+        view?.messageError(fragmentActivity?.getString(R.string.data_null) ?: "")
     }
 
     override fun serverError() {
         view?.hideLoading()
-        view?.messageError("")
+        view?.messageError(fragmentActivity?.getString(R.string.server_error) ?: "")
     }
 }

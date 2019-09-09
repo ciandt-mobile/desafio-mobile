@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_list.*
  * Created by Conrrado Camacho on 01/09/2019.
  * con.webmaster@gmail.com
  */
-class BaseListFragment: Fragment(), BaseListContract.View {
+class BaseListFragment: Fragment(), BaseListContract.View, MovieListAdapter.MovieListItem {
 
     private lateinit var adapter: MovieListAdapter
     private lateinit var presenter: BaseListContract.Presenter
@@ -31,7 +31,7 @@ class BaseListFragment: Fragment(), BaseListContract.View {
     override fun onStart() {
         super.onStart()
 
-        adapter = MovieListAdapter(mutableListOf())
+        adapter = MovieListAdapter(mutableListOf(), this)
         presenter = BaseListPresenter(this, activity)
         initRecyclerView()
         presenter.onGetMovies()
@@ -70,6 +70,10 @@ class BaseListFragment: Fragment(), BaseListContract.View {
 
     override fun messageError(message: String) {
 
+    }
+
+    override fun onClickItem(movie: Movie) {
+        presenter.showDetail(movie)
     }
 
 }

@@ -7,5 +7,8 @@
     <string name="tab_upcoming">Upcoming</string>
     <string name="tab_popular">Popular</string>
 
+    <!--  Messsages errors  -->
+    <string name="server_error">Oops, unknown error. Check your internet connection and try again.</string>
+    <string name="data_null">Oops, unknown error. Try again later.</string>
 
 </resources>

@@ -16,14 +16,14 @@ import retrofit2.Response
 class BaseListInteractor(private val output: BaseListContract.InteactorOutput?):
     BaseListContract.Interactor {
 
-    private val TAG = "BaseListInteractor"
+    private val tag = "BaseListInteractor"
     private val api: AppAPI = Service.getRetrofit().create(AppAPI::class.java)
 
     override fun getMovies() {
         val call: Call<Discover>? = api.getMovies()
         call?.enqueue(object : Callback<Discover> {
             override fun onFailure(call: Call<Discover>, t: Throwable) {
-                Log.d(TAG, t.message ?: "Unknown error")
+                Log.d(tag, t.message ?: "Unknown error")
                 output?.serverError()
             }
 

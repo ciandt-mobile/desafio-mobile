@@ -18,22 +18,22 @@ class Movie (
     @SerializedName("poster_path")
     val posterPath: String?,
 
-    val id: Long,
+    val id: Int,
     val adult: Boolean,
 
     @SerializedName("backdrop_path")
     val backdropPath: String?,
 
     @SerializedName("original_language")
-    val originalLanguage: String?,
+    val originalLanguage: String,
 
     @SerializedName("original_title")
-    val originalTitle: String?,
+    val originalTitle: String,
 
     @SerializedName("genre_ids")
-    val genreIds: IntArray,
+    val genreIds: IntArray?,
 
-    val title: String?,
+    val title: String,
 
     @SerializedName("vote_average")
     val voteAverage: Double,
@@ -41,5 +41,5 @@ class Movie (
     val overview: String?,
 
     @SerializedName("release_date")
-    val releaseDate: String?
+    val releaseDate: String
 ): Serializable
