@@ -40,6 +40,8 @@ class HomeActivity : AppCompatActivity() {
                     category_button.isEnabled = true
                     loader.visibility = View.GONE
                     no_connection_state.visibility = View.GONE
+                    loader_animation.visibility = View.GONE
+
                     movies_list.visibility = View.VISIBLE
 
                     currentPage = resource.currentPage?: 1
@@ -54,7 +56,11 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
                 Resource.Status.LOADING -> {
-                    loader.visibility = View.VISIBLE
+                    if (currentPage == 1) {
+                        loader_animation.visibility = View.VISIBLE
+                    } else {
+                        loader.visibility = View.VISIBLE
+                    }
                     no_connection_state.visibility = View.GONE
 
                     category_button.isEnabled = false
@@ -66,6 +72,7 @@ class HomeActivity : AppCompatActivity() {
                             if (currentPage == 1) {
                                 no_connection_state.visibility = View.VISIBLE
                                 movies_list.visibility = View.GONE
+                                loader_animation.visibility = View.GONE
                             } else {
                                 Toast.makeText(this, UseCaseErrorCode.NO_INTERNET_CONNECTION.messageError, Toast.LENGTH_LONG).show()
                             }
