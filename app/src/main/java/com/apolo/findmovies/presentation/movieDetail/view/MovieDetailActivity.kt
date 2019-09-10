@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.apolo.findmovies.R
 import com.apolo.findmovies.base.getYear
+import com.apolo.findmovies.base.resources.Resource
 import com.apolo.findmovies.data.model.MovieViewModel
 import com.apolo.findmovies.presentation.movieDetail.viewModel.MovieDetailViewModel
 import com.squareup.picasso.Callback
@@ -54,8 +56,14 @@ class MovieDetailActivity : AppCompatActivity() {
         movie_description.text = movieDetails.overview
 
 
-        viewModel.getGenresLiveData().observe(this, Observer { genresList ->
-            movie_category.text = genresList.data
+        viewModel.getGenresLiveData().observe(this, Observer {
+            when(it.status) {
+                Resource.Status.SUCCESS -> {
+                    movie_category.text = it?.data
+                } else -> {
+                    Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+                }
+            }
         })
 
         viewModel.getCreditsLiveData().observe(this, Observer {
