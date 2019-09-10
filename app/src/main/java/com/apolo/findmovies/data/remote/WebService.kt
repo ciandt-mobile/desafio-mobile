@@ -6,14 +6,15 @@ import com.apolo.findmovies.repository.model.MoviesResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface WebService {
 
     @GET("movie/upcoming")
-    fun getUpcomingMovies() : Call<MoviesResponse?>
+    fun getUpcomingMovies(@Query("page") nextPage : Int) : Call<MoviesResponse?>
 
     @GET("movie/popular")
-    fun getPopularMovies() : Call<MoviesResponse?>
+    fun getPopularMovies(@Query("page") nextPage : Int) : Call<MoviesResponse?>
 
     @GET("genre/movie/list")
     fun getMoviesGenres() : Call<GenresResponse?>

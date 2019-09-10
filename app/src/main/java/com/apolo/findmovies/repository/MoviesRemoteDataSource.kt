@@ -10,10 +10,10 @@ import kotlinx.coroutines.withContext
 
 class MoviesRemoteDataSource(private val webService: WebService) {
 
-    suspend fun getUpcomingMovies() : MoviesResponse? {
+    suspend fun getUpcomingMovies(nextPage : Int) : MoviesResponse? {
         return withContext(Dispatchers.IO){
             try {
-                val request = webService.getUpcomingMovies().execute()
+                val request = webService.getUpcomingMovies(nextPage).execute()
 
                 if (request.isSuccessful) {
                     Log.d("Successful Request", "Ok")
@@ -29,10 +29,10 @@ class MoviesRemoteDataSource(private val webService: WebService) {
         }
     }
 
-    suspend fun getPopularMovies() : MoviesResponse? {
+    suspend fun getPopularMovies(nextPage : Int) : MoviesResponse? {
         return withContext(Dispatchers.IO){
             try {
-                val request = webService.getPopularMovies().execute()
+                val request = webService.getPopularMovies(nextPage).execute()
 
                 if (request.isSuccessful) {
                     Log.d("Successful Request", "Ok")

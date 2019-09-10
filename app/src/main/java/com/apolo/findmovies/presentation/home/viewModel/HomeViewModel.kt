@@ -26,30 +26,36 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewMo
         }
     }
 
-    private fun getUpcomingMovies() = runCoroutine {
+    fun onReachedEndOfPage(isUpcoming: Boolean, nextPage : Int) {
+        if (isUpcoming) {
+            getUpcomingMovies(nextPage)
+        } else {
+            getPopularMovies(nextPage)
+        }
+    }
+
+    private fun getUpcomingMovies(nextPage : Int = 1) = runCoroutine {
         ConnectionUseCase.testInternetConnection()
         moviesLivedata.postValue(Resource.loading())
 
-        moviesRepository.getUpcomingMovies()?.let { moviesResponse ->
+        moviesRepository.getUpcomingMovies(nextPage)?.let { moviesResponse ->
 
             if (moviesResponse.movies.isNotEmpty()) {
-                //TODO: Need to return pages to do pagination
-                moviesLivedata.postValue(Resource.success(moviesResponse.toViewModelList()))
+                moviesLivedata.postValue(Resource.success(moviesResponse.toViewModelList(), currentPage = moviesResponse.page, lastPage = moviesResponse.total_pages))
             }
         }
     }.onError {
         Log.d("","")
     }
 
-    private fun getPopularMovies() = runCoroutine {
+    private fun getPopularMovies(nextPage : Int = 1) = runCoroutine {
         ConnectionUseCase.testInternetConnection()
         moviesLivedata.postValue(Resource.loading())
 
-        moviesRepository.getPopularMovies()?.let { moviesResponse ->
+        moviesRepository.getPopularMovies(nextPage)?.let { moviesResponse ->
 
             if (moviesResponse.movies.isNotEmpty()) {
-                //TODO: Need to return pages to do pagination
-                moviesLivedata.postValue(Resource.success(moviesResponse.toViewModelList()))
+                moviesLivedata.postValue(Resource.success(moviesResponse.toViewModelList(), currentPage = moviesResponse.page, lastPage = moviesResponse.total_pages))
             }
         }
     }.onError {

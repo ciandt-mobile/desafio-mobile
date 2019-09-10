@@ -2,28 +2,26 @@ package com.apolo.findmovies.repository
 
 import com.apolo.findmovies.data.model.MovieCreditsViewModel
 import com.apolo.findmovies.repository.model.GenresResponse
-import com.apolo.findmovies.repository.model.MovieCreditsResponse
 import com.apolo.findmovies.repository.model.MoviesResponse
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
-import java.lang.Exception
 
 class MoviesRepository(private val moviesRemoteDataSource: MoviesRemoteDataSource, private val moviesLocalDataSource: MoviesLocalDataSource) {
 
-    suspend fun getUpcomingMovies() : MoviesResponse? {
+    suspend fun getUpcomingMovies(nextPage : Int) : MoviesResponse? {
         return withContext(IO){
             try {
-                moviesRemoteDataSource.getUpcomingMovies()
+                moviesRemoteDataSource.getUpcomingMovies(nextPage)
             } catch (exception : Exception) {
                 throw exception
             }
         }
     }
 
-    suspend fun getPopularMovies() : MoviesResponse? {
+    suspend fun getPopularMovies(nextPage : Int) : MoviesResponse? {
         return withContext(IO){
             try {
-                moviesRemoteDataSource.getPopularMovies()
+                moviesRemoteDataSource.getPopularMovies(nextPage)
             } catch (exception : Exception) {
                 throw exception
             }

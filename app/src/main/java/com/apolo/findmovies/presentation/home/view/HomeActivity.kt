@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.apolo.findmovies.R
 import com.apolo.findmovies.base.resources.Resource
 import com.apolo.findmovies.data.model.MovieViewModel
@@ -17,6 +19,9 @@ class HomeActivity : AppCompatActivity() {
     private val homeViewModel: HomeViewModel by inject()
 
     private lateinit var moviesAdapter: MoviesAdapter
+
+    private var currentPage = 1
+    private var lastPage = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +38,15 @@ class HomeActivity : AppCompatActivity() {
                     loader.visibility = View.GONE
                     movies_list.visibility = View.VISIBLE
 
+                    currentPage = resource.currentPage?: 1
+                    lastPage = resource.lastPage?: 1
+
                     resource.data?.let {moviesList ->
-                        moviesAdapter.setMovies(moviesList)
+                        if (currentPage == 1) {
+                            moviesAdapter.setMovies(moviesList)
+                        } else {
+                            moviesAdapter.addMovies(moviesList)
+                        }
                     }
                 }
                 Resource.Status.LOADING -> {
@@ -50,7 +62,9 @@ class HomeActivity : AppCompatActivity() {
         })
 
         category_button.setOnCheckedChangeListener { radioGroup, p1 ->
+            resetPages()
             homeViewModel.onCategoryChange(radioGroup?.checkedRadioButtonId == upcoming_option.id)
+
             if (radioGroup?.checkedRadioButtonId == upcoming_option.id) {
                 movies_list.visibility = View.GONE
                 selected_option_title.text = resources.getString(R.string.selected_movie_title, getText(R.string.upcoming_option_title))
@@ -60,10 +74,35 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
+
+        movies_list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, verticalPosition: Int) {
+                if (loader.visibility == View.VISIBLE) {
+                    return
+                }
+
+                val visibleItemCount = movies_list.layoutManager?.childCount ?: 0
+                val totalItemCount = movies_list.layoutManager?.itemCount ?: 0
+                val firstVisibleItemPos =  (movies_list.layoutManager as GridLayoutManager).findFirstVisibleItemPosition()
+
+                if (firstVisibleItemPos + visibleItemCount >= totalItemCount - 4 && isNotLastPage()) {
+                    homeViewModel.onReachedEndOfPage(isUpcomingMovies(), ++currentPage)
+                }
+            }
+
+        })
+
         homeViewModel.onViewReady()
     }
 
-    private fun openMovieDetail(movieViewModel: MovieViewModel) : Unit {
+    private fun resetPages() = currentPage == 1
+
+    fun isNotLastPage() = lastPage != currentPage
+
+    fun isUpcomingMovies() = upcoming_option.isChecked
+
+    private fun openMovieDetail(movieViewModel: MovieViewModel) {
         startActivity(
             MovieDetailActivity.getStartIntent(this, movieViewModel)
         )
