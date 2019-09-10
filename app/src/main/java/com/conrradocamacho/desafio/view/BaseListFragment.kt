@@ -11,7 +11,6 @@ import com.conrradocamacho.desafio.R
 import com.conrradocamacho.desafio.contract.BaseListContract
 import com.conrradocamacho.desafio.network.bean.Movie
 import com.conrradocamacho.desafio.presenter.BaseListPresenter
-import com.conrradocamacho.desafio.utils.HidingScrollListener
 import com.conrradocamacho.desafio.view.adapter.MovieListAdapter
 import kotlinx.android.synthetic.main.fragment_list.*
 
