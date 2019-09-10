@@ -4,4 +4,10 @@
     <string name="upcoming_option_title">Upcoming</string>
     <string name="popular_option_title">Popular</string>
     <string name="selected_movie_title">%s Movies</string>
+
+    <string name="no_internet_connection_text">Não há conexão com a internet</string>
+    <string name="upcoming_movies_title">Upcoming Movies</string>
+    <string name="connection_try_again">Tentar novamente</string>
+
+
 </resources>

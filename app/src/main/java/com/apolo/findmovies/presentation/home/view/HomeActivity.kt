@@ -2,6 +2,7 @@ package com.apolo.findmovies.presentation.home.view
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,6 +12,7 @@ import com.apolo.findmovies.base.resources.Resource
 import com.apolo.findmovies.data.model.MovieViewModel
 import com.apolo.findmovies.presentation.home.viewModel.HomeViewModel
 import com.apolo.findmovies.presentation.movieDetail.view.MovieDetailActivity
+import com.apolo.findmovies.repository.UseCaseErrorCode
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.ext.android.inject
 
@@ -36,6 +38,7 @@ class HomeActivity : AppCompatActivity() {
                 Resource.Status.SUCCESS -> {
                     category_button.isEnabled = true
                     loader.visibility = View.GONE
+                    no_connection_state.visibility = View.GONE
                     movies_list.visibility = View.VISIBLE
 
                     currentPage = resource.currentPage?: 1
@@ -51,9 +54,28 @@ class HomeActivity : AppCompatActivity() {
                 }
                 Resource.Status.LOADING -> {
                     loader.visibility = View.VISIBLE
+                    no_connection_state.visibility = View.GONE
+
                     category_button.isEnabled = false
                 }
+
+                Resource.Status.ERROR -> {
+                    when (resource.errorCode) {
+                        UseCaseErrorCode.NO_INTERNET_CONNECTION.errorCode -> {
+                            if (currentPage == 1) {
+                                no_connection_state.visibility = View.VISIBLE
+                                movies_list.visibility = View.GONE
+                            } else {
+                                Toast.makeText(this, UseCaseErrorCode.NO_INTERNET_CONNECTION.messageError, Toast.LENGTH_LONG).show()
+                            }
+                        }
+                        else -> {
+                            Toast.makeText(this, UseCaseErrorCode.UNKNOWN_ERROR.messageError, Toast.LENGTH_LONG).show()
+                        }
+                    }
+                }
                 else -> {
+
                     loader.visibility = View.GONE
                     movies_list.visibility = View.VISIBLE
                     category_button.isEnabled = true
@@ -93,10 +115,14 @@ class HomeActivity : AppCompatActivity() {
 
         })
 
+        try_again_button.setOnClickListener {
+            homeViewModel.onCategoryChange(upcoming_option.isChecked)
+        }
+
         homeViewModel.onViewReady()
     }
 
-    private fun resetPages() = currentPage == 1
+    private fun resetPages() = { currentPage = 1 }
 
     fun isNotLastPage() = lastPage != currentPage
 

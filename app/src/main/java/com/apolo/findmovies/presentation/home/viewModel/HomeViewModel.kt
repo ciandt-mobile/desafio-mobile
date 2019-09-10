@@ -1,6 +1,5 @@
 package com.apolo.findmovies.presentation.home.viewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.apolo.findmovies.base.connection.ConnectionUseCase
 import com.apolo.findmovies.base.resources.LiveDataResource
@@ -8,6 +7,7 @@ import com.apolo.findmovies.base.resources.Resource
 import com.apolo.findmovies.data.model.BaseViewModel
 import com.apolo.findmovies.data.model.MovieViewModel
 import com.apolo.findmovies.repository.MoviesRepository
+import com.apolo.findmovies.repository.UseCaseErrorCode
 
 class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewModel() {
 
@@ -45,7 +45,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewMo
             }
         }
     }.onError {
-        Log.d("","")
+        moviesLivedata.postValue(Resource.error(errorCode = it.userCaseErrorCode.errorCode))
     }
 
     private fun getPopularMovies(nextPage : Int = 1) = runCoroutine {
@@ -59,14 +59,14 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : BaseViewMo
             }
         }
     }.onError {
-        Log.d("","")
+        moviesLivedata.postValue(Resource.error(errorCode = it.userCaseErrorCode.errorCode))
     }
 
     private fun getGenres() = runCoroutine {
         ConnectionUseCase.testInternetConnection()
         moviesRepository.getGenres()
     }.onError {
-        Log.d("","")
+
     }
 
     fun getMoviesLiveData() = moviesLivedata as LiveData<Resource<List<MovieViewModel>>>
