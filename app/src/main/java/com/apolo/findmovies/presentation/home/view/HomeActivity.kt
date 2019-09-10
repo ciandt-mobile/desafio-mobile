@@ -2,6 +2,7 @@ package com.apolo.findmovies.presentation.home.view
 
 import android.os.Bundle
 import android.view.View
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -122,7 +123,9 @@ class HomeActivity : AppCompatActivity() {
         homeViewModel.onViewReady()
     }
 
-    private fun resetPages() = { currentPage = 1 }
+    private fun resetPages() {
+        currentPage = 1
+    }
 
     fun isNotLastPage() = lastPage != currentPage
 
