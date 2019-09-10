@@ -44,6 +44,10 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  -- TMDB (https://www.themoviedb.org)
  -- API (https://www.themoviedb.org/documentation/api)
  
+ ## Tecnologias utilizadas no projeto
+ 
+ A aplicação foi inteiramente construída na linguage Kotlin
+ 
 # BOA SORTE!
  
  
