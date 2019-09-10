@@ -71,6 +71,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:orientation="vertical"
+        android:layoutAnimation="@anim/layout_fall_down"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +82,7 @@
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         tools:listitem="@layout/view_holder_movie"
         tools:spanCount="3"
-        tools:visibility="gone">
+        tools:visibility="visible">
 
     </androidx.recyclerview.widget.RecyclerView>
 

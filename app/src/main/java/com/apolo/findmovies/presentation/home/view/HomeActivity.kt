@@ -2,7 +2,7 @@ package com.apolo.findmovies.presentation.home.view
 
 import android.os.Bundle
 import android.view.View
-import android.widget.RadioGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -31,7 +31,6 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         moviesAdapter = MoviesAdapter(mutableListOf()) { openMovieDetail(it) }
-
         movies_list.adapter = moviesAdapter
 
         homeViewModel.getMoviesLiveData().observe(this, Observer { resource ->
@@ -49,6 +48,7 @@ class HomeActivity : AppCompatActivity() {
 
                     resource.data?.let {moviesList ->
                         if (currentPage == 1) {
+                            runAnimation()
                             moviesAdapter.setMovies(moviesList)
                         } else {
                             moviesAdapter.addMovies(moviesList)
@@ -128,6 +128,10 @@ class HomeActivity : AppCompatActivity() {
         }
 
         homeViewModel.onViewReady()
+    }
+
+    private fun runAnimation() {
+        movies_list.scheduleLayoutAnimation()
     }
 
     private fun resetPages() {
