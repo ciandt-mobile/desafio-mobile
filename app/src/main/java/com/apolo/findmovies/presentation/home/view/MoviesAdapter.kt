@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.apolo.findmovies.R
 import com.apolo.findmovies.data.model.MovieViewModel
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.view_holder_movie.view.*
 
@@ -30,7 +31,16 @@ class MoviesAdapter(private var movies : MutableList<MovieViewModel>, private va
                 movie_name.text = movie.name
                 release_date.text = movie.releaseDate
 
-                Picasso.with(viewHolder.context).load(movie.previousImage).into(movie_image)
+                Picasso.with(viewHolder.context).load(movie.previousImage).into(movie_image, object : Callback {
+                    override fun onError() {
+                        movie_image.setImageResource(R.drawable.movie_error_state)
+                    }
+
+                    override fun onSuccess() {
+                        loader.visibility = View.GONE
+                    }
+
+                })
 
                 setOnClickListener {
                     onMovieClickListener(movie)

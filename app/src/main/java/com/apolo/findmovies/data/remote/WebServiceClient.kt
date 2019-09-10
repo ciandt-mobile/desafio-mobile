@@ -22,11 +22,10 @@ class WebServiceClient {
 
     companion object {
 
-        private val DATE_FORMAT = "yyyy-MM-dd HH:mm:ss"
-        private val API_KEY = "b3a35d2b18aa95389f72b881c0ca08f8"
-        private val PARAMETER_API_KEY = "api_key"
-        //TODO: Put request on BuildConfig
-        private val uri = "https://api.themoviedb.org/3/"
+        private const val DATE_FORMAT = "yyyy-MM-dd HH:mm:ss"
+        private const val API_KEY = BuildConfig.API_KEY
+        private const val PARAMETER_API_KEY = "api_key"
+        private const val uri = BuildConfig.API_ENDPOINT
 
         private fun createWebService(uri: String, gson: Gson ) : WebService {
 

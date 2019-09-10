@@ -1,5 +1,6 @@
 package com.apolo.findmovies.repository.model
 
+import com.apolo.findmovies.base.formatDate
 import com.apolo.findmovies.data.model.MovieCreditsViewModel
 import com.apolo.findmovies.data.model.MovieViewModel
 import com.google.gson.annotations.SerializedName
@@ -27,7 +28,7 @@ data class MoviesResponse(
                         movie.poster_path,
                         movie.backdrop_path,
                         movie.genre_ids,
-                        movie.release_date
+                        movie.release_date.formatDate()
                     )
                 )
             }

@@ -43,6 +43,7 @@ class MovieDetailActivity : AppCompatActivity() {
             }
 
             override fun onError() {
+                main_movie_image.setImageResource(R.drawable.movie_error_state)
                 loader.visibility = View.GONE
             }
         })
