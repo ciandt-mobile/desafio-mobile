@@ -46,7 +46,22 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  
  ## Tecnologias utilizadas no projeto
  
- A aplicação foi inteiramente construída na linguage Kotlin
+ -- Linguagem
+ A aplicação foi inteiramente construída na linguage Kotlin na qual auxilía na manutenabilidade do app e do código visto que a linguaguem abstrai a verbosidade de java e ainda incrementa pontos de melhoria como a garantia de valores não nulos (null safety).
+ 
+ -- Arquitetura
+  A arquitetura segue o conceito MVVM onde o ViewModel não conhece a camada de View, e a comunicação de valores é através de LiveData. 
+  No que se refere ao Model foi utilizado o Repository Pattern para a criação de camadas de dados, existindo uma camada responsável pelo forncimento de dados ( Respository ) e outra que de fato obtem os dados de um local específico sendo local ou remote ( DataSources ). Ao solicitar um dado ao repository, ele possui essa lógica de escolha se os dados virão de forma remota ou de forma local. Além destas 2 camadas existe uma terceira que não foi necessária neste projeto mas que é recurso do "Repository Patter" que é o "UseCase", esta camada fica antes do "Repository" e nela existem regras de negócio específicas do aplicativo e ele é quem retorna os dados para um ViewModel. Através de um fluxograma a arquitetura ficaria da seguinte forma:
+                                                   
+                                                 / LocalDataSource
+      View -> ViewModel -> UseCase -> Resository
+                                                 \ RemoteDataSource
+
+
+                                                 
+
+
+  
  
 # BOA SORTE!
  
