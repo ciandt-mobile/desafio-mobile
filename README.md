@@ -44,12 +44,12 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  -- TMDB (https://www.themoviedb.org)
  -- API (https://www.themoviedb.org/documentation/api)
  
- ## Tecnologias utilizadas no projeto
+ ## Tecnologias e soluções utilizadas no projeto
  
- -- Linguagem
+ - Linguagem
  A aplicação foi inteiramente construída na linguage Kotlin na qual auxilía na manutenabilidade do app e do código visto que a linguaguem abstrai a verbosidade de java e ainda incrementa pontos de melhoria como a garantia de valores não nulos (null safety).
  
- -- Arquitetura
+ - Arquitetura
   A arquitetura segue o conceito MVVM onde o ViewModel não conhece a camada de View, e a comunicação de valores é através de LiveData. 
   No que se refere ao Model foi utilizado o Repository Pattern para a criação de camadas de dados, existindo uma camada responsável pelo forncimento de dados ( Respository ) e outra que de fato obtem os dados de um local específico sendo local ou remote ( DataSources ). Ao solicitar um dado ao repository, ele possui essa lógica de escolha se os dados virão de forma remota ou de forma local. Além destas 2 camadas existe uma terceira que não foi necessária neste projeto mas que é recurso do "Repository Patter" que é o "UseCase", esta camada fica antes do "Repository" e nela existem regras de negócio específicas do aplicativo e ele é quem retorna os dados para um ViewModel. Através de um fluxograma a arquitetura ficaria da seguinte forma:
                                                    
@@ -57,12 +57,33 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
       View -> ViewModel -> UseCase -> Resository
                                                  \ RemoteDataSource
 
-
-                                                 
-
-
-  
+- Clean Artchitecture
+ Todas as implementações e segmentações seguem o conceito de implementação do "Clean Artchitecture", visando a separação de responsabilidades para cada camada e a somente a comunicação entre elas.
  
+ - Injeção de dependência
+  Foi utilizando injeção de dependêcias através do Koin para facilitar e simplificar a necessidade de passagem parâmetros para classes com dependências. Para este projeto escolhi utilizar o Koin pois sua implementação é mais simples e possui menos boilerplate, este projeto não é um projeto grande na qual o Koin irá impactar na performance visto que ele realiza as injeções em tempo de execução ( isto pode ser um problema para grandes apps ). A alternativa para app's realmente grandes e que a performance deve ser realmente considerada é a utilização de Dagger 2 que apesar da sua complexidade no uso e no aumento de boilerplate oferece uma perfomance melhor visto que as injeções são feitas em tempo de compilação.
+  
+- Corotinas   
+ Corotinas são thread's mais leves que são executadas e gerenciadas em um pool de thread's, 
+ 
+- Abstração de corotinas 
+Neste projeto foram utilizadas corotinas utilizando uma abstração para que uma corotina possa ser chamada com uma quantidade menor de boilerplate e que além disso os Job's gerados para cada corotina iniciada podem ser cancelados ao finalizar o ciclo de vida de uma Activity, evitando possíveis "memory leak's". Dessa forma as request's realizadas neste projeto foram todas executadas dentro de um escopo de corrotina.
+  A abstração também cobre 
+
+
+- Bibliotecas Utilizadas
+    constraintLayout
+    recyclerviewView
+    picasso
+    retrofit
+    okhttp
+    interceptor
+    coroutines
+    coroutinesAdapter
+    koin
+    lottie
+
+
 # BOA SORTE!
  
  
