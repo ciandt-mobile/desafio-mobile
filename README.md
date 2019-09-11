@@ -52,11 +52,11 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  - Arquitetura
   A arquitetura segue o conceito MVVM onde o ViewModel não conhece a camada de View, e a comunicação de valores é através de LiveData. 
   No que se refere ao Model foi utilizado o Repository Pattern para a criação de camadas de dados, existindo uma camada responsável pelo forncimento de dados ( Respository ) e outra que de fato obtem os dados de um local específico sendo local ou remote ( DataSources ). Ao solicitar um dado ao repository, ele possui essa lógica de escolha se os dados virão de forma remota ou de forma local. Além destas 2 camadas existe uma terceira que não foi necessária neste projeto mas que é recurso do "Repository Patter" que é o "UseCase", esta camada fica antes do "Repository" e nela existem regras de negócio específicas do aplicativo e ele é quem retorna os dados para um ViewModel. Através de um fluxograma a arquitetura ficaria da seguinte forma:
-                                                   
+     `                                              
                                                  / LocalDataSource
       View -> ViewModel -> UseCase -> Resository
                                                  \ RemoteDataSource
-
+     `
 - Clean Artchitecture
  Todas as implementações e segmentações seguem o conceito de implementação do "Clean Artchitecture", visando a separação de responsabilidades para cada camada e a somente a comunicação entre elas.
  
