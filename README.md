@@ -27,7 +27,8 @@ Como usuário, gostária de conseguir filtrar a lista de filmes populares para q
 #### Detalhes do filme
 
 Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do filme:
- - Uma imagem em alta resolução;
+
+ - Uma imagem em alta resolução
  - Nome do filme
  - Generos do filme
  - Ano de estreia
