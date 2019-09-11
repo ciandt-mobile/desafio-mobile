@@ -71,7 +71,7 @@ Foi utilizando injeção de dependêcias através do Koin para facilitar e simpl
   
 - Corotinas   
 
-Corotinas são thread's mais leves que são executadas e gerenciadas em um pool de thread's, 
+Corotinas são thread's mais leves que são executadas e gerenciadas em um pool de thread's, foram utilizadas nas realizações de chamadas assíncronas nas chamadas ao servidor de dados.
  
 - Abstração de corotinas 
 
@@ -81,6 +81,7 @@ Neste projeto foram utilizadas corotinas utilizando uma abstração para que uma
 - Interceptor ( Retrofit )
 
 O interceptor é utilizado para interceptar uma request antes de ser encaminhada para o Endpoint, sendo assim possível modificar os valores da request em tempo de execução. Isso facilita no ponto onde é necessário atrelar um token ou alguma informação em todas as requests ou em um conjunto delas, pois caso contrário seria necessário em cada endpoint colocar essa informação.  
+Neste projeto o interceptor adiciona um parâmetro que é sempre necessário em todas as requests ao invés de adicionar o parâmetro de forma fixa no código em cada request.
 
   
 - Bibliotecas Utilizadas
