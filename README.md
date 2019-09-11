@@ -87,16 +87,16 @@ Neste projeto o interceptor adiciona um parâmetro que é sempre necessário em 
   
 - Bibliotecas Utilizadas
 
-    constraintLayout ( Biblioteca utilizada para a utilização de layouts com constraints )
-    recyclerviewView ( Biblioteca utilizada para a utilização do componente lista reciclável do android )
-    picasso ( Biblioteca utilizada para o carregamento das url's de imagens )
-    retrofit ( Biblioteca utilizada para abstrair as requisições para a API )
-    okhttp ( Biblioteca utilizada para gerenciar requests com o retrofit )
-    interceptor ( Biblioteca utilizada para interceptar requests )
-    coroutines ( Biblioteca utilizada para o uso de coroutines )
-    coroutinesAdapter  ( Biblioteca utilizada para o uso de coroutines )
-    koin ( ( Biblioteca utilizada para injeção de dependências )
-    lottie ( Biblioteca utilizada para realizar animações )
+    *ConstraintLayout ( Biblioteca utilizada para a utilização de layouts com constraints )
+    *RecyclerviewView ( Biblioteca utilizada para a utilização do componente lista reciclável do android )
+    *Picasso ( Biblioteca utilizada para o carregamento das url's de imagens )
+    *Retrofit ( Biblioteca utilizada para abstrair as requisições para a API )
+    *Okhttp ( Biblioteca utilizada para gerenciar requests com o retrofit )
+    *Interceptor ( Biblioteca utilizada para interceptar requests )
+    *Coroutines ( Biblioteca utilizada para o uso de coroutines )
+    *CoroutinesAdapter  ( Biblioteca utilizada para o uso de coroutines )
+    *Koin ( ( Biblioteca utilizada para injeção de dependências )
+    *lottie ( Biblioteca utilizada para realizar animações )
 
 
 # BOA SORTE!
