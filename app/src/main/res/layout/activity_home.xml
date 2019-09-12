@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="home.HomeActivity">
+    tools:context=".view.home.HomeActivity">
 
     <android.support.v4.widget.NestedScrollView
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -46,22 +46,36 @@
                     android:drawablePadding="10dp"/>
             </android.support.v7.widget.CardView>
 
+            <TextView
+                android:id="@+id/titleType"
+                android:text="@string/movie_title_type"
+                android:textSize="19sp"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardSearch"/>
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerHome"
                 android:scrollbars="none"
                 android:layout_marginTop="10dp"
                 android:clipToPadding="false"
-                android:layout_below="@id/cardSearch"
+                android:layout_below="@id/titleType"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="50dp" />
 
-          <!--  <include
+            <include
                 android:id="@+id/shimmerHome"
                 layout="@layout/item_recycler_home_shimmer" />
--->
+
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 

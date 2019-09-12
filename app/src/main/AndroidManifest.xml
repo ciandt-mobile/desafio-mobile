@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.rangeldor.movieapp" >
-
-    <uses-permission android:name="android.permission.INTERNET" />
+    package="com.rangeldor.movieapp">
 
     <application
         android:allowBackup="true"
@@ -13,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".home.HomeActivity"
+        <activity android:name=".view.detail.DetailActivity"></activity>
+        <activity
+            android:name=".view.home.HomeActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,5 +22,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

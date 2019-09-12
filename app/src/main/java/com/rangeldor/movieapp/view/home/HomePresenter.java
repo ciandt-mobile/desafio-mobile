@@ -1,4 +1,4 @@
-package com.rangeldor.movieapp.home;
+package com.rangeldor.movieapp.view.home;
 
 import android.support.annotation.NonNull;
 
@@ -17,7 +17,7 @@ public class HomePresenter {
         this.view = view;
     }
 
-    void getMovieToPopularity(){
+    void getMovieByPopularity(){
 
         view.showLoading ();
 
@@ -25,13 +25,10 @@ public class HomePresenter {
         movieCall.enqueue(new Callback<Movie> () {
             @Override
             public void onResponse(@NonNull Call<Movie> call, @NonNull Response<Movie> response) {
+                view.hideLoading();
 
                 if (response.isSuccessful() && response.body() != null) {
-
                     view.setResults ( response.body().getResults () );
-
-                    //  Log.d ( TAG , "onResponse: " +  results);
-
                 }
                 else {
                     view.onErrorLoading(response.message());

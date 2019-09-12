@@ -2,14 +2,16 @@
     <string name="app_name">MovieApp</string>
     <string name="language">pt-BR</string>
     <string name="search_your_movie">Procure seu filme</string>
-
-    <string name="meal_categories">Meal Categories</string>
-    <string name="category">Category</string>
-    <string name="country">Country</string>
-    <string name="instructions">INSTRUCTIONS</string>
+    <string name="movie_title_type">Filmes mais Populares</string>
+    <string name="detail_movie_title">Titulo do Filme</string>
     <string name="dot_loading">...</string>
-    <string name="Ingredients">INGREDIENTS</string>
-    <string name="youtube">YOUTUBE</string>
-    <string name="source">SOURCE</string>
-    <string name="favorite">Favorite</string>
+
+
+    <string name="country">Subtitulo</string>
+    <string name="instructions">INSTRUÇÕES</string>
+
+    <string name="Ingredients">SINOPSE</string>
+    <string name="youtube">TRAILER</string>
+    <string name="source">SITE</string>
+    <string name="favorite">FAVORITO</string>
 </resources>

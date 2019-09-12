@@ -1,15 +1,20 @@
-package com.rangeldor.movieapp.home;
+package com.rangeldor.movieapp.view.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.rangeldor.movieapp.R;
+import com.rangeldor.movieapp.Utils;
 import com.rangeldor.movieapp.adapter.RecyclerViewHomeAdapter;
 import com.rangeldor.movieapp.model.Movie;
+import com.rangeldor.movieapp.view.detail.DetailActivity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
@@ -18,10 +23,11 @@ import butterknife.ButterKnife;
 public class HomeActivity extends AppCompatActivity implements HomeView{
 
     private static final String TAG = "HomeActivity";
+    public static final String EXTRA_DETAIL_ID = "MOVIE_ID";
 
     @BindView ( R.id.recyclerHome )
     RecyclerView recyclerViewHome;
-    
+
     HomePresenter presenter;
     
     @Override
@@ -29,20 +35,20 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_home );
         ButterKnife.bind(this);
-        
+
         presenter = new HomePresenter ( this );
-        presenter.getMovieToPopularity ();
+        presenter.getMovieByPopularity ();
     }
 
     @Override
     public void showLoading() {
-      //  findViewById ( R.id.shimmerHome ).setVisibility ( View.VISIBLE );
+        findViewById ( R.id.shimmerHome ).setVisibility ( View.VISIBLE );
         Log.d ( TAG , "showLoading: " );
     }
 
     @Override
     public void hideLoading() {
-      //  findViewById ( R.id.shimmerHome ).setVisibility ( View.GONE );
+        findViewById ( R.id.shimmerHome ).setVisibility ( View.GONE );
         Log.d ( TAG , "hideLoading: " );
     }
 
@@ -58,16 +64,15 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
         homeAdapter.notifyDataSetChanged ();
 
         homeAdapter.setOnItemClickListener ( (view , position) -> {
-
-            Log.d ( TAG , "setResults: Clicado!" + results.get(position).getId());
+            Intent intent = new Intent ( HomeActivity.this, DetailActivity.class );
+            intent.putExtra ( EXTRA_DETAIL_ID, String.valueOf ( results.get ( position ).getId () ) );
+            startActivity ( intent );
         });
-        for(Movie.Result result : results){
-            Log.d ( TAG , "setResults: " + result.getTitle () );
-        }
     }
 
     @Override
     public void onErrorLoading(String message) {
+        Utils.showDialogMessage(this, "Error : ", message);
         Log.d ( TAG , "onErrorLoading: " + message);
     }
 }

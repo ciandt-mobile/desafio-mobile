@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MovieApp</string>
+    <string name="language">en-US</string>
+    <string name="search_your_movie">Find your movie</string>
+    <string name="movie_title_type">Most popular Movies</string>
+</resources>
