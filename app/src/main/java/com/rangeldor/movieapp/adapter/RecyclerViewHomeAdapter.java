@@ -1,5 +1,6 @@
 package com.rangeldor.movieapp.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,9 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rangeldor.movieapp.R;
+import com.rangeldor.movieapp.api.MovieClient;
 import com.rangeldor.movieapp.model.Movie;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -23,7 +28,6 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
     private List<Movie.Result> results;
     private Context context;
     private static ClickListener clickListener;
-    private static final String IMAGE_URL = "https://image.tmdb.org/t/p/w500";
 
     public RecyclerViewHomeAdapter(List<Movie.Result> results, Context context) {
         this.results = results;
@@ -41,12 +45,25 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHomeAdapter.RecyclerViewHolder viewHolder, int i) {
 
-        String strMovieThumb = IMAGE_URL + results.get(i).getPosterPath ();
-
+        String strMovieThumb = MovieClient.BASE_IMAGE_URL + results.get(i).getPosterPath ();
         Picasso.get().load(strMovieThumb).placeholder(R.drawable.ic_circle).into(viewHolder.homeThumb);
 
-        String strMovieName = results.get(i).getTitle ();
-       // viewHolder.categoryName.setText(strCategoryName);
+        String strMovieTitle = results.get(i).getTitle ();
+        viewHolder.titleName.setText(strMovieTitle);
+
+        String strMovieReleaseData = results.get(i).getReleaseDate();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date dataEntrada = null;
+        try {
+            dataEntrada = sdf.parse(strMovieReleaseData);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        @SuppressLint("SimpleDateFormat")
+        String dataFormatada = new SimpleDateFormat("dd/MM/yyyy").format(dataEntrada);
+
+        viewHolder.releaseData.setText(dataFormatada);
     }
 
     @Override
@@ -55,10 +72,16 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
     }
 
     static class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         @BindView(R.id.homeThumb)
         ImageView homeThumb;
-      //  @BindView(R.id.categoryName)
-      //  TextView categoryName;
+
+        @BindView(R.id.titleName)
+        TextView titleName;
+
+        @BindView(R.id.releaseData)
+        TextView releaseData;
+
         RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

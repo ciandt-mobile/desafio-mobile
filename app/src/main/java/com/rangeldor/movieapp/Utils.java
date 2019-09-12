@@ -3,14 +3,14 @@ package com.rangeldor.movieapp;
 import android.app.AlertDialog;
 import android.content.Context;
 
-import com.rangeldor.movieapp.api.FoodApi;
-import com.rangeldor.movieapp.api.FoodClient;
+import com.rangeldor.movieapp.api.MovieApi;
+import com.rangeldor.movieapp.api.MovieClient;
 
 
 public class Utils {
 
-    public static FoodApi getApi() {
-        return FoodClient.getFoodClient().create(FoodApi.class);
+    public static MovieApi getApi() {
+        return MovieClient.getFoodClient().create(MovieApi.class);
     }
 
     public static AlertDialog showDialogMessage(Context context, String title, String message) {

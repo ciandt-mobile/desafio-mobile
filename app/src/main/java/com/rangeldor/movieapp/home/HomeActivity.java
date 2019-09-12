@@ -1,12 +1,10 @@
 package com.rangeldor.movieapp.home;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 
 import com.rangeldor.movieapp.R;
 import com.rangeldor.movieapp.adapter.RecyclerViewHomeAdapter;
@@ -60,7 +58,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
         homeAdapter.notifyDataSetChanged ();
 
         homeAdapter.setOnItemClickListener ( (view , position) -> {
-            Log.d ( TAG , "setResults: Clicado!" );
+
+            Log.d ( TAG , "setResults: Clicado!" + results.get(position).getId());
         });
         for(Movie.Result result : results){
             Log.d ( TAG , "setResults: " + result.getTitle () );

@@ -4,10 +4,9 @@ import com.rangeldor.movieapp.model.Movie;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 
-public interface FoodApi {
+public interface MovieApi {
 
-    @GET("movie/popular?api_key=" + FoodClient.API_KEY + "&language=pt-BR&page=1")
+    @GET("movie/popular?api_key=" + MovieClient.API_KEY + "&language=pt-BR&page=1")
     Call<Movie> getMovieToPopularity();
 }
