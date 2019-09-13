@@ -3,6 +3,7 @@ package com.rangeldor.movieapp.view.home;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -28,6 +29,9 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
     @BindView ( R.id.recyclerHome )
     RecyclerView recyclerViewHome;
 
+    @BindView ( R.id.cardSearch )
+    CardView cardSearch;
+
     HomePresenter presenter;
     
     @Override
@@ -38,6 +42,13 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
 
         presenter = new HomePresenter ( this );
         presenter.getMovieByPopularity ();
+
+
+        ///teste
+
+        cardSearch.setOnClickListener ( view -> {
+            Log.d ( TAG , "onCreate: teste");
+        } );
     }
 
     @Override

@@ -51,19 +51,23 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
         String strMovieTitle = results.get(i).getTitle ();
         viewHolder.titleName.setText(strMovieTitle);
 
-        String strMovieReleaseData = results.get(i).getReleaseDate();
+        String strMovieReleaseDate = results.get(i).getReleaseDate();
 
+        @SuppressLint("SimpleDateFormat")
+        String dataFormatada = getFormattedDate ( strMovieReleaseDate );
+
+        viewHolder.releaseDate.setText(dataFormatada);
+    }
+
+    private String getFormattedDate(String strMovieReleaseDate) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date dataEntrada = null;
         try {
-            dataEntrada = sdf.parse(strMovieReleaseData);
+            dataEntrada = sdf.parse(strMovieReleaseDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        @SuppressLint("SimpleDateFormat")
-        String dataFormatada = new SimpleDateFormat("dd/MM/yyyy").format(dataEntrada);
-
-        viewHolder.releaseData.setText(dataFormatada);
+        return new SimpleDateFormat("dd/MM/yyyy").format(dataEntrada);
     }
 
     @Override
@@ -79,8 +83,8 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
         @BindView(R.id.titleName)
         TextView titleName;
 
-        @BindView(R.id.releaseData)
-        TextView releaseData;
+        @BindView(R.id.releaseDate)
+        TextView releaseDate;
 
         RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -7,8 +7,8 @@
     <string name="dot_loading">...</string>
     <string name="debut_year">Ano de Estréia</string>
     <string name="movie_cast">Elenco</string>
-    <string name="duration">Duração: </string>
-    <string name="overview">SINOPSE</string>
+    <string name="duration">Duração </string>
+    <string name="overview">Sinópse</string>
     <string name="youtube">TRAILER</string>
     <string name="source">SITE</string>
     <string name="favorite">FAVORITO</string>

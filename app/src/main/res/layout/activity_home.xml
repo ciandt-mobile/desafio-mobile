@@ -33,7 +33,9 @@
                 android:layout_marginTop="15dp"
                 app:cardBackgroundColor="@color/colorPrimaryDark"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp">
+                app:cardElevation="0dp"
+                android:clickable="true"
+                android:focusable="true">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

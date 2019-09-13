@@ -1,13 +1,20 @@
 package com.rangeldor.movieapp.view.home;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.rangeldor.movieapp.Utils;
 import com.rangeldor.movieapp.model.Movie;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.content.ContentValues.TAG;
 
 public class HomePresenter {
 
@@ -21,7 +28,9 @@ public class HomePresenter {
 
         view.showLoading ();
 
-        Call<Movie> movieCall = Utils.getApi().getMovieToPopularity ();
+        //Log.d ( TAG , "getMovieByPopularity: " + String.valueOf ( Calendar.getInstance().getTime() ));
+
+        Call<Movie> movieCall = Utils.getApi().getMovieToPopularity ( "2019-06-13" );
         movieCall.enqueue(new Callback<Movie> () {
             @Override
             public void onResponse(@NonNull Call<Movie> call, @NonNull Response<Movie> response) {

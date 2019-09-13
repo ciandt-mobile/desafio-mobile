@@ -40,4 +40,27 @@ public class DetailPresenter {
             }
         } );
     }
+
+    void getMovieCastsById(String movie_id){
+        view.showLoading ( );
+
+        Utils.getApi ( ).getMovieCastsById ( movie_id ).enqueue ( new Callback<Movie.Detail> ( ) {
+            @Override
+            public void onResponse(Call<Movie.Detail> call , Response<Movie.Detail> response) {
+                view.hideLoading ( );
+
+                if ( response.isSuccessful ( ) && response.body ( ) != null ) {
+                    view.setDetail ( response.body ( ));
+                } else {
+                    view.onErrorLoading ( response.message ( ) );
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Movie.Detail> call , Throwable t) {
+                view.hideLoading ( );
+                view.onErrorLoading ( t.getLocalizedMessage ( ) );
+            }
+        } );
+    }
 }
