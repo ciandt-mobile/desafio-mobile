@@ -9,8 +9,8 @@ import retrofit2.http.Query;
 
 public interface MovieApi {
 
-    @GET("discover/movie?api_key=" + MovieClient.API_KEY + "&primary_release_date.gte={release_date_gte}&language=pt-BR&sort_by=popularity.desc")
-    Call<Movie> getMovieToPopularity(@Path ( "release_date_gte" ) String release_date_gte, @Query ( "page" ) String page);
+    @GET("discover/movie?api_key=" + MovieClient.API_KEY + "&language=pt-BR&sort_by=popularity.desc")
+    Call<Movie> getMovieToPopularity(@Query ( "primary_release_date.gte" ) String release_date_gte, @Query ( "page" ) String page);
 
     @GET("movie/{movie_id}?api_key="+ MovieClient.API_KEY + "&append_to_response=videos&language=pt-BR&page=1")
     Call<Movie.Result> getMovieById(@Path("movie_id") String movie_id);
