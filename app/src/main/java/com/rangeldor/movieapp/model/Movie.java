@@ -96,6 +96,20 @@ public class Movie {
         @SerializedName("poster_path")
         @Expose
         private String posterPath;
+        @SerializedName("homepage")
+        @Expose
+        private String homepage;
+        @SerializedName("videos")
+        @Expose
+        private Videos videos;
+
+        public Videos getVideos() {
+            return videos;
+        }
+
+        public void setVideos(Videos videos) {
+            this.videos = videos;
+        }
 
         public Double getPopularity() {
             return popularity;
@@ -209,6 +223,121 @@ public class Movie {
             this.posterPath = posterPath;
         }
 
+        public String getHomepage(){
+            return homepage;
+        }
+
+        public void setHomepage(String homepage) {
+            this.homepage = homepage;
+        }
+
+        public class Videos {
+
+            @SerializedName("results")
+            @Expose
+            private List<Result_> results = null;
+
+            public List<Result_> getResults() {
+                return results;
+            }
+
+            public void setResults(List<Result_> results) {
+                this.results = results;
+            }
+
+            public class Result_ {
+
+                @SerializedName("id")
+                @Expose
+                private String id;
+                @SerializedName("iso_639_1")
+                @Expose
+                private String iso6391;
+                @SerializedName("iso_3166_1")
+                @Expose
+                private String iso31661;
+                @SerializedName("key")
+                @Expose
+                private String key;
+                @SerializedName("name")
+                @Expose
+                private String name;
+                @SerializedName("site")
+                @Expose
+                private String site;
+                @SerializedName("size")
+                @Expose
+                private Integer size;
+                @SerializedName("type")
+                @Expose
+                private String type;
+
+                public String getId() {
+                    return id;
+                }
+
+                public void setId(String id) {
+                    this.id = id;
+                }
+
+                public String getIso6391() {
+                    return iso6391;
+                }
+
+                public void setIso6391(String iso6391) {
+                    this.iso6391 = iso6391;
+                }
+
+                public String getIso31661() {
+                    return iso31661;
+                }
+
+                public void setIso31661(String iso31661) {
+                    this.iso31661 = iso31661;
+                }
+
+                public String getKey() {
+                    return key;
+                }
+
+                public void setKey(String key) {
+                    this.key = key;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public String getSite() {
+                    return site;
+                }
+
+                public void setSite(String site) {
+                    this.site = site;
+                }
+
+                public Integer getSize() {
+                    return size;
+                }
+
+                public void setSize(Integer size) {
+                    this.size = size;
+                }
+
+                public String getType() {
+                    return type;
+                }
+
+                public void setType(String type) {
+                    this.type = type;
+                }
+
+            }
+        }
     }
 }
 

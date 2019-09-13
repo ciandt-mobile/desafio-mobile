@@ -12,6 +12,6 @@ public interface MovieApi {
     @GET("movie/popular?api_key=" + MovieClient.API_KEY + "&language=pt-BR&page=1")
     Call<Movie> getMovieToPopularity();
 
-    @GET("movie/{movie_id}?api_key="+ MovieClient.API_KEY + "&language=pt-BR&page=1")
+    @GET("movie/{movie_id}?api_key="+ MovieClient.API_KEY + "&append_to_response=videos&language=pt-BR&page=1")
     Call<Movie.Result> getMovieById(@Path("movie_id") String movie_id);
 }

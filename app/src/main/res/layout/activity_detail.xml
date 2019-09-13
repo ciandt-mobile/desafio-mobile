@@ -11,7 +11,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="400dp"
         android:fitsSystemWindows="true"
         android:theme="@style/AppBarLayoutTheme">
 
@@ -37,6 +37,7 @@
                 android:src="@drawable/shadow_bottom_to_top"/>
 
             <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
@@ -79,8 +80,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <TextView
-                            android:id="@+id/textTitle"
-                            android:text="@string/detail_movie_title"
+                            android:text="@string/detail_genre"
                             android:paddingLeft="14dp"
                             android:paddingRight="14dp"
                             android:paddingTop="14dp"
@@ -88,14 +88,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                         <TextView
-                            android:id="@+id/dot_loading"
+                            android:id="@+id/textGenre"
                             android:text="@string/dot_loading"
                             android:paddingLeft="14dp"
                             android:paddingRight="14dp"
                             android:paddingTop="5dp"
                             android:paddingBottom="14dp"
                             android:textSize="16sp"
-                            android:textColor="@color/colorPrimaryText"
+                            android:textColor="@color/colorPrimaryDark"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -112,8 +112,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <TextView
-                            android:id="@+id/Country"
-                            android:text="@string/country"
+                            android:text="@string/debut_year"
                             android:paddingLeft="14dp"
                             android:paddingRight="14dp"
                             android:paddingTop="14dp"
@@ -121,35 +120,19 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                         <TextView
-                            android:id="@+id/country"
+                            android:id="@+id/debut_year"
                             android:text="@string/dot_loading"
                             android:paddingLeft="14dp"
                             android:paddingRight="14dp"
                             android:paddingTop="5dp"
                             android:paddingBottom="14dp"
                             android:textSize="16sp"
-                            android:textColor="@color/colorPrimaryText"
+                            android:textColor="@color/colorPrimaryDark"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
             </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/instructions"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="5dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
-                android:gravity="center_vertical"
-                android:drawablePadding="10dp"
-                android:drawableEnd="@drawable/ic_info"
-                android:drawableRight="@drawable/ic_info" />
 
             <android.support.v7.widget.CardView
                 app:cardUseCompatPadding="true"
@@ -158,17 +141,74 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="@string/movie_cast"
+                        android:paddingLeft="14dp"
+                        android:paddingRight="14dp"
+                        android:paddingTop="14dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
                 <TextView
-                    android:id="@+id/instructions"
+                    android:id="@+id/movie_cast"
                     android:text="@string/dot_loading"
                     android:paddingLeft="14dp"
                     android:paddingRight="14dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="14dp"
                     android:textSize="16sp"
-                    android:textColor="@color/colorPrimaryText"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <TextView
+                    android:text="@string/duration"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp"
+                    android:paddingTop="14dp"
+                    android:layout_marginRight="0dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="0dp" />
+
+                <TextView
+                    android:id="@+id/duration"
+                    android:text="@string/dot_loading"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="14dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                </LinearLayout>
+
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -186,46 +226,26 @@
                         android:paddingLeft="14dp"
                         android:paddingRight="14dp"
                         android:layout_marginTop="14dp"
-                        android:text="@string/Ingredients"
+                        android:text="@string/overview"
                         android:textColor="@color/colorPrimaryDark"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
-                    <LinearLayout
-                        android:layout_marginBottom="20dp"
-                        android:orientation="horizontal"
+
+                    <TextView
+                        android:id="@+id/overview"
+                        android:text="@string/dot_loading"
+                        android:paddingLeft="14dp"
+                        android:paddingRight="14dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="14dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorPrimaryDark"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_weight="1">
-                            <TextView
-                                android:id="@+id/ingredient"
-                                android:paddingLeft="14dp"
-                                android:paddingRight="14dp"
-                                android:textSize="16sp"
-                                android:textColor="@color/colorPrimaryText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_weight="1">
-                            <TextView
-                                android:id="@+id/measure"
-                                android:paddingLeft="14dp"
-                                android:paddingRight="14dp"
-                                android:textSize="16sp"
-                                android:textColor="@color/colorPrimaryText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
-                    </LinearLayout>
+                        android:layout_height="wrap_content" />
+
                 </LinearLayout>
             </android.support.v7.widget.CardView>
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
