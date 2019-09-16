@@ -3,5 +3,17 @@
     <string name="app_name">MovieApp</string>
     <string name="language">en-US</string>
     <string name="search_your_movie">Find your movie</string>
-    <string name="movie_title_type">Most popular Movies</string>
+    <string name="movie_title_type_popularity">Most popular Movies</string>
+    <string name="movie_title_type_debut">Debut</string>
+    <string name="detail_genre">Genre</string>
+    <string name="dot_loading">...</string>
+    <string name="debut_year">Year Release Date</string>
+    <string name="movie_cast">Cast</string>
+    <string name="duration">Duration </string>
+    <string name="overview">Overview</string>
+    <string name="youtube">TRAILER</string>
+    <string name="source">SITE</string>
+    <string name="favorite">FAVORITE</string>
+    <string name="menu_popularity">Popularity</string>
+    <string name="menu_debut">Debut</string>
 </resources>

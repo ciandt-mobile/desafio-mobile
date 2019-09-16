@@ -2,7 +2,8 @@
     <string name="app_name">MovieApp</string>
     <string name="language">pt-BR</string>
     <string name="search_your_movie">Procure seu filme</string>
-    <string name="movie_title_type">Filmes mais Populares</string>
+    <string name="movie_title_type_popularity">Filmes mais Populares</string>
+    <string name="movie_title_type_debut">Em Breve</string>
     <string name="detail_genre">Gênero</string>
     <string name="dot_loading">...</string>
     <string name="debut_year">Ano de Estréia</string>
@@ -12,4 +13,6 @@
     <string name="youtube">TRAILER</string>
     <string name="source">SITE</string>
     <string name="favorite">FAVORITO</string>
+    <string name="menu_popularity">Populares</string>
+    <string name="menu_debut">Em Breve</string>
 </resources>

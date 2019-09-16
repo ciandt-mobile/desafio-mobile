@@ -30,7 +30,6 @@ public class HomePresenter {
 
         view.showLoading ();
 
-        Locale myLocale = Locale.getDefault();
         Calendar calendar = Calendar.getInstance();
 
         calendar.add(Calendar.MONTH, -3);
@@ -42,8 +41,6 @@ public class HomePresenter {
         String formattedDate = ano+"-"+mes+"-"+dia;
 
         Log.d(TAG, "getMovieByPopularity: " + formattedDate);
-
-        // o metodo getMovieToPopularity não está aceitando o formattedDate. Corrigir.
 
       //  String release_date_gte = new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
 

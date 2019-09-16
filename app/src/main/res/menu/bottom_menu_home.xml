@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item
+    android:id="@+id/menu_popularity"
+    android:title="@string/menu_popularity"
+    android:icon="@drawable/ic_play"/>
+
+<item
+    android:id="@+id/menu_debut"
+    android:title="@string/menu_debut"
+    android:icon="@drawable/ic_link"/>
+</menu>
