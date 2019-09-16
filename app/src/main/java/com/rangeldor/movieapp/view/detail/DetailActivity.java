@@ -35,6 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -79,6 +80,9 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
     @BindView(R.id.recyclerDetailCast)
     RecyclerView recyclerDetailCast;
 
+    @BindString( R.string.language )
+    String LANGUAGE;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
@@ -90,8 +94,8 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
         Intent intent = getIntent ( );
         String movie_id = intent.getStringExtra ( HomeActivity.EXTRA_DETAIL_ID );
         DetailPresenter presenter = new DetailPresenter ( this );
-        presenter.getMovieById ( movie_id );
-        presenter.getMovieCastsById ( movie_id );
+        presenter.getMovieById ( movie_id, "1", LANGUAGE );
+        presenter.getMovieCastsById ( movie_id, "1", LANGUAGE );
     }
 
     private void setupActionBar() {

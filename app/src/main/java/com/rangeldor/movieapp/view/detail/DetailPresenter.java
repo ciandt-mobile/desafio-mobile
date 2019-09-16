@@ -18,10 +18,10 @@ public class DetailPresenter {
         this.view = view;
     }
 
-    void getMovieById(String movie_id) {
+    void getMovieById(String movie_id, String page, String language) {
         view.showLoading ( );
 
-        Utils.getApi ( ).getMovieById ( movie_id ).enqueue ( new Callback<Movie.Result> ( ) {
+        Utils.getApi ( ).getMovieById ( movie_id, page, language ).enqueue ( new Callback<Movie.Result> ( ) {
             @Override
             public void onResponse(Call<Movie.Result> call , Response<Movie.Result> response) {
                 view.hideLoading ( );
@@ -41,10 +41,10 @@ public class DetailPresenter {
         } );
     }
 
-    void getMovieCastsById(String movie_id){
+    void getMovieCastsById(String movie_id, String page, String language){
         view.showLoading ( );
 
-        Utils.getApi ( ).getMovieCastsById ( movie_id ).enqueue ( new Callback<Movie.Detail> ( ) {
+        Utils.getApi ( ).getMovieCastsById (  movie_id, page, language ).enqueue ( new Callback<Movie.Detail> ( ) {
             @Override
             public void onResponse(Call<Movie.Detail> call , Response<Movie.Detail> response) {
                 view.hideLoading ( );

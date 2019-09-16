@@ -3,18 +3,21 @@ package com.rangeldor.movieapp.view.home;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import java.text.SimpleDateFormat;
+
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.rangeldor.movieapp.R;
 import com.rangeldor.movieapp.Utils;
@@ -22,14 +25,11 @@ import com.rangeldor.movieapp.adapter.RecyclerViewHomeAdapter;
 import com.rangeldor.movieapp.model.Movie;
 import com.rangeldor.movieapp.view.detail.DetailActivity;
 
-import java.io.Serializable;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -94,12 +94,19 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
         recyclerViewHome.setNestedScrollingEnabled ( true );
         homeAdapter.notifyDataSetChanged ();
 
-        homeAdapter.setOnItemClickListener ( (view , position) -> {
+        homeAdapter.setOnItemClickListener ( (view , position , homeThumb) -> {
             Intent intent = new Intent ( HomeActivity.this, DetailActivity.class );
             intent.putExtra ( EXTRA_DETAIL_ID, String.valueOf ( results.get ( position ).getId () ) );
-            startActivity ( intent );
-        });
 
+            Pair<View, String> pair = Pair.create ( homeThumb, ViewCompat.getTransitionName ( homeThumb ) );
+            ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation ( HomeActivity.this, pair );
+
+            if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN ) {
+                startActivity ( intent , optionsCompat.toBundle ( ) );
+            } else {
+                startActivity ( intent );
+            }
+        });
     }
 
     @Override

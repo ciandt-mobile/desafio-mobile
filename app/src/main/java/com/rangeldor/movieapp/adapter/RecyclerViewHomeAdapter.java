@@ -94,7 +94,7 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
 
         @Override
         public void onClick(View v) {
-            clickListener.onClick(v, getAdapterPosition());
+            clickListener.onClick(v, getAdapterPosition(), homeThumb);
         }
     }
 
@@ -105,6 +105,6 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
 
 
     public interface ClickListener {
-        void onClick(View view , int position);
+        void onClick(View view , int position , ImageView homeThumb);
     }
 }

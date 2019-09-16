@@ -14,9 +14,13 @@ public interface MovieApi {
                                      @Query ( "page" ) String page,
                                      @Query ( "language") String language );
 
-    @GET("movie/{movie_id}?api_key="+ MovieClient.API_KEY + "&append_to_response=videos&language=pt-BR&page=1")
-    Call<Movie.Result> getMovieById(@Path("movie_id") String movie_id);
+    @GET("movie/{movie_id}?api_key="+ MovieClient.API_KEY + "&append_to_response=videos")
+    Call<Movie.Result> getMovieById(@Path("movie_id") String movie_id,
+                                    @Query ( "page" ) String page,
+                                    @Query ( "language") String language );
 
-    @GET("movie/{movie_id}/casts?api_key="+ MovieClient.API_KEY + "&append_to_response=videos&language=pt-BR&page=1")
-    Call<Movie.Detail> getMovieCastsById(@Path("movie_id") String movie_id);
+    @GET("movie/{movie_id}/casts?api_key="+ MovieClient.API_KEY + "&append_to_response=videos")
+    Call<Movie.Detail> getMovieCastsById(@Path("movie_id") String movie_id,
+                                         @Query ( "page" ) String page,
+                                         @Query ( "language") String language );
 }
