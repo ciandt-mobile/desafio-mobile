@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import java.text.SimpleDateFormat;
 
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -39,6 +40,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
 
     private static final String TAG = "HomeActivity";
     public static final String EXTRA_DETAIL_ID = "MOVIE_ID";
+    private int orientation;
 
     List<Movie.Result> results;
 
@@ -63,10 +65,40 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
         ButterKnife.bind(this);
 
         presenter = new HomePresenter ( this );
-        presenter.getMovieByPopularity (LANGUAGE);
+        presenter.getMovieByPopularity (LANGUAGE, "1");
 
         navigationView.setOnNavigationItemSelectedListener(this);
+    }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+            this.orientation = newConfig.orientation;
+
+            RecyclerViewHomeAdapter homeAdapter = new RecyclerViewHomeAdapter ( this.results, this );
+            recyclerViewHome.setAdapter(homeAdapter);
+            GridLayoutManager layoutManager = new GridLayoutManager(this, 1,
+                    GridLayoutManager.HORIZONTAL, false);
+            recyclerViewHome.setLayoutManager(layoutManager);
+            recyclerViewHome.setNestedScrollingEnabled ( true );
+            homeAdapter.notifyDataSetChanged ();
+
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+
+            this.orientation = newConfig.orientation;
+
+            RecyclerViewHomeAdapter homeAdapter = new RecyclerViewHomeAdapter ( this.results, this );
+            recyclerViewHome.setAdapter(homeAdapter);
+            GridLayoutManager layoutManager = new GridLayoutManager(this, 2,
+                    GridLayoutManager.VERTICAL, false);
+            recyclerViewHome.setLayoutManager(layoutManager);
+            recyclerViewHome.setNestedScrollingEnabled ( true );
+            homeAdapter.notifyDataSetChanged ();
+        }
     }
 
     @Override
@@ -125,9 +157,18 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
 
                 RecyclerViewHomeAdapter homeAdapterNew = new RecyclerViewHomeAdapter ( this.results, this );
                 recyclerViewHome.setAdapter(homeAdapterNew);
-                GridLayoutManager layoutManagerNew = new GridLayoutManager(this, 2,
-                        GridLayoutManager.VERTICAL, false);
-                recyclerViewHome.setLayoutManager(layoutManagerNew);
+                GridLayoutManager layoutManager = null;
+
+                // Checks the orientation of the screen
+                if (this.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    layoutManager = new GridLayoutManager(this, 1,
+                            GridLayoutManager.HORIZONTAL, false);
+                } else if (this.orientation == Configuration.ORIENTATION_PORTRAIT){
+                    layoutManager = new GridLayoutManager(this, 2,
+                            GridLayoutManager.VERTICAL, false);
+                }
+
+                recyclerViewHome.setLayoutManager(layoutManager);
                 recyclerViewHome.setNestedScrollingEnabled ( true );
                 homeAdapterNew.notifyDataSetChanged ();
 
@@ -146,13 +187,10 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
 
                 Calendar calendar = Calendar.getInstance();
 
-                // Retirar para retornar a data atual e obter somente os filmes Em breve
-                calendar.add(Calendar.MONTH, -3);
-
                 //Precisa colocar a paginação
 
                 for (Movie.Result result : this.results){
-
+                    Log.d ( TAG , "onNavigationItemSelected: " + result.getReleaseDate ());
                     try {
                         date2 = format.parse(result.getReleaseDate());
                     } catch (ParseException e) {
@@ -168,9 +206,18 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
 
                 RecyclerViewHomeAdapter homeAdapterNew = new RecyclerViewHomeAdapter ( newListResults, this );
                 recyclerViewHome.setAdapter(homeAdapterNew);
-                GridLayoutManager layoutManagerNew = new GridLayoutManager(this, 2,
-                        GridLayoutManager.VERTICAL, false);
-                recyclerViewHome.setLayoutManager(layoutManagerNew);
+                GridLayoutManager layoutManager = null;
+
+                // Checks the orientation of the screen
+                if (this.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    layoutManager = new GridLayoutManager(this, 1,
+                            GridLayoutManager.HORIZONTAL, false);
+                } else if (this.orientation == Configuration.ORIENTATION_PORTRAIT){
+                    layoutManager = new GridLayoutManager(this, 2,
+                            GridLayoutManager.VERTICAL, false);
+                }
+
+                recyclerViewHome.setLayoutManager(layoutManager);
                 recyclerViewHome.setNestedScrollingEnabled ( true );
                 homeAdapterNew.notifyDataSetChanged ();
 

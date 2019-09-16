@@ -26,7 +26,7 @@ public class HomePresenter {
         this.view = view;
     }
 
-    void getMovieByPopularity(String LANGUAGE){
+    void getMovieByPopularity(String LANGUAGE, String page){
 
         view.showLoading ();
 
@@ -41,7 +41,7 @@ public class HomePresenter {
         String mes_formatted = String.format ( "%02d" , mes );
         String formattedDate = ano+"-"+mes_formatted+"-"+dia;
 
-        Call<Movie> movieCall = Utils.getApi().getMovieToPopularity ( formattedDate ,"1", LANGUAGE );
+        Call<Movie> movieCall = Utils.getApi().getMovieToPopularity ( formattedDate ,page, LANGUAGE );
         movieCall.enqueue(new Callback<Movie> () {
             @Override
             public void onResponse(@NonNull Call<Movie> call, @NonNull Response<Movie> response) {
