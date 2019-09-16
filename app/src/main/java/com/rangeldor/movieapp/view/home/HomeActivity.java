@@ -31,6 +31,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -38,7 +39,11 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
 
     private static final String TAG = "HomeActivity";
     public static final String EXTRA_DETAIL_ID = "MOVIE_ID";
+
     List<Movie.Result> results;
+
+    @BindString ( R.string.language )
+    String LANGUAGE;
 
     @BindView ( R.id.recyclerHome )
     RecyclerView recyclerViewHome;
@@ -58,7 +63,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
         ButterKnife.bind(this);
 
         presenter = new HomePresenter ( this );
-        presenter.getMovieByPopularity ();
+        presenter.getMovieByPopularity (LANGUAGE);
 
         navigationView.setOnNavigationItemSelectedListener(this);
 
@@ -130,27 +135,27 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
 
                 @SuppressLint("SimpleDateFormat")
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                Date date1 = null;
                 Date date2 = null;
 
-                //Precisa colocar a data atual e fazer a paginação
-                try {
-                    date1 = new Date(String.valueOf(format.parse("2019-09-15")));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                Calendar calendar = Calendar.getInstance();
+
+                // Retirar para retornar a data atual e obter somente os filmes Em breve
+                calendar.add(Calendar.MONTH, -3);
+
+                //Precisa colocar a paginação
 
                 for (Movie.Result result : this.results){
 
                     try {
-                        date2 = new Date(String.valueOf(format.parse(result.getReleaseDate())));
+                        date2 = format.parse(result.getReleaseDate());
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
 
-                    assert date2 != null;
-                    if (date2.after(date1)){
-                        newListResults.add(result);
+                    if ( date2 != null ) {
+                        if (date2.after(calendar.getTime ())){
+                            newListResults.add(result);
+                        }
                     }
                 }
 

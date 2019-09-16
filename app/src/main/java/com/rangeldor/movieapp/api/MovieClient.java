@@ -14,8 +14,6 @@ public class MovieClient {
     public static final String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500";
     public static final String API_KEY = "c9e5c202be8d7bc530c5b96561ffa088";
 
-    //public static String LANGUAGE = Resources.getSystem().getString( R.string.language);
-
     public static Retrofit getFoodClient() {
         return new Retrofit.Builder().baseUrl(BASE_URL)
                 .client(provideOkHttp())

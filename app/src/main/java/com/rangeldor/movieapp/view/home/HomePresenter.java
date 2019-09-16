@@ -26,7 +26,7 @@ public class HomePresenter {
         this.view = view;
     }
 
-    void getMovieByPopularity(){
+    void getMovieByPopularity(String LANGUAGE){
 
         view.showLoading ();
 
@@ -38,13 +38,10 @@ public class HomePresenter {
         int mes = calendar.get(Calendar.MONTH);
         int ano = calendar.get(Calendar.YEAR);
 
-        String formattedDate = ano+"-"+mes+"-"+dia;
+        String mes_formatted = String.format ( "%02d" , mes );
+        String formattedDate = ano+"-"+mes_formatted+"-"+dia;
 
-        Log.d(TAG, "getMovieByPopularity: " + formattedDate);
-
-      //  String release_date_gte = new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
-
-        Call<Movie> movieCall = Utils.getApi().getMovieToPopularity ( "2019-05-12","1" );
+        Call<Movie> movieCall = Utils.getApi().getMovieToPopularity ( formattedDate ,"1", LANGUAGE );
         movieCall.enqueue(new Callback<Movie> () {
             @Override
             public void onResponse(@NonNull Call<Movie> call, @NonNull Response<Movie> response) {

@@ -87,6 +87,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:menu="@menu/bottom_menu_home"
+        app:itemIconTint="@drawable/bottom_item_background_color"
+        app:itemTextColor="@drawable/bottom_item_background_color"
         android:theme="@style/CustomBottomNav"/>
 
 </android.support.design.widget.CoordinatorLayout>
