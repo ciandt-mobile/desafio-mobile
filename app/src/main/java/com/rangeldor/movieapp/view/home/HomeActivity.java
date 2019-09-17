@@ -2,6 +2,7 @@ package com.rangeldor.movieapp.view.home;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+
 import java.text.SimpleDateFormat;
 
 import android.content.res.Configuration;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import com.rangeldor.movieapp.R;
 import com.rangeldor.movieapp.Utils;
 import com.rangeldor.movieapp.adapter.RecyclerViewHomeAdapter;
+import com.rangeldor.movieapp.helper.UserPreferences;
 import com.rangeldor.movieapp.model.Movie;
 import com.rangeldor.movieapp.view.detail.DetailActivity;
 
@@ -40,14 +42,13 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
 
     private static final String TAG = "HomeActivity";
     public static final String EXTRA_DETAIL_ID = "MOVIE_ID";
-    private int orientation;
 
     List<Movie.Result> results;
 
-    @BindString ( R.string.language )
+    @BindString(R.string.language)
     String LANGUAGE;
 
-    @BindView ( R.id.recyclerHome )
+    @BindView(R.id.recyclerHome)
     RecyclerView recyclerViewHome;
 
     @BindView(R.id.bottom_nav_home)
@@ -56,16 +57,20 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
     @BindView(R.id.titleType)
     TextView titleType;
 
+    UserPreferences userPreferences;
+
     HomePresenter presenter;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_home );
+        setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
-        presenter = new HomePresenter ( this );
-        presenter.getMovieByPopularity (LANGUAGE, "1");
+        userPreferences = new UserPreferences(getApplicationContext());
+
+        presenter = new HomePresenter(this);
+        presenter.getMovieByPopularity(LANGUAGE, "1");
 
         navigationView.setOnNavigationItemSelectedListener(this);
     }
@@ -74,10 +79,10 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
+        userPreferences.saveOrientation(newConfig.orientation);
+
         // Checks the orientation of the screen
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-
-            this.orientation = newConfig.orientation;
 
             RecyclerViewHomeAdapter homeAdapter = new RecyclerViewHomeAdapter ( this.results, this );
             recyclerViewHome.setAdapter(homeAdapter);
@@ -88,8 +93,6 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
             homeAdapter.notifyDataSetChanged ();
 
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-
-            this.orientation = newConfig.orientation;
 
             RecyclerViewHomeAdapter homeAdapter = new RecyclerViewHomeAdapter ( this.results, this );
             recyclerViewHome.setAdapter(homeAdapter);
@@ -103,14 +106,14 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
 
     @Override
     public void showLoading() {
-        findViewById ( R.id.shimmerHome ).setVisibility ( View.VISIBLE );
-        Log.d ( TAG , "showLoading: " );
+        findViewById(R.id.shimmerHome).setVisibility(View.VISIBLE);
+        Log.d(TAG, "showLoading: ");
     }
 
     @Override
     public void hideLoading() {
-        findViewById ( R.id.shimmerHome ).setVisibility ( View.GONE );
-        Log.d ( TAG , "hideLoading: " );
+        findViewById(R.id.shimmerHome).setVisibility(View.GONE);
+        Log.d(TAG, "hideLoading: ");
     }
 
     @Override
@@ -118,25 +121,25 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
 
         this.results = results;
 
-        RecyclerViewHomeAdapter homeAdapter = new RecyclerViewHomeAdapter ( results, this );
+        RecyclerViewHomeAdapter homeAdapter = new RecyclerViewHomeAdapter(results, this);
         recyclerViewHome.setAdapter(homeAdapter);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2,
                 GridLayoutManager.VERTICAL, false);
         recyclerViewHome.setLayoutManager(layoutManager);
-        recyclerViewHome.setNestedScrollingEnabled ( true );
-        homeAdapter.notifyDataSetChanged ();
+        recyclerViewHome.setNestedScrollingEnabled(true);
+        homeAdapter.notifyDataSetChanged();
 
-        homeAdapter.setOnItemClickListener ( (view , position , homeThumb) -> {
-            Intent intent = new Intent ( HomeActivity.this, DetailActivity.class );
-            intent.putExtra ( EXTRA_DETAIL_ID, String.valueOf ( results.get ( position ).getId () ) );
+        homeAdapter.setOnItemClickListener((view, position, homeThumb) -> {
+            Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
+            intent.putExtra(EXTRA_DETAIL_ID, String.valueOf(results.get(position).getId()));
 
-            Pair<View, String> pair = Pair.create ( homeThumb, ViewCompat.getTransitionName ( homeThumb ) );
-            ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation ( HomeActivity.this, pair );
+            Pair<View, String> pair = Pair.create(homeThumb, ViewCompat.getTransitionName(homeThumb));
+            ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(HomeActivity.this, pair);
 
-            if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN ) {
-                startActivity ( intent , optionsCompat.toBundle ( ) );
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                startActivity(intent, optionsCompat.toBundle());
             } else {
-                startActivity ( intent );
+                startActivity(intent);
             }
         });
     }
@@ -144,33 +147,41 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
     @Override
     public void onErrorLoading(String message) {
         Utils.showDialogMessage(this, "Error : ", message);
-        Log.d ( TAG , "onErrorLoading: " + message);
+        Log.d(TAG, "onErrorLoading: " + message);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-        switch (menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
             case R.id.menu_popularity: {
 
                 titleType.setText(getString(R.string.movie_title_type_popularity));
 
-                RecyclerViewHomeAdapter homeAdapterNew = new RecyclerViewHomeAdapter ( this.results, this );
-                recyclerViewHome.setAdapter(homeAdapterNew);
+                RecyclerViewHomeAdapter homeAdapter = new RecyclerViewHomeAdapter(this.results, this);
+                recyclerViewHome.setAdapter(homeAdapter);
                 GridLayoutManager layoutManager = null;
 
                 // Checks the orientation of the screen
-                if (this.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    layoutManager = new GridLayoutManager(this, 1,
-                            GridLayoutManager.HORIZONTAL, false);
-                } else if (this.orientation == Configuration.ORIENTATION_PORTRAIT){
+                if (!userPreferences.restoreOrientation().isEmpty()) {
+                    if (Integer.parseInt(userPreferences.restoreOrientation()) == Configuration.ORIENTATION_LANDSCAPE) {
+                        Log.d(TAG, "onNavigationItemSelected: ORIENTATION_LANDSCAPE");
+                        layoutManager = new GridLayoutManager(this, 1,
+                                GridLayoutManager.HORIZONTAL, false);
+                    } else if (Integer.parseInt(userPreferences.restoreOrientation()) == Configuration.ORIENTATION_PORTRAIT) {
+                        Log.d(TAG, "onNavigationItemSelected: ORIENTATION_PORTRAIT");
+                        layoutManager = new GridLayoutManager(this, 2,
+                                GridLayoutManager.VERTICAL, false);
+                    }
+                } else {
+                    Log.d(TAG, "onNavigationItemSelected: ORIENTATION_PORTRAIT");
                     layoutManager = new GridLayoutManager(this, 2,
                             GridLayoutManager.VERTICAL, false);
                 }
 
                 recyclerViewHome.setLayoutManager(layoutManager);
-                recyclerViewHome.setNestedScrollingEnabled ( true );
-                homeAdapterNew.notifyDataSetChanged ();
+                recyclerViewHome.setNestedScrollingEnabled(true);
+                homeAdapter.notifyDataSetChanged();
 
                 break;
             }
@@ -189,37 +200,42 @@ public class HomeActivity extends AppCompatActivity implements HomeView, BottomN
 
                 //Precisa colocar a paginação
 
-                for (Movie.Result result : this.results){
-                    Log.d ( TAG , "onNavigationItemSelected: " + result.getReleaseDate ());
+                for (Movie.Result result : this.results) {
+                    // Log.d ( TAG , "onNavigationItemSelected: " + result.getReleaseDate ());
                     try {
                         date2 = format.parse(result.getReleaseDate());
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
 
-                    if ( date2 != null ) {
-                        if (date2.after(calendar.getTime ())){
+                    if (date2 != null) {
+                        if (date2.after(calendar.getTime())) {
                             newListResults.add(result);
                         }
                     }
                 }
 
-                RecyclerViewHomeAdapter homeAdapterNew = new RecyclerViewHomeAdapter ( newListResults, this );
-                recyclerViewHome.setAdapter(homeAdapterNew);
+                RecyclerViewHomeAdapter homeAdapter = new RecyclerViewHomeAdapter(newListResults, this);
+                recyclerViewHome.setAdapter(homeAdapter);
                 GridLayoutManager layoutManager = null;
 
                 // Checks the orientation of the screen
-                if (this.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    layoutManager = new GridLayoutManager(this, 1,
-                            GridLayoutManager.HORIZONTAL, false);
-                } else if (this.orientation == Configuration.ORIENTATION_PORTRAIT){
+                if (!userPreferences.restoreOrientation().isEmpty()) {
+                    if (Integer.parseInt(userPreferences.restoreOrientation()) == Configuration.ORIENTATION_LANDSCAPE) {
+                        layoutManager = new GridLayoutManager(this, 1,
+                                GridLayoutManager.HORIZONTAL, false);
+                    } else if (Integer.parseInt(userPreferences.restoreOrientation()) == Configuration.ORIENTATION_PORTRAIT) {
+                        layoutManager = new GridLayoutManager(this, 2,
+                                GridLayoutManager.VERTICAL, false);
+                    }
+                } else {
                     layoutManager = new GridLayoutManager(this, 2,
                             GridLayoutManager.VERTICAL, false);
                 }
 
                 recyclerViewHome.setLayoutManager(layoutManager);
-                recyclerViewHome.setNestedScrollingEnabled ( true );
-                homeAdapterNew.notifyDataSetChanged ();
+                recyclerViewHome.setNestedScrollingEnabled(true);
+                homeAdapter.notifyDataSetChanged();
 
                 break;
             }
