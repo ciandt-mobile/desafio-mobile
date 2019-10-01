@@ -4,6 +4,11 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+
+import com.pereira.tiago.desafio.mobile.databasemodels.DaoMaster;
+import com.pereira.tiago.desafio.mobile.databasemodels.DaoSession;
+import com.pereira.tiago.desafio.mobile.singletons.SingletonMovie;
 
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.QueryBuilder;
@@ -13,6 +18,8 @@ public class BaseApplication extends Application {
     public static final boolean ENCRYPTED = false;
     public static final String databaseName = "desafio-mobile";
     public static Context context;
+
+    private DaoSession daoSession;
 
     public BaseApplication() {
         super();
@@ -24,12 +31,18 @@ public class BaseApplication extends Application {
 
         context = this;
 
-//        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, ENCRYPTED ? databaseName+"-encrypted" : databaseName+"-db");
-//        Database db = ENCRYPTED ? helper.getEncryptedWritableDb("super-secret") : helper.getWritableDb();
-//        daoSession = new DaoMaster(db).newSession();
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, ENCRYPTED ? databaseName+"-encrypted" : databaseName+"-db");
+        Database db = ENCRYPTED ? helper.getEncryptedWritableDb("super-secret") : helper.getWritableDb();
+        daoSession = new DaoMaster(db).newSession();
 
         QueryBuilder.LOG_SQL = true;
         QueryBuilder.LOG_VALUES = true;
+
+        try {
+            SingletonMovie.initialize(daoSession);
+        } catch (Exception e) {
+            Log.e("MOBILE", e.getMessage());
+        }
     }
 
     @Override
@@ -73,7 +86,7 @@ public class BaseApplication extends Application {
         super.startActivity(intent, options);
     }
 
-    /*public DaoSession getDaoSession() {
+    public DaoSession getDaoSession() {
         return daoSession;
-    }*/
+    }
 }
