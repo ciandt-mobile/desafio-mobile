@@ -1,23 +1,14 @@
 package com.pereira.tiago.desafio.mobile.main.presenter;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
-import android.content.pm.PackageManager;
 
+import com.pereira.tiago.desafio.mobile.base.Config;
 import com.pereira.tiago.desafio.mobile.databasemodels.Movie;
 import com.pereira.tiago.desafio.mobile.main.Contract;
 import com.pereira.tiago.desafio.mobile.main.model.Model;
 import com.pereira.tiago.desafio.mobile.utils.ConnectivityInfo;
 
 import java.util.List;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-import static com.pereira.tiago.desafio.mobile.base.Config.INTERNET;
-import static com.pereira.tiago.desafio.mobile.base.Config.READ_EXTERNAL;
-import static com.pereira.tiago.desafio.mobile.base.Config.WRITE_EXTERNAL;
 
 public class Presenter implements Contract.MainPresenter {
 
@@ -34,57 +25,47 @@ public class Presenter implements Contract.MainPresenter {
     }
 
     @Override
-    public void getPermissions() {
-        boolean flagExternal = false;
-        boolean flagRead = false;
-        boolean flagInternet = false;
-
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions((Activity)view, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL);
-        } else {
-            flagExternal = true;
-        }
-
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions((Activity)view, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, READ_EXTERNAL);
-        } else {
-            flagRead = true;
-        }
-
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions((Activity)view, new String[]{Manifest.permission.INTERNET}, INTERNET);
-        } else {
-            flagInternet = true;
-        }
-
-        if (flagExternal && flagRead && flagInternet){
-            getListMoviesPopular();
-        } else {
-            view.showToast("Você precisa dar todas as permissôes necessárias");
-        }
-    }
-
-    @Override
     public void setView(Contract.MainView view) {
         this.view = view;
     }
 
     @Override
-    public void getListMoviesPopular() {
+    public void getListMoviesPopular(int currentPage) {
         ConnectivityInfo.init(getContext());
         if (ConnectivityInfo.isConnected() && (ConnectivityInfo.is3G() || ConnectivityInfo.isWifi())) {
-            model.getMoviesPopularNetwork();
+            model.getMoviesPopularNetwork(currentPage);
         } else {
             model.getMoviesPopularDatabase();
         }
     }
 
     @Override
-    public void setMovieList(List<Movie> movieList) {
+    public void getListMoviesUpcoming(int currentPage) {
+        ConnectivityInfo.init(getContext());
+        if (ConnectivityInfo.isConnected() && (ConnectivityInfo.is3G() || ConnectivityInfo.isWifi())) {
+            model.getMoviesUpcomingNetwork(currentPage);
+        } else {
+            model.getMoviesUpcomingDatabase();
+        }
+    }
+
+    @Override
+    public void setMovieList(List<Movie> movieList, String option) {
         if (!movieList.isEmpty()) {
-            view.setPopulateRecycler(movieList);
+            view.setPopulateRecycler(movieList, option);
         } else {
             view.showNoResults();
+        }
+    }
+
+    @Override
+    public void changeOption(String option, int currentPage) {
+        if (option.equals(Config.POPULAR)){
+            getListMoviesPopular(currentPage);
+            view.showButtonPopular();
+        } else if (option.equals(Config.UPCOMING)) {
+            getListMoviesUpcoming(currentPage);
+            view.showButtonUpcoming();
         }
     }
 }

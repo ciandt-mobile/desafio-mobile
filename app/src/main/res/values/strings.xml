@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">DesafioMobile</string>
+
+    <string name="popular">Populares</string>
+    <string name="upcoming">Em Breve</string>
+
+    <string name="grant_permissions">Liberar permissões</string>
+    <string name="mis_grant_permissions">Liberar permissões</string>
+    <string name="please_grant_permissions">Para poder prosseguir, é importante liberar as permissões</string>
+
+    <string name="slide_1_title">Bem-vindo ao Desafio Mobile</string>
+    <string name="slide_1_description">
+        Busque seus filmes pelos mais populares ou pelos lançamentos que virão em breve.
+    </string>
+
+    <string name="slide_2_title">Precisamos de Algumas permissões</string>
+    <string name="slide_2_description">
+        Permita, ou não, que seu app tenha acesso a internet e acesso ao armazenamento interno.
+    </string>
 </resources>

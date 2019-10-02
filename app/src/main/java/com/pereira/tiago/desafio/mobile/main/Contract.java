@@ -8,21 +8,25 @@ import java.util.List;
 
 public interface Contract {
     interface MainModel{
-        void getMoviesPopularNetwork();
+        void getMoviesPopularNetwork(int currentPage);
         void getMoviesPopularDatabase();
+        void getMoviesUpcomingNetwork(int currentPage);
+        void getMoviesUpcomingDatabase();
     }
 
     interface MainPresenter {
         Context getContext();
-        void getPermissions();
         void setView(MainView view);
-        void getListMoviesPopular();
-        void setMovieList(List<Movie> movieList);
+        void getListMoviesPopular(int currentPage);
+        void getListMoviesUpcoming(int currentPage);
+        void setMovieList(List<Movie> movieList, String option);
+        void changeOption(String option, int currentPage);
     }
 
     interface MainView {
-        void showToast( String message );
         void showNoResults();
-        void setPopulateRecycler(List<Movie> movies);
+        void showButtonPopular();
+        void showButtonUpcoming();
+        void setPopulateRecycler(List<Movie> movies, String option);
     }
 }

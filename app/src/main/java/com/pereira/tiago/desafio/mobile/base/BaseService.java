@@ -13,4 +13,11 @@ public interface BaseService {
             @Query("api_key") String apiKey,
             @Query("language") String language,
             @Query("page") String page);
+
+    @GET("upcoming?")
+    Call<ApiResponse> getUpcomingMovies(
+            @Query("api_key") String apiKey,
+            @Query("language") String language,
+            @Query("page") String page
+    );
 }

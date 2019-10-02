@@ -2,6 +2,11 @@ package com.pereira.tiago.desafio.mobile.singletons;
 
 import com.pereira.tiago.desafio.mobile.databasemodels.DaoSession;
 import com.pereira.tiago.desafio.mobile.databasemodels.Movie;
+import com.pereira.tiago.desafio.mobile.databasemodels.MovieDao;
+
+import org.greenrobot.greendao.query.DeleteQuery;
+
+import java.util.List;
 
 public class SingletonMovie {
 
@@ -20,7 +25,15 @@ public class SingletonMovie {
         mDaoSession = daoSession;
     }
 
+    public List<Movie> getMovieList() {
+        return mDaoSession.getMovieDao().queryBuilder().list();
+    }
+
     public boolean saveMovie(Movie movie){
         return mDaoSession.getMovieDao().insertOrReplace(movie) > 0;
+    }
+
+    public void deleteMovies(){
+        mDaoSession.getMovieDao().deleteAll();
     }
 }
