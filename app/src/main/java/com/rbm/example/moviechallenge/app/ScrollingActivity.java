@@ -1,16 +1,23 @@
-package com.rbm.example.moviechallenge;
+package com.rbm.example.moviechallenge.app;
 
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.rbm.example.moviechallenge.R;
+import com.rbm.example.moviechallenge.data.api.Api;
+import com.rbm.example.moviechallenge.data.repository.movies.remote.ApiMoviesDataSource;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ScrollingActivity extends AppCompatActivity {
 
@@ -25,8 +32,9 @@ public class ScrollingActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                ApiMoviesDataSource api = new ApiMoviesDataSource();
+                api.getMovieList();
             }
         });
     }
