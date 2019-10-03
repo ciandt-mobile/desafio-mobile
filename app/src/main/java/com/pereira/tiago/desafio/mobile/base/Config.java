@@ -9,6 +9,7 @@ public class Config {
 
     public static final String POPULAR = "popular";
     public static final String UPCOMING = "upcoming";
+    public static final String MOVIE_ID = "movie_id";
 
     public static final int INTERNET = 1;
     public static final int WRITE_EXTERNAL = 2;

@@ -1,5 +1,7 @@
 package com.pereira.tiago.desafio.mobile.main.view;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -8,6 +10,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.pereira.tiago.desafio.mobile.R;
 import com.pereira.tiago.desafio.mobile.base.Config;
@@ -20,12 +29,6 @@ import com.pereira.tiago.desafio.mobile.utils.Shared;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import me.rishabhkhanna.customtogglebutton.CustomToggleButton;
 
 import static com.pereira.tiago.desafio.mobile.base.PaginationListener.PAGE_START;
@@ -44,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
     RecyclerView rcvMovies;
     ProgressBar pbLoading;
     SwipeRefreshLayout swipeRefresh;
-    private static  Contract.MainPresenter presenter;
+    private static Contract.MainPresenter presenter;
     MainAdapter adapter;
     private int currentPage = PAGE_START;
     private String opSearch = Config.POPULAR;
@@ -52,6 +55,12 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
     private int totalPage = 10;
     private boolean isLoading = false;
     int itemCount = 0;
+
+    public static Intent newInstance(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
         rcvMovies.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         rcvMovies.setLayoutManager(linearLayoutManager);
-        adapter = new MainAdapter(new ArrayList<Movie>());
+        adapter = new MainAdapter(new ArrayList<Movie>(), MainActivity.this);
         rcvMovies.setAdapter(adapter);
 
         rcvMovies.addOnScrollListener(new PaginationListener(linearLayoutManager) {
@@ -194,6 +203,7 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
                 for (int i = 0; i < 20; i++) {
                     itemCount++;
                     Movie movie = new Movie();
+                    movie.setId(movies.get(i).getId());
                     movie.setTitle(movies.get(i).getTitle());
                     movie.setRelease_date(movies.get(i).getRelease_date());
                     movie.setBackdrop_path(movies.get(i).getBackdrop_path());

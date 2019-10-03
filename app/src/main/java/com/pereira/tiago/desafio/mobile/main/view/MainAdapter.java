@@ -1,5 +1,6 @@
 package com.pereira.tiago.desafio.mobile.main.view;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.pereira.tiago.desafio.mobile.R;
 import com.pereira.tiago.desafio.mobile.base.BaseViewHolder;
 import com.pereira.tiago.desafio.mobile.base.Config;
 import com.pereira.tiago.desafio.mobile.databasemodels.Movie;
+import com.pereira.tiago.desafio.mobile.details.view.DetailsActivity;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -23,20 +25,20 @@ import java.util.List;
 public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     private List<Movie> movieList;
+    private Activity mActivity;
 
     private static final int VIEW_TYPE_LOADING = 0;
     private static final int VIEW_TYPE_NORMAL = 1;
     private boolean isLoaderVisible = false;
 
-    public MainAdapter(List<Movie> movies) {
+    public MainAdapter(List<Movie> movies, Activity activity) {
         this.movieList = movies;
+        this.mActivity = activity;
     }
 
     @NonNull
     @Override
     public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        return new MainHolder(LayoutInflater.from(parent.getContext())
-//                .inflate(R.layout.item_movie, parent, false));
 
         switch (viewType) {
             case VIEW_TYPE_NORMAL:
@@ -119,7 +121,7 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         public void onBind(int position) {
             super.onBind(position);
-            Movie item = movieList.get(position);
+            final Movie item = movieList.get(position);
 
             txtName.setText(item.getTitle());
 
@@ -150,7 +152,7 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             card_view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // ir para segunda activity
+                    mActivity.startActivity(DetailsActivity.newInstance(mActivity.getApplicationContext(), item.getId()));
                 }
             });
         }

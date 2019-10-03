@@ -4,6 +4,11 @@
     <string name="img_sorry">Emoji sad</string>
     <string name="no_results">Nenhum filme encontrado!</string>
 
+    <string name="genre">Gêneros</string>
+    <string name="cast">Elenco Principal</string>
+    <string name="overview">Sinópse</string>
+    <string name="imgCharacter">Imagem do personagem</string>
+
     <string name="popular">Populares</string>
     <string name="upcoming">Em Breve</string>
 

@@ -1,7 +1,6 @@
 package com.pereira.tiago.desafio.mobile.intro;
 
 import android.Manifest;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -29,7 +28,7 @@ public class IntroActivity extends MaterialIntroActivity {
         addSlide(new SlideFragmentBuilder()
                 .backgroundColor(R.color.colorPrimaryDark)
                 .buttonsColor(R.color.colorAccent)
-                .image(R.drawable.ic_launcher_foreground)
+                .image(R.mipmap.ic_launcher_round)
                 .title(getResources().getString(R.string.slide_1_title))
                 .description(getResources().getString(R.string.slide_1_description))
                 .build());
@@ -38,7 +37,7 @@ public class IntroActivity extends MaterialIntroActivity {
                         .backgroundColor(R.color.colorPrimaryDark)
                         .buttonsColor(R.color.colorAccent)
                         .neededPermissions(neededPermissions)
-                        .image(R.drawable.ic_launcher_foreground)
+                        .image(R.mipmap.ic_launcher)
                         .title(getResources().getString(R.string.slide_2_title))
                         .description(getResources().getString(R.string.slide_2_description))
                         .build());
@@ -61,9 +60,13 @@ public class IntroActivity extends MaterialIntroActivity {
     }
 
     private void goToMain(){
-        Intent intent = new Intent(IntroActivity.this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+
+        startActivity(MainActivity.newInstance(getApplicationContext()));
         finish();
+
+//        Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        startActivity(intent);
+//        finish();
     }
 }
