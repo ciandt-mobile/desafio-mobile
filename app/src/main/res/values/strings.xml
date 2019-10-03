@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">DesafioMobile</string>
 
+    <string name="img_sorry">Emoji sad</string>
+    <string name="no_results">Nenhum filme encontrado!</string>
+
     <string name="popular">Populares</string>
     <string name="upcoming">Em Breve</string>
 

@@ -8,6 +8,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pereira.tiago.desafio.mobile.R;
@@ -103,9 +104,11 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         TextView txtName;
         TextView txtDate;
         ProgressBar pbImg;
+        CardView card_view;
 
         ViewHolder(View itemView) {
             super(itemView);
+            card_view = itemView.findViewById(R.id.card_view);
             imgPoster = itemView.findViewById(R.id.imgPoster);
             txtName = itemView.findViewById(R.id.txtName);
             txtDate = itemView.findViewById(R.id.txtDate);
@@ -143,6 +146,13 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                         }
                     }
                 });
+
+            card_view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // ir para segunda activity
+                }
+            });
         }
     }
 

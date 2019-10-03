@@ -2,9 +2,6 @@ package com.pereira.tiago.desafio.mobile.singletons;
 
 import com.pereira.tiago.desafio.mobile.databasemodels.DaoSession;
 import com.pereira.tiago.desafio.mobile.databasemodels.Movie;
-import com.pereira.tiago.desafio.mobile.databasemodels.MovieDao;
-
-import org.greenrobot.greendao.query.DeleteQuery;
 
 import java.util.List;
 

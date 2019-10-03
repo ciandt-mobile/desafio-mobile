@@ -1,24 +1,13 @@
 package com.pereira.tiago.desafio.mobile.main.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.DisplayMetrics;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.pereira.tiago.desafio.mobile.R;
 import com.pereira.tiago.desafio.mobile.base.Config;
@@ -27,11 +16,16 @@ import com.pereira.tiago.desafio.mobile.databasemodels.Movie;
 import com.pereira.tiago.desafio.mobile.main.Contract;
 import com.pereira.tiago.desafio.mobile.main.presenter.Presenter;
 import com.pereira.tiago.desafio.mobile.utils.Shared;
-import com.pereira.tiago.desafio.mobile.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import me.rishabhkhanna.customtogglebutton.CustomToggleButton;
 
 import static com.pereira.tiago.desafio.mobile.base.PaginationListener.PAGE_START;
@@ -43,8 +37,9 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
 
     Toolbar toolbar;
     ImageView imgNoResults;
-    View viewDivider, viewDivider2;
+    View viewDivider;
     TextView txtNoResults;
+    LinearLayout llType;
     CustomToggleButton buttonPopular, buttonUpcoming;
     RecyclerView rcvMovies;
     ProgressBar pbLoading;
@@ -52,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
     private static  Contract.MainPresenter presenter;
     MainAdapter adapter;
     private int currentPage = PAGE_START;
+    private String opSearch = Config.POPULAR;
     private boolean isLastPage = false;
     private int totalPage = 10;
     private boolean isLoading = false;
@@ -72,17 +68,34 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
         init();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == android.R.id.home){
+            finish();
+        }
+
+        return true;
+    }
+
     private void init(){
         toolbar = findViewById(R.id.toolbar);
         imgNoResults = findViewById(R.id.imgNoResults);
         viewDivider = findViewById(R.id.viewDivider);
         txtNoResults = findViewById(R.id.txtNoResults);
         rcvMovies = findViewById(R.id.rcvMovies);
+        llType = findViewById(R.id.llType);
         buttonPopular = findViewById(R.id.buttonPopular);
         buttonUpcoming = findViewById(R.id.buttonUpcoming);
-        viewDivider2 = findViewById(R.id.viewDivider2);
         pbLoading = findViewById(R.id.pbLoading);
         swipeRefresh = findViewById(R.id.swipeRefresh);
+
+        toolbar.setTitle("Desafio Mobile");
+        toolbar.setSubtitle("Listagem de filmes");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         swipeRefresh.setOnRefreshListener(this);
         rcvMovies.setHasFixedSize(true);
@@ -96,11 +109,7 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
             protected void loadMoreItems() {
                 isLoading = true;
                 currentPage++;
-                //if (option.equals(Config.POPULAR)){
-                    presenter.getListMoviesPopular(currentPage);
-//                } else if (option.equals(Config.UPCOMING)){
-//                    presenter.getListMoviesUpcoming();
-//                }
+                presenter.changeOption(opSearch, currentPage);
             }
 
             @Override
@@ -117,14 +126,22 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
         buttonPopular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                presenter.changeOption(Config.POPULAR, currentPage);
+                pbLoading.setVisibility(View.VISIBLE);
+                currentPage = PAGE_START;
+                adapter.clear();
+                opSearch = Config.POPULAR;
+                presenter.changeOption(opSearch, currentPage);
             }
         });
 
         buttonUpcoming.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                presenter.changeOption(Config.UPCOMING, currentPage);
+                pbLoading.setVisibility(View.VISIBLE);
+                currentPage = PAGE_START;
+                adapter.clear();
+                opSearch = Config.UPCOMING;
+                presenter.changeOption(opSearch, currentPage);
             }
         });
 
@@ -132,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
         swipeRefresh.setVisibility(View.GONE);
         rcvMovies.setVisibility(View.GONE);
 
-        presenter.changeOption(Config.POPULAR, currentPage);
+        presenter.changeOption(opSearch, currentPage);
     }
 
     @Override
@@ -140,9 +157,7 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
         swipeRefresh.setVisibility(View.GONE);
         pbLoading.setVisibility(View.GONE);
         rcvMovies.setVisibility(View.GONE);
-        buttonPopular.setVisibility(View.GONE);
-        buttonUpcoming.setVisibility(View.GONE);
-        viewDivider2.setVisibility(View.GONE);
+        llType.setVisibility(View.GONE);
         imgNoResults.setVisibility(View.VISIBLE);
         viewDivider.setVisibility(View.VISIBLE);
         txtNoResults.setVisibility(View.VISIBLE);
@@ -165,10 +180,7 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
 
         swipeRefresh.setVisibility(View.VISIBLE);
         rcvMovies.setVisibility(View.VISIBLE);
-        buttonPopular.setVisibility(View.VISIBLE);
-        buttonUpcoming.setVisibility(View.VISIBLE);
-        viewDivider2.setVisibility(View.VISIBLE);
-        pbLoading.setVisibility(View.GONE);
+        llType.setVisibility(View.VISIBLE);
         imgNoResults.setVisibility(View.GONE);
         viewDivider.setVisibility(View.GONE);
         txtNoResults.setVisibility(View.GONE);
@@ -202,8 +214,12 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
                     isLastPage = true;
                 }
                 isLoading = false;
+
+                opSearch = option;
             }
         }, 1500);
+
+        pbLoading.setVisibility(View.GONE);
     }
 
     @Override
@@ -212,6 +228,8 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
         currentPage = PAGE_START;
         isLastPage = false;
         adapter.clear();
-        presenter.getListMoviesPopular(currentPage);
+
+        //presenter.getListMoviesPopular(currentPage);
+        presenter.changeOption(opSearch, currentPage);
     }
 }
