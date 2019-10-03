@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.brunodiegom.movies">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".InitApplication"
         android:allowBackup="true"
