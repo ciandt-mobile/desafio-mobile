@@ -20,12 +20,22 @@ public class MovieListViewModel extends BaseViewModel<MovieListViewState> {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(data -> {
-                    //viewState.postValue(new MovieListViewState().setLoading(true));
+                    //TODO improve it
+                    MovieListViewState newState = new MovieListViewState();
+                    newState.setLoading(true);
+                    viewState.postValue(newState);
                     Log.d(TAG, "View Model is loading");
                 })
-                .doOnEvent((movieData, throwable) -> Log.d(TAG, "View Model is not loading anymore"))
+                //.doOnEvent((movieData, throwable) -> Log.d(TAG, "View Model is not loading anymore"))
                 .subscribe(
-                        data -> Log.d(TAG, "Data Received"),
+                        data -> {
+
+                            MovieListViewState newState = new MovieListViewState();
+                            newState.setMovieList(data.getMovieList());
+                            newState.setLoading(false);
+                            viewState.postValue(newState);
+                            Log.d(TAG, "Data Received");
+                        },
                         error -> Log.d(TAG, "Data error")
                 );
 

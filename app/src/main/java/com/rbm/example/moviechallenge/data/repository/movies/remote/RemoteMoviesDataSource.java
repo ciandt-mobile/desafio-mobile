@@ -1,12 +1,13 @@
 package com.rbm.example.moviechallenge.data.repository.movies.remote;
 
 import com.rbm.example.moviechallenge.data.data.MovieData;
+import com.rbm.example.moviechallenge.data.data.MovieListData;
 
-import java.util.List;
+import io.reactivex.Observable;
 
 interface RemoteMoviesDataSource {
 
-    List<MovieData> getMovieList();
+    Observable<MovieListData> getMovieList();
 
-    MovieData getMovie(int movieId);
+    Observable<MovieData> getMovie(int movieId);
 }

@@ -9,17 +9,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rbm.example.moviechallenge.R;
-import com.rbm.example.moviechallenge.data.api.Api;
+import com.rbm.example.moviechallenge.app.feature.list.MovieListViewModel;
+import com.rbm.example.moviechallenge.app.feature.list.MovieListViewState;
 import com.rbm.example.moviechallenge.data.repository.movies.remote.ApiMoviesDataSource;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class ScrollingActivity extends AppCompatActivity {
+
+    private static final String TAG = ScrollingActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,22 @@ public class ScrollingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scrolling);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        MovieListViewModel viewModel = ViewModelProviders.of(this).get(MovieListViewModel.class);
+
+        viewModel.loadMovies();
+
+        viewModel.viewState.observe(this, movieListViewState -> {
+            if (movieListViewState.isLoading()){
+                Log.d(TAG, "Is loading");
+            } else {
+                Log.d(TAG, "Is not loading");
+            }
+
+            if (movieListViewState.getMovieList().size() > 0){
+                Log.d(TAG, "Got a movie list");
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
