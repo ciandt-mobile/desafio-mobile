@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="adapter_list_width">105dp</dimen>
+    <dimen name="adapter_list_height">140dp</dimen>
+    <dimen name="material_default_spacing">8dp</dimen>
+    <dimen name="chip_spacing">30dp</dimen>
+</resources>
