@@ -1,7 +1,6 @@
 package com.rbm.example.moviechallenge.app.feature.list;
 
 import com.rbm.example.moviechallenge.data.data.MovieData;
-import com.rbm.example.moviechallenge.data.data.MovieListData;
 
 import java.util.ArrayList;
 import java.util.List;

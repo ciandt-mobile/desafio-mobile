@@ -1,24 +1,27 @@
 package com.rbm.example.moviechallenge.app.feature.list;
 
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.View;
-
 import com.rbm.example.moviechallenge.R;
+import com.rbm.example.moviechallenge.data.data.MovieData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MovieListActivity extends AppCompatActivity {
+
+    private static final String TAG = MovieListActivity.class.getSimpleName();
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
+    private List<MovieData> movieDataList = new ArrayList<MovieData>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,23 +34,26 @@ public class MovieListActivity extends AppCompatActivity {
         layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
 
-        String[] testDataSet = {"qwert", "12345", "Ranieri", "Mariana"};
-
-        adapter = new MovieListAdapter(testDataSet);
+        adapter = new MovieListAdapter(movieDataList);
         recyclerView.setAdapter(adapter);
 
+        MovieListViewModel viewModel = ViewModelProviders.of(this).get(MovieListViewModel.class);
 
-        /*Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        viewModel.loadMovies();
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+        viewModel.viewState.observe(this, movieListViewState -> {
+            if (movieListViewState.isLoading()){
+                Log.d(TAG, "Is loading");
+            } else {
+                Log.d(TAG, "Is not loading");
             }
-        });*/
+
+            if (movieListViewState.getMovieList().size() > 0){
+                int position = movieDataList.size();
+                movieDataList.addAll(movieListViewState.getMovieList());
+                adapter.notifyItemRangeInserted(position, movieListViewState.getMovieList().size());
+            }
+        });
     }
 
 }

@@ -91,4 +91,6 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_movie_list">MovieListActivity</string>
+    <string name="movie_image_description">Movie poster</string>
+    <string name="movie_text_default">Movie\'s Name</string>
 </resources>
