@@ -66,6 +66,7 @@ Concordo que deveria ter melhorado a cobertura dos testes no projeto.
 Para criar os testes, eu tive bastante problemáticas no caminho. Desde libs que deveriam ser testImplementation ao invés de androidTestImplementation até mesmo para utilizar um observable "mockado".
 
 ===================================
+
 Conclusão:
 Eu gostei MUITO do desafio.
 
