@@ -11,13 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.pereira.tiago.desafio.mobile.R;
 import com.pereira.tiago.desafio.mobile.base.Config;
 import com.pereira.tiago.desafio.mobile.base.PaginationListener;
@@ -29,14 +22,20 @@ import com.pereira.tiago.desafio.mobile.utils.Shared;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import me.rishabhkhanna.customtogglebutton.CustomToggleButton;
 
+import static com.pereira.tiago.desafio.mobile.base.Config.POPULAR;
+import static com.pereira.tiago.desafio.mobile.base.Config.UPCOMING;
 import static com.pereira.tiago.desafio.mobile.base.PaginationListener.PAGE_START;
 
 public class MainActivity extends AppCompatActivity implements Contract.MainView,
         SwipeRefreshLayout.OnRefreshListener {
-
-    private static final String TAG = "MainActivity";
 
     Toolbar toolbar;
     ImageView imgNoResults;
@@ -101,24 +100,30 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
         pbLoading = findViewById(R.id.pbLoading);
         swipeRefresh = findViewById(R.id.swipeRefresh);
 
-        toolbar.setTitle("Desafio Mobile");
-        toolbar.setSubtitle("Listagem de filmes");
+        toolbar.setTitle(getResources().getString(R.string.app_name));
+        toolbar.setSubtitle(getResources().getString(R.string.app_sub_title_main));
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         swipeRefresh.setOnRefreshListener(this);
         rcvMovies.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        rcvMovies.setLayoutManager(linearLayoutManager);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+        rcvMovies.setLayoutManager(gridLayoutManager);
         adapter = new MainAdapter(new ArrayList<Movie>(), MainActivity.this);
         rcvMovies.setAdapter(adapter);
 
-        rcvMovies.addOnScrollListener(new PaginationListener(linearLayoutManager) {
+        rcvMovies.addOnScrollListener(new PaginationListener(gridLayoutManager) {
             @Override
             protected void loadMoreItems() {
-                isLoading = true;
-                currentPage++;
-                presenter.changeOption(opSearch, currentPage);
+                if (opSearch.equals(POPULAR)) {
+                    isLoading = true;
+                    currentPage++;
+                    presenter.changeOption(opSearch, currentPage);
+                } else {
+                    isLoading = false;
+                }
             }
 
             @Override
@@ -149,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
                 pbLoading.setVisibility(View.VISIBLE);
                 currentPage = PAGE_START;
                 adapter.clear();
-                opSearch = Config.UPCOMING;
+                opSearch = UPCOMING;
                 presenter.changeOption(opSearch, currentPage);
             }
         });
@@ -210,18 +215,20 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
                     movie.setPoster_path(movies.get(i).getPoster_path());
                     items.add(movie);
                 }
-                /**
-                 * manage progress view
-                 */
+
                 if (currentPage != PAGE_START) adapter.removeLoading();
                 adapter.addItems(items);
                 swipeRefresh.setRefreshing(false);
 
                 // check weather is last page or not
-                if (currentPage < totalPage) {
-                    adapter.addLoading();
+                if (option.equals(POPULAR)) {
+                    if (currentPage < totalPage) {
+                        adapter.addLoading(true);
+                    } else {
+                        isLastPage = true;
+                    }
                 } else {
-                    isLastPage = true;
+                    adapter.addLoading(false);
                 }
                 isLoading = false;
 
@@ -238,8 +245,6 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
         currentPage = PAGE_START;
         isLastPage = false;
         adapter.clear();
-
-        //presenter.getListMoviesPopular(currentPage);
         presenter.changeOption(opSearch, currentPage);
     }
 }

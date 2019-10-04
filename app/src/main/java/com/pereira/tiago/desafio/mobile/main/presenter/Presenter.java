@@ -8,6 +8,9 @@ import com.pereira.tiago.desafio.mobile.main.Contract;
 import com.pereira.tiago.desafio.mobile.main.model.Model;
 import com.pereira.tiago.desafio.mobile.utils.ConnectivityInfo;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Presenter implements Contract.MainPresenter {
@@ -41,17 +44,30 @@ public class Presenter implements Contract.MainPresenter {
 
     @Override
     public void getListMoviesUpcoming(int currentPage) {
-        ConnectivityInfo.init(getContext());
-        if (ConnectivityInfo.isConnected() && (ConnectivityInfo.is3G() || ConnectivityInfo.isWifi())) {
-            model.getMoviesUpcomingNetwork(currentPage);
-        } else {
-            model.getMoviesUpcomingDatabase();
-        }
+//        ConnectivityInfo.init(getContext());
+//        if (ConnectivityInfo.isConnected() && (ConnectivityInfo.is3G() || ConnectivityInfo.isWifi())) {
+//            model.getMoviesUpcomingNetwork(currentPage);
+//        } else {
+//            model.getMoviesUpcomingDatabase();
+//        }
+        model.getMoviesUpcomingDatabase();
     }
 
     @Override
     public void setMovieList(List<Movie> movieList, String option) {
         if (!movieList.isEmpty()) {
+
+            //ordenar primeiro
+            if (option.equals(Config.UPCOMING)){
+
+                Collections.sort(movieList, Collections.reverseOrder(new Comparator<Movie>() {
+                    @Override
+                    public int compare(Movie movie1, Movie movie2) {
+                        return movie1.getRelease_date().compareTo(movie2.getRelease_date());
+                    }
+                }));
+            }
+
             view.setPopulateRecycler(movieList, option);
         } else {
             view.showNoResults();

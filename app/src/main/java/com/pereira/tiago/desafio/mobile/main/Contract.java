@@ -10,7 +10,6 @@ public interface Contract {
     interface MainModel{
         void getMoviesPopularNetwork(int currentPage);
         void getMoviesPopularDatabase();
-        void getMoviesUpcomingNetwork(int currentPage);
         void getMoviesUpcomingDatabase();
     }
 

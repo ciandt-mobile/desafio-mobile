@@ -17,13 +17,6 @@ public interface BaseService {
             @Query("language") String language,
             @Query("page") String page);
 
-    @GET("upcoming?")
-    Call<ApiResponse> getUpcomingMovies(
-            @Query("api_key") String apiKey,
-            @Query("language") String language,
-            @Query("page") String page
-    );
-
     @GET("{movie_id}?")
     Call<ApiResponseDetails> getMovieDetails(
             @Path("movie_id") String movie_id,

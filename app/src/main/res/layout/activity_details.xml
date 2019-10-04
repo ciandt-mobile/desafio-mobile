@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -71,34 +70,37 @@
                     android:id="@+id/imgCalendar"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
                     android:backgroundTint="@color/colorAccent"
                     android:src="@mipmap/ic_calendar_check"
                     android:tint="@color/colorAccent"
-                    app:layout_constraintEnd_toStartOf="@+id/txtDate"
+                    app:layout_constraintStart_toEndOf="@+id/cardViewImg"
                     app:layout_constraintTop_toTopOf="@+id/cardViewImg" />
 
                 <ImageView
                     android:id="@+id/imgTimer"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
                     android:backgroundTint="@color/colorAccent"
                     android:src="@mipmap/ic_timer"
                     android:tint="@color/colorAccent"
-                    app:layout_constraintEnd_toStartOf="@+id/txtRuntime"
+                    app:layout_constraintStart_toEndOf="@+id/cardViewImg"
                     app:layout_constraintTop_toBottomOf="@+id/imgCalendar" />
 
                 <TextView
                     android:id="@+id/txtDate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="18sp"
+                    android:gravity="start"
                     app:layout_constraintBottom_toBottomOf="@+id/imgCalendar"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgCalendar"
                     app:layout_constraintTop_toTopOf="@+id/imgCalendar" />
 
                 <TextView
@@ -106,10 +108,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="18sp"
+                    android:gravity="start"
                     app:layout_constraintBottom_toBottomOf="@+id/imgTimer"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgTimer"
                     app:layout_constraintTop_toTopOf="@+id/imgTimer" />
 
                 <TextView
@@ -293,7 +298,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/toolbar">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -313,8 +318,8 @@
                             android:id="@+id/imgExpand"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
+                            android:layout_marginTop="8dp"
                             android:backgroundTint="@color/colorAccent"
                             android:src="@mipmap/ic_arrow_expand"
                             android:tint="@color/colorAccent"

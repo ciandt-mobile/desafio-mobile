@@ -17,6 +17,7 @@ import com.pereira.tiago.desafio.mobile.base.BaseViewHolder;
 import com.pereira.tiago.desafio.mobile.base.Config;
 import com.pereira.tiago.desafio.mobile.databasemodels.Movie;
 import com.pereira.tiago.desafio.mobile.details.view.DetailsActivity;
+import com.pereira.tiago.desafio.mobile.utils.Utils;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -76,10 +77,12 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         notifyDataSetChanged();
     }
 
-    public void addLoading() {
-        isLoaderVisible = true;
-        movieList.add(new Movie());
-        notifyItemInserted(movieList.size() - 1);
+    public void addLoading(boolean visible) {
+        isLoaderVisible = visible;
+        if (visible) {
+            movieList.add(new Movie());
+            notifyItemInserted(movieList.size() - 1);
+        }
     }
 
     public void removeLoading() {
@@ -125,14 +128,13 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
             txtName.setText(item.getTitle());
 
-            String[] aux = item.getRelease_date().split("-");
-            txtDate.setText(aux[2] + "/" + aux[1] + "/" + aux[0]);
+            txtDate.setText(Utils.convertDate(item.getRelease_date()));
 
             pbImg.setVisibility(View.VISIBLE);
 
             Picasso.get()
                 .load(Config.BASE_URL_IMG + item.getPoster_path())
-                .error(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_error)
                 .into(imgPoster, new Callback() {
                     @Override
                     public void onSuccess() {

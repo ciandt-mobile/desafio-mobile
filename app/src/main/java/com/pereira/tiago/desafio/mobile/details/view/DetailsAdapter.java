@@ -38,7 +38,7 @@ public class DetailsAdapter extends RecyclerView.Adapter<DetailsHolder> {
 
         Picasso.get()
                 .load(Config.BASE_URL_IMG + castMovie.getProfilePath())
-                .error(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_error)
                 .into(holder.imgCast, new Callback() {
                     @Override
                     public void onSuccess() {

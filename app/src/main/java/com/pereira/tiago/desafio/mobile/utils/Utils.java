@@ -14,8 +14,19 @@ public class Utils {
         return Math.abs(pxToDp(width, context) / 100);
     }
 
-    public static int pxToDp(int px, Context context) {
+    private static int pxToDp(int px, Context context) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
+
+    public static String convertDate(String data){
+        String[] aux = data.split("-");
+        return aux[2] + "/" + aux[1] + "/" + aux[0];
+    }
+
+    public static String yearRelease(String data){
+        String[] aux = data.split("-");
+        return aux[0];
+    }
+
 }

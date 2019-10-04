@@ -87,54 +87,6 @@ public class Model implements Contract.MainModel {
     }
 
     @Override
-    public void getMoviesUpcomingNetwork(int currentPage) {
-
-        final List<Movie> movieList = new ArrayList<>();
-
-        try {
-            SingletonMovie.getInstance().deleteMovies();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        BaseService baseService = BaseRetrofit.getBaseRetrofit(presenter.getContext())
-                .create(BaseService.class);
-        Call<ApiResponse> call = baseService.getUpcomingMovies(Config.KEY_API, Config.LANGUAGE, String.valueOf(currentPage));
-        call.enqueue(new Callback<ApiResponse>() {
-            @Override
-            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                if (response.code() == 200 && response.body() != null){
-                    for (Result result: response.body().getResults()){
-                        Movie movie = new Movie();
-                        movie.setId(result.getId());
-                        movie.setTitle(result.getTitle());
-                        movie.setRelease_date(result.getReleaseDate());
-                        movie.setBackdrop_path(result.getBackdropPath());
-                        movie.setPoster_path(result.getPosterPath());
-
-                        try {
-                            if (SingletonMovie.getInstance().saveMovie(movie)){
-                                movieList.add(movie);
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    presenter.setMovieList(movieList, Config.UPCOMING);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
-                Log.d("TAG", t.getMessage());
-
-                presenter.setMovieList(movieList, Config.UPCOMING);
-            }
-        });
-    }
-
-    @Override
     public void getMoviesUpcomingDatabase() {
         try {
             List<Movie> movies = SingletonMovie.getInstance().getMovieList();

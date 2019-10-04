@@ -23,6 +23,7 @@ import com.pereira.tiago.desafio.mobile.databasemodels.GenreMovie;
 import com.pereira.tiago.desafio.mobile.databasemodels.SendDetails;
 import com.pereira.tiago.desafio.mobile.details.Contract;
 import com.pereira.tiago.desafio.mobile.details.presenter.DetailsPresenter;
+import com.pereira.tiago.desafio.mobile.utils.Utils;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -81,10 +82,12 @@ public class DetailsActivity extends AppCompatActivity implements Contract.Detai
     private void init() {
         int movieId = (int) getIntent().getSerializableExtra(MOVIE_ID);
 
-        toolbar.setTitle("Desafio Mobile");
-        toolbar.setSubtitle("Detalhes do filme");
+        toolbar.setTitle(getResources().getString(R.string.app_name));
+        toolbar.setSubtitle(getResources().getString(R.string.app_sub_title_details));
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         presenter.getDetailsMovie(movieId);
     }
@@ -115,10 +118,13 @@ public class DetailsActivity extends AppCompatActivity implements Contract.Detai
 
         txtTitle.setText(sendDetails.getDetails().getTitle());
 
-        String[] aux = sendDetails.getDetails().getRelease_date().split("-");
-        txtDate.setText(aux[0]);
+        txtDate.setText(Utils.yearRelease(sendDetails.getDetails().getRelease_date()));
 
-        txtRuntime.setText(sendDetails.getDetails().getRuntime() + " min");
+        if (sendDetails.getDetails().getRuntime() > 10) {
+            txtRuntime.setText(getResources().getString(R.string.show_runtime_min, sendDetails.getDetails().getRuntime()));
+        } else {
+            txtRuntime.setText(getResources().getString(R.string.show_runtime_hour, sendDetails.getDetails().getRuntime()));
+        }
 
         StringBuilder stringBuffer = new StringBuilder();
         int i = 0;
@@ -135,7 +141,7 @@ public class DetailsActivity extends AppCompatActivity implements Contract.Detai
 
         Picasso.get()
                 .load(Config.BASE_URL_IMG + sendDetails.getDetails().getPoster_path())
-                .error(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_error)
                 .into(imgBanner, new Callback() {
                     @Override
                     public void onSuccess() {

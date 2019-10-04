@@ -1,8 +1,13 @@
 <resources>
-    <string name="app_name">DesafioMobile</string>
+    <string name="app_name">Desafio Mobile</string>
+    <string name="app_sub_title_main">Listagem de filmes</string>
+    <string name="app_sub_title_details">Detalhes do filme</string>
 
     <string name="img_sorry">Emoji sad</string>
     <string name="no_results">Nenhum filme encontrado!</string>
+
+    <string name="show_runtime_min">%1$d min</string>
+    <string name="show_runtime_hour">%1$dh</string>
 
     <string name="genre">Gêneros</string>
     <string name="cast">Elenco Principal</string>
