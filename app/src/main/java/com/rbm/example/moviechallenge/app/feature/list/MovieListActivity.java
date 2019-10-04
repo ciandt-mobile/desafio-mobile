@@ -3,6 +3,7 @@ package com.rbm.example.moviechallenge.app.feature.list;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -27,7 +28,7 @@ public class MovieListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_list);
-        recyclerView = findViewById(R.id.rvContacts);
+        recyclerView = findViewById(R.id.rvMovies);
 
         recyclerView.setHasFixedSize(true);
 
@@ -41,19 +42,42 @@ public class MovieListActivity extends AppCompatActivity {
 
         viewModel.loadMovies();
 
-        viewModel.viewState.observe(this, movieListViewState -> {
-            if (movieListViewState.isLoading()){
+        viewModel.viewState.getIsLoading().observe(this, aBoolean -> {
+            if (aBoolean){
                 Log.d(TAG, "Is loading");
             } else {
                 Log.d(TAG, "Is not loading");
             }
+        });
 
-            if (movieListViewState.getMovieList().size() > 0){
+        viewModel.viewState.getMovieList().observe(this, movieListData -> {
+            if (movieListData.getMovieList().size() > 0){
                 int position = movieDataList.size();
-                movieDataList.addAll(movieListViewState.getMovieList());
-                adapter.notifyItemRangeInserted(position, movieListViewState.getMovieList().size());
+                movieDataList.addAll(movieListData.getMovieList());
+                adapter.notifyItemRangeInserted(position, movieListData.getMovieList().size());
+            }
+        });
+
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+
+                final int visibleThreshold = 6;
+
+                GridLayoutManager layoutManager = (GridLayoutManager)recyclerView.getLayoutManager();
+                int lastItem  = 0;
+                int currentTotalCount = 0;
+
+                if (layoutManager != null) {
+                    lastItem = layoutManager.findLastCompletelyVisibleItemPosition();
+                    currentTotalCount = layoutManager.getItemCount();
+                }
+
+                if(currentTotalCount <= lastItem + visibleThreshold){
+                    viewModel.loadNextPage();
+                }
             }
         });
     }
-
 }

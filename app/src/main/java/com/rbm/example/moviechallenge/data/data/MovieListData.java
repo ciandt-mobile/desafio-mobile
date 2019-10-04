@@ -7,7 +7,7 @@ import java.util.List;
 public class MovieListData {
 
     @SerializedName("page")
-    private String page;
+    private int page;
 
     @SerializedName("results")
     private List<MovieData> movieList;
@@ -18,11 +18,11 @@ public class MovieListData {
     @SerializedName("total_pages")
     private int total_pages;
 
-    public String getPage() {
+    public int getPage() {
         return page;
     }
 
-    public void setPage(String page) {
+    public void setPage(int page) {
         this.page = page;
     }
 

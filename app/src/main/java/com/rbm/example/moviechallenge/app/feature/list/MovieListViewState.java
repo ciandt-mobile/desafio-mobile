@@ -1,33 +1,32 @@
 package com.rbm.example.moviechallenge.app.feature.list;
 
-import com.rbm.example.moviechallenge.data.data.MovieData;
+import androidx.lifecycle.MutableLiveData;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.rbm.example.moviechallenge.data.data.MovieListData;
 
 public class MovieListViewState {
 
-    private List<MovieData> movieList;
-    private boolean isLoading;
+    private MutableLiveData<MovieListData> movieList;
+    private MutableLiveData<Boolean> isLoading;
 
     public MovieListViewState() {
-        this.movieList = new ArrayList<>();
-        this.isLoading = false;
+        this.movieList = new MutableLiveData<>();
+        this.isLoading = new MutableLiveData<Boolean>(false);
     }
 
-    public List<MovieData> getMovieList() {
+    public MutableLiveData<MovieListData> getMovieList() {
         return movieList;
     }
 
-    public void setMovieList(List<MovieData> movieList) {
+    public void setMovieList(MutableLiveData<MovieListData> movieList) {
         this.movieList = movieList;
     }
 
-    public boolean isLoading() {
+    public MutableLiveData<Boolean> getIsLoading() {
         return isLoading;
     }
 
-    public void setLoading(boolean loading) {
-        isLoading = loading;
+    public void setIsLoading(MutableLiveData<Boolean> isLoading) {
+        this.isLoading = isLoading;
     }
 }

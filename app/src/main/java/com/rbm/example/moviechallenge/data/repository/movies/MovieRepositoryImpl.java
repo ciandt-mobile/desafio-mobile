@@ -9,8 +9,8 @@ public class MovieRepositoryImpl {
 
     private static final String TAG = MovieRepositoryImpl.class.getSimpleName();
 
-    public Observable<MovieListData> getMoviesList() {
+    public Observable<MovieListData> getMoviesList(int page) {
         ApiMoviesDataSource apiSource = new ApiMoviesDataSource();
-        return apiSource.getMovieList();
+        return apiSource.getMovieList(page);
     }
 }

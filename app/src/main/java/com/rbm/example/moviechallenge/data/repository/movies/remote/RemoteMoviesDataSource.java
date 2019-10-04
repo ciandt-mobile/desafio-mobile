@@ -7,7 +7,7 @@ import io.reactivex.Observable;
 
 interface RemoteMoviesDataSource {
 
-    Observable<MovieListData> getMovieList();
+    Observable<MovieListData> getMovieList(int page);
 
     Observable<MovieData> getMovie(int movieId);
 }
