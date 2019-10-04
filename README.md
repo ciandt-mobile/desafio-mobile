@@ -62,7 +62,9 @@ Criar EspressoTests para UI.
 Eu não tenho muita experiência com UnitTests nem Integração (na verdade minha experiência com esse tipo de teste, vem só de manutenções pontuais nos mesmos).
 Os testes de integração e Espresso eu deixei bem simples, até por conta do tempo restante para terminar a tarefa.
 Concordo que deveria ter melhorado a cobertura dos testes no projeto.
+
 Para criar os testes, eu tive bastante problemáticas no caminho. Desde libs que deveriam ser testImplementation ao invés de androidTestImplementation até mesmo para utilizar um observable "mockado".
+
 ===================================
 Conclusão:
 Eu gostei MUITO do desafio.
