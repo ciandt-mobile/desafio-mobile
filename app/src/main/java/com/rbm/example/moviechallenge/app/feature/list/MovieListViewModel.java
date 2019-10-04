@@ -27,9 +27,13 @@ public class MovieListViewModel extends BaseViewModel<MovieListViewState> {
     public void loadNextPage() {
         int page = Objects.requireNonNull(viewState.getMovieList().getValue()).getPage();
         int totalPages = viewState.getMovieList().getValue().getTotal_pages();
+        boolean isLoading = viewState.getIsLoading().getValue();
 
-        if (page <= totalPages) {
-            loadPage(page + 1);
+        if (page <= totalPages && !isLoading) {
+            page++;
+            loadPage(page);
+
+            Log.d(TAG, "Loading next page " + page);
         }
     }
 
@@ -46,7 +50,7 @@ public class MovieListViewModel extends BaseViewModel<MovieListViewState> {
                         data -> {
                             viewState.getMovieList().setValue(data);
                             viewState.getIsLoading().setValue(false);
-                            Log.d(TAG, "Data Received");
+                            Log.d(TAG, "Data Received -> " + data.getPage() + " " + data.getTotal_results());
                         },
                         error -> Log.d(TAG, "Data error")
                 );
