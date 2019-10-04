@@ -28,7 +28,7 @@ public class IntroActivity extends MaterialIntroActivity {
         addSlide(new SlideFragmentBuilder()
                 .backgroundColor(R.color.colorPrimaryDark)
                 .buttonsColor(R.color.colorAccent)
-                .image(R.mipmap.ic_launcher_round)
+                .image(R.drawable.ic_logo)
                 .title(getResources().getString(R.string.slide_1_title))
                 .description(getResources().getString(R.string.slide_1_description))
                 .build());
@@ -37,7 +37,7 @@ public class IntroActivity extends MaterialIntroActivity {
                         .backgroundColor(R.color.colorPrimaryDark)
                         .buttonsColor(R.color.colorAccent)
                         .neededPermissions(neededPermissions)
-                        .image(R.mipmap.ic_launcher)
+                        .image(R.drawable.ic_permission)
                         .title(getResources().getString(R.string.slide_2_title))
                         .description(getResources().getString(R.string.slide_2_description))
                         .build());

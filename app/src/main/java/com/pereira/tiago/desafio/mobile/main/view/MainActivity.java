@@ -233,10 +233,10 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
                 isLoading = false;
 
                 opSearch = option;
+
+                pbLoading.setVisibility(View.GONE);
             }
         }, 1500);
-
-        pbLoading.setVisibility(View.GONE);
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,8 +37,9 @@ public class DetailsActivity extends AppCompatActivity implements Contract.Detai
     private TextView txtTitle, txtDate, txtRuntime, txtGenres, txtDescription;
     private RecyclerView rcvCredits;
     private ImageView imgBanner, imgExpand, imgBannerZoom;
-    private ConstraintLayout clZoom;
+    private ConstraintLayout clZoom, clInfo;
     private Toolbar toolbar;
+    private ScrollView scrollDetails;
 
     private static Contract.DetailsPresenter presenter;
 
@@ -52,19 +54,7 @@ public class DetailsActivity extends AppCompatActivity implements Contract.Detai
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        toolbar = findViewById(R.id.toolbar);
-        cardViewImg = findViewById(R.id.cardViewImg);
-        pbBanner = findViewById(R.id.pbBanner);
-        imgBanner = findViewById(R.id.imgBanner);
-        imgExpand = findViewById(R.id.imgExpand);
-        txtTitle = findViewById(R.id.txtTitle);
-        txtDate = findViewById(R.id.txtDate);
-        txtRuntime = findViewById(R.id.txtRuntime);
-        txtGenres = findViewById(R.id.txtGenres);
-        rcvCredits = findViewById(R.id.rcvCredits);
-        txtDescription = findViewById(R.id.txtDescription);
-        imgBannerZoom = findViewById(R.id.imgBannerZoom);
-        clZoom = findViewById(R.id.clZoom);
+        bind();
 
         if (presenter == null){
             presenter = new DetailsPresenter();
@@ -79,6 +69,24 @@ public class DetailsActivity extends AppCompatActivity implements Contract.Detai
         init();
     }
 
+    private void bind(){
+        toolbar = findViewById(R.id.toolbar);
+        cardViewImg = findViewById(R.id.cardViewImg);
+        pbBanner = findViewById(R.id.pbBanner);
+        imgBanner = findViewById(R.id.imgBanner);
+        imgExpand = findViewById(R.id.imgExpand);
+        txtTitle = findViewById(R.id.txtTitle);
+        txtDate = findViewById(R.id.txtDate);
+        txtRuntime = findViewById(R.id.txtRuntime);
+        txtGenres = findViewById(R.id.txtGenres);
+        rcvCredits = findViewById(R.id.rcvCredits);
+        txtDescription = findViewById(R.id.txtDescription);
+        imgBannerZoom = findViewById(R.id.imgBannerZoom);
+        clZoom = findViewById(R.id.clZoom);
+        clInfo = findViewById(R.id.clInfo);
+        scrollDetails = findViewById(R.id.scrollDetails);
+    }
+
     private void init() {
         int movieId = (int) getIntent().getSerializableExtra(MOVIE_ID);
 
@@ -90,6 +98,8 @@ public class DetailsActivity extends AppCompatActivity implements Contract.Detai
         }
 
         presenter.getDetailsMovie(movieId);
+
+        clInfo.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -111,6 +121,9 @@ public class DetailsActivity extends AppCompatActivity implements Contract.Detai
 
     @Override
     public void showResults(SendDetails sendDetails) {
+
+        clInfo.setVisibility(View.GONE);
+        scrollDetails.setVisibility(View.VISIBLE);
 
         pbBanner.setVisibility(View.VISIBLE);
         imgExpand.setVisibility(View.GONE);
@@ -175,8 +188,12 @@ public class DetailsActivity extends AppCompatActivity implements Contract.Detai
             @Override
             public void onClick(View view) {
                 if (clZoom.getVisibility() == View.VISIBLE){
+                    toolbar.setVisibility(View.VISIBLE);
+                    scrollDetails.setVisibility(View.VISIBLE);
                     clZoom.setVisibility(View.GONE);
                 } else {
+                    toolbar.setVisibility(View.GONE);
+                    scrollDetails.setVisibility(View.GONE);
                     clZoom.setVisibility(View.VISIBLE);
                 }
             }
@@ -185,6 +202,8 @@ public class DetailsActivity extends AppCompatActivity implements Contract.Detai
         clZoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                toolbar.setVisibility(View.VISIBLE);
+                scrollDetails.setVisibility(View.VISIBLE);
                 clZoom.setVisibility(View.GONE);
             }
         });
