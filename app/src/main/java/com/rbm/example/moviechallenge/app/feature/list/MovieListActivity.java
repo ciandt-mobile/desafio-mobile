@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rbm.example.moviechallenge.R;
 import com.rbm.example.moviechallenge.data.data.MovieData;
+import com.rbm.example.moviechallenge.data.data.MovieListData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class MovieListActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
     private List<MovieData> movieDataList = new ArrayList<MovieData>();
+    private final static int GRID_RECYCLER_VIEW_SPAN_COUNT = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,34 +32,15 @@ public class MovieListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_list);
         recyclerView = findViewById(R.id.rvMovies);
 
-        recyclerView.setHasFixedSize(true);
+        MovieListViewModel viewModel = ViewModelProviders.of(this).get(MovieListViewModel.class);
+        viewModel.loadMovies();
+        viewModel.viewState.getIsLoading().observe(this, this::onLoadingUpdate);
+        viewModel.viewState.getMovieList().observe(this, this::onMovieListUpdate);
 
-        layoutManager = new GridLayoutManager(this, 3);
+        layoutManager = new GridLayoutManager(this, GRID_RECYCLER_VIEW_SPAN_COUNT);
         recyclerView.setLayoutManager(layoutManager);
-
         adapter = new MovieListAdapter(movieDataList);
         recyclerView.setAdapter(adapter);
-
-        MovieListViewModel viewModel = ViewModelProviders.of(this).get(MovieListViewModel.class);
-
-        viewModel.loadMovies();
-
-        viewModel.viewState.getIsLoading().observe(this, aBoolean -> {
-            if (aBoolean){
-                Log.d(TAG, "Is loading");
-            } else {
-                Log.d(TAG, "Is not loading");
-            }
-        });
-
-        viewModel.viewState.getMovieList().observe(this, movieListData -> {
-            if (movieListData.getMovieList().size() > 0){
-                int position = movieDataList.size();
-                movieDataList.addAll(movieListData.getMovieList());
-                adapter.notifyItemRangeInserted(position, movieListData.getMovieList().size());
-            }
-        });
-
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -65,8 +48,8 @@ public class MovieListActivity extends AppCompatActivity {
 
                 final int visibleThreshold = 6;
 
-                GridLayoutManager layoutManager = (GridLayoutManager)recyclerView.getLayoutManager();
-                int lastItem  = 0;
+                GridLayoutManager layoutManager = (GridLayoutManager) recyclerView.getLayoutManager();
+                int lastItem = 0;
                 int currentTotalCount = 0;
 
                 if (layoutManager != null) {
@@ -74,10 +57,26 @@ public class MovieListActivity extends AppCompatActivity {
                     currentTotalCount = layoutManager.getItemCount();
                 }
 
-                if(currentTotalCount <= lastItem + visibleThreshold){
+                if (currentTotalCount <= lastItem + visibleThreshold) {
                     viewModel.loadNextPage();
                 }
             }
         });
+    }
+
+    private void onLoadingUpdate(boolean isLoading) {
+        if (isLoading) {
+            Log.d(TAG, "Is loading");
+        } else {
+            Log.d(TAG, "Is not loading");
+        }
+    }
+
+    private void onMovieListUpdate(MovieListData movieListData) {
+        if (movieListData.getMovieList().size() > 0) {
+            int position = movieDataList.size();
+            movieDataList.addAll(movieListData.getMovieList());
+            adapter.notifyItemRangeInserted(position, movieListData.getMovieList().size());
+        }
     }
 }
