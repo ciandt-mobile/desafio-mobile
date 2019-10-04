@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/poster_thumbnail"
+        android:layout_width="@dimen/adapter_list_width"
+        android:layout_height="@dimen/adapter_list_height"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:ignore="ContentDescription"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <View
+        android:id="@+id/release_background"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/release_background_height"
+        android:background="@color/blackAlpha"
+        app:layout_constraintBottom_toBottomOf="@id/poster_thumbnail"
+        app:layout_constraintEnd_toEndOf="@id/poster_thumbnail"
+        app:layout_constraintStart_toStartOf="@id/poster_thumbnail" />
+
+    <TextView
+        android:id="@+id/release_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="@id/release_background"
+        app:layout_constraintEnd_toEndOf="@id/release_background"
+        app:layout_constraintStart_toStartOf="@id/release_background"
+        app:layout_constraintTop_toTopOf="@id/release_background"
+        tools:text="28/10/2019" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:minHeight="@dimen/min_title_height"
+        android:paddingBottom="@dimen/material_default_spacing"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/poster_thumbnail"
+        app:layout_constraintStart_toStartOf="@id/poster_thumbnail"
+        app:layout_constraintTop_toBottomOf="@id/poster_thumbnail"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Os Embalos de Sábado à Noite" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

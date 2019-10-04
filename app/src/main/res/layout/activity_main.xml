@@ -34,6 +34,7 @@
     </com.google.android.material.chip.ChipGroup>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movie_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/material_default_spacing"
@@ -43,6 +44,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/chip_group_filter"
         app:spanCount="3"
-        tools:listitem="@layout/adapter_list_item" />
+        tools:listitem="@layout/adapter_movie" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

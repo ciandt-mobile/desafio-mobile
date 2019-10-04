@@ -19,7 +19,7 @@ class UpcomingDataSource(
     ) {
         disposable.add(
             movieRepository.getUpcoming().subscribe({
-                callback.onResult(it.results, it.page, it.totalResults, null, params.requestedLoadSize + 1)
+                callback.onResult(it.results, null, 2)
             }, {
                 it.printStackTrace()
             })
@@ -28,9 +28,8 @@ class UpcomingDataSource(
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
         disposable.add(
-            movieRepository.getUpcoming().subscribe({
-                val next = if (params.key < PAGE_LIMIT) params.key + 1 else null
-                callback.onResult(it.results, next)
+            movieRepository.getUpcoming(params.key).subscribe({
+                callback.onResult(it.results, params.key + 1)
             }, {
                 it.printStackTrace()
             })
@@ -39,9 +38,5 @@ class UpcomingDataSource(
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
         // Nothing to be done.
-    }
-
-    companion object {
-        private const val PAGE_LIMIT = 20
     }
 }

@@ -17,18 +17,17 @@ class MainActivityViewModel(movieRepository: MovieRepository) : ViewModel() {
 
     private val disposable = CompositeDisposable()
 
-    private var dataFactory = UpcomingDataFactory(disposable, movieRepository)
+    private var upcomingDataFactory = UpcomingDataFactory(disposable, movieRepository)
 
     private val config: PagedList.Config = PagedList.Config.Builder()
         .setPageSize(PAGE_SIZE)
-        .setInitialLoadSizeHint(PAGE_SIZE_HINT)
         .setEnablePlaceholders(false)
         .build()
 
     /**
      * Provides a [Movie] list to be presented at the View.
      */
-    val movies: LiveData<PagedList<Movie>> by lazy { LivePagedListBuilder(dataFactory, config).build() }
+    val movies: LiveData<PagedList<Movie>> by lazy { LivePagedListBuilder(upcomingDataFactory, config).build() }
 
     override fun onCleared() {
         super.onCleared()
@@ -36,7 +35,6 @@ class MainActivityViewModel(movieRepository: MovieRepository) : ViewModel() {
     }
 
     companion object {
-        private const val PAGE_SIZE = 5
-        private const val PAGE_SIZE_HINT = 9
+        private const val PAGE_SIZE = 15
     }
 }
