@@ -1,0 +1,28 @@
+Oct 03, 2019 2:20:46 PM com.samsung.android.galaxy.common.Glog l
+INFO: [GalaxyEnv$1] galaxy property is null or empty
+Oct 03, 2019 2:20:46 PM com.samsung.android.galaxy.common.Glog l
+INFO: [GalaxyEnv$1] Non-GB Project : BestMovie-6-master-UnityTESTS-master-master
+Oct 03, 2019 2:20:46 PM com.samsung.android.galaxy.common.Glog l
+INFO: [GalaxyEnv$1] allprojects : project : app
+Oct 03, 2019 2:20:46 PM com.samsung.android.galaxy.common.Glog l
+INFO: [GalaxyEnv$1] Non-GB Project : app
+Oct 03, 2019 2:20:46 PM com.samsung.android.galaxy.common.Glog d
+INFO: [GalaxyEnv$2][D] gradle projects loaded
+Oct 03, 2019 2:20:46 PM com.samsung.android.galaxy.common.Glog i
+INFO: [GalaxyEnv][I] set common default repository : samsung maven
+Oct 03, 2019 2:20:46 PM com.samsung.android.galaxy.common.Glog i
+INFO: [GalaxyEnv$6][I]     Default Repo : buildscript repository : http://10.252.250.53:8081/lm/content/groups/public/
+Oct 03, 2019 2:20:46 PM com.samsung.android.galaxy.common.Glog i
+INFO: [GalaxyEnv$7][I]     Default Repo : repository : http://10.252.250.53:8081/lm/content/groups/public/
+Oct 03, 2019 2:20:46 PM com.samsung.android.galaxy.common.Glog i
+INFO: [GalaxyEnv][I] set common default strategy
+Oct 03, 2019 2:20:46 PM com.samsung.android.galaxy.common.Glog i
+INFO: [GalaxyEnv][I] set common default repository : samsung maven
+Oct 03, 2019 2:20:46 PM com.samsung.android.galaxy.common.Glog i
+INFO: [GalaxyEnv$6][I]     Default Repo : buildscript repository : http://10.252.250.53:8081/lm/content/groups/public/
+Oct 03, 2019 2:20:46 PM com.samsung.android.galaxy.common.Glog i
+INFO: [GalaxyEnv$7][I]     Default Repo : repository : http://10.252.250.53:8081/lm/content/groups/public/
+Oct 03, 2019 2:20:46 PM com.samsung.android.galaxy.common.Glog i
+INFO: [GalaxyEnv][I] set common default strategy
+Oct 03, 2019 2:20:48 PM com.samsung.android.galaxy.common.Glog d
+INFO: [GalaxyEnv$5][D] gradle projects evaluated

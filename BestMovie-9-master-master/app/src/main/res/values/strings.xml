@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BestMovieApplication</string>
+    <string name="popular_movies_label">Popular</string>
+    <string name="upcoming_movies_label">Upcoming</string>
+</resources>
