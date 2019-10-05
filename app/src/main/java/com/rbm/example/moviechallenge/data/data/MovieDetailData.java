@@ -13,7 +13,7 @@ public class MovieDetailData extends MovieData {
     private Integer runtime;
 
     @SerializedName("belongs_to_collection")
-    private String belongs_to_collection;
+    private Collection belongs_to_collection;
 
     @SerializedName("budget")
     private int budget;
@@ -76,16 +76,16 @@ public class MovieDetailData extends MovieData {
 
     public class Genre {
         @SerializedName("id")
-        private String id;
+        private int id;
 
         @SerializedName("name")
         private String name;
 
-        public String getId() {
+        public int getId() {
             return id;
         }
 
-        public void setId(String id) {
+        public void setId(int id) {
             this.id = id;
         }
 
@@ -96,6 +96,20 @@ public class MovieDetailData extends MovieData {
         public void setName(String name) {
             this.name = name;
         }
+    }
+
+    class Collection {
+        @SerializedName("id")
+        private int id;
+
+        @SerializedName("name")
+        private String name;
+
+        @SerializedName("poster_path")
+        private String poster_path;
+
+        @SerializedName("backdrop_path")
+        private String backdrop_path;
     }
 
     public List<Genre> getGenres() {
@@ -114,11 +128,11 @@ public class MovieDetailData extends MovieData {
         this.runtime = runtime;
     }
 
-    public String getBelongs_to_collection() {
+    public Collection getBelongs_to_collection() {
         return belongs_to_collection;
     }
 
-    public void setBelongs_to_collection(String belongs_to_collection) {
+    public void setBelongs_to_collection(Collection belongs_to_collection) {
         this.belongs_to_collection = belongs_to_collection;
     }
 
