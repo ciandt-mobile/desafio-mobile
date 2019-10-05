@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -37,17 +38,18 @@ import static com.pereira.tiago.desafio.mobile.base.PaginationListener.PAGE_STAR
 public class MainActivity extends AppCompatActivity implements Contract.MainView,
         SwipeRefreshLayout.OnRefreshListener {
 
-    Toolbar toolbar;
-    ImageView imgNoResults;
-    View viewDivider;
-    TextView txtNoResults;
-    LinearLayout llType;
-    CustomToggleButton buttonPopular, buttonUpcoming;
-    RecyclerView rcvMovies;
-    ProgressBar pbLoading;
-    SwipeRefreshLayout swipeRefresh;
+    private Toolbar toolbar;
+    private ImageView imgNoResults;
+    private View viewDivider;
+    private TextView txtNoResults;
+    private LinearLayout llType;
+    private CustomToggleButton buttonPopular, buttonUpcoming;
+    private RecyclerView rcvMovies;
+    private ProgressBar pbLoading;
+    private SwipeRefreshLayout swipeRefresh;
     private static Contract.MainPresenter presenter;
-    MainAdapter adapter;
+    private Button btnTry;
+    private MainAdapter adapter;
     private int currentPage = PAGE_START;
     private String opSearch = Config.POPULAR;
     private boolean isLastPage = false;
@@ -99,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
         buttonUpcoming = findViewById(R.id.buttonUpcoming);
         pbLoading = findViewById(R.id.pbLoading);
         swipeRefresh = findViewById(R.id.swipeRefresh);
+        btnTry = findViewById(R.id.btnTry);
 
         toolbar.setTitle(getResources().getString(R.string.app_name));
         toolbar.setSubtitle(getResources().getString(R.string.app_sub_title_main));
@@ -159,6 +162,22 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
             }
         });
 
+        btnTry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imgNoResults.setVisibility(View.GONE);
+                viewDivider.setVisibility(View.GONE);
+                txtNoResults.setVisibility(View.GONE);
+                btnTry.setVisibility(View.GONE);
+
+                pbLoading.setVisibility(View.VISIBLE);
+                currentPage = PAGE_START;
+                adapter.clear();
+                opSearch = POPULAR;
+                presenter.changeOption(opSearch, currentPage);
+            }
+        });
+
         pbLoading.setVisibility(View.VISIBLE);
         swipeRefresh.setVisibility(View.GONE);
         rcvMovies.setVisibility(View.GONE);
@@ -175,6 +194,7 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
         imgNoResults.setVisibility(View.VISIBLE);
         viewDivider.setVisibility(View.VISIBLE);
         txtNoResults.setVisibility(View.VISIBLE);
+        btnTry.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -198,6 +218,7 @@ public class MainActivity extends AppCompatActivity implements Contract.MainView
         imgNoResults.setVisibility(View.GONE);
         viewDivider.setVisibility(View.GONE);
         txtNoResults.setVisibility(View.GONE);
+        btnTry.setVisibility(View.GONE);
 
         final ArrayList<Movie> items = new ArrayList<>();
 

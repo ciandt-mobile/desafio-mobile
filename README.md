@@ -2,6 +2,17 @@
 
 Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para realizar o desafio 😀.
 
+## Solução 
+
+- Linguagem : JAVA
+- Arquitetura: MVP
+- Bibliotecas:
+	- GreenDAO - ORM para o banco de dados; 
+	- Android Material Intro Screen - Lib para implementação de telas de introdução; 
+	- Picasso - Lib para carregamento das imagens; 
+	- Custom-Toggle-Button - Lib para criar botões toggle personalizados;
+	- Retrofit - Lib cliente HTTP.
+
 ## Instruções
 
 - Faça um fork desse repositório e crie sua solução para iOS ou Android;

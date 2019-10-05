@@ -5,11 +5,13 @@
 
     <string name="img_sorry">Emoji sad</string>
     <string name="no_results">Nenhum filme encontrado!</string>
+    <string name="no_results_details">Detalhes do filme não encontrado</string>
     <string name="loading_info">Carregando informações</string>
     <string name="timer">Relógio</string>
     <string name="calendar">Calendário</string>
     <string name="expand">Expandir imagem</string>
     <string name="imgBanner">Poster do filme</string>
+    <string name="try_again">Tentar novamente</string>
 
     <string name="show_runtime_min">%1$d min</string>
     <string name="show_runtime_hour">%1$dh</string>

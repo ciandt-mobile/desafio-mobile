@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -37,9 +38,10 @@ public class DetailsActivity extends AppCompatActivity implements Contract.Detai
     private TextView txtTitle, txtDate, txtRuntime, txtGenres, txtDescription;
     private RecyclerView rcvCredits;
     private ImageView imgBanner, imgExpand, imgBannerZoom;
-    private ConstraintLayout clZoom, clInfo;
+    private ConstraintLayout clZoom, clInfo, clNoResults;
     private Toolbar toolbar;
     private ScrollView scrollDetails;
+    private Button btnTry;
 
     private static Contract.DetailsPresenter presenter;
 
@@ -85,10 +87,12 @@ public class DetailsActivity extends AppCompatActivity implements Contract.Detai
         clZoom = findViewById(R.id.clZoom);
         clInfo = findViewById(R.id.clInfo);
         scrollDetails = findViewById(R.id.scrollDetails);
+        clNoResults = findViewById(R.id.clNoResults);
+        btnTry = findViewById(R.id.btnTry);
     }
 
     private void init() {
-        int movieId = (int) getIntent().getSerializableExtra(MOVIE_ID);
+        final int movieId = (int) getIntent().getSerializableExtra(MOVIE_ID);
 
         toolbar.setTitle(getResources().getString(R.string.app_name));
         toolbar.setSubtitle(getResources().getString(R.string.app_sub_title_details));
@@ -100,6 +104,18 @@ public class DetailsActivity extends AppCompatActivity implements Contract.Detai
         presenter.getDetailsMovie(movieId);
 
         clInfo.setVisibility(View.VISIBLE);
+
+        btnTry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.getDetailsMovie(movieId);
+                toolbar.setVisibility(View.VISIBLE);
+                clNoResults.setVisibility(View.GONE);
+                scrollDetails.setVisibility(View.GONE);
+                clZoom.setVisibility(View.GONE);
+                clInfo.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     @Override
@@ -116,7 +132,11 @@ public class DetailsActivity extends AppCompatActivity implements Contract.Detai
 
     @Override
     public void showNoResults() {
-
+        clInfo.setVisibility(View.GONE);
+        toolbar.setVisibility(View.VISIBLE);
+        clNoResults.setVisibility(View.VISIBLE);
+        scrollDetails.setVisibility(View.GONE);
+        clZoom.setVisibility(View.GONE);
     }
 
     @Override
