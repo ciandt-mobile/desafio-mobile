@@ -33,7 +33,6 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@string/movie_image_description"
                     android:scaleType="centerCrop"
-                    android:src='@{movie.poster_path}'
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

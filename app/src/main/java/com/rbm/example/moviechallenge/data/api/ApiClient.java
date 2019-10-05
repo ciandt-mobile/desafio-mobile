@@ -1,11 +1,18 @@
 package com.rbm.example.moviechallenge.data.api;
 
+import com.rbm.example.moviechallenge.BuildConfig;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
+
+    private static final String BASE_URL = "https://api.themoviedb.org/";
+    public static final String IMAGE_URL = "https://image.tmdb.org/t/p/w185";
+    public static final String API_KEY = "75c9554b8dfcd6303c5be0744fbf43e5";
+
     private static Retrofit retrofit;
 
     public static Retrofit getClient() {
@@ -14,7 +21,7 @@ public class ApiClient {
                     .build();
 
             retrofit = new retrofit2.Retrofit.Builder()
-                    .baseUrl(Api.BASE_URL)
+                    .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .client(client)

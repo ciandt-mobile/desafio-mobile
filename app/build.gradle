@@ -42,4 +42,6 @@ dependencies {
 
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+
+    implementation "com.squareup.picasso:picasso:$picassoVersion"
 }

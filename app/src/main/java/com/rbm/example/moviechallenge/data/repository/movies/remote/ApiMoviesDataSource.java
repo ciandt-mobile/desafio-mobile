@@ -14,10 +14,8 @@ public class ApiMoviesDataSource implements RemoteMoviesDataSource {
     @Override
     public Observable<MovieListData> getMovieList(int page) {
         Api api = ApiClient.getClient().create(Api.class);
-        //TODO interceptor
-        String api_key = "75c9554b8dfcd6303c5be0744fbf43e5";
 
-        return api.getMovieList(api_key, page);
+        return api.getMovieList(ApiClient.API_KEY, page);
     }
 
     @Override
