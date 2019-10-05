@@ -23,17 +23,10 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "1.0.1"
 }
 
-detekt {
-    toolVersion = "1.0.1"
-    input = files("src/main/kotlin")
-    filters = ".*/resources/.*,.*/build/.*"
-}
-
 allprojects {
     repositories {
         google()
         jcenter()
-        
     }
 }
 

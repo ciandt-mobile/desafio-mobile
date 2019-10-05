@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.brunodiegom.movies.R
-import com.brunodiegom.movies.extension.toDate
+import com.brunodiegom.movies.extension.getFormattedReleaseDate
 import com.brunodiegom.movies.model.Movie
 import com.brunodiegom.movies.model.Movie.Companion.DIFF_CALLBACK
 import com.brunodiegom.movies.model.Movie.Companion.THUMBNAIL_BASE_URL
@@ -30,7 +30,7 @@ class MovieAdapter(
             holder.view.apply {
                 setOnClickListener { listener.onClick(movie) }
                 title.text = movie.title
-                release_date.text = movie.releaseDate.toDate()
+                release_date.text = movie.getFormattedReleaseDate()
                 Picasso.get()
                     .load("$THUMBNAIL_BASE_URL${movie.posterUrl}")
                     .fit()

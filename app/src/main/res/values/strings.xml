@@ -2,4 +2,6 @@
     <string name="app_name">Movies</string>
     <string name="popular_filter">Popular</string>
     <string name="upcoming_filter">Upcoming</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="popular_movies">Popular Movies</string>
 </resources>

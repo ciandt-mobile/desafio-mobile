@@ -14,10 +14,7 @@ class PopularDataFactory(
     private val movieRepository: MovieRepository
 ) : DataSource.Factory<Int, Movie>() {
 
-    /**
-     * Provides the [MutableLiveData] representing the [PopularDataSource].
-     */
-    val popular = MutableLiveData<PopularDataSource>()
+    private val popular = MutableLiveData<PopularDataSource>()
 
     override fun create(): DataSource<Int, Movie> {
         val popularDataSource = PopularDataSource(disposable, movieRepository)

@@ -14,10 +14,7 @@ class UpcomingDataFactory(
     private val movieRepository: MovieRepository
 ) : DataSource.Factory<Int, Movie>() {
 
-    /**
-     * Provides the [MutableLiveData] representing the [UpcomingDataSource].
-     */
-    val upcoming = MutableLiveData<UpcomingDataSource>()
+    private val upcoming = MutableLiveData<UpcomingDataSource>()
 
     override fun create(): DataSource<Int, Movie> {
         val upcomingDataSource = UpcomingDataSource(disposable, movieRepository)

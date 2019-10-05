@@ -3,6 +3,7 @@
     <dimen name="adapter_list_width">105dp</dimen>
     <dimen name="adapter_list_height">140dp</dimen>
     <dimen name="material_default_spacing">8dp</dimen>
+    <dimen name="material_large_spacing">16dp</dimen>
     <dimen name="chip_spacing">30dp</dimen>
     <dimen name="min_title_height">40dp</dimen>
     <dimen name="release_background_height">30dp</dimen>
