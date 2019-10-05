@@ -14,9 +14,7 @@ data class Movie(
     @SerializedName("title")
     val title: String,
     @SerializedName("release_date")
-    val releaseDate: String,
-    @SerializedName("overview")
-    val overview: String
+    val releaseDate: String
 ) {
     companion object {
         const val THUMBNAIL_BASE_URL = "https://image.tmdb.org/t/p/w185"

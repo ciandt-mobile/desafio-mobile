@@ -1,5 +1,6 @@
 package com.brunodiegom.movies.api
 
+import com.brunodiegom.movies.model.Detail
 import com.brunodiegom.movies.model.MovieResponse
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -15,6 +16,9 @@ class MovieRepository(private val endpoint: Endpoint) {
 
     fun getPopular(page: Int? = 1): Single<MovieResponse> =
         createEndpoint().getPopular(page).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+
+    fun getDetail(id: Int): Single<Detail> =
+        createEndpoint().getDetail(id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
 
     private fun createEndpoint() = endpoint.retrofit.create(MovieEndpoint::class.java)
 }

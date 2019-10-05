@@ -1,9 +1,11 @@
 package com.brunodiegom.movies.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.brunodiegom.movies.R
+import com.brunodiegom.movies.model.Detail
 import com.brunodiegom.movies.model.Movie
 import com.brunodiegom.movies.view.adapter.MovieAdapter
 import com.brunodiegom.movies.viewmodel.MainActivityViewModel
@@ -50,6 +52,8 @@ class MainActivity : AppCompatActivity(), MovieAdapter.MovieAdapterItemListener 
     }
 
     override fun onClick(movie: Movie) {
-        // Open detail activity
+        startActivity(Intent(this, DetailActivity::class.java).apply {
+            putExtra(Detail.EXTRA_ID, movie.id)
+        })
     }
 }
