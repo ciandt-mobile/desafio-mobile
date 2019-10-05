@@ -1,7 +1,9 @@
 package com.rbm.example.moviechallenge.app.feature.list;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rbm.example.moviechallenge.R;
+import com.rbm.example.moviechallenge.app.feature.detail.MovieDetailActivity;
 import com.rbm.example.moviechallenge.data.data.MovieData;
 import com.rbm.example.moviechallenge.data.data.MovieListData;
 
@@ -39,7 +42,7 @@ public class MovieListActivity extends AppCompatActivity {
 
         layoutManager = new GridLayoutManager(this, GRID_RECYCLER_VIEW_SPAN_COUNT);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new MovieListAdapter(movieDataList);
+        adapter = new MovieListAdapter(movieDataList, this::callDetailedActivity);
         recyclerView.setAdapter(adapter);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -62,6 +65,14 @@ public class MovieListActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void callDetailedActivity(MovieData movieData) {
+        Intent i = new Intent(this, MovieDetailActivity.class);
+        i.putExtra("id", movieData.getId());
+        i.putExtra("title", movieData.getTitle());
+        i.putExtra("release_date", movieData.getRelease_date());
+        startActivity(i);
     }
 
     private void onLoadingUpdate(boolean isLoading) {

@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+def propsFile = rootProject.file('keystore.properties')
+
+def props = new Properties()
+props.load(new FileInputStream(propsFile))
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -10,6 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'API_KEY', props['API_KEY']
     }
     buildTypes {
         release {
