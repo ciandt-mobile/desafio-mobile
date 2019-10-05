@@ -1,3 +1,13 @@
+# Solução
+
+O desenvolvimento foi feito com base em uma arquitetura MVVM, com o uso de LiveData para atualização de interface e do RX para trazer as informações da camada de dados para a ViewModel.
+A aplicação foi feita em Java e utiliza a biblioteca Retrofit para buscar os dados do servidor.
+
+Pontos de melhoria previstos:
+- Utilização de uma biblioteca de DI (Dependency Injection) como o Dagger;
+- Utilização de um banco local para diminuir a depedência da conexão;
+- Interface; **
+
 # Desafio Mobile - 2019
 
 Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para realizar o desafio 😀.
