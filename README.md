@@ -12,6 +12,8 @@ Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para
 	- Picasso - Lib para carregamento das imagens; 
 	- Custom-Toggle-Button - Lib para criar botões toggle personalizados;
 	- Retrofit - Lib cliente HTTP.
+- Diagrama do programa
+	<img src="screenshots/diagrama_desafio.jpeg?raw=true" width="500">
 
 ## Instruções
 
