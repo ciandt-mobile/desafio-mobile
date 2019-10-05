@@ -1,4 +1,4 @@
-package com.brunodiegom.movies.view
+package com.brunodiegom.movies.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +23,13 @@ class MovieAdapter(
 ) : PagedListAdapter<Movie, MovieAdapter.MovieAdapterViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        MovieAdapterViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.adapter_movie, parent, false))
+        MovieAdapterViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.adapter_movie,
+                parent,
+                false
+            )
+        )
 
     override fun onBindViewHolder(holder: MovieAdapterViewHolder, position: Int) {
         getItem(position)?.let { movie ->

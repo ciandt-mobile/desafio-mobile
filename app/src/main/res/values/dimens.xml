@@ -7,4 +7,5 @@
     <dimen name="chip_spacing">30dp</dimen>
     <dimen name="min_title_height">40dp</dimen>
     <dimen name="release_background_height">30dp</dimen>
+    <dimen name="detail_image_height">400dp</dimen>
 </resources>

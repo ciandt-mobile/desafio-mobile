@@ -44,7 +44,7 @@ class Endpoint {
 
     companion object {
         private const val API_KEY_PARAM_NAME = "api_key"
-        private const val API_KEY = "API_KEY"
+        private const val API_KEY = "b0b8d53c71ff43302de112562a7e4c37"
         private const val BASE_URL = "https://api.themoviedb.org/"
     }
 }

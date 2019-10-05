@@ -1,10 +1,11 @@
-package com.brunodiegom.movies.view
+package com.brunodiegom.movies.view.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.brunodiegom.movies.R
 import com.brunodiegom.movies.model.Movie
+import com.brunodiegom.movies.view.adapter.MovieAdapter
 import com.brunodiegom.movies.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.chip_group_filter
 import kotlinx.android.synthetic.main.activity_main.chip_popular
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity(), MovieAdapter.MovieAdapterItemListener 
 
     private val viewModel: MainActivityViewModel by viewModel()
 
-    private val adapter by lazy { MovieAdapter(this@MainActivity) }
+    private val adapter by lazy { MovieAdapter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
