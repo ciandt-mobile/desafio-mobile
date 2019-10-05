@@ -69,7 +69,7 @@ public class MovieListActivity extends AppCompatActivity {
 
     private void callDetailedActivity(MovieData movieData) {
         Intent i = new Intent(this, MovieDetailActivity.class);
-        i.putExtra("id", movieData.getId());
+        i.putExtra(MovieDetailActivity.EXTRA_ID, movieData.getId());
         i.putExtra(MovieDetailActivity.EXTRA_TITLE, movieData.getTitle());
         i.putExtra(MovieDetailActivity.EXTRA_RELEASE_DATE, movieData.getRelease_date());
         i.putExtra(MovieDetailActivity.EXTRA_OVERVIEW, movieData.getOverview());

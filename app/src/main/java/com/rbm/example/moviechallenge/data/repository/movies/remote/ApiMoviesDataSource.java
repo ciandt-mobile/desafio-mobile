@@ -2,7 +2,6 @@ package com.rbm.example.moviechallenge.data.repository.movies.remote;
 
 import com.rbm.example.moviechallenge.data.api.Api;
 import com.rbm.example.moviechallenge.data.api.ApiClient;
-import com.rbm.example.moviechallenge.data.data.MovieData;
 import com.rbm.example.moviechallenge.data.data.MovieDetailData;
 import com.rbm.example.moviechallenge.data.data.MovieListData;
 
@@ -23,6 +22,7 @@ public class ApiMoviesDataSource {
     }
 
     public Observable<MovieDetailData> getMovie(int movieId) {
-        return api.getMovieDetails(movieId, ApiClient.API_KEY);
+        Observable<MovieDetailData> observable = api.getMovieDetails(movieId, ApiClient.API_KEY);
+        return observable;
     }
 }

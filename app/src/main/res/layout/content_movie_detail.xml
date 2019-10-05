@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="@+id/movie_title_text_view" />
 
     <TextView
-        android:id="@+id/movie_duration_text_view"
+        android:id="@+id/movie_runtime_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -63,7 +63,7 @@
         android:text="@string/movie_empty_info"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/movie_duration_text_view"
+        app:layout_constraintStart_toEndOf="@+id/movie_runtime_text_view"
         app:layout_constraintTop_toBottomOf="@+id/movie_release_text_view" />
 
     <TextView
