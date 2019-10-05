@@ -17,10 +17,12 @@ data class Detail(
     @SerializedName("genres")
     val genres: List<Genre>,
     @SerializedName("overview")
-    val overview: String
+    val overview: String,
+    @SerializedName("release_date")
+    val release: String
 ) {
     companion object {
-        const val BACKDROP_BASE_URL = "https://image.tmdb.org/t/p/w360"
+        const val BACKDROP_BASE_URL = "https://image.tmdb.org/t/p/original"
         const val EXTRA_ID = "extra_id"
     }
 }

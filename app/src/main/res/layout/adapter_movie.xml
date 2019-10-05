@@ -9,7 +9,6 @@
         android:id="@+id/poster_thumbnail"
         android:layout_width="@dimen/adapter_list_width"
         android:layout_height="@dimen/adapter_list_height"
-        android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@id/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

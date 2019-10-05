@@ -9,7 +9,6 @@
         android:id="@+id/cast_picture"
         android:layout_width="@dimen/adapter_list_width"
         android:layout_height="@dimen/adapter_list_height"
-        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

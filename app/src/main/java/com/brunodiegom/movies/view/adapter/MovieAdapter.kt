@@ -39,7 +39,7 @@ class MovieAdapter(
                 release_date.text = movie.getFormattedReleaseDate()
                 Picasso.get()
                     .load("$THUMBNAIL_BASE_URL${movie.posterUrl}")
-                    .fit()
+                    .fit().centerCrop()
                     .placeholder(R.mipmap.poster_placeholder)
                     .error(R.mipmap.poster_placeholder)
                     .into(poster_thumbnail)

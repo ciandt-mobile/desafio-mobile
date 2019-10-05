@@ -1,5 +1,6 @@
 package com.brunodiegom.movies.api
 
+import com.brunodiegom.movies.model.CastResponse
 import com.brunodiegom.movies.model.Detail
 import com.brunodiegom.movies.model.MovieResponse
 import io.reactivex.Single
@@ -19,4 +20,7 @@ interface MovieEndpoint {
 
     @GET("/3/movie/{id}")
     fun getDetail(@Path("id") id: Int?): Single<Detail>
+
+    @GET("/3/movie/{id}/credits")
+    fun getCast(@Path("id") id: Int?): Single<CastResponse>
 }

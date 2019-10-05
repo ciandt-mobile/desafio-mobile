@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.google.gson.annotations.SerializedName
 
 /**
- * Data model returned from server.
+ * Data model of [Movie] returned from server.
  */
 data class Movie(
     @SerializedName("id")
@@ -17,7 +17,7 @@ data class Movie(
     val releaseDate: String
 ) {
     companion object {
-        const val THUMBNAIL_BASE_URL = "https://image.tmdb.org/t/p/w185"
+        const val THUMBNAIL_BASE_URL = "https://image.tmdb.org/t/p/w154"
 
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Movie>() {
             override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {

@@ -45,7 +45,7 @@ class MainActivityViewModel(movieRepository: MovieRepository) : ViewModel() {
     }
 
     private var _filter = MutableLiveData<Int>().apply {
-        postValue(UPCOMING_FILTER)
+        value = UPCOMING_FILTER
     }
 
     /**

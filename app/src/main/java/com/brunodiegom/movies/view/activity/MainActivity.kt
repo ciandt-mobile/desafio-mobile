@@ -3,16 +3,15 @@ package com.brunodiegom.movies.view.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.brunodiegom.movies.R
+import com.brunodiegom.movies.databinding.ActivityMainBinding
 import com.brunodiegom.movies.model.Detail
 import com.brunodiegom.movies.model.Movie
 import com.brunodiegom.movies.view.adapter.MovieAdapter
 import com.brunodiegom.movies.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.chip_group_filter
-import kotlinx.android.synthetic.main.activity_main.chip_popular
-import kotlinx.android.synthetic.main.activity_main.chip_upcoming
-import kotlinx.android.synthetic.main.activity_main.list_title
 import kotlinx.android.synthetic.main.activity_main.movie_list
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -27,11 +26,10 @@ class MainActivity : AppCompatActivity(), MovieAdapter.MovieAdapterItemListener 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        setupListAdapter()
-        setupListTitle()
+        bindViewModel()
         setupFilter()
+        setupListAdapter()
     }
 
     private fun setupListAdapter() {
@@ -39,16 +37,16 @@ class MainActivity : AppCompatActivity(), MovieAdapter.MovieAdapterItemListener 
         movie_list.adapter = adapter
     }
 
-    private fun setupListTitle() {
-        viewModel.title.observe(this, Observer { list_title.setText(it) })
-    }
-
     private fun setupFilter() {
         viewModel.filter.observe(this, Observer {
             chip_group_filter.check(chip_group_filter.getChildAt(it).id)
         })
-        chip_upcoming.setOnClickListener { viewModel.selectUpcoming() }
-        chip_popular.setOnClickListener { viewModel.selectPopular() }
+    }
+
+    private fun bindViewModel() {
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
     }
 
     override fun onClick(movie: Movie) {
