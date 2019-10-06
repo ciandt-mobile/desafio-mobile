@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/movieCastImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="visible" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:id="@+id/personName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/cardview_dark_background"
+                    android:shadowRadius="7.0"
+                    android:text="This is some"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"
+                    android:maxLines="1"
+                    android:shadowDx="-2"
+                    android:shadowDy="-2"
+                    android:scrollHorizontally="true"
+                    android:ellipsize="end"/>
+                <TextView
+                    android:id="@+id/personCharacter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/cardview_dark_background"
+                    android:shadowRadius="7.0"
+                    android:textStyle="bold"
+                    android:text="This is some"
+                    android:textColor="#ffffff"
+                    android:textSize="13sp"
+                    android:maxLines="1"
+                    android:shadowDx="-2"
+                    android:shadowDy="-2"
+                    android:scrollHorizontally="true"
+                    android:ellipsize="end"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

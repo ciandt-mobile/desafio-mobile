@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">movies</string>
+    <string name="action_settings">Settings</string>
+    <string name="favourite_movies">Favourite</string>
+    <string name="upcoming_movies">Upcoming</string>
+    <string name="popular_movies">Popular</string>
+    <string name="minutes">minutes</string>
+</resources>

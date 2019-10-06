@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="favourite_movies">Favoritos</string>
+    <string name="upcoming_movies">Em Breve</string>
+    <string name="popular_movies">Populares</string>
+    <string name="minutes">minutos</string>
+</resources>

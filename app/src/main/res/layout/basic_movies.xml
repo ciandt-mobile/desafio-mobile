@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/basicMovieImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="#80000000"
+                android:visibility="visible" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:id="@+id/movieName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:shadowColor="#000"
+                        android:shadowRadius="7.0"
+                        android:text="This is some"
+                        android:textColor="#ffffff"
+                        android:textSize="14sp"
+                        android:maxLines="1"
+                        android:scrollHorizontally="true"
+                        android:ellipsize="end"/>
+                    <TextView
+                        android:id="@+id/releaseDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:shadowColor="#000"
+                        android:shadowRadius="7.0"
+                        android:text="This is some"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp"
+                        android:maxLines="1"
+                        android:scrollHorizontally="true"
+                        android:ellipsize="end"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/likeImg"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:src="@drawable/heart"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+</androidx.cardview.widget.CardView>
