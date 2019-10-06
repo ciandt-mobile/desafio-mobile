@@ -3,12 +3,12 @@
 Linguagem: Kotlin
 Arquitetura: MVVM
 
-Para realizar a requisição dos dados ao servidor do The Movie DB, utilizei o Retrofit em conjunto do ReactiveX para obter um recebimento assíncrono.
-De forma a otimizar o carregamento dos dados, fiz uso da estrutura de paginação, tornando o carregamento sob demanda.
-Por meio do uso do ViewModel provido pelo Architeture Component, fiz a separação da camada lógica da camada visual, como proposto pelo arquitetura MVVM. Com isso, tornando os dados Lifecycle Aware, mantendo as informações durante o processo de rotação da tela.
-No processo de Injeção de dependência, utilizei o Koin. Que apesar de ser menos robusto, possui uma maior facilidade de configuração em relação ao Dagger2. E para a demanda do projeto supriu todas as necessidades.
-Para a apresentação nas view fiz a integração do Data Binding com o LiveData para a redução do boilerplate na construção da view. E no carragemento das imagens, utilizei a biblioteca Picasso.
-E para os testes, utilizei o Mockito para ter o controle sobre os objetos testados, além de testar somente a classe desejada. Para melhorar a legibilidade dos testes, utilizei as ferramentas MockitoKotlin2 e o Truth.
+ - Para realizar a requisição dos dados ao servidor do The Movie DB, utilizei o Retrofit em conjunto do ReactiveX para obter um recebimento assíncrono.
+ - De forma a otimizar o carregamento dos dados, fiz uso da estrutura de paginação, tornando o carregamento sob demanda.
+ - Por meio do uso do ViewModel provido pelo Architeture Component, fiz a separação da camada lógica da camada visual, como proposto pelo arquitetura MVVM. Com isso, tornando os dados Lifecycle Aware, mantendo as informações durante o processo de rotação da tela.
+ - No processo de Injeção de dependência, utilizei o Koin. Que apesar de ser menos robusto, possui uma maior facilidade de configuração em relação ao Dagger2. E para a demanda do projeto supriu todas as necessidades.
+ - Para a apresentação nas view fiz a integração do Data Binding com o LiveData para a redução do boilerplate na construção da view. E no carragemento das imagens, utilizei a biblioteca Picasso.
+ - E para os testes, utilizei o Mockito para ter o controle sobre os objetos testados, além de testar somente a classe desejada. Para melhorar a legibilidade dos testes, utilizei as ferramentas MockitoKotlin2 e o Truth.
 
 ### Para a compilação do projeto é necessário alterar o arquivo Endpoint, e adicionar uma Key válida na variável API_KEY.
 
