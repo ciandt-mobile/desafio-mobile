@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#EFEFEF</color>
+    <color name="colorPrimaryContrast">#333333</color>
+
+    <color name="colorPrimaryDark">#AAA</color>
+    <color name="colorAccent">#55AC9F</color>
+
+    <color name="colorGlass">#45333333</color>
+    <color name="colorGlassStr">#65222222</color>
+    <color name="colorBackground">#181818</color>
+    <color name="colorStatusBar">#181818</color>
+    <color name="colorTransparent">#00000000</color>
+
+</resources>
+
+
+<!--<color name="colorAccent">#55AC9F</color>-->
+
+<!--<color name="colorGlass">#35F9F9F9</color>-->
+<!--<color name="colorGlassStr">#55F9F9F9</color>-->
+<!--<color name="colorBackground">#008577</color>-->

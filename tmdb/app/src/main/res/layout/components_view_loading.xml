@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lytFailureContainer"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:indeterminate="false"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:minWidth="200dp"
+        android:minHeight="50dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/gapSM"
+        android:layout_height="wrap_content"
+        android:text="Loading..."
+        android:textColor="@color/colorPrimary" />
+
+    <View
+        android:layout_width="@dimen/gapXL"
+        android:layout_height="@dimen/gapXL" />
+</LinearLayout>
+

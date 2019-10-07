@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.1"
+    defaultConfig {
+        applicationId "com.tartagliaeg.tmdb"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+
+            buildConfigField ("String", "TMDB_API_REST_URL", project.properties["tmdb.api.rest.url"].toString())
+            buildConfigField ("String", "TMDB_API_REST_AUTH_KEY", project.properties["tmdb.api.rest.auth.key"].toString())
+            buildConfigField ("String", "TMDB_API_REST_AUTH_VAL", project.properties["tmdb.api.rest.auth.val"].toString())
+            buildConfigField ("String", "TMDB_API_STATIC_URL", project.properties["tmdb.api.static.url"].toString())
+            buildConfigField ("String", "TMDB_API_STATIC_URL_PARAMS_SIZE", project.properties["tmdb.api.static.url.params.size"].toString())
+            buildConfigField ("String[]", "TMDB_API_STATIC_POSTER_DIMENSIONS", project.properties["tmdb.api.static.poster.dimensions"].toString())
+            buildConfigField ("String[]", "TMDB_API_STATIC_BACKDROP_DIMENSIONS", project.properties["tmdb.api.static.backdrop.dimensions"].toString())
+
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField ("String", "TMDB_API_REST_URL", project.properties["tmdb.api.rest.url"].toString())
+            buildConfigField ("String", "TMDB_API_REST_AUTH_KEY", project.properties["tmdb.api.rest.auth.key"].toString())
+            buildConfigField ("String", "TMDB_API_REST_AUTH_VAL", project.properties["tmdb.api.rest.auth.val"].toString())
+            buildConfigField ("String", "TMDB_API_STATIC_URL", project.properties["tmdb.api.static.url"].toString())
+            buildConfigField ("String", "TMDB_API_STATIC_URL_PARAMS_SIZE", project.properties["tmdb.api.static.url.params.size"].toString())
+            buildConfigField ("String[]", "TMDB_API_STATIC_POSTER_DIMENSIONS", project.properties["tmdb.api.static.poster.dimensions"].toString())
+            buildConfigField ("String[]", "TMDB_API_STATIC_BACKDROP_DIMENSIONS", project.properties["tmdb.api.static.backdrop.dimensions"].toString())
+
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    // https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxjava
+    implementation group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.2.13'
+
+    // https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxandroid
+    implementation group: 'io.reactivex.rxjava2', name: 'rxandroid', version: '2.1.1'
+
+    // https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxkotlin
+    implementation group: 'io.reactivex.rxjava2', name: 'rxkotlin', version: '2.4.0'
+
+    // https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit
+    implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.6.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.android.support:design:29.0.1'
+
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.1.0'
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

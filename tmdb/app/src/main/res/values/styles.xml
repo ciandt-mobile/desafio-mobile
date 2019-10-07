@@ -1,0 +1,38 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/colorStatusBar</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+    </style>
+
+    <style name="GlassPanel">
+        <item name="android:background">@color/colorGlass</item>
+    </style>
+
+    <style name="PrimaryContent">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="SecondaryContent" parent="PrimaryContent">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="PrimaryTitle" parent="PrimaryContent">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SecondaryTitle" parent="PrimaryTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+
+
+</resources>
