@@ -57,12 +57,10 @@ class PopularMoviesFragment: Fragment(),
 
     private fun configureMovieDetail(movieDetailComplete: MovieDetailComplete?) {
         movieDetailComplete?.let {
-            val intent = Intent(context, MovieDetailActivity::class.java)
+            val intent = Intent(activity, MovieDetailActivity::class.java)
             intent.putExtra("MOVIE_DETAIL", movieDetailComplete)
 
-            context?.let {
-                it.startActivity(intent)
-            }
+            startActivity(intent)
         }
     }
 

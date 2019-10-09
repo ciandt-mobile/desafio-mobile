@@ -26,7 +26,7 @@
         <activity android:name="com.movies.appmoviescit.ui.main.view.HomeActivity"
             android:theme="@style/MainTheme"/>
         <activity android:name="com.movies.appmoviescit.ui.movieDetail.view.MovieDetailActivity"
-            android:theme="@style/MainTheme"/>
+            android:theme="@style/MainTheme" />
     </application>
 
 </manifest>

@@ -1,3 +1,5 @@
 package com.movies.appmoviescit.model
 
-data class CastResults(val cast: List<Cast>)
+import java.io.Serializable
+
+data class CastResults(val cast: List<Cast>): Serializable

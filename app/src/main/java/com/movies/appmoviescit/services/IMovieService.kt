@@ -12,7 +12,7 @@ import retrofit2.http.Query
 
 interface IMovieService {
 
-    @GET("movie/popular?language=pt-BR")
+    @GET("movie/popular")
     fun popularMovies(@Query("api_key") api_key: String,
                       @Query("language") language: String,
                       @Query("page") page: Int): Call<MovieResults>
@@ -28,5 +28,6 @@ interface IMovieService {
 
     @GET("movie/{movie_id}")
     fun movieDetail(@Path("movie_id") movie_id: String,
-                    @Query("api_key") api_key: String): Call<MovieDetail>
+                    @Query("api_key") api_key: String,
+                    @Query("language") language: String): Call<MovieDetail>
 }

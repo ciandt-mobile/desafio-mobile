@@ -7,62 +7,61 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.appmoviescit.R
 import com.movies.appmoviescit.model.Cast
+import com.movies.appmoviescit.ui.main.view.fragments.MovieItemViewHolder
 import com.movies.appmoviescit.utils.MoviesImageBuilder
+import kotlinx.android.synthetic.main.cast_item.view.*
 
-class MovieCastAdapter(val context: Context, var contentList: List<Cast>): BaseAdapter() {
+class MovieCastAdapter(val context: Context, var contentList: List<Cast>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        var convertView = convertView
-        val holder: ViewHolder
-        val castItem = contentList[position]
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return MovieCastViewHolder(
+            LayoutInflater.from(
+                context
+            ).inflate(R.layout.cast_item, parent, false)
+        )
+    }
 
-        if (convertView == null) {
-            holder = ViewHolder()
-            val inflater = context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            convertView = inflater.inflate(R.layout.cast_item, null, true)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is MovieCastViewHolder -> holder.bind(position, this.contentList, context)
+        }
+    }
 
-            holder.castName = convertView!!.findViewById(R.id.cast_name) as TextView
-            holder.castCharacter = convertView!!.findViewById(R.id.cast_character) as TextView
-            holder.castImage = convertView.findViewById(R.id.cast_image) as ImageView
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
 
-            Glide.with(convertView!!.findViewById(R.id.cast_view) as View)
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
+    override fun getItemCount(): Int {
+        return contentList.size
+    }
+
+    private class MovieCastViewHolder(view: View): RecyclerView.ViewHolder(view) {
+        var mainViewCast: View = view.cast_view
+        var castName: TextView = view.cast_name
+        var castCharacter: TextView = view.cast_character
+        var castImage: ImageView = view.cast_image
+
+        fun bind(position: Int, contentList: List<Cast>, context: Context) {
+            val castItem = contentList[position]
+
+            Glide.with(mainViewCast)
                 .load(castItem.profile_path?.let { src ->
                     MoviesImageBuilder().buildPosterUrl(src)
                 })
                 .apply(RequestOptions().placeholder(R.drawable.ic_placeholder))
-                .into(holder.castImage!!)
+                .into(castImage)
 
-            convertView.tag = holder
-        } else {
-            holder = convertView.tag as ViewHolder
+            castName.text = castItem.name
+            castCharacter.text = castItem.character
         }
-
-        holder.castName?.text = castItem.name
-        holder.castCharacter?.text = castItem.character
-
-        return convertView
-    }
-
-    override fun getItem(position: Int): Any {
-        return contentList[position]
-    }
-
-    override fun getItemId(position: Int): Long {
-        return contentList[position].id
-    }
-
-    override fun getCount(): Int {
-        return contentList.size
-    }
-
-    private inner class ViewHolder {
-        var castName: TextView? = null
-        var castCharacter: TextView? = null
-        internal var castImage: ImageView? = null
     }
 }

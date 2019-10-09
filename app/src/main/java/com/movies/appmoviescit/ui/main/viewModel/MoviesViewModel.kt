@@ -78,7 +78,7 @@ class MoviesViewModel {
     fun getMovieDetail(movieId: String) {
         networkState.postValue(NetworkState.RUNNING)
 
-        val call = RetrofitConfig().movieService().movieDetail(movieId, MoviesConstants.API_KEY)
+        val call = RetrofitConfig().movieService().movieDetail(movieId, MoviesConstants.API_KEY, MoviesConstants.LANGUAGE)
         call.enqueue(object: Callback<MovieDetail?> {
             override fun onResponse(call: Call<MovieDetail?>, response: Response<MovieDetail?>) {
                 response?.body()?.let {
