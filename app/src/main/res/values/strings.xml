@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Movies - Ci&amp;T Challenge</string>
+    <string name="release">Estréia: %s</string>
+
+    <string name="popular">Popular</string>
+    <string name="upcoming">Em breve</string>
+</resources>
