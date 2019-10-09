@@ -29,5 +29,6 @@
 
 - Melhorias dos layouts desenvolvidos.
 - Melhorar performance da paginação das listas.
+- Loading para carregar listas e detalhes de filme.
 - Fazer os testes unitários do viewModel.
 - Fazer os testes instrumentados.
