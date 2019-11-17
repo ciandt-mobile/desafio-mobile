@@ -1,13 +1,24 @@
-Arquitetura: MVVM
-Linguagem: Kotlin
+# Desafio Mobile - 2019
 
-Data class, utilizei Gson lib para converter nome de atributos vindos da API.
-Para tratamento de requisições, API utilizei Retrofit 2 com coroutines, garantindo um controle de respostas assincronas.
-Utilizei Koin para injeção de dependências, pela simplicidade e otimo trabalho.
-Para garantir o padrão MVVM, foi criado para os Fragmentos Upcoming e Popular a classe view Model, para separar a chamada de dados e levar até a view.
-Criei uma activity base, que recebe dois fragmens upcoming e popular, para a seleção de catalogo de filmes.
-Para a seleção de fragments coloquei um navigation bottom, para garantir simplicidade e beleza na UX.
-Criei um search de pesquisa em no fragment Upcoming, para o usuario filtrar o catalogo.
+ - Arquitetura: MVVM.
+ - Linguagem: Kotlin.
 
+## Soluções técnicas
 
+### Network
+ - Para tratamento de requisições, API utilizei Retrofit 2 com coroutines, garantindo um controle de respostas assincronas.
+ - Utilizei Koin para injeção de dependências.
+ 
+### Modelo
+ - Utilização de Data class e Gson para mspeamento de atributos.
+ 
+### ViewModel
+ - Comunicação com a camada network, sendo responsavel pela comunicação com a views.
+
+### Views
+ - HomeActivity : Menu de navegação (NavigationBottom) e um container para suportar os fragmentos upcoming e popular.
+ - UpcomingFragment : Search para pesquisa no recyclerview, recyclerview com (data estreia, imagem poster e titulo).
+ - PopularFragment : Recyclerview, recyclerview com (data estreia, imagem poster e titulo).
+ - Detail : Imagem em alta definição, titulo filme, ano estreia, tempo de duração, genero, recyclerview horizontal (nome ator e imagem) e sinopse.
+ - Tratamento de erros, com imagem e mensagem e caso de falha na requisição ou, falha de conexão.
  
