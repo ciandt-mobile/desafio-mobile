@@ -20,5 +20,13 @@
  - UpcomingFragment : Search para pesquisa no recyclerview, recyclerview com (data estreia, imagem poster e titulo).
  - PopularFragment : Recyclerview, recyclerview com (data estreia, imagem poster e titulo).
  - Detail : Imagem em alta definição, titulo filme, ano estreia, tempo de duração, genero, recyclerview horizontal (nome ator e imagem) e sinopse.
+ - Para requisição e tratamento de imagens, utilizei Lib Glide 
+ - Construção de UX : Lib RecycvlerView, cardView, constraintlayout e appcompat
+ - Controle do ciclo de vida Lib lifecycle
  - Tratamento de erros, com imagem e mensagem e caso de falha na requisição ou, falha de conexão.
+ 
+### Tests
+ - Utilizado para testes unitarios mockitokotlin2
+ - Injeção de dependecias, utilizado Koin-Test
+ - Teste de interface com espresso
  
