@@ -1,0 +1,6 @@
+framework module RxFlow {
+  umbrella header "RxFlow-umbrella.h"
+
+  export *
+  module * { export * }
+}
