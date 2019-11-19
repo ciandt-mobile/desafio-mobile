@@ -6,8 +6,19 @@
 //  Copyright © 2019 Luan Audibert. All rights reserved.
 //
 
-enum MoviesAPI {
-    
+import Moya
+import RxCocoa
+import RxSwift
+import RxOptional
+import Kingfisher
+
+class MoviesService {
+    private let disposeBag = DisposeBag()
+    private let decoder = JSONDecoder()
+    private let provider: MoyaProvider<>!
+    init() {
+        
+    }
 }
 
 import Foundation

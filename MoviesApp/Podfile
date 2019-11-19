@@ -10,6 +10,8 @@ target 'MoviesApp' do
   pod 'Kingfisher'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxGesture'
+  pod 'RxOptional'
   pod 'RxFlow'
   pod 'Swinject'
   pod 'SwinjectAutoregistration'

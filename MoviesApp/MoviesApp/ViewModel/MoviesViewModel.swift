@@ -9,11 +9,18 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxFlow
 
-class MoviesViewModel {
+class MoviesViewModel: Stepper {
+    
+    var steps = PublishRelay<Step>()
     
     let movies = BehaviorRelay<String>(value: "Test")
     init() {
-        
+        print("hi??")
+    }
+    
+    func tap() {
+        self.steps.accept(MoviesState.details)
     }
 }
