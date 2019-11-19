@@ -10,5 +10,52 @@ import Foundation
 import Moya
 
 enum MovieAPI {
+    case movies
+}
+
+extension MovieAPI: TargetType, AccessTokenAuthorizable {
+    var baseURL: URL {
+        return URL(string: "https://api.themoviedb.org/3")!
+    }
     
+    var path: String {
+        switch self {
+        case .movies:
+            return "/movie/popular"
+        }
+    }
+    
+    var method: Moya.Method {
+        return .get
+    }
+    
+    var sampleData: Data {
+        return "{\"userToken\":\"123123\"}".utf8Encoded;
+    }
+    
+    var task: Task {
+        let params = ["api_key" : "2d746979abba3635175f20f1544ea72f"]
+        return .requestParameters(parameters: params, encoding: URLEncoding(destination: .queryString))
+    }
+    
+    var headers: [String : String]? {
+        return nil
+    }
+    
+    var authorizationType: AuthorizationType {
+        return .none
+    }
+    
+    
+}
+
+// MARK: - Helpers
+private extension String {
+    var urlEscaped: String {
+        return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+    }
+    
+    var utf8Encoded: Data {
+        return data(using: .utf8)!
+    }
 }

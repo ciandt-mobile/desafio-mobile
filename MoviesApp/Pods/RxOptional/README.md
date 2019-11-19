@@ -14,7 +14,6 @@ All operators are also available on `Driver` and `Signal`, unless otherwise note
 ### Optional Operators
 
 ##### filterNil
-
 ```swift
 Observable<String?>
     .of("One", nil, "Three")
@@ -22,7 +21,6 @@ Observable<String?>
     // Type is now Observable<String>
     .subscribe { print($0) }
 ```
-
 ```text
 next(One)
 next(Three)
@@ -30,7 +28,6 @@ completed
 ```
 
 ##### replaceNilWith
-
 ```swift
 Observable<String?>
     .of("One", nil, "Three")
@@ -38,7 +35,6 @@ Observable<String?>
     // Type is now Observable<String>
     .subscribe { print($0) }
 ```
-
 ```text
 next(One)
 next(Two)
@@ -47,11 +43,9 @@ completed
 ```
 
 ##### errorOnNil
-
 Unavailable on `Driver`, because `Driver`s cannot error out.
 
 By default errors with `RxOptionalError.foundNilWhileUnwrappingOptional`.
-
 ```swift
 Observable<String?>
     .of("One", nil, "Three")
@@ -59,14 +53,12 @@ Observable<String?>
     // Type is now Observable<String>
     .subscribe { print($0) }
 ```
-
 ```text
 next(One)
 error(Found nil while trying to unwrap type <Optional<String>>)
 ```
 
 ##### catchOnNil
-
 ```swift
 Observable<String?>
     .of("One", nil, "Three")
@@ -76,7 +68,6 @@ Observable<String?>
     // Type is now Observable<String>
     .subscribe { print($0) }
 ```
-
 ```text
 next(One)
 next(A String from a new Observable)
@@ -85,14 +76,12 @@ completed
 ```
 
 ##### distinctUntilChanged
-
 ```swift
 Observable<Int?>
     .of(5, 6, 6, nil, nil, 3)
     .distinctUntilChanged()
     .subscribe { print($0) }
 ```
-
 ```text
 next(Optional(5))
 next(Optional(6))
@@ -115,14 +104,12 @@ For now the types listed above conform to `Occupiable`. You can also conform
 custom types to `Occupiable`.
 
 ##### filterEmpty
-
 ```swift
 Observable<[String]>
     .of(["Single Element"], [], ["Two", "Elements"])
     .filterEmpty()
     .subscribe { print($0) }
 ```
-
 ```text
 next(["Single Element"])
 next(["Two", "Elements"])
@@ -130,25 +117,21 @@ completed
 ```
 
 ##### errorOnEmpty
-
 Unavailable on `Driver`, because `Driver`s cannot error out.
 
 By default errors with `RxOptionalError.emptyOccupiable`.
-
 ```swift
 Observable<[String]>
     .of(["Single Element"], [], ["Two", "Elements"])
     .errorOnEmpty()
     .subscribe { print($0) }
 ```
-
 ```text
 next(["Single Element"])
 error(Empty occupiable of type <Array<String>>)
 ```
 
 ##### catchOnEmpty
-
 ```swift
 Observable<[String]>
     .of(["Single Element"], [], ["Two", "Elements"])
@@ -157,7 +140,6 @@ Observable<[String]>
     }
     .subscribe { print($0) }
 ```
-
 ```text
 next(["Single Element"])
 next(["Not Empty"])
@@ -199,21 +181,6 @@ github "RxSwiftCommunity/RxOptional" ~> 3.1.3
 
 ```
 $ carthage update
-```
-
-### [Swift Package Manager](https://swift.org/package-manager)
-
-To use RxOptional as a Swift Package Manager package just add the following in your Package.swift file.
-
-```swift
-import PackageDescription
-
-let package = Package(
-    name: "ProjectName",
-    dependencies: [
-        .Package(url: "https://github.com/RxSwiftCommunity/RxOptional")
-    ]
-)
 ```
 
 ## Author

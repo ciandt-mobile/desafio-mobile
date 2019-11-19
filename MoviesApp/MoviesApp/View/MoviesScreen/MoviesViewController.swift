@@ -19,17 +19,13 @@ class MoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.title = "Test"
         navigationItem.title = "testando"
-        print("alo?")
+        viewModel.getMovies()
         
-        let view = UIView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
-        view.backgroundColor = .red
-        
-        self.view.addSubview(view)
-    
-        view.rx.tapGesture().when(.recognized).subscribe(onNext: { _ in
-            self.viewModel.tap()
+        viewModel.movies.filterNil().drive(onNext: { (movies) in
+            movies.map { $0.title }.forEach {
+                print("\($0)")
+            }
         }).disposed(by: self.disposeBag)
     }
 

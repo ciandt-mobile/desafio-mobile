@@ -12,12 +12,27 @@ import RxCocoa
 import RxFlow
 
 class MoviesViewModel: Stepper {
-    
+    let disposeBag = DisposeBag()
     var steps = PublishRelay<Step>()
+    private let moviesService: MoviesService
+    private let moviesRelay = BehaviorRelay<[MovieResult]?>(value: [])
     
-    let movies = BehaviorRelay<String>(value: "Test")
-    init() {
-        print("hi??")
+    var movies: Driver<[MovieResult]?> {
+        return moviesRelay.asDriver()
+    }
+    init(moviesService: MoviesService) {
+        self.moviesService = moviesService
+    }
+    
+    func getMovies () {
+        self.moviesService.getMovies().subscribe { result in
+            switch result {
+            case .success(let movies):
+                self.moviesRelay.accept(movies)
+            case .error(let error):
+                self.moviesRelay.accept(nil)
+            }
+        }.disposed(by: self.disposeBag)
     }
     
     func tap() {

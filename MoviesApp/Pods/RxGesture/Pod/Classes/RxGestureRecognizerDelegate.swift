@@ -55,19 +55,14 @@ public struct GestureRecognizerDelegatePolicy<PolicyInput> {
 
 public final class RxGestureRecognizerDelegate: NSObject, GestureRecognizerDelegate {
 
-    /// Corresponding delegate method: gestureRecognizerShouldBegin(:_)
     public var beginPolicy: GestureRecognizerDelegatePolicy<GestureRecognizer> = .always
 
-    /// Corresponding delegate method: gestureRecognizer(_:shouldReceive:)
     public var touchReceptionPolicy: GestureRecognizerDelegatePolicy<(GestureRecognizer, Touch)> = .always
 
-    /// Corresponding delegate method: gestureRecognizer(_:shouldBeRequiredToFailBy:)
     public var selfFailureRequirementPolicy: GestureRecognizerDelegatePolicy<(GestureRecognizer, GestureRecognizer)> = .never
 
-    /// Corresponding delegate method: gestureRecognizer(_:shouldRequireFailureOf:)
     public var otherFailureRequirementPolicy: GestureRecognizerDelegatePolicy<(GestureRecognizer, GestureRecognizer)> = .never
 
-    /// Corresponding delegate method: gestureRecognizer(_:shouldRecognizeSimultaneouslyWith:)
     public var simultaneousRecognitionPolicy: GestureRecognizerDelegatePolicy<(GestureRecognizer, GestureRecognizer)> = .always
 
     #if os(iOS)
@@ -75,7 +70,6 @@ public final class RxGestureRecognizerDelegate: NSObject, GestureRecognizerDeleg
     private var _pressReceptionPolicy: Any?
 
     @available(iOS 9.0, *)
-    /// Corresponding delegate method: gestureRecognizer(_:shouldReceive:)
     public var pressReceptionPolicy: GestureRecognizerDelegatePolicy<(GestureRecognizer, UIPress)> {
         get {
             if let policy = _pressReceptionPolicy as? GestureRecognizerDelegatePolicy<(GestureRecognizer, UIPress)> {
@@ -90,7 +84,6 @@ public final class RxGestureRecognizerDelegate: NSObject, GestureRecognizerDeleg
     #endif
 
     #if os(OSX)
-    /// Corresponding delegate method: gestureRecognizer(_:shouldAttemptToRecognizeWith:)
     public var eventRecognitionAttemptPolicy: GestureRecognizerDelegatePolicy<(GestureRecognizer, NSEvent)> = .always
     #endif
 

@@ -5,9 +5,6 @@
 //  Created by Thibault Wittemberg on 2018-12-19.
 //  Copyright © 2018 RxSwiftCommunity. All rights reserved.
 //
-
-#if canImport(UIKit)
-import Foundation
 import RxSwift
 import RxCocoa
 
@@ -61,17 +58,15 @@ public final class FlowCoordinator: NSObject {
             // performs side effects if the FlowContributors is not about registering a new Stepper or coordinating a new Flow
             .do(onNext: { [weak self] flowContributors in
                 switch flowContributors {
-                case let .one(flowContributor):
-                    self?.performSideEffects(with: flowContributor)
-                case .triggerParentFlow(let withStep):
+                case .one(.forwardToCurrentFlow(let withStep)):
+                    self?.stepsRelay.accept(withStep)
+                case .one(.forwardToParentFlow(let withStep)), .triggerParentFlow(let withStep):
                     self?.parentFlowCoordinator?.stepsRelay.accept(withStep)
                 case .end(let forwardToParentFlowWithStep):
                     self?.parentFlowCoordinator?.stepsRelay.accept(forwardToParentFlowWithStep)
                     self?.childFlowCoordinators.removeAll()
                     self?.parentFlowCoordinator?.childFlowCoordinators.removeValue(forKey: self?.identifier ?? "")
-                case let .multiple(childFlowContributors):
-                    childFlowContributors.forEach { self?.performSideEffects(with: $0) }
-                case .none:
+                case .multiple, .one(.contribute), .none:
                     break
                 }
             })
@@ -109,17 +104,6 @@ public final class FlowCoordinator: NSObject {
             .disposed(by: self.disposeBag)
     }
 
-    private func performSideEffects(with flowContributor: FlowContributor) {
-        switch flowContributor {
-        case let .forwardToCurrentFlow(step):
-            stepsRelay.accept(step)
-        case let .forwardToParentFlow(step):
-            parentFlowCoordinator?.stepsRelay.accept(step)
-        case .contribute:
-            break
-        }
-    }
-
     /// transforms a FlowContributors in the sequence of individual FlowContributor
     /// returns Signal.empty if the inner FlowContributor is not about Presentable/Stepper
     ///
@@ -142,10 +126,10 @@ public final class FlowCoordinator: NSObject {
         }
     }
 
-    /// retrieve Steps from the combination presentable/stepper
+    /// retrieve Steps from the combinaison presentable/stepper
     ///
-    /// - Parameter nextPresentableAndStepper: the combination presentable/stepper that will generate new Steps
-    /// - Returns: the reactive sequence of Steps from the combination presentable/stepper
+    /// - Parameter nextPresentableAndStepper: the combinaison presentable/stepper that will generate new Steps
+    /// - Returns: the reactive sequence of Steps from the combinaison presentable/stepper
     private func steps (from nextPresentableAndStepper: PresentableAndStepper) -> Signal<Step> {
         return nextPresentableAndStepper
             .stepper
@@ -163,7 +147,7 @@ public final class FlowCoordinator: NSObject {
     /// - Parameters:
     ///   - flow: the flow we're setting the readiness
     ///   - presentableAndSteppers: the presentables
-    // swiftlint:disable force_cast
+    // swiftlint:disable next force_cast
     private func setReadiness (for flow: Flow, basedOn presentables: [Presentable]) {
         let flowReadySingles = presentables
             .filter { $0 is Flow }
@@ -206,5 +190,3 @@ private class PresentableAndStepper {
         self.stepper = stepper
     }
 }
-
-#endif

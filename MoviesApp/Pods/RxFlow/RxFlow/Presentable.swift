@@ -6,16 +6,15 @@
 //  Copyright (c) RxSwiftCommunity. All rights reserved.
 //
 
-#if canImport(UIKit)
-
 import UIKit.UIViewController
+
 import RxSwift
 
 /// An abstraction of what can be presented to the screen. For now, UIViewControllers and Flows are Presentable
 public protocol Presentable {
 
     /// Rx Observable that triggers a bool indicating if the current Presentable is being displayed
-    /// (applies to UIViewController, Flow or UIWindow for instance)
+    /// (applies to UIViewController, Warp or UIWindow for instance)
     var rxVisible: Observable<Bool> { get }
 
     /// Rx Observable (Single trait) triggered when this presentable is dismissed
@@ -60,5 +59,3 @@ extension Presentable where Self: UIWindow {
         return Single.never()
     }
 }
-
-#endif

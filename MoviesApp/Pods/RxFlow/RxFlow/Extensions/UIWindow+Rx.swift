@@ -6,7 +6,6 @@
 //  Copyright (c) RxSwiftCommunity. All rights reserved.
 //
 
-#if canImport(UIKit)
 import UIKit
 import RxSwift
 
@@ -18,5 +17,3 @@ extension Reactive where Base: UIWindow {
     }
 
 }
-
-#endif

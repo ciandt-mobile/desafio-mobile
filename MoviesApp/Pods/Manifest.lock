@@ -1,32 +1,37 @@
 PODS:
   - Alamofire (4.9.1)
-  - Kingfisher (5.9.0):
-    - Kingfisher/Core (= 5.9.0)
-  - Kingfisher/Core (5.9.0)
+  - Differentiator (3.1.0)
+  - Kingfisher (5.10.0):
+    - Kingfisher/Core (= 5.10.0)
+  - Kingfisher/Core (5.10.0)
   - Moya (13.0.1):
     - Moya/Core (= 13.0.1)
   - Moya/Core (13.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.1)
+  - Moya/RxSwift (13.0.1):
+    - Moya/Core
+    - RxSwift (~> 4.0)
   - R.swift (5.1.0):
     - R.swift.Library (~> 5.1.0)
   - R.swift.Library (5.1.0)
   - Result (4.1.0)
-  - RxCocoa (5.0.1):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxFlow (2.5.0):
-    - RxCocoa (>= 5.0.0)
-    - RxSwift (>= 5.0.0)
-  - RxGesture (3.0.1):
-    - RxCocoa (~> 5.0)
-    - RxSwift (~> 5.0)
-  - RxOptional (4.1.0):
-    - RxCocoa (~> 5)
-    - RxSwift (~> 5)
-  - RxRelay (5.0.1):
-    - RxSwift (~> 5)
-  - RxSwift (5.0.1)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxDataSources (3.1.0):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxFlow (2.2.0):
+    - RxCocoa (>= 4.5.0)
+    - RxSwift (>= 4.5.0)
+  - RxGesture (2.2.0):
+    - RxCocoa (~> 4.5)
+    - RxSwift (~> 4.5)
+  - RxOptional (3.6.2):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.5.0)
   - Swinject (2.7.1)
   - SwinjectAutoregistration (2.6.1):
     - Swinject (~> 2.6)
@@ -34,8 +39,10 @@ PODS:
 DEPENDENCIES:
   - Kingfisher
   - Moya
+  - Moya/RxSwift
   - R.swift
   - RxCocoa
+  - RxDataSources
   - RxFlow
   - RxGesture
   - RxOptional
@@ -46,36 +53,38 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Differentiator
     - Kingfisher
     - Moya
     - R.swift
     - R.swift.Library
     - Result
     - RxCocoa
+    - RxDataSources
     - RxFlow
     - RxGesture
     - RxOptional
-    - RxRelay
     - RxSwift
     - Swinject
     - SwinjectAutoregistration
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  Kingfisher: ff98240aebb7302bdc4f1ecd701761030ce18b16
+  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  Kingfisher: 0bf6eae7c2193f15719915fecb7c2c1c03855f3d
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
   R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
-  RxFlow: 1beb3ef121e2c58620fd4f8445c855ca1dbfc8c7
-  RxGesture: a3f8dd6adf078110ed5e1c9c30d09d705a09852e
-  RxOptional: b1fcd60856807a564c0215c2184b8d33e7826dc2
-  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
-  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
+  RxFlow: f8cdfc0be3c837464fad1fcd28187fd414bcc716
+  RxGesture: c1b7bf17166b0ef9d642a9510f8bac5785f18990
+  RxOptional: 80426a0ddbd092573e4c482d8cc13302078c4d5e
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   SwinjectAutoregistration: d0de7e48db3601b8b130f2f84e5a8399e0224135
 
-PODFILE CHECKSUM: 9cc4da4ad21cd226f6846f8457e23cf7da255cdc
+PODFILE CHECKSUM: 57db811415b5b719f84be2dd2b28cb4d1f084d46
 
 COCOAPODS: 1.8.4

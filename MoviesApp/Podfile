@@ -12,6 +12,8 @@ target 'MoviesApp' do
   pod 'RxCocoa'
   pod 'RxGesture'
   pod 'RxOptional'
+  pod 'RxDataSources'
+  pod 'Moya/RxSwift'
   pod 'RxFlow'
   pod 'Swinject'
   pod 'SwinjectAutoregistration'
