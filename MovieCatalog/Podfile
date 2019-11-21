@@ -1,0 +1,9 @@
+platform :ios, '9.0'
+use_frameworks!
+
+target 'MovieCatalog' do
+
+  pod 'Alamofire', '~> 4.7'
+  pod 'SDWebImage', '~> 5.0'
+
+end
