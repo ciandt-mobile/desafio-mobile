@@ -22,7 +22,7 @@ extension MovieAPI: TargetType, AccessTokenAuthorizable {
     var path: String {
         switch self {
         case .movies:
-            return "/movie/popular"
+            return "/discover/movie"
         case .genre:
             return "/genre/movie/list"
         }

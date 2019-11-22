@@ -2,6 +2,22 @@
 
 Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para realizar o desafio 😀.
 
+### Tecnologias Utilizadas
+
+Este app foi feito utilizando MVVM-C, com uso das seguintes bibliotecas:
+
+- RxSwift, RxCocoa, RxFlow, RxOptional e RxGesture para programação reativa
+- Moya para as requisições da API
+- KingFisher para dar fetch nas imagens
+- Swinject e SwinjectAutoregistration para injeção de dependência
+
+Known issues:
+- Este app só faz fatch da primeira página de movies, pois não foi implementada paginação nesta parte do app.
+- O filtro de upcoming só aparece um filme, visto que um dos requisitos do teste era fazer o filtro na lista já existente, sem fazer nenhuma outra requisição. Como buscamos apenas uma página, este é o único filme que ainda não foi lançado.
+- O App não mostra nem os atores nem o tamanho do filme. Não encontrei uma forma de fazer esta requisição para a api do themoviedb.
+- A página de Movie Details não funciona direito em landscape. O correto era desenvolver esta parte utilizando uma UITableViewController, porém não tive muito tempo para desenvolver esta página como deveria. Acabei deixando ela deste jeito mesmo.
+
+
 ## Instruções
 
 - Faça um fork desse repositório e crie sua solução para iOS ou Android;
