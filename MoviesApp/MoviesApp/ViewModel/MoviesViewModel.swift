@@ -14,6 +14,7 @@ import RxFlow
 class MoviesViewModel: Stepper {
     let disposeBag = DisposeBag()
     var steps = PublishRelay<Step>()
+    let moviesFilterType = BehaviorRelay<MoviesFilterType>(value: .upcoming)
     private let moviesService: MoviesService
     private let moviesRelay = BehaviorRelay<[MovieResult]>(value: [])
     

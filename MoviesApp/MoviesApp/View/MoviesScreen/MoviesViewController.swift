@@ -11,10 +11,16 @@ import RxSwift
 import RxCocoa
 import RxGesture
 
+enum MoviesFilterType: Int {
+    case upcoming, popular
+}
+
 class MoviesViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var collectionVIew: UICollectionView!
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     let disposeBag = DisposeBag()
     var viewModel: MoviesViewModel!
     
@@ -52,11 +58,31 @@ class MoviesViewController: UIViewController {
     }
     
     private func setupSubscriptions() {
-        viewModel.movies.drive(onNext: { (movies) in
-            self.movies = movies
+
+        Driver.combineLatest(
+            self.viewModel.movies,
+            self.viewModel.moviesFilterType.asDriver().distinctUntilChanged()
+        ).drive(onNext: { (movies, filterType) in
+            self.movies = movies.filter { (movie) -> Bool in
+                let now = Date()
+                let alreadyReleased = movie.releaseDate <= now
+                switch filterType {
+                case .upcoming:
+                    return !alreadyReleased
+                case .popular:
+                    return alreadyReleased
+                }
+            }
             self.loading = false
             self.collectionVIew.reloadData()
         }).disposed(by: self.disposeBag)
+        
+        segmentedControl.rx.value.asDriver().drive(onNext: { (segmentedControl) in
+            guard let state = MoviesFilterType(rawValue: segmentedControl) else { return }
+            self.viewModel.moviesFilterType.accept(state)
+            
+        }).disposed(by: self.disposeBag)
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -88,6 +114,5 @@ extension MoviesViewController: UICollectionViewDataSource {
         cell.setDate(movie.releaseDate)
         return cell
     }
-    
     
 }

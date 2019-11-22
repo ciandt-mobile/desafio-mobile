@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="activityIndicator" destination="p4E-ab-tjx" id="wAQ-ho-1dT"/>
                 <outlet property="collectionVIew" destination="cKW-Mq-0rt" id="htA-u8-7yP"/>
+                <outlet property="segmentedControl" destination="A5E-cR-HFA" id="ena-8I-WUM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,8 +21,20 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A5E-cR-HFA">
+                    <rect key="frame" x="124.5" y="52" width="165" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="nOV-lk-Sce"/>
+                    </constraints>
+                    <segments>
+                        <segment title="Upcoming"/>
+                        <segment title="Popular"/>
+                    </segments>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </segmentedControl>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="cKW-Mq-0rt">
-                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <rect key="frame" x="0.0" y="95" width="414" height="801"/>
                     <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cef-Hc-uEx">
                         <size key="itemSize" width="150" height="150"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -39,11 +52,13 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="A5E-cR-HFA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0Gz-54-kCV"/>
+                <constraint firstItem="A5E-cR-HFA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="9UI-Cy-tRE"/>
                 <constraint firstAttribute="bottom" secondItem="cKW-Mq-0rt" secondAttribute="bottom" id="FNH-Na-wXS"/>
                 <constraint firstItem="p4E-ab-tjx" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="FnY-x3-5I7"/>
                 <constraint firstItem="cKW-Mq-0rt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="I4C-zY-X1Y"/>
                 <constraint firstItem="p4E-ab-tjx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RmJ-xI-Jt5"/>
-                <constraint firstItem="cKW-Mq-0rt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="amq-Tp-PpK"/>
+                <constraint firstItem="cKW-Mq-0rt" firstAttribute="top" secondItem="A5E-cR-HFA" secondAttribute="bottom" constant="12" id="amq-Tp-PpK"/>
                 <constraint firstItem="cKW-Mq-0rt" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="sGW-Ud-UBU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
