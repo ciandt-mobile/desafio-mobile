@@ -21,4 +21,5 @@ struct MovieResult: Decodable, Encodable {
     let genreIds: [Int]
     let title: String
     let releaseDate: Date
+    let overview: String
 }

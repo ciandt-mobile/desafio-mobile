@@ -14,8 +14,31 @@ import RxCocoa
 class MovieDetailsViewModel: Stepper {
     
     var steps = PublishRelay<Step>()
+    private let moviesService: MoviesService
     
-    init() {
-        print("hi?? 2")
+    private let genresRelay = BehaviorRelay<[Genre]?>(value: nil)
+    var genres: Driver<[Genre]?> {
+        return genresRelay.asDriver()
+    }
+    
+    private let disposeBag = DisposeBag()
+    init(moviesService: MoviesService) {
+        self.moviesService = moviesService
+    }
+    
+    func getGenre(movie: MovieResult) {
+        self.moviesService.getGenreList().subscribe {
+            result in
+            switch result {
+            case .success(let genres):
+                let results = genres.filter { (genre) -> Bool in
+                    return movie.genreIds.contains(genre.id)
+                }
+                self.genresRelay.accept(results)
+            case .error:
+                self.genresRelay.accept(nil)
+                break
+            }
+        }.disposed(by: disposeBag)
     }
 }
