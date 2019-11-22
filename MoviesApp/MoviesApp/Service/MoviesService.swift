@@ -33,6 +33,13 @@ class MoviesService {
             .map(PopularMovieResult.self, using: self.decoder)
             .map{ $0.results }
     }
+    
+    func getGenreList() -> Single<[Genre]> {
+        return self.provider!.rx.request(.movies)
+        .requestPipeline()
+        .map(GenreResult.self, using: self.decoder)
+        .map{ $0.genres }
+    }
 }
 
 extension PrimitiveSequence where Trait == SingleTrait, Element == Response {

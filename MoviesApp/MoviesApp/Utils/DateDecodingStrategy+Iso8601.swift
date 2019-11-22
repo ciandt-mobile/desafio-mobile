@@ -28,4 +28,10 @@ extension Formatter {
         formatter.dateFormat = "yyy-MM-dd"
         return formatter
     }()
+    
+    static let moviesFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter
+    }()
 }

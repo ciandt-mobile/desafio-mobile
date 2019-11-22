@@ -11,6 +11,7 @@ import Moya
 
 enum MovieAPI {
     case movies
+    case genre
 }
 
 extension MovieAPI: TargetType, AccessTokenAuthorizable {
@@ -22,6 +23,8 @@ extension MovieAPI: TargetType, AccessTokenAuthorizable {
         switch self {
         case .movies:
             return "/movie/popular"
+        case .genre:
+            return "/genre/movie/list"
         }
     }
     

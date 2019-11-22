@@ -35,8 +35,10 @@ class MoviesFlow {
     }
     
 
-    private func navigateToDetails() -> FlowContributors {
+    private func navigateToDetails(_ movie: MovieResult) -> FlowContributors {
         let viewController = container ~> MovieDetailsViewController.self
+        
+        viewController.movie = movie
 
         self.rootViewController.pushViewController(viewController, animated: true)
         return .one(flowContributor:
@@ -68,14 +70,14 @@ extension MoviesFlow: Flow {
         case .dismiss:
             self.rootViewController.popViewController(animated: true)
             return .none
-        case .details:
-            return navigateToDetails()
+        case .details(let movie):
+            return navigateToDetails(movie)
         }
     }
 }
 
 enum MoviesState: Step {
     case home
-    case details
+    case details(movie: MovieResult)
     case dismiss
 }

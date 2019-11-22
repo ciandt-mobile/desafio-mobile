@@ -15,9 +15,9 @@ class MoviesViewModel: Stepper {
     let disposeBag = DisposeBag()
     var steps = PublishRelay<Step>()
     private let moviesService: MoviesService
-    private let moviesRelay = BehaviorRelay<[MovieResult]?>(value: [])
+    private let moviesRelay = BehaviorRelay<[MovieResult]>(value: [])
     
-    var movies: Driver<[MovieResult]?> {
+    var movies: Driver<[MovieResult]> {
         return moviesRelay.asDriver()
     }
     init(moviesService: MoviesService) {
@@ -29,13 +29,13 @@ class MoviesViewModel: Stepper {
             switch result {
             case .success(let movies):
                 self.moviesRelay.accept(movies)
-            case .error(let error):
-                self.moviesRelay.accept(nil)
+            case .error:
+                self.moviesRelay.accept([])
             }
         }.disposed(by: self.disposeBag)
     }
     
-    func tap() {
-        self.steps.accept(MoviesState.details)
+    func userSelectedMovie(movie: MovieResult) {
+        self.steps.accept(MoviesState.details(movie: movie))
     }
 }

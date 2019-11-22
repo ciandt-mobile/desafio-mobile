@@ -10,9 +10,12 @@ import UIKit
 
 class MovieDetailsViewController: UIViewController {
 
+    var movie: MovieResult!
     var viewModel: MovieDetailsViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Movie: \(movie.title)")
     }
 
 }

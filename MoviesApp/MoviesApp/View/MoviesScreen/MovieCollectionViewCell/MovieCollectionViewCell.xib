@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="moviesCollectionViewCell" id="gTV-IL-0wX" customClass="MovieCollectionViewCell" customModule="MoviesApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="112" height="134"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="112" height="134"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H75-Ph-ZqC">
+                        <rect key="frame" x="0.0" y="0.0" width="112" height="134"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o9Z-0N-YL8">
+                                <rect key="frame" x="0.0" y="0.0" width="112" height="107"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="99x-bp-7mh" customClass="PaddingLabel" customModule="MoviesApp" customModuleProvider="target">
+                                <rect key="frame" x="22.5" y="77" width="67" height="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                        <real key="value" value="2.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie name movie name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cc2-TK-Kao">
+                                <rect key="frame" x="4" y="109" width="104" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cc2-TK-Kao" secondAttribute="trailing" constant="4" id="DTd-Rw-Dtd"/>
+                            <constraint firstItem="cc2-TK-Kao" firstAttribute="leading" secondItem="H75-Ph-ZqC" secondAttribute="leading" constant="4" id="MvO-hc-c6X"/>
+                            <constraint firstItem="o9Z-0N-YL8" firstAttribute="top" secondItem="H75-Ph-ZqC" secondAttribute="top" id="Nmh-b9-uTH"/>
+                            <constraint firstAttribute="trailing" secondItem="o9Z-0N-YL8" secondAttribute="trailing" id="UYD-fs-uTO"/>
+                            <constraint firstAttribute="bottom" secondItem="cc2-TK-Kao" secondAttribute="bottom" constant="4" id="UuV-Sc-jve"/>
+                            <constraint firstItem="o9Z-0N-YL8" firstAttribute="height" secondItem="H75-Ph-ZqC" secondAttribute="height" multiplier="0.8" id="bX9-6P-mgE"/>
+                            <constraint firstItem="cc2-TK-Kao" firstAttribute="top" secondItem="o9Z-0N-YL8" secondAttribute="bottom" constant="2" id="kBx-tF-EdA"/>
+                            <constraint firstItem="99x-bp-7mh" firstAttribute="centerX" secondItem="H75-Ph-ZqC" secondAttribute="centerX" id="nw5-KZ-gIh"/>
+                            <constraint firstItem="99x-bp-7mh" firstAttribute="width" secondItem="H75-Ph-ZqC" secondAttribute="width" multiplier="0.6" id="vbX-ku-0a1"/>
+                            <constraint firstItem="o9Z-0N-YL8" firstAttribute="leading" secondItem="H75-Ph-ZqC" secondAttribute="leading" id="vjg-Vs-2js"/>
+                            <constraint firstItem="o9Z-0N-YL8" firstAttribute="bottom" secondItem="99x-bp-7mh" secondAttribute="bottom" constant="8" id="wbx-p7-MAy"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="H75-Ph-ZqC" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="6m3-xa-55g"/>
+                <constraint firstItem="H75-Ph-ZqC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="It3-Ne-Idd"/>
+                <constraint firstAttribute="trailing" secondItem="H75-Ph-ZqC" secondAttribute="trailing" id="JUE-7D-mjD"/>
+                <constraint firstItem="H75-Ph-ZqC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fTJ-tf-edz"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="112" height="134"/>
+            <connections>
+                <outlet property="dateLabel" destination="99x-bp-7mh" id="nFz-7x-pQF"/>
+                <outlet property="imageView" destination="o9Z-0N-YL8" id="q32-kw-bjf"/>
+                <outlet property="movieNameLabel" destination="cc2-TK-Kao" id="hf5-UE-V7U"/>
+            </connections>
+            <point key="canvasLocation" x="182.60869565217394" y="127.90178571428571"/>
+        </collectionViewCell>
+    </objects>
+</document>
