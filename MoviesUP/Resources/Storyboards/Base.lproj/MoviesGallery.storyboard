@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Movies Gallery View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MoviesGalleryViewController" customModule="MoviesUP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gsf-Qg-1vP">
+                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BQ2-Xy-oHk">
+                                        <rect key="frame" x="124.5" y="8" width="165" height="32"/>
+                                        <segments>
+                                            <segment title="Upcoming"/>
+                                            <segment title="Popular"/>
+                                        </segments>
+                                        <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="indexChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="g4Y-a5-Ids"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFs-Oz-ouC">
+                                        <rect key="frame" x="16" y="56" width="382" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="zFs-Oz-ouC" secondAttribute="bottom" constant="8" id="Hzm-7M-odd"/>
+                                    <constraint firstItem="BQ2-Xy-oHk" firstAttribute="centerX" secondItem="Gsf-Qg-1vP" secondAttribute="centerX" id="IQn-KC-NXh"/>
+                                    <constraint firstAttribute="height" constant="100" id="UYh-AN-PmI"/>
+                                    <constraint firstItem="zFs-Oz-ouC" firstAttribute="leading" secondItem="Gsf-Qg-1vP" secondAttribute="leading" constant="16" id="kB0-xY-kOP"/>
+                                    <constraint firstItem="BQ2-Xy-oHk" firstAttribute="top" secondItem="Gsf-Qg-1vP" secondAttribute="top" constant="8" id="qLc-Ua-fGU"/>
+                                    <constraint firstAttribute="trailing" secondItem="zFs-Oz-ouC" secondAttribute="trailing" constant="16" id="tBs-lb-ybQ"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uqq-3a-KOC">
+                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dYw-sd-vZG">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Gsf-Qg-1vP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="1lN-bB-DDB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uqq-3a-KOC" secondAttribute="trailing" id="Iu6-vh-G2Q"/>
+                            <constraint firstItem="Gsf-Qg-1vP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JWc-Tb-Pcf"/>
+                            <constraint firstItem="uqq-3a-KOC" firstAttribute="top" secondItem="Gsf-Qg-1vP" secondAttribute="bottom" id="RK0-T7-74p"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uqq-3a-KOC" secondAttribute="bottom" id="YnD-qz-4Mx"/>
+                            <constraint firstItem="Gsf-Qg-1vP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rA5-Lq-Z61"/>
+                            <constraint firstItem="uqq-3a-KOC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tq9-D4-seJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="galleryCollectionView" destination="uqq-3a-KOC" id="Ynx-0I-Z6s"/>
+                        <outlet property="segmentedControlTitle" destination="BQ2-Xy-oHk" id="1GK-uA-6ZD"/>
+                        <outlet property="titleLabel" destination="zFs-Oz-ouC" id="LAh-Cg-sye"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140.57971014492756" y="103.79464285714285"/>
+        </scene>
+    </scenes>
+</document>
