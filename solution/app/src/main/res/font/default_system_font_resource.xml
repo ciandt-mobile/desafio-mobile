@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Default Weight Fonts -->
+    <font
+        android:font="@font/product_sans_regular"
+        android:fontStyle="normal"
+        android:fontWeight="100" />
+
+    <font
+        android:font="@font/product_sans_italic"
+        android:fontStyle="italic"
+        android:fontWeight="100" />
+
+    <!-- Bold Fonts -->
+    <font
+        android:font="@font/product_sans_bold"
+        android:fontStyle="normal"
+        android:fontWeight="100" />
+
+    <font
+        android:font="@font/product_sans_bold_italic"
+        android:fontStyle="italic"
+        android:fontWeight="300" />
+
+</font-family>

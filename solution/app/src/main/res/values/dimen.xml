@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="movie_poster_default_width">100dp</dimen>
+    <dimen name="movie_poster_default_height">150dp</dimen>
+
+    <dimen name="default_padding_start">16dp</dimen>
+    <dimen name="default_padding_end">16dp</dimen>
+    <dimen name="default_padding_top">16dp</dimen>
+    <dimen name="default_padding_bottom">16dp</dimen>
+    <dimen name="default_padding">16dp</dimen>
+
+    <dimen name="default_margin_start">16dp</dimen>
+    <dimen name="default_margin_end">16dp</dimen>
+    <dimen name="default_margin_top">16dp</dimen>
+    <dimen name="default_margin_bottom">16dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+</resources>

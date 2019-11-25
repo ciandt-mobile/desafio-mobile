@@ -1,0 +1,12 @@
+<android.support.design.chip.Chip xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.MaterialComponents.Chip.Filter"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/app_name"
+    app:chipBackgroundColor="@color/colorAccent"
+    app:chipStrokeColor="@color/colorPrimaryDark"
+    app:chipStrokeWidth="1dp"
+    app:textEndPadding="16dp"
+    app:textStartPadding="16dp" />

@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Fellini</string>
+
+    <!-- Additional Details Section -->
+    <string name="status_information_title">Status</string>
+    <string name="release_information_title">Release Information</string>
+    <string name="language_information_title">Original Language</string>
+    <string name="runtime_information_title">Runtime</string>
+    <string name="genres_information_title">Genres</string>
+    <string name="additional_information_title">Additional</string>
+    <string name="cast_information_title">Main Cast</string>
+    <string name="overview_information_title">Overview</string>
+
+    <!-- All Button Labels -->
+    <string name="more_button_label">Full Crew &amp; Cast</string>
+    <string name="more_button_no_cast_label">0 People on Cast</string>
+    <string name="trailer_playback_button_label">See Trailer</string>
+
+    <!-- Main Section Titles  -->
+    <string name="popular_headline_section">Popular Movies</string>
+    <string name="upcoming_headline_section">Upcoming Movies</string>
+    <string name="now_playing_headline_section">Now Playing Movies</string>
+    <string name="top_rated_headline_section">Top Rated Movies</string>
+
+    <string name="cast_headline">Cast</string>
+    <string name="crew_headline">Crew</string>
+
+    <string name="main_searchview_hint">Search for Movies</string>
+
+    <string name="popular_movies_tab_title">Popular</string>
+    <string name="upcoming_movies_tab_title">Upcoming</string>
+    <string name="now_playing_movies_tab_title">Now Playing</string>
+
+    <string name="no_cast">No Cast</string>
+    <string name="adult_advice_badge">ADULT</string>
+
+    <string name="movie_title_placeholder">Title</string>
+    <string name="movie_status_placeholder">Status</string>
+    <string name="movie_release_date_placeholder">Release Date</string>
+    <string name="movie_overview_placeholder">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</string>
+    <string name="movie_release_information_placeholder">Release Date</string>
+    <string name="movie_runtime_placeholder">Runtime</string>
+
+</resources>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="top|center_horizontal"
+    android:orientation="vertical"
+    android:paddingTop="4dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/movie_item_cardview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/defaultCardBackground"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+        <RelativeLayout
+            android:id="@+id/main_item_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/movie_item_picture"
+                android:layout_width="@dimen/movie_poster_default_width"
+                android:layout_height="@dimen/movie_poster_default_height"
+                android:layout_below="@+id/adult_badge"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_movie_48dp" />
+
+            <LinearLayout
+                android:id="@+id/adult_badge"
+                android:layout_width="@dimen/movie_poster_default_width"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="0dp"
+                android:background="@android:color/holo_red_dark"
+                android:backgroundTintMode="multiply"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"
+                android:textAlignment="center"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_vertical"
+                    android:text="@string/adult_advice_badge"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Overline" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/release_badge"
+                android:layout_width="@dimen/movie_poster_default_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/movie_item_picture"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="0dp"
+                android:background="@color/colorPrimary"
+                android:backgroundTintMode="multiply"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+                <TextView
+                    android:id="@+id/movie_item_release_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_vertical"
+                    android:text="22/06"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/movie_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="6dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="Spider Man 2 "
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+</LinearLayout>
