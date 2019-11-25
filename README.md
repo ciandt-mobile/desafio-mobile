@@ -1,49 +1,29 @@
 # Desafio Mobile - 2019
 
-Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para realizar o desafio 😀.
+Minha solução para o desafio mobile da CI&T para a plataforma Android
 
-## Instruções
-
-- Faça um fork desse repositório e crie sua solução para iOS ou Android;
-- Ao terminar a solução realize um Pull Request;
-- Comente no readme do repositório os métodos utilizados, tais como arquitetura, linguagem, soluções técnicas e etc.;
-
-## O App
-
+## Exemplos das telas
 <img src="screenshots/ss01.png?raw=true" width="250"> <img src="screenshots/ss02.png?raw=true" width="250"> <img src="screenshots/ss03.png?raw=true" width="250">
 
-#### Filmes Populares
+### Recursos técnicos utilizados
 
-Como usuário, gostaria de ver a lista de de filmes mais populares em cartaz nos cinemas. Os itens dessa lista deverão conter:
- - O banner do filme;
- - O nome do filme;
- - A data de estreia;
+* A linguagem de programação utilizada é Kotlin
+* Foram utilizados os principais componentes da biblioteca Android Architecture Components, tais como ViewModel e LiveData. Com isso foi possível o desenvolvimento do projeto seguindo o padrão MVVM de arquitetura
+* Para navegação entre as telas foi utilizado o Navigation Component
+* Para exibição de lista de filmes e de elenco foi utilizada a biblioteca RecyclerView
+* Para injeção de dependências foi utilizada a biblioteca Dagger2
+* Para tarefas assíncronas foi utilizada coroutines
+* Para acesso à API REST do The Movie Database foi utilizada a biblioteca Retrofit. O conteúdo json das responses foi parseado utilizando a biblioteca Gson
+* Para download e gerenciamento de imagens foi utilizada a biblioteca Glide
+* Para testes foram utilizados JUnit e Espresso
 
-#### Em Breve
+### Descrição da solução
+O aplicativo é composto por uma única Activity onde é adicionada a primeira Fragment responsável por adicionar o módulo de Navigation, gerenciando a navegação entre as Fragments.
 
-Como usuário, gostária de conseguir filtrar a lista de filmes populares para que agora mostre os filmes que entrarão em cartaz em breve:
- - O Filtro deverá ser aplicado na lista já existente, implementada na task anterior
+Existem quatro Fragments principais: 
+- HomeFragment contém a view pager para exibir as duas opções de visualização: Upcoming ou Popular
+- UpcomingFragment exibe a lista de filmes filtrados pelo critério 'Upcoming'
+- PopularFragment exibe a lista de filmes filtrados pelo critério 'Popular''
+- MovieDetailFragment exibe o detalhe de um filme selecionado
 
-#### Detalhes do filme
-
-Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do filme:
- - Uma imagem em alta resolução;
- - Nome do filme
- - Generos do filme
- - Ano de estreia
- - Duração
- - Elenco principal 
- - Sinópse
- 
-## Requisitos
- - O app deve ser desenvolvido para suportar as orientação Portrait e Landscape
- - Seja criativo, as imagens de referência são apenas exemplos, você pode criar seu próprio layout
- - Use libs e frameworks que você estiver mais acostumado
- - Teste o seu código ;D
- - Utilize a The Movie Database para realizar as consultas 
- -- TMDB (https://www.themoviedb.org)
- -- API (https://www.themoviedb.org/documentation/api)
- 
-# BOA SORTE!
- 
- 
+Com exceção da HomeFragment, todas as Fragments possuem suas respectivas classes ViewModel onde estão localizadas a regras de negócio que controla o que será exibido. Em cada ViewModel é injetada a dependência do repositório de filmes, a partir do qual é possível acessar a API REST de filmes.

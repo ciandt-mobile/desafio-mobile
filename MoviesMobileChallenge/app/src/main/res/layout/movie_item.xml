@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="movie"
+            type="br.com.suelen.mobilechallenge.data.model.Movie" />
+        <variable
+            name="releaseDateField"
+            type="java.lang.String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingStart="3dp"
+        android:paddingEnd="3dp"
+        android:onClick="@{clickListener}">
+
+        <ImageView
+            android:id="@+id/movie_poster"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:contentDescription="@null"
+            app:imageFromUrl="@{`http://image.tmdb.org/t/p/w300` + movie.poster_path}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="13sp"
+            android:text="@{releaseDateField}"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/release_date_background"
+            app:layout_constraintBottom_toBottomOf="@id/movie_poster"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="27/10/19" />
+
+        <TextView
+            android:id="@+id/movie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:text="@{movie.title}"
+            android:textSize="15sp"
+            android:lines="2"
+            android:maxLines="2"
+            android:gravity="center_vertical"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            app:layout_constraintTop_toBottomOf="@+id/movie_poster"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Movies</string>
+    <string name="title_activity_main">Movies</string>
+    <string name="title_upcoming">Upcoming</string>
+    <string name="title_popular">Popular</string>
+
+    <string name="themoviedatabase_base_url">https://api.themoviedb.org/3/</string>
+</resources>
