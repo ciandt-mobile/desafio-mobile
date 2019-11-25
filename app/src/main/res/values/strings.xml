@@ -2,4 +2,6 @@
     <string name="app_name">movies</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="movies_empty">Don\'t have movies</string>
+    <string name="movies_failed">Sory have a problem to list movies</string>
 </resources>

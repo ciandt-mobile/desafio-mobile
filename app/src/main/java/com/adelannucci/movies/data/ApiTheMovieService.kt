@@ -1,7 +1,7 @@
 package com.adelannucci.movies.data
 
-import com.adelannucci.movies.data.network.ConnectivityInterceptor
-import kotlinx.coroutines.Deferred
+import com.adelannucci.movies.data.remote.ConnectivityInterceptor
+import com.adelannucci.movies.data.remote.response.BaseResponse
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -18,7 +18,7 @@ interface ApiTheMovieService {
     fun getDiscoverMovie(
         @Query(value = "page") location: Int,
         @Query(value = "language") languageCode: String = "en-US"
-    ) : Call<String>
+    ) : Call<BaseResponse>
 
     companion object {
         operator fun invoke(
@@ -28,7 +28,7 @@ interface ApiTheMovieService {
                 val url = chain.request()
                     .url()
                     .newBuilder()
-                    .addQueryParameter("key", API_KEY)
+                    .addQueryParameter("api_key", API_KEY)
                     .build()
                 val request = chain.request().newBuilder().url(url).build()
 

@@ -1,4 +1,4 @@
-package com.adelannucci.movies.data.network
+package com.adelannucci.movies.data.remote
 
 import okhttp3.Interceptor
 

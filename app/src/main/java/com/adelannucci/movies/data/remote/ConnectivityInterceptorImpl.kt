@@ -1,13 +1,10 @@
-package com.adelannucci.movies.data.network
+package com.adelannucci.movies.data.remote
 
 import android.content.Context
 import android.net.ConnectivityManager
 import com.adelannucci.movies.internal.NoConnectivityException
 import okhttp3.Interceptor
 import okhttp3.Response
-import android.net.NetworkInfo
-import androidx.core.content.ContextCompat.getSystemService
-
 
 
 class ConnectivityInterceptorImpl( context: Context
