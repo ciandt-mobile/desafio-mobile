@@ -1,9 +1,12 @@
 # desafio-mobile 2019
 
+## Fellini 
+O nome do App é uma homenagem ao Cineasta Federico Fellini 
+
 ## MainActivity
 Na MainActivity há um TabLayout integrado a um ViewPager que contém as seções a lista de filmes das categorias principais: 
 
-![Main Actvity](https://raw.githubusercontent.com/eduardowgmendes/desafio-mobile/master/solution/screenshots/Screenshot_1574691877.png )    
+<img src="https://raw.githubusercontent.com/eduardowgmendes/desafio-mobile/master/solution/screenshots/Screenshot_1574691877.png" width="250">
 
 ### Top Rated
 Os filmes mais bem avaliados 
@@ -17,13 +20,15 @@ Os que estão em pós produção ou já em cartaz
 ### Now Playing
 Os que estão sendo exibidos nos cinemas
 
-![Movie Overview Activity](https://raw.githubusercontent.com/eduardowgmendes/desafio-mobile/master/solution/screenshots/Screenshot_1574688374.png)
-
 ## Movie Overview 
 Ao clicar em algum filme na lista de filmes o usuário é levado à ActivityMovieOverivew
 e tem diversas informações sobre o filme selecionado:
 
-![Movie Overview Activity](https://raw.githubusercontent.com/eduardowgmendes/desafio-mobile/master/solution/screenshots/Screenshot_1574688374.png)
+<img src="https://raw.githubusercontent.com/eduardowgmendes/desafio-mobile/master/solution/screenshots/Screenshot_1574688374.png" width="250"> 
+
+<img src="https://raw.githubusercontent.com/eduardowgmendes/desafio-mobile/master/solution/screenshots/Screenshot_1574688550.png" width="250"> 
+
+<img src="https://raw.githubusercontent.com/eduardowgmendes/desafio-mobile/master/solution/screenshots/Screenshot_1574688573.png" width="250">
   
 ## Bibliotecas 
 Para o desenvolvimento da aplicação foram utilizadas bibliotecas como o 
