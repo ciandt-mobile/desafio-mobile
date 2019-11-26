@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import Kingfisher
 
 class MoviesGalleryViewController: UIViewController {
 
@@ -16,14 +18,19 @@ class MoviesGalleryViewController: UIViewController {
             titleLabel.text =  "Upcoming Movies"
         }
     }
-    
     @IBOutlet weak var galleryCollectionView: UICollectionView!
+    
+    var galleryMovies: [GalleryMovies] = [] {
+        didSet {
+            self.galleryCollectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        galleryCollectionView.reloadData()
-        setupCollection()
+        setupCollection()        
+        parseGalleryMovies()
     }
     
     func setupCollection() {

@@ -16,8 +16,7 @@ extension MoviesGalleryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return galleryImages.count
-        return 10
+        return galleryMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -27,13 +26,24 @@ extension MoviesGalleryViewController: UICollectionViewDataSource {
         
         cell.layer.cornerRadius = 5
         
-//        //setup image in cell
-//        let image = galleryImages[indexPath.row]
-//
-//        if let linkUrl = image.images?.first?.link {
-//            let url = URL(string: linkUrl)
-//            cell.imageCell.kf.setImage(with: url, placeholder: UIImage(named: "logo_venturus"))
-//        }
+        //setup image in cell
+        let gallery = galleryMovies[indexPath.row]
+        let fullURLImages = "https://image.tmdb.org/t/p/w185_and_h278_bestv2"
+
+        // get movie images
+        if let imageUrl = gallery.posterPath {
+            let url = URL(string: fullURLImages + imageUrl)
+            cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "sw"))
+        }
+        
+        // get title movies
+        cell.titleLabel.text = gallery.originalTitle
+        
+        //get date
+        if let date = gallery.releaseDate {
+            cell.dateLabel.text = date
+        }
+        
         return cell
     }
     

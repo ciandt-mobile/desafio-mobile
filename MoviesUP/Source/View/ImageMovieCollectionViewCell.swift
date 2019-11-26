@@ -11,7 +11,12 @@ import UIKit
 class ImageMovieCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel! {
+        didSet{
+            self.dateLabel.layer.borderWidth = 1
+            self.dateLabel.layer.borderColor = UIColor.white.cgColor
+        }
+    }
     @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
