@@ -1,4 +1,28 @@
-# Desafio Mobile - 2019
+
+#Updade readme
+
+# O app
+
+O The Movie, é um aplicativo que mostra ao usuário os filmes populares que estão em cartaz nos cinemas.
+Para isso, utilizamos as consultas  no TMDB (https://www.themoviedb.org) -- API (https://www.themoviedb.org/documentation/api)
+onde será disponibilizadas as informações com o banner do filme, o nome do filme e a data de estreia. Com o Davi film, também é possível realizar consultas aplicando o filtro de filmes populares que em breve entrarão em cartaz e os que possuem as melhores notas. O usuário ainda conta com as principais informações do filme que deseja assistir, tais como imagem em alta resolução,
+Nome, Generos, Ano de estreia, Duração, Elenco principal e a Sinópse.
+
+
+## Libs, Frameworks e Soluções
+
+* Alamofire
+* AlamofireObjectMapper
+* RxSwift
+* RxCocoa
+* MVVM: Model - View - ViewModel
+* CocoaPods
+* Swift
+* TMDB
+
+
+# Desafio Mobile - 2019 
+
 
 Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para realizar o desafio 😀.
 
@@ -46,4 +70,5 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  
 # BOA SORTE!
  
+:wq
  
