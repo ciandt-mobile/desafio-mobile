@@ -1,8 +1,11 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/upcoming"
         android:icon="@drawable/ic_new_releases"
+        app:showAsAction="always"
         android:title="@string/movies_upcoming"/>
     <item android:id="@+id/popular"
         android:icon="@drawable/ic_popular"
+        app:showAsAction="always"
         android:title="@string/movies_popular" />
 </menu>

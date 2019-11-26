@@ -2,6 +2,7 @@ package com.adelannucci.movies.data
 
 import com.adelannucci.movies.data.remote.ConnectivityInterceptor
 import com.adelannucci.movies.data.remote.response.BaseResponse
+import com.adelannucci.movies.data.remote.response.MovieDetailsResponse
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -22,6 +23,18 @@ interface ApiTheMovieService {
         @Query(value = "page") location: Int,
         @Query(value = "language") languageCode: String = "en-US"
     ) : Call<BaseResponse>
+
+    @GET("movie/{id}")
+    fun getMovie(
+        @Path("id") id: Long,
+        @Query(value = "language") languageCode: String = "en-US"
+    ) : Call<MovieDetailsResponse>
+
+    @GET("movie/{id}/cast")
+    fun getCast(
+        @Path("id") id: Int,
+        @Query(value = "language") languageCode: String = "en-US"
+    ) : Call<MovieDetailsResponse>
 
     companion object {
         operator fun invoke(

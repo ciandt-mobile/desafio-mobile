@@ -17,18 +17,34 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        addFragmentTo(R.id.content_frame, createFragment())
         setSupportActionBar(toolbar)
     }
 
-    fun createViewModel(): MoviesViewModel {
+    override fun onResume() {
+        super.onResume()
+        createFragment()
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        createFragment()
+    }
+
+    private fun createViewModel(): MoviesViewModel {
         val apiService = ApiTheMovieService(ConnectivityInterceptorImpl(applicationContext))
         val dataSource = TheMovieDataSourceImpl(apiService)
         val repository = MoviesRepository(dataSource)
         return MoviesViewModel(repository, applicationContext)
     }
 
-    fun createFragment(): MoviesFragment {
-        return MoviesFragment.newInstance(createViewModel())
+    private fun createFragment() {
+        val fragment = MoviesFragment.newInstance(createViewModel())
+        addFragmentTo(R.id.content_frame, fragment)
+    }
+
+    fun updateTitle(title: String) {
+        supportActionBar?.let{
+            setTitle(title)
+        }
     }
 }

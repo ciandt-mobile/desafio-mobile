@@ -3,6 +3,7 @@ package com.adelannucci.movies.data.remote
 import android.util.Log
 import com.adelannucci.movies.data.ApiTheMovieService
 import com.adelannucci.movies.data.remote.response.BaseResponse
+import com.adelannucci.movies.data.remote.response.MovieDetailsResponse
 import com.adelannucci.movies.data.remote.response.MovieResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,7 +34,7 @@ class TheMovieDataSourceImpl(private val api: ApiTheMovieService) : TheMovieData
             ) {
 
                 if (response.isSuccessful) {
-                    response?.body()?.let { data ->
+                    response.body()?.let { data ->
                         Log.d(TAG, "page: ${data.page}")
                         Log.d(TAG, "pages: ${data.totalPages}")
                         Log.d(TAG, "results: ${data.totalResults}")
@@ -43,20 +44,36 @@ class TheMovieDataSourceImpl(private val api: ApiTheMovieService) : TheMovieData
                 } else {
                     failure()
                 }
-
             }
         })
+    }
 
+    override fun getMovie(
+        id: Long,
+        language: String,
+        success: (MovieDetailsResponse) -> Unit,
+        failure: () -> Unit
+    ) {
+        val fetched = api.getMovie(id, language)
+        fetched.enqueue(object : Callback<MovieDetailsResponse> {
+            override fun onFailure(call: Call<MovieDetailsResponse>, t: Throwable?) {
+                failure()
+            }
 
+            override fun onResponse(
+                call: Call<MovieDetailsResponse>?,
+                response: Response<MovieDetailsResponse>
+            ) {
+
+                if (response.isSuccessful) {
+                    response.body()?.let { data ->
+                        Log.d(TAG, "movie: ${data}")
+                        success(data)
+                    }
+                } else {
+                    failure()
+                }
+            }
+        })
     }
 }
-
-//override suspend fun fetch(page: Int, languageCode: String) {
-//    try {
-//        val fetched = api.getDiscoverMovie(page, languageCode)
-//        _downloadedMovies.postValue(fetched)
-//    } catch (e: NoConnectivityException) {
-//        Log.e("Connectivity", "No internet connection.", e)
-//    }
-//}
-//}

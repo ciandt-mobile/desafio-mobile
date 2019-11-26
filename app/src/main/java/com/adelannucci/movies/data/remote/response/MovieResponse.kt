@@ -17,7 +17,7 @@ data class MovieResponse(
     @SerializedName(value= "poster_path")
     val posterPath: String,
     @SerializedName(value= "id")
-    val remoteId: BigInteger,
+    val remoteId: Long,
     val adult: Boolean,
     @SerializedName(value= "backdrop_path")
     val backdropPath: String,

@@ -10,14 +10,16 @@ import com.adelannucci.movies.data.remote.response.MovieResponse
 
 class MoviesViewModel(val repository: TheMovieDataSource, val context: Context) {
 
+    var filter: FilterMoviesEnum = FilterMoviesEnum.UPCOMING
     val movies = ObservableArrayList<MovieResponse>()
     val loadingVisibility = ObservableBoolean(false)
     val message = ObservableField<String>()
 
-    fun load(filter: String) {
+    fun load(newFilter: FilterMoviesEnum) {
+        filter = newFilter
         loadingVisibility.set(true)
         message.set("")
-        repository.getMovies(filter,1, "en-US",
+        repository.getMovies(filter.value,1, "en-US",
             { items ->
                 movies.clear()
                 movies.addAll(items)
