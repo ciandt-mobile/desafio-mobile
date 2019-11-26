@@ -48,6 +48,10 @@ extension MoviesGalleryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Item selecionado!")
+//        
+//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "MoviesGallery", bundle: nil)
+//        let detailVC = mainStoryboard.instantiateViewController(withIdentifier: "movieDetail") as! MovieDetailViewController
+//        
+//        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

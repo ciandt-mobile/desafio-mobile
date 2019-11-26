@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="yAJ-1N-jRf" customClass="ImageMovieCollectionViewCell" customModule="MoviesUP" customModuleProvider="target">
+        <view contentMode="scaleToFill" restorationIdentifier="cell" id="yAJ-1N-jRf" customClass="ImageMovieCollectionViewCell" customModule="MoviesUP" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="375"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
