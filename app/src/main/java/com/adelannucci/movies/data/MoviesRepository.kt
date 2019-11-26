@@ -5,13 +5,14 @@ import com.adelannucci.movies.data.remote.response.MovieResponse
 
 class MoviesRepository(private val dataSource: TheMovieDataSource) : TheMovieDataSource {
 
-    override fun getMostPopularMovies(
+    override fun getMovies(
+        filter: String,
         page: Int,
         language: String,
         success: (List<MovieResponse>) -> Unit,
         failure: () -> Unit
     ) {
-        dataSource.getMostPopularMovies(page, language, success, failure)
+        dataSource.getMovies(filter, page, language, success, failure)
     }
 
 }

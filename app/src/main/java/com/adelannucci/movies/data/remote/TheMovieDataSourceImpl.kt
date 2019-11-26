@@ -14,13 +14,14 @@ class TheMovieDataSourceImpl(private val api: ApiTheMovieService) : TheMovieData
         val TAG: String = "TheMovieDataSourceImpl"
     }
 
-    override fun getMostPopularMovies(
+    override fun getMovies(
+        filter: String,
         page: Int,
-        languageCode: String,
+        language: String,
         success: (List<MovieResponse>) -> Unit,
         failure: () -> Unit
     ) {
-        val fetched = api.getDiscoverMovie(page, languageCode)
+        val fetched = api.getMovies(filter, page, language)
         fetched.enqueue(object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable?) {
                 failure()
@@ -32,11 +33,12 @@ class TheMovieDataSourceImpl(private val api: ApiTheMovieService) : TheMovieData
             ) {
 
                 if (response.isSuccessful) {
-                    response?.body()?.let {
-                        val data = it
-                        val movies = data.results
-                        Log.d(TAG, "onResponse list of Movies: $movies")
-                        success(movies)
+                    response?.body()?.let { data ->
+                        Log.d(TAG, "page: ${data.page}")
+                        Log.d(TAG, "pages: ${data.totalPages}")
+                        Log.d(TAG, "results: ${data.totalResults}")
+                        Log.d(TAG, "movies: ${data.results}")
+                        success(data.results)
                     }
                 } else {
                     failure()

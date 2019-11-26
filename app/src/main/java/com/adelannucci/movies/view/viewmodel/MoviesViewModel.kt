@@ -14,10 +14,10 @@ class MoviesViewModel(val repository: TheMovieDataSource, val context: Context) 
     val loadingVisibility = ObservableBoolean(false)
     val message = ObservableField<String>()
 
-    fun load() {
+    fun load(filter: String) {
         loadingVisibility.set(true)
         message.set("")
-        repository.getMostPopularMovies(1, "en-US",
+        repository.getMovies(filter,1, "en-US",
             { items ->
                 movies.clear()
                 movies.addAll(items)

@@ -4,7 +4,8 @@ import com.adelannucci.movies.data.remote.response.MovieResponse
 
 interface TheMovieDataSource {
 
-    fun getMostPopularMovies(
+    fun getMovies(
+        filter: String,
         page: Int,
         language: String,
         success: (List<MovieResponse>) -> Unit,

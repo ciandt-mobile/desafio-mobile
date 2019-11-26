@@ -31,6 +31,7 @@ class MoviesAdapter(var items: List<MovieResponse>) : RecyclerView.Adapter<Movie
 
         fun bind(movie: MovieResponse) {
             binding.movie = movie
+            binding.imageUrl = "https://image.tmdb.org/t/p/w300" + movie.posterPath
             binding.executePendingBindings()
         }
     }

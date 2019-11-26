@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/upcoming"
+        android:icon="@drawable/ic_new_releases"
+        android:title="@string/movies_upcoming"/>
+    <item android:id="@+id/popular"
+        android:icon="@drawable/ic_popular"
+        android:title="@string/movies_popular" />
+</menu>

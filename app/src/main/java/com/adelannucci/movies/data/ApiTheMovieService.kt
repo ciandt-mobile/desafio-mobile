@@ -8,14 +8,17 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 const val API_KEY = "132206372c1e05ef71d6942ade5881cd"
 const val BASE_URL = "https://api.themoviedb.org/3/"
+const val IMAGE_URL = "http://image.tmdb.org/t/p/w300/"
 interface ApiTheMovieService {
 
-    @GET("discover/movie")
-    fun getDiscoverMovie(
+    @GET("movie/{filter}")
+    fun getMovies(
+        @Path("filter") filter: String,
         @Query(value = "page") location: Int,
         @Query(value = "language") languageCode: String = "en-US"
     ) : Call<BaseResponse>

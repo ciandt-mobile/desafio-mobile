@@ -2,6 +2,12 @@ package com.adelannucci.movies.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 import java.math.BigInteger
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.Glide
+import android.databinding.BindingAdapter
+import android.util.Log
+import android.widget.ImageView
+
 
 data class MovieResponse(
     val popularity : Double,
@@ -28,4 +34,14 @@ data class MovieResponse(
     @SerializedName(value= "release_date")
     val releaseDate: String
 ) {
+
+    companion object {
+        @BindingAdapter("posterImage")
+        @JvmStatic
+        fun loadImage(view: ImageView, imageUrl: String) {
+            Glide.with(view.getContext())
+                .load(imageUrl).apply(RequestOptions().centerCrop())
+                .into(view)
+        }
+    }
 }
