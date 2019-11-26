@@ -1,0 +1,42 @@
+PODS:
+  - Alamofire (5.0.0-rc.3)
+  - BetterSegmentedControl (1.3.0)
+  - Kingfisher (5.10.1):
+    - Kingfisher/Core (= 5.10.1)
+  - Kingfisher/Core (5.10.1)
+  - Nimble (8.0.4)
+  - ObjectMapper (3.5.1)
+  - Quick (2.2.0)
+  - XCDYouTubeKit (2.8.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0.0-rc.1)
+  - BetterSegmentedControl (~> 1.2)
+  - Kingfisher (~> 5.0)
+  - Nimble
+  - ObjectMapper (~> 3.4)
+  - Quick
+  - XCDYouTubeKit (~> 2.8)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - BetterSegmentedControl
+    - Kingfisher
+    - Nimble
+    - ObjectMapper
+    - Quick
+    - XCDYouTubeKit
+
+SPEC CHECKSUMS:
+  Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  BetterSegmentedControl: 85d1b0343a09603b098884d527f550dfc8e6cdd9
+  Kingfisher: eb36b7dfcc78d60877051c92c119a2865972961a
+  Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
+  XCDYouTubeKit: 79baadb0560673a67c771eba45f83e353fd12c1f
+
+PODFILE CHECKSUM: 29533ae47efb52c8f9aef4c2b9e120e809ca0d26
+
+COCOAPODS: 1.8.4
