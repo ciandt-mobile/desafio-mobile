@@ -24,7 +24,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // MARK: - Private Methods
 
     private func setupWindow(_ windowScene: UIWindowScene) {
+        
+        self.window = UIWindow(windowScene: windowScene)
+        guard let window = self.window else { return }
 
+        let moviesView = MoviesWireframe().instantiateView()
+        let navigationView = UINavigationController(rootViewController: moviesView)
+        window.rootViewController = navigationView
+        window.makeKeyAndVisible()
     }
 }
 
