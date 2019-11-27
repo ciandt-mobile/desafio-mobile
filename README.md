@@ -52,7 +52,6 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  - Databind
  - Retrofit2
  - Glide
- -- Tive problemas para atualizar gradle com databind e nao tive tempo para corrigir, por isso nao consegui usar os
- componentes androix
- -- ficou faltando fazer a paginação e os testes unitários :(
+ - Tive problemas para atualizar gradle com databind e nao tive tempo para corrigir, por isso nao consegui usar os
+ componentes androix também ficou faltando fazer a paginação e os testes unitários :(
  
