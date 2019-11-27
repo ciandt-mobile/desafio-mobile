@@ -28,12 +28,12 @@ Como usuário, gostária de conseguir filtrar a lista de filmes populares para q
 
 Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do filme:
  - Uma imagem em alta resolução;
- - Nome do filme
- - Generos do filme
- - Ano de estreia
- - Duração
- - Elenco principal 
- - Sinópse
+ - Nome do filme;
+ - Generos do filme;
+ - Ano de estreia;
+ - Duração;
+ - Elenco principal ;
+ - Sinópse;
  
 ## Requisitos
  - O app deve ser desenvolvido para suportar as orientação Portrait e Landscape
@@ -45,8 +45,9 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  -- API (https://www.themoviedb.org/documentation/api)
  
 # BOA SORTE!
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Plano de ação desenvolvido
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Conclusão do desafio
 
 ## O App
 O Aplicativo desenvolvido contém:
