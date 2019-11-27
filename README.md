@@ -46,7 +46,7 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  
 # BOA SORTE!
 
-##Arquitetura
+## Arquitetura
  - Kotlin
  - MVVM
  - Databind
