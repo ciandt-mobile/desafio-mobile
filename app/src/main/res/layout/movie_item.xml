@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.adelannucci.movies.view.view.movies.MainActivity">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.adelannucci.movies.data.remote.response.MovieResponse" />
+
+        <variable
+            name="imageUrl"
+            type="java.lang.String" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/poster"
+            posterImage="@{imageUrl}"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop">
+        </android.support.v7.widget.AppCompatImageView>
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/MovieTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/poster"
+            android:background="@color/half_transparent"
+            android:gravity="center_vertical"
+            android:text="@{movie.title}" />
+
+        <TextView
+            android:id="@+id/release_date"
+            style="@style/MovieTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/poster"
+            android:background="@color/half_transparent"
+            android:gravity="center_vertical"
+            android:text="@{movie.releaseDate}" />
+
+    </RelativeLayout>
+
+
+</layout>
