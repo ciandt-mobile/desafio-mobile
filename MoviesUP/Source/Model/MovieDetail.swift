@@ -8,17 +8,16 @@
 
 struct MovieDetail: Decodable {
     var id: Int?
-    var posterPath: String?
+    var backdropPath: String?
     var originalTitle: String?
     var releaseDate: String?
     var runtimeValue: Int?
     var genres: [Genres]
-    //var
     var overview: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
-        case posterPath = "poster_path"
+        case backdropPath = "backdrop_path"
         case originalTitle = "original_title"
         case releaseDate = "release_date"
         case runtimeValue = "runtime"

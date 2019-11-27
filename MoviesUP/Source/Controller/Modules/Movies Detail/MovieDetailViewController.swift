@@ -31,8 +31,9 @@ class MovieDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupCollection()
         getMovieDetail()
+        setInteractivePopGesture()
     }
-    
+
     func setupCollection() {
         castCollectionView.delegate = self
         castCollectionView.dataSource = self
@@ -43,13 +44,30 @@ class MovieDetailViewController: UIViewController {
     
     func setUp() {
         guard let movieDetail = movieDetail else { return }
-//        self.imageView?.image =
+        
+        let url = URL(string: "https://image.tmdb.org/t/p/original/" + (movieDetail.backdropPath ?? ""))
+
+        self.imageView?.kf.setImage(with: url)
 
         self.titleLabel?.text = movieDetail.originalTitle
         self.descriptionLabel?.text = movieDetail.overview
         self.yearLabel?.text = movieDetail.releaseDate?.getDate()?.getYearString()
     
         self.timeAndCategoriesLabel?.text =  movieDetail.timeAndCategories
+    }
+}
+
+extension MovieDetailViewController: UIGestureRecognizerDelegate {
+    
+    func setInteractivePopGesture() {
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if let navigationController = navigationController, navigationController.viewControllers.count > 1 {
+            return true
+        }
+        return false
     }
 }
 

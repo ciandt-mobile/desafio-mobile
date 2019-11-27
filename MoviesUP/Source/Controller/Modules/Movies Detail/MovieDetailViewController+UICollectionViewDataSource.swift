@@ -36,15 +36,6 @@ extension MovieDetailViewController: UICollectionViewDataSource {
 //            let url = URL(string: fullURLImages + imageUrl)
 //            cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "sw"))
 //        }
-//
-//        // get title movies
-//        cell.titleLabel.text = gallery.originalTitle
-//
-//        //get date
-//        if let date = gallery.releaseDate {
-//            cell.dateLabel.text = date
-//        }
-        
         return cell
     }
 }
