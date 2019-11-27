@@ -4,7 +4,6 @@
     tools:context=".view.view.details.MovieDetailsActivity">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.adelannucci.movies.view.viewmodel.details.MovieDetailsViewModel" />
@@ -138,7 +137,7 @@
             <TextView
                 android:id="@+id/text_actors"
                 style="@style/MovieDetailContent"
-                android:text="@{viewModel.movie.originalTitle}" />
+                android:text="@{viewModel.casts}" />
 
             <View
                 android:layout_width="match_parent"

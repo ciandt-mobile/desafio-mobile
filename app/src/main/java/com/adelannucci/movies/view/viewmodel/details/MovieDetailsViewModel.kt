@@ -12,6 +12,7 @@ import com.bumptech.glide.request.RequestOptions
 class MovieDetailsViewModel(val repository: TheMovieDataSource, val view: ImageView) {
 
     val genres = ObservableField<String>()
+    val casts = ObservableField<String>()
     val runtime = ObservableField<String>()
     val movie = ObservableField<MovieDetailsResponse>()
     val loadingVisibility = ObservableBoolean(false)
@@ -20,13 +21,19 @@ class MovieDetailsViewModel(val repository: TheMovieDataSource, val view: ImageV
         loadingVisibility.set(true)
         repository.getMovie(id, "en-US",
             { item ->
-
                 val genresValue = item.genres?.map {
                     it.name
                 }.joinToString(
                     separator = ", ",
                     truncated = ""
                 )
+                val creditsValue = item.casts.cast?.map {
+                    it.name
+                }.joinToString(
+                    separator = ", ",
+                    truncated = ""
+                )
+                casts.set(creditsValue)
                 genres.set(genresValue)
                 runtime.set("${item.runtime} min")
                 loadImage("https://image.tmdb.org/t/p/w780" + item.backdropPath)

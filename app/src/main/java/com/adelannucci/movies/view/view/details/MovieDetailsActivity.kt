@@ -33,6 +33,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         viewModel = MovieDetailsViewModel(repository, findViewById(R.id.image_photo))
         activityMovieDetailsBinding?.viewModel = viewModel
+//        activityMovieDetailsBinding?.casts = viewModel?.casts.toString()
         id = intent.getLongExtra("MOVIE_ID", 1)
 
     }
@@ -40,6 +41,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModel?.load(id)
+
     }
 
 

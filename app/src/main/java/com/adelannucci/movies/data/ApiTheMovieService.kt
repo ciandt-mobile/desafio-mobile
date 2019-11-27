@@ -27,13 +27,8 @@ interface ApiTheMovieService {
     @GET("movie/{id}")
     fun getMovie(
         @Path("id") id: Long,
-        @Query(value = "language") languageCode: String = "en-US"
-    ) : Call<MovieDetailsResponse>
-
-    @GET("movie/{id}/cast")
-    fun getCast(
-        @Path("id") id: Int,
-        @Query(value = "language") languageCode: String = "en-US"
+        @Query(value = "language") languageCode: String = "en-US",
+        @Query(value = "append_to_response") append: String = "casts"
     ) : Call<MovieDetailsResponse>
 
     companion object {

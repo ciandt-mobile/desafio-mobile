@@ -24,5 +24,4 @@ class MoviesRepository(private val dataSource: TheMovieDataSource) : TheMovieDat
     ) {
         dataSource.getMovie(id, language, success, failure)
     }
-
 }

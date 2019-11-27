@@ -54,7 +54,7 @@ class TheMovieDataSourceImpl(private val api: ApiTheMovieService) : TheMovieData
         success: (MovieDetailsResponse) -> Unit,
         failure: () -> Unit
     ) {
-        val fetched = api.getMovie(id, language)
+        val fetched = api.getMovie(id, language, "casts")
         fetched.enqueue(object : Callback<MovieDetailsResponse> {
             override fun onFailure(call: Call<MovieDetailsResponse>, t: Throwable?) {
                 failure()
