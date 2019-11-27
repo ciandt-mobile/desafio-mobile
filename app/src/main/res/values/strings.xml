@@ -5,4 +5,12 @@
     <string name="movies_upcoming">Upcoming</string>
     <string name="movies_popular">Popular</string>
     <string name="title_activity_movie_details">MovieDetailsActivity</string>
+
+    <string name="text_overview">Overview</string>
+    <string name="text_genre">Genres</string>
+    <string name="text_actors">Actors</string>
+
+    <string name="fab_photo">Photo</string>
+    <string name="fab_trailer">Trailer</string>
+    <string name="fab_comment">Coments</string>
 </resources>

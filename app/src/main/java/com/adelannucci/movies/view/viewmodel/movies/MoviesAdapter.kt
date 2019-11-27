@@ -1,4 +1,4 @@
-package com.adelannucci.movies.view.viewmodel
+package com.adelannucci.movies.view.viewmodel.movies
 
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import com.adelannucci.movies.data.remote.response.MovieResponse
 import com.adelannucci.movies.databinding.MovieItemBinding
 import android.widget.Toast
-import com.adelannucci.movies.view.MovieDetailsActivity
+import com.adelannucci.movies.view.view.details.MovieDetailsActivity
+import com.adelannucci.movies.view.viewmodel.AdapterItemsContract
 
 
 class MoviesAdapter(var items: List<MovieResponse>) :
@@ -38,16 +39,14 @@ class MoviesAdapter(var items: List<MovieResponse>) :
 
         fun bind(movie: MovieResponse) {
             binding.movie = movie
-            binding.imageUrl = "https://image.tmdb.org/t/p/w300" + movie.posterPath
+            binding.imageUrl = "https://image.tmdb.org/t/p/w500" + movie.posterPath
             binding.executePendingBindings()
 
             itemView.setOnClickListener {
-//                val intent = Intent(it.context, MovieDetailsActivity::class.java).apply {
-//                    putExtra("MOVIE_ID", movie.remoteId)
-//                }
-//                it.context.startActivity(intent)
-                Toast.makeText(it.context, "Title name ${movie.title} \n Overview:${movie.overview}", Toast.LENGTH_LONG)
-                    .show()
+                val intent = Intent(it.context, MovieDetailsActivity::class.java).apply {
+                    putExtra("MOVIE_ID", movie.remoteId)
+                }
+                it.context.startActivity(intent)
             }
 
         }

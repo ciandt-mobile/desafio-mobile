@@ -1,33 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.MovieDetailsActivity">
+    tools:context=".view.view.details.MovieDetailsActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.adelannucci.movies.view.viewmodel.details.MovieDetailsViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="wrap_content">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <ProgressBar
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerInParent="true"
+            android:visibility="@{viewModel.loadingVisibility ?  View.VISIBLE : View.GONE}" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/image_photo"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="330dp"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop" />
 
-    </android.support.design.widget.AppBarLayout>
+        <LinearLayout
+            android:id="@+id/layout_movie_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_photo"
+            android:orientation="vertical">
 
-    <include layout="@layout/content_movie_details" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                android:orientation="vertical"
+                android:padding="8dp">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+                <ImageView
+                    android:id="@+id/iv_event"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_event_white_24dp" />
 
-</android.support.design.widget.CoordinatorLayout>
+                <TextView
+                    android:id="@+id/text_release_date"
+                    style="@style/MovieDetailList"
+                    android:layout_alignLeft="@+id/iv_event"
+                    android:layout_marginLeft="16dp"
+                    android:text="@={viewModel.movie.releaseDate}" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/iv_schedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_schedule_white_24dp" />
+
+                <TextView
+                    android:id="@+id/text_duration"
+                    style="@style/MovieDetailList"
+                    android:layout_alignLeft="@+id/iv_schedule"
+                    android:layout_marginLeft="16dp"
+                    android:text="@={viewModel.runtime}" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                style="@style/MovieDetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/movies_popular" />
+
+            <TextView
+                android:id="@+id/text_description"
+                style="@style/MovieDetailContent"
+                android:layout_marginBottom="0dp"
+                android:paddingBottom="8dp"
+                android:text="@={viewModel.movie.overview}" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                style="@style/MovieDetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_genre" />
+
+            <TextView
+                android:id="@+id/text_genres"
+                style="@style/MovieDetailContent"
+                android:text="@{viewModel.genres}" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                style="@style/MovieDetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_actors" />
+
+            <TextView
+                android:id="@+id/text_actors"
+                style="@style/MovieDetailContent"
+                android:text="@{viewModel.movie.originalTitle}" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_title"
+            style="@style/MovieTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/layout_movie_content"
+            android:background="@color/half_transparent"
+            android:gravity="center_vertical"
+            android:text="@{viewModel.movie.title}" />
+
+        <ProgressBar
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerInParent="true"
+            android:visibility="@{viewModel.loadingVisibility ?  View.VISIBLE : View.GONE}" />
+
+    </RelativeLayout>
+</layout>

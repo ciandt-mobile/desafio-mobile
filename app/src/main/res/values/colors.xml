@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="primary_light">#C5CAE9</color>
+    <color name="accent">#FF4081</color>
+    <color name="accent_light">#E76999</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="text">#FFFFFF</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#B6B6B6</color>
+    <color name="white_pressed">#f1f1f1</color>
+    <color name="fab_overlay">#eef1f1f1</color>
+
+    <integer-array name="colors">
+        <item>@color/primary</item>
+        <item>@color/accent</item>
+    </integer-array>
+
+    <color name="half_transparent">#55000000</color>
+
+    <color name="black_transparent">#FF212121</color>
+
+    <array name="progress_colors">
+        <item>@color/primary</item>
+        <item>@color/accent</item>
+    </array>
+
+    <color name="good_bomber">#fe81ab</color>
+    <color name="normal_bomber">#b677d7</color>
+    <color name="bad_bomber">#6372c2</color>
 </resources>

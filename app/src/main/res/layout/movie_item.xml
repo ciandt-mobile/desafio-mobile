@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.adelannucci.movies.MainActivity">
+    tools:context="com.adelannucci.movies.view.view.movies.MainActivity">
 
     <data>
 
@@ -17,70 +15,41 @@
     </data>
 
     <RelativeLayout
-        android:id="@+id/rellay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="32dp"
-        android:paddingBottom="32dp">
+        android:padding="8dp">
 
-        <RelativeLayout
-            android:id="@+id/imgLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp">
-
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/poster"
-                android:layout_width="200dp"
-                android:layout_height="300dp"
-                android:layout_margin="9dp"
-                android:adjustViewBounds="true"
-                android:padding="3dp"
-                android:scaleType="centerInside"
-                posterImage="@{imageUrl}">
-
-            </android.support.v7.widget.AppCompatImageView>
-        </RelativeLayout>
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/poster"
+            posterImage="@{imageUrl}"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop">
+        </android.support.v7.widget.AppCompatImageView>
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
+            style="@style/MovieTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imgLayout"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:text="@{movie.title}"
-            android:textSize="20sp" />
+            android:layout_alignTop="@+id/poster"
+            android:background="@color/half_transparent"
+            android:gravity="center_vertical"
+            android:text="@{movie.title}" />
 
         <TextView
-            android:id="@+id/releaseDate"
-            android:layout_width="wrap_content"
+            android:id="@+id/release_date"
+            style="@style/MovieTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
-            android:layout_centerHorizontal="true"
-            android:text="@{movie.releaseDate}"
-            android:textAllCaps="true"
-            android:textSize="15sp" />
+            android:layout_alignBottom="@+id/poster"
+            android:background="@color/half_transparent"
+            android:gravity="center_vertical"
+            android:text="@{movie.releaseDate}" />
 
     </RelativeLayout>
 
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent">-->
 
-    <!--        <android.support.v7.widget.AppCompatImageView-->
-    <!--            android:layout_width="80dp"-->
-    <!--            android:layout_height="110dp"-->
-    <!--            android:adjustViewBounds="true"-->
-    <!--            android:contentDescription="@null"-->
-    <!--            app:imageFromUrl="@{`http://image.tmdb.org/t/p/w300` + movie.posterPath}" />-->
-
-    <!--        <TextView-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="48dp"-->
-    <!--            android:gravity="center_vertical"-->
-    <!--            android:text="@{movie.title}" />-->
-
-    <!--    </LinearLayout>-->
-    </layout>
+</layout>
