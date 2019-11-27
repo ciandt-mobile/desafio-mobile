@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="movie"
+            type="br.com.josericardooliveira.desafiomobile.model.Movie" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/movie_banner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:picassoLoad="@{movie.bannerUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/movie_banner" />
+
+        <TextView
+            android:id="@+id/movie_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/movie_date_background"
+            android:paddingStart="4dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="4dp"
+            android:text="@{movie.formattedDate()}"
+            android:textColor="?android:attr/textColorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/movie_banner"
+            app:layout_constraintEnd_toEndOf="@+id/movie_banner"
+            app:layout_constraintStart_toStartOf="@+id/movie_banner"
+            tools:text="@tools:sample/date/ddmmyy" />
+
+        <TextView
+            android:id="@+id/movie_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@{movie.name}"
+            app:layout_constraintEnd_toEndOf="@+id/movie_banner"
+            app:layout_constraintStart_toStartOf="@+id/movie_banner"
+            app:layout_constraintTop_toBottomOf="@+id/movie_banner"
+            tools:text="@tools:sample/lorem/random" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
