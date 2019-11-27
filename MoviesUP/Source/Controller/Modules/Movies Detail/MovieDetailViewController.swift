@@ -32,12 +32,32 @@ class MovieDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setcustomBackImage()
         setupCollection()
         setInteractivePopGesture()
 
         getMovieDetail()
         getCredits()
+    }
+    
+     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated:true)
+    }
+    
+    func setcustomBackImage() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back-yellow")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back-yellow")
     }
 
     func setupCollection() {
