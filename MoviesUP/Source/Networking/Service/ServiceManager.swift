@@ -72,4 +72,22 @@ class ServiceManager {
             }
         }
     }
+
+    func getCredits(movieId: Int, completion: @escaping ([Cast]?, Error?) -> Void) {
+
+        let fullUrl = "\(baseURL)\(movieId)/credits"
+
+        AF.request(fullUrl, parameters: params).responseData { (response) in
+            guard let data = response.data else { return }
+            
+            do {
+                let decoder = JSONDecoder()
+                let dataMovies = try decoder.decode(DataCast.self, from: data)
+                completion(dataMovies.cast, nil)
+            } catch let error {
+                completion(nil, error)
+                print("Error", error)
+            }
+        }
+    }
 }

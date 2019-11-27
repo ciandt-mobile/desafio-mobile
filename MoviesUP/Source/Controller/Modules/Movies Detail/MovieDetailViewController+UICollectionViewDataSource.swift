@@ -16,26 +16,26 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-        //return galleryMovies.count
+        return cast.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = castCollectionView.dequeueReusableCell(withReuseIdentifier: "castCell", for: indexPath) as? ImageCastCollectionViewCell else {
             return UICollectionViewCell()
         }
+
+        //setup image in cell
+        let cast = self.cast[indexPath.row]
+        let fullURLImages = "https://image.tmdb.org/t/p/w185_and_h278_bestv2"
         
-        cell.layer.cornerRadius = 5
-        
-//        //setup image in cell
-//        let gallery = galleryMovies[indexPath.row]
-//        let fullURLImages = "https://image.tmdb.org/t/p/w185_and_h278_bestv2"
-//
-//        // get movie images
-//        if let imageUrl = gallery.posterPath {
-//            let url = URL(string: fullURLImages + imageUrl)
-//            cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "sw"))
-//        }
+        cell.nameLabel?.text = cast.name
+        cell.characterNameLabel?.text = cast.character
+
+        // get movie images
+        if let imageUrl = cast.profilePath {
+            let url = URL(string: fullURLImages + imageUrl)
+            cell.imageView.kf.setImage(with: url)
+        }
         return cell
     }
 }

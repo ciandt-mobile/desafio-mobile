@@ -10,6 +10,11 @@ struct Genres: Decodable {
     var id: Int?
     var name: String?
     
+    init(id: Int?, name: String?) {
+        self.id = id
+        self.name = name
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"

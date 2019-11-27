@@ -10,37 +10,28 @@ import UIKit
 import Alamofire
 import Kingfisher
 
-enum Movies {
-    case upcoming
-    case popular
+enum TypeMovies: Int {
+    case upcoming = 0
+    case popular = 1
+    
+    var title: String {
+        switch self {
+        case .upcoming:
+            return "Upcoming Movies"
+        case .popular:
+            return "Popular Movies"
+        }
+    }
 }
 
 class MoviesGalleryViewController: UIViewController {
     
     @IBOutlet weak var segmentedControlTitle: UISegmentedControl!{
         didSet {
-            segmentedControlTitle.backgroundColor = UIColor.black
-            segmentedControlTitle.layer.borderColor = UIColor.white.cgColor
-            if #available(iOS 13.0, *) {
-                segmentedControlTitle.selectedSegmentTintColor = UIColor.white
-            } else {
-                // Fallback on earlier versions
-            }
-            segmentedControlTitle.layer.borderWidth = 1
-            
-            let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-            segmentedControlTitle.setTitleTextAttributes(titleTextAttributes, for:.normal)
-            
-            let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
-            segmentedControlTitle.setTitleTextAttributes(titleTextAttributes1, for:.selected)
-            galleryCollectionView.reloadData()
+           setupSegmentedControl()
         }
     }
-    @IBOutlet weak var titleLabel: UILabel! {
-        didSet{
-            titleLabel.text =  "Upcoming Movies"
-        }
-    }
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var galleryCollectionView: UICollectionView!
     
     var galleryMovies: [GalleryMovies] = [] {
@@ -51,21 +42,61 @@ class MoviesGalleryViewController: UIViewController {
         }
     }
     
-    var typeMovies: Movies?
+    var typeMovies: TypeMovies = .upcoming {
+        didSet {
+            titleLabel.text = typeMovies.title
+            if typeMovies == .upcoming {
+                parseGalleryMoviesUpcoming()
+            } else {
+                parseGalleryMoviesPopular()
+            }
+        }
+    }
+
+    var upcomingMovies: [GalleryMovies] = [] {
+        didSet {
+            self.galleryMovies = upcomingMovies
+        }
+    }
+
+    var popularMovies: [GalleryMovies] = [] {
+        didSet {
+            self.galleryMovies = popularMovies
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupCollection()
-        
-        switch segmentedControlTitle.selectedSegmentIndex {
-        case 0:
-            parseGalleryMoviesUpcoming()
-        case 1:
-            parseGalleryMoviesPopular()
-        default:
-            break
+
+        getData()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        self.galleryCollectionView.reloadData()
+    }
+    
+    func getData() {
+        titleLabel.text = typeMovies.title
+        parseGalleryMoviesUpcoming()
+    }
+    
+    func setupSegmentedControl() {
+        segmentedControlTitle.backgroundColor = UIColor.black
+        segmentedControlTitle.layer.borderColor = UIColor.white.cgColor
+        if #available(iOS 13.0, *) {
+            segmentedControlTitle.selectedSegmentTintColor = UIColor.white
         }
+        segmentedControlTitle.layer.borderWidth = 1
+        
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        segmentedControlTitle.setTitleTextAttributes(titleTextAttributes, for:.normal)
+        
+        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        segmentedControlTitle.setTitleTextAttributes(titleTextAttributes1, for:.selected)
+        galleryCollectionView.reloadData()
     }
     
     func setupCollection() {
@@ -77,17 +108,7 @@ class MoviesGalleryViewController: UIViewController {
     }
     
     @IBAction func indexChanged(_ sender: Any) {
-        switch segmentedControlTitle.selectedSegmentIndex {
-        case 0:
-            titleLabel.text =  "Upcoming Movies"
-            self.typeMovies = .upcoming
-            parseGalleryMoviesUpcoming()
-        case 1:
-            titleLabel.text =  "Popular Movies"
-            self.typeMovies = .popular
-            parseGalleryMoviesPopular()
-        default:
-            break
-        }
+        guard let typeMovies = TypeMovies(rawValue: segmentedControlTitle.selectedSegmentIndex) else { return }
+        self.typeMovies = typeMovies
     }
 }

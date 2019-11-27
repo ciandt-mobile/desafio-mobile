@@ -29,15 +29,11 @@ extension Date {
         return components.year?.description
     }
 
-    static func getFormattedDate(string: String , formatter:String) -> String {
+    func getFormattedDate() -> String {
         let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy/MM/dd"
-
+        dateFormatterGet.dateFormat = "yyyy-mm-dd"
         let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "MMM/dd/yyyy"
-
-        let date: Date? = dateFormatterGet.date(from: "2018-02-01T19:10:04+00:00")
-        print("Date",dateFormatterPrint.string(from: date!)) // Feb 01,2018
-        return dateFormatterPrint.string(from: date!);
+        dateFormatterPrint.dateFormat = "dd/mm/yy"
+        return dateFormatterPrint.string(from: self)
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class ImageMovieCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var imageView: UIImageView!{
+    @IBOutlet weak var imageView: UIImageView! {
         didSet{
             self.imageView.addGradientBackground(firstColor: .clear, secondColor: .black)
         }
@@ -23,9 +23,4 @@ class ImageMovieCollectionViewCell: UICollectionViewCell {
         }
     }
     @IBOutlet weak var titleLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 }

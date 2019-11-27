@@ -12,8 +12,10 @@ struct MovieDetail: Decodable {
     var originalTitle: String?
     var releaseDate: String?
     var runtimeValue: Int?
-    var genres: [Genres]
+    var genres: [Genres] = []
     var overview: String?
+    
+    init() {}
     
     enum CodingKeys: String, CodingKey {
         case id = "id"

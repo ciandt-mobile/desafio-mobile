@@ -10,7 +10,11 @@ import UIKit
 
 class ImageCastCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView! {
+        didSet{
+            self.imageView.addGradientBackground(firstColor: .clear, secondColor: .black)
+        }
+    }
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var characterNameLabel: UILabel!
 }

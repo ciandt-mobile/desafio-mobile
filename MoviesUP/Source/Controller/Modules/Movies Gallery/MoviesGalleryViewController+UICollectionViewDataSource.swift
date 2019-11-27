@@ -40,9 +40,10 @@ extension MoviesGalleryViewController: UICollectionViewDataSource {
         cell.titleLabel.text = gallery.originalTitle
         
         //get date
-        if let date = gallery.releaseDate {
+        if let date = gallery.releaseDate?.getDate()?.getFormattedDate() {
             cell.dateLabel.text = date
         }
+        
         
         return cell
     }
@@ -50,7 +51,7 @@ extension MoviesGalleryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "MoviesGallery", bundle: nil)
-        let detailVC = mainStoryboard.instantiateViewController(withIdentifier: "movieDetail") as! MovieDetailViewController
+        guard let detailVC = mainStoryboard.instantiateViewController(withIdentifier: "movieDetail") as? MovieDetailViewController else { return }
         detailVC.movieID = galleryMovies[indexPath.row].id
         self.navigationController?.pushViewController(detailVC, animated: true)
     }

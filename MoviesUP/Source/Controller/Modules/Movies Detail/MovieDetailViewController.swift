@@ -15,10 +15,15 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var timeAndCategoriesLabel: UILabel!
     @IBOutlet weak var castCollectionView: UICollectionView!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     var image = UIImage()
     var movieID: Int?
+    var cast: [Cast] = [] {
+        didSet {
+            castCollectionView?.reloadData()
+        }
+    }
     var movieDetail: MovieDetail? {
         didSet {
             setUp()
@@ -28,10 +33,11 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         setupCollection()
-        getMovieDetail()
         setInteractivePopGesture()
+
+        getMovieDetail()
+        getCredits()
     }
 
     func setupCollection() {
@@ -50,7 +56,7 @@ class MovieDetailViewController: UIViewController {
         self.imageView?.kf.setImage(with: url)
 
         self.titleLabel?.text = movieDetail.originalTitle
-        self.descriptionLabel?.text = movieDetail.overview
+        self.descriptionTextView?.text = movieDetail.overview
         self.yearLabel?.text = movieDetail.releaseDate?.getDate()?.getYearString()
     
         self.timeAndCategoriesLabel?.text =  movieDetail.timeAndCategories
@@ -80,6 +86,17 @@ extension MovieDetailViewController {
                 return
             }
             self.movieDetail = detail
+        }
+    }
+    
+    func getCredits() {
+        guard let movieID = movieID else { return }
+
+        ServiceManager().getCredits(movieId: movieID) { (cast, error) in
+            guard let cast = cast else {
+                return
+            }
+            self.cast = cast
         }
     }
 }

@@ -16,8 +16,14 @@ extension MoviesGalleryViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: collectionView.frame.width/3 - 8, height: collectionView.frame.height/2.5)
         
+        var qtdItems: CGFloat = 3
+        if UIScreen.main.isLandscape {
+            qtdItems = 5
+        }
+        let width = collectionView.frame.width/qtdItems - 8
+        let cellSize = CGSize(width: width, height: width * 1.85)
+
         return cellSize
     }
     
@@ -27,5 +33,11 @@ extension MoviesGalleryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 12
+    }
+}
+
+extension UIScreen {
+    var isLandscape: Bool {
+        return self.bounds.width > self.bounds.height
     }
 }
