@@ -10,7 +10,7 @@ import UIKit
 
 extension MoviesGalleryViewController {
     
-    //MARK: Parse Object
+    //MARK: Parse Object Movies Upcoming/Popular
     func parseGalleryMoviesUpcoming() {
         self.galleryMovies = upcomingMovies
 

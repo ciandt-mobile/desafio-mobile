@@ -29,6 +29,9 @@
 		50D8780D238E280300BB5DD9 /* DataCast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D8780C238E280300BB5DD9 /* DataCast.swift */; };
 		50D87815238E475C00BB5DD9 /* MoviesUPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D87814238E475C00BB5DD9 /* MoviesUPTests.swift */; };
 		50D8781D238E4AE800BB5DD9 /* MovieDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D8781C238E4AE800BB5DD9 /* MovieDetailTests.swift */; };
+		50D8781F238E506F00BB5DD9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 50D8781E238E506F00BB5DD9 /* README.md */; };
+		50D87821238E51BD00BB5DD9 /* MovieDetailViewController+UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D87820238E51BD00BB5DD9 /* MovieDetailViewController+UIGestureRecognizerDelegate.swift */; };
+		50D87823238E522400BB5DD9 /* MovieDetailViewController+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D87822238E522400BB5DD9 /* MovieDetailViewController+Request.swift */; };
 		50F1612423899A310086F59D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1612323899A310086F59D /* AppDelegate.swift */; };
 		50F1612923899A310086F59D /* MoviesGallery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F1612723899A310086F59D /* MoviesGallery.storyboard */; };
 		50F1612E23899A340086F59D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F1612C23899A340086F59D /* LaunchScreen.storyboard */; };
@@ -73,6 +76,9 @@
 		50D87814238E475C00BB5DD9 /* MoviesUPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesUPTests.swift; sourceTree = "<group>"; };
 		50D87816238E475C00BB5DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50D8781C238E4AE800BB5DD9 /* MovieDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailTests.swift; sourceTree = "<group>"; };
+		50D8781E238E506F00BB5DD9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		50D87820238E51BD00BB5DD9 /* MovieDetailViewController+UIGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDetailViewController+UIGestureRecognizerDelegate.swift"; sourceTree = "<group>"; };
+		50D87822238E522400BB5DD9 /* MovieDetailViewController+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDetailViewController+Request.swift"; sourceTree = "<group>"; };
 		50E674EA238AF108003648E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MoviesUP/Info.plist; sourceTree = SOURCE_ROOT; };
 		50F1612023899A310086F59D /* MoviesUP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesUP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F1612323899A310086F59D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -167,18 +173,12 @@
 			isa = PBXGroup;
 			children = (
 				5001CBC5238CB70D006E565B /* MovieDetailViewController.swift */,
+				50D87822238E522400BB5DD9 /* MovieDetailViewController+Request.swift */,
 				50D87802238DB6F700BB5DD9 /* MovieDetailViewController+UICollectionViewDataSource.swift */,
 				50D87800238DB65C00BB5DD9 /* MovieDetailViewController+UICollectionViewDelegate.swift */,
+				50D87820238E51BD00BB5DD9 /* MovieDetailViewController+UIGestureRecognizerDelegate.swift */,
 			);
 			path = "Movies Detail";
-			sourceTree = "<group>";
-		};
-		50C8EE332389A76300F57C94 /* SupportingFiles */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = SupportingFiles;
-			path = ../SupportingFiles;
 			sourceTree = "<group>";
 		};
 		50C8EE342389A77C00F57C94 /* Resources */ = {
@@ -195,11 +195,11 @@
 			isa = PBXGroup;
 			children = (
 				5001CBBF238C6850006E565B /* Extensions */,
-				5001CBB5238B06B9006E565B /* Networking */,
+				50C8EE3A2389A84300F57C94 /* Infrastructure */,
 				50C8EE392389A82300F57C94 /* Model */,
 				50C8EE382389A81700F57C94 /* View */,
 				50C8EE372389A80D00F57C94 /* Controller */,
-				50C8EE3A2389A84300F57C94 /* Infrastructure */,
+				5001CBB5238B06B9006E565B /* Networking */,
 			);
 			name = Source;
 			path = ../Source;
@@ -275,6 +275,7 @@
 		50F1611723899A310086F59D = {
 			isa = PBXGroup;
 			children = (
+				50D8781E238E506F00BB5DD9 /* README.md */,
 				50F1612223899A310086F59D /* MoviesUP */,
 				50D87813238E475C00BB5DD9 /* MoviesUPTests */,
 				50F1612123899A310086F59D /* Products */,
@@ -298,7 +299,6 @@
 				50E674EA238AF108003648E9 /* Info.plist */,
 				50C8EE352389A78B00F57C94 /* Source */,
 				50C8EE342389A77C00F57C94 /* Resources */,
-				50C8EE332389A76300F57C94 /* SupportingFiles */,
 			);
 			path = MoviesUP;
 			sourceTree = "<group>";
@@ -386,6 +386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50D8781F238E506F00BB5DD9 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,8 +467,10 @@
 				50D87803238DB6F700BB5DD9 /* MovieDetailViewController+UICollectionViewDataSource.swift in Sources */,
 				50D877FD238DB3FC00BB5DD9 /* ImageCastCollectionViewCell.swift in Sources */,
 				50FDF8BC238AF6B800D70CB5 /* ImageMovieCollectionViewCell.swift in Sources */,
+				50D87821238E51BD00BB5DD9 /* MovieDetailViewController+UIGestureRecognizerDelegate.swift in Sources */,
 				5001CBC1238C6922006E565B /* DateFormatter.swift in Sources */,
 				5001CBBE238C630C006E565B /* MoviesGalleryViewController+Request.swift in Sources */,
+				50D87823238E522400BB5DD9 /* MovieDetailViewController+Request.swift in Sources */,
 				50C8EE3C2389ACD100F57C94 /* MoviesGalleryViewController.swift in Sources */,
 				50D8780B238E27E500BB5DD9 /* Cast.swift in Sources */,
 				50D8780D238E280300BB5DD9 /* DataCast.swift in Sources */,

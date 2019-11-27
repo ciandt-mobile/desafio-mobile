@@ -10,6 +10,7 @@ import UIKit
 
 extension UIView {
 
+    //MARK: Extensions UIView
     func addGradientBackground(firstColor: UIColor, secondColor: UIColor) {
         clipsToBounds = true
         let gradientLayer = CAGradientLayer()

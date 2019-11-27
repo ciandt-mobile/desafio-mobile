@@ -15,12 +15,13 @@ class ImageMovieCollectionViewCell: UICollectionViewCell {
             self.imageView.addGradientBackground(firstColor: .clear, secondColor: .black)
         }
     }
-    @IBOutlet weak var dateLabel: UILabel! {
+    @IBOutlet weak var viewDate: UIView! {
         didSet{
-            self.dateLabel.layer.borderWidth = 1
-            self.dateLabel.layer.borderColor = UIColor.white.cgColor
-            self.dateLabel.layer.cornerRadius = 5
+            self.viewDate.layer.borderWidth = 1
+            self.viewDate.layer.borderColor = UIColor.white.cgColor
+            self.viewDate.layer.cornerRadius = 5
         }
     }
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
 }
