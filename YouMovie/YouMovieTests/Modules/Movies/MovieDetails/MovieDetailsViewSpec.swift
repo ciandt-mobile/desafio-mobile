@@ -25,7 +25,7 @@ class MovieDetailsViewSpec: QuickSpec {
             sut = MovieDetailsView(nibName: String(describing: MovieDetailsView.self), bundle: nil)
             sut.presenter = presenter
 
-            UIApplication.shared.keyWindow?.rootViewController = sut
+            UIApplication.shared.windows.first?.rootViewController = sut
         }
 
         afterEach {

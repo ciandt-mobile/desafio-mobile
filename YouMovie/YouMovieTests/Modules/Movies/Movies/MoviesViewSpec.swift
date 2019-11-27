@@ -25,7 +25,7 @@ class MoviesViewSpec: QuickSpec {
             sut = MoviesView(nibName: String(describing: MoviesView.self), bundle: nil)
             sut.presenter = presenter
 
-            UIApplication.shared.keyWindow?.rootViewController = sut
+            UIApplication.shared.windows.first?.rootViewController = sut
         }
 
         afterEach {
@@ -113,7 +113,7 @@ class MoviesViewSpec: QuickSpec {
                 sut.viewDidLoad()
                 sut.didFailedMovies(localizedError: "MoviesTest")
 
-                let rootView = UIApplication.shared.keyWindow?.rootViewController
+                let rootView = UIApplication.shared.windows.first?.rootViewController
                 expect(rootView?.presentedViewController?.isKind(of: UIAlertController.self)).toEventually(beTrue())
             }
         }

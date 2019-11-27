@@ -30,7 +30,7 @@ class MovieDetailsWireframeSpec: QuickSpec {
 
             it("Should View not be nil") {
                 let navigationView = UINavigationController(rootViewController: UIViewController())
-                UIApplication.shared.keyWindow?.rootViewController = navigationView
+                UIApplication.shared.windows.first?.rootViewController = navigationView
 
                 let view = sut.instantiateView(with: MovieEntity())
                 navigationView.pushViewController(view, animated: false)
@@ -39,7 +39,7 @@ class MovieDetailsWireframeSpec: QuickSpec {
 
             it("Should Presenter not be nil") {
                 let navigationView = UINavigationController(rootViewController: UIViewController())
-                UIApplication.shared.keyWindow?.rootViewController = navigationView
+                UIApplication.shared.windows.first?.rootViewController = navigationView
 
                 let view = sut.instantiateView(with: MovieEntity())
                 navigationView.pushViewController(view, animated: false)
@@ -50,7 +50,7 @@ class MovieDetailsWireframeSpec: QuickSpec {
 
             it("Should Interactor not be nil") {
                 let navigationView = UINavigationController(rootViewController: UIViewController())
-                UIApplication.shared.keyWindow?.rootViewController = navigationView
+                UIApplication.shared.windows.first?.rootViewController = navigationView
 
                 let view = sut.instantiateView(with: MovieEntity())
                 navigationView.pushViewController(view, animated: false)
@@ -62,7 +62,7 @@ class MovieDetailsWireframeSpec: QuickSpec {
 
             it("Should Interactor Output not be nil") {
                 let navigationView = UINavigationController(rootViewController: UIViewController())
-                UIApplication.shared.keyWindow?.rootViewController = navigationView
+                UIApplication.shared.windows.first?.rootViewController = navigationView
 
                 let view = sut.instantiateView(with: MovieEntity())
                 navigationView.pushViewController(view, animated: false)
@@ -77,7 +77,7 @@ class MovieDetailsWireframeSpec: QuickSpec {
 
             it("Should View push AVPlayerViewController") {
                 let navigationView = UINavigationController(rootViewController: UIViewController())
-                UIApplication.shared.keyWindow?.rootViewController = navigationView
+                UIApplication.shared.windows.first?.rootViewController = navigationView
 
                 let view = sut.instantiateView(with: MovieEntity())
                 navigationView.pushViewController(view, animated: false)
@@ -88,7 +88,7 @@ class MovieDetailsWireframeSpec: QuickSpec {
 
             it("Should View push MovieDetails") {
                 let navigationView = UINavigationController(rootViewController: UIViewController())
-                UIApplication.shared.keyWindow?.rootViewController = navigationView
+                UIApplication.shared.windows.first?.rootViewController = navigationView
 
                 let view = sut.instantiateView(with: MovieEntity())
                 navigationView.pushViewController(view, animated: false)
@@ -99,7 +99,7 @@ class MovieDetailsWireframeSpec: QuickSpec {
 
             it("Should MovieDetails be deallocated") {
                 let navigationView = UINavigationController(rootViewController: UIViewController())
-                UIApplication.shared.keyWindow?.rootViewController = navigationView
+                UIApplication.shared.windows.first?.rootViewController = navigationView
 
                 let view = sut.instantiateView(with: MovieEntity())
                 navigationView.pushViewController(view, animated: false)
