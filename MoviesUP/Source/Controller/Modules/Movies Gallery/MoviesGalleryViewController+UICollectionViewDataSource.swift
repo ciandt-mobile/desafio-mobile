@@ -48,10 +48,10 @@ extension MoviesGalleryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        
-//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "MoviesGallery", bundle: nil)
-//        let detailVC = mainStoryboard.instantiateViewController(withIdentifier: "movieDetail") as! MovieDetailViewController
-//        
-//        self.navigationController?.pushViewController(detailVC, animated: true)
+        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "MoviesGallery", bundle: nil)
+        let detailVC = mainStoryboard.instantiateViewController(withIdentifier: "movieDetail") as! MovieDetailViewController
+        detailVC.movieID = galleryMovies[indexPath.row].id
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

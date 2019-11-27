@@ -7,11 +7,13 @@
 //
 
 struct GalleryMovies: Decodable {
+    var id: Int?
     var originalTitle: String?
     var posterPath: String?
     var releaseDate: String?
     
     enum CodingKeys: String, CodingKey {
+        case id = "id"
         case originalTitle = "original_title"
         case posterPath = "poster_path"
         case releaseDate = "release_date"

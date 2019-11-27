@@ -17,7 +17,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Et0-vS-upu">
                     <rect key="frame" x="0.0" y="0.0" width="250" height="375"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sw" translatesAutoresizingMaskIntoConstraints="NO" id="ejL-Vd-FHx">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ejL-Vd-FHx">
                             <rect key="frame" x="0.0" y="0.0" width="250" height="335"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/00/00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="l6A-N6-TNw">
@@ -74,7 +74,4 @@
             <point key="canvasLocation" x="-213" y="-209"/>
         </view>
     </objects>
-    <resources>
-        <image name="sw" width="940" height="1391"/>
-    </resources>
 </document>

@@ -8,8 +8,28 @@
 
 import Foundation
 
+extension String {
+
+    func getDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-mm-dd"
+        return dateFormatter.date(from: self)
+    }
+}
+
 extension Date {
-    static func getFormattedDate(string: String , formatter:String) -> String{
+    
+    var components: DateComponents {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day, .month, .year], from: self)
+        return components
+    }
+    
+    func getYearString() -> String? {
+        return components.year?.description
+    }
+
+    static func getFormattedDate(string: String , formatter:String) -> String {
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy/MM/dd"
 
