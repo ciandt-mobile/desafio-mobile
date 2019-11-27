@@ -63,10 +63,11 @@ O Aplicativo desenvolvido contém:
 
 ## Desenvolvimento
 Conforme requisito do usuário o app apresenta o seguinte:
+
 1º Tela de galeria de filmes com banner, nome e data
 - Filtro de seleção por filmes: upcoming e popular
 
- 2º  Tela contendo os detalhes do filme como: 
+2º  Tela contendo os detalhes do filme como: 
 - Uma imagem em alta resolução;
 - Nome do filme
 - Generos do filme
