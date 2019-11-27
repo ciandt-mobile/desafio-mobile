@@ -48,8 +48,11 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Conclusão do desafio
-
 ## O App
+
+<img src="screenshots/img1.PNG?raw=true" width="250"> <img src="screenshots/img2.PNG?raw=true" width="250"> 
+<img src="screenshots/img4.PNG?raw=true" width="250"> <img src="screenshots/img3.PNG?raw=true" width="500">
+
 O Aplicativo desenvolvido contém:
 - Arquitetura MVC-N de Networking
 - Swift 5
