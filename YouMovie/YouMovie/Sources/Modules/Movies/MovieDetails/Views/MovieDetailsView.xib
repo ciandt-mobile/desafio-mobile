@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -110,7 +111,7 @@
                                                                 <constraint firstAttribute="width" secondItem="CMF-rx-KPV" secondAttribute="height" multiplier="1:1" id="MOn-RJ-JzI"/>
                                                                 <constraint firstAttribute="width" constant="40" id="ex7-4p-ufL"/>
                                                             </constraints>
-                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <state key="normal" image="icon-play-button"/>
                                                             <connections>
                                                                 <action selector="didTapPlayVideoButton" destination="-1" eventType="touchUpInside" id="4NM-k5-Ubm"/>
