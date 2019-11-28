@@ -205,8 +205,7 @@ extension MovieDetailsView: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        guard let statusBarManager = self.view.window?.windowScene?.statusBarManager else { return }
-        let limitHeight: CGFloat = statusBarManager.statusBarFrame.height + 94.0
+        let limitHeight: CGFloat = UIApplication.shared.statusBarFrame.height + 94.0
 
         if self.backgropImageView.frame.height < limitHeight {
             self.statusBarStyle = .default

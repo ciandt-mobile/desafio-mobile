@@ -30,7 +30,7 @@ extension UIView {
             let viewWidth = self.frame.width
             let indicator = UIActivityIndicatorView()
 
-            indicator.style = isLarge ? .large : .medium
+            indicator.style = isLarge ? .whiteLarge : .white
             indicator.color = color ?? UIColor.lightGray
             indicator.center = CGPoint(x: point?.x ?? viewWidth / 2, y: point?.y ?? viewHeight / 2)
             indicator.startAnimating()

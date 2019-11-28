@@ -12,7 +12,7 @@ class LoadingCollectionReusableView: UICollectionReusableView {
 
     // MARK: - Outlets
 
-    private var activityIndicator = UIActivityIndicatorView(style: .medium)
+    private var activityIndicator = UIActivityIndicatorView(style: .gray)
 
     // MARK: - Lifecycle
 

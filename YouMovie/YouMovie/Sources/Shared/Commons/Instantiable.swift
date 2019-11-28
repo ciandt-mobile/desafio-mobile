@@ -6,7 +6,6 @@
 //  Copyright © 2019 Michael Douglas. All rights reserved.
 //
 
-
 import UIKit
 
 // MARK: - Instantiable Protocol

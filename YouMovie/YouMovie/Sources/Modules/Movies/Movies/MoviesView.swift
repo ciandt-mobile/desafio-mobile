@@ -23,12 +23,19 @@ class MoviesView: BaseViewController, Feedbackable {
 
     private var refreshControl = UIRefreshControl()
     private var currentOrientation: UIDeviceOrientation = .unknown
+    private var didChangeOrientationObserver: Any?
+    
+    // MARK: - Inits
+    
+    deinit {
+        guard let didChangeOrientationObserver = self.didChangeOrientationObserver else { return }
+        NotificationCenter.default.removeObserver(didChangeOrientationObserver)
+    }
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupSegmentedControl()
         self.setupSearchController()
         self.setupCollectionView()
         self.setupOrientationRecognizer()
@@ -39,6 +46,7 @@ class MoviesView: BaseViewController, Feedbackable {
         super.viewWillAppear(animated)
         self.statusBarStyle = .default
         self.currentOrientation = UIDevice.current.orientation
+        self.setupSegmentedControl()
         self.setupBaseNavigationBar(title: self.presenter.title, isTranslucent: true, isLargeTitle: true)
     }
 
@@ -110,10 +118,11 @@ class MoviesView: BaseViewController, Feedbackable {
     
     private func setupOrientationRecognizer() {
         
-        NotificationCenter.default.addObserver(forName: UIDevice.orientationDidChangeNotification,
-                                               object: nil,
-                                               queue: .main) { [weak self] _ in
-                self?.shouldLayoutCollectionCells()
+        let notificationCenter = NotificationCenter.default
+        self.didChangeOrientationObserver = notificationCenter.addObserver(forName: UIDevice.orientationDidChangeNotification,
+                                                                           object: nil,
+                                                                           queue: .main) { [weak self] _ in
+                                                                            self?.shouldLayoutCollectionCells()
         }
     }
     

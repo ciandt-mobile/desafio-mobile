@@ -10,7 +10,6 @@
 		610A831F238DF68A00DC1C02 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610A831C238DF68A00DC1C02 /* BaseViewController.swift */; };
 		610A8320238DF68A00DC1C02 /* BaseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610A831D238DF68A00DC1C02 /* BaseEntity.swift */; };
 		610A8321238DF68A00DC1C02 /* Instantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610A831E238DF68A00DC1C02 /* Instantiable.swift */; };
-		610A8328238DFBA100DC1C02 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610A8327238DFBA100DC1C02 /* SceneDelegate.swift */; };
 		610A832A238DFD6900DC1C02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 610A8329238DFD6900DC1C02 /* LaunchScreen.storyboard */; };
 		610A8358238DFE1F00DC1C02 /* MovieVideoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610A832E238DFE1F00DC1C02 /* MovieVideoEntity.swift */; };
 		610A8359238DFE1F00DC1C02 /* MovieEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610A832F238DFE1F00DC1C02 /* MovieEntity.swift */; };
@@ -101,7 +100,6 @@
 		610A831C238DF68A00DC1C02 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		610A831D238DF68A00DC1C02 /* BaseEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEntity.swift; sourceTree = "<group>"; };
 		610A831E238DF68A00DC1C02 /* Instantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instantiable.swift; sourceTree = "<group>"; };
-		610A8327238DFBA100DC1C02 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		610A8329238DFD6900DC1C02 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		610A832E238DFE1F00DC1C02 /* MovieVideoEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieVideoEntity.swift; sourceTree = "<group>"; };
 		610A832F238DFE1F00DC1C02 /* MovieEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieEntity.swift; sourceTree = "<group>"; };
@@ -518,7 +516,6 @@
 			isa = PBXGroup;
 			children = (
 				61424147238DDEA400C93DEC /* AppDelegate.swift */,
-				610A8327238DFBA100DC1C02 /* SceneDelegate.swift */,
 				610A832B238DFE1F00DC1C02 /* Movies */,
 			);
 			path = Modules;
@@ -566,6 +563,7 @@
 				61424141238DDEA400C93DEC /* Frameworks */,
 				61424142238DDEA400C93DEC /* Resources */,
 				2EDBAEA7541768938C8AD4ED /* [CP] Embed Pods Frameworks */,
+				6156BDEB23904113001C6616 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -702,6 +700,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6156BDEB23904113001C6616 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		78ABC9F214F5DAD358CA41C8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -766,7 +782,6 @@
 				610A836B238DFE1F00DC1C02 /* RecommendationCollectionViewCell.swift in Sources */,
 				610A835F238DFE1F00DC1C02 /* MoviesProtocols.swift in Sources */,
 				61424148238DDEA400C93DEC /* AppDelegate.swift in Sources */,
-				610A8328238DFBA100DC1C02 /* SceneDelegate.swift in Sources */,
 				610A8369238DFE1F00DC1C02 /* CastCrewCollectionViewCell.swift in Sources */,
 				610A83A0238DFEFA00DC1C02 /* UILabelExtensions.swift in Sources */,
 				610A8376238DFE1F00DC1C02 /* MovieDetailsMessagesUtil.swift in Sources */,
@@ -882,7 +897,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -936,7 +951,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
