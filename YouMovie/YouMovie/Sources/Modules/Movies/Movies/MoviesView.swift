@@ -22,6 +22,7 @@ class MoviesView: BaseViewController, Feedbackable {
     // MARK: - Private Properties
 
     private var refreshControl = UIRefreshControl()
+    private var currentOrientation: UIDeviceOrientation = .unknown
 
     // MARK: - Lifecycle
 
@@ -30,12 +31,14 @@ class MoviesView: BaseViewController, Feedbackable {
         self.setupUI()
         self.setupSearchController()
         self.setupCollectionView()
+        self.setupOrientationRecognizer()
         self.fetchMovies(from: .popular)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.statusBarStyle = .default
+        self.currentOrientation = UIDevice.current.orientation
         self.setupBaseNavigationBar(title: self.presenter.title, isTranslucent: true, isLargeTitle: true)
     }
 
@@ -103,6 +106,29 @@ class MoviesView: BaseViewController, Feedbackable {
             self.navigationItem.title = self.presenter.title
         }
     }
+    
+    private func setupOrientationRecognizer() {
+        
+        NotificationCenter.default.addObserver(forName: UIDevice.orientationDidChangeNotification,
+                                               object: nil,
+                                               queue: .main) { [weak self] _ in
+                self?.shouldLayoutCollectionCells()
+        }
+    }
+    
+    private func shouldLayoutCollectionCells() {
+        
+        let newOrientation = UIDevice.current.orientation
+        guard newOrientation != self.currentOrientation else { return }
+        
+        if newOrientation.isPortrait && newOrientation != .portraitUpsideDown {
+            self.currentOrientation = newOrientation
+            self.collectionView.reloadData()
+        } else if newOrientation.isLandscape {
+            self.currentOrientation = newOrientation
+            self.collectionView.reloadData()
+        }
+    }
 
     // MARK: - Actions
 
@@ -151,8 +177,8 @@ extension MoviesView: MoviesPresenterOutputProtocol {
         let okAction = UIAlertAction(title: MessagesUtil.General.ok, style: .default)
         self.showAlert(withTitle: MessagesUtil.General.oops,
                        message: localizedError,
-                       actions: [okAction]) {
-            self.reloadMovies()
+                       actions: [okAction]) { [weak self] in
+            self?.reloadMovies()
         }
     }
 }
@@ -221,11 +247,20 @@ extension MoviesView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let padding = self.insetForSections.left + self.insetForSections.right + self.margins
-        let width = (self.view.bounds.size.width - padding) / 2
-        let ratio: CGFloat = 1.7
-        let height = width * ratio
-        return CGSize(width: width, height: height)
+        
+        if self.currentOrientation.isLandscape {
+            let padding = self.insetForSections.left + self.insetForSections.right + self.margins
+            let width = (self.view.bounds.size.height - padding) / 3
+            let ratio: CGFloat = 1.7
+            let height = width * ratio
+            return CGSize(width: width, height: height)
+        } else {
+            let padding = self.insetForSections.left + self.insetForSections.right + self.margins
+            let width = (self.view.bounds.size.width - padding) / 2
+            let ratio: CGFloat = 1.7
+            let height = width * ratio
+            return CGSize(width: width, height: height)
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView,
