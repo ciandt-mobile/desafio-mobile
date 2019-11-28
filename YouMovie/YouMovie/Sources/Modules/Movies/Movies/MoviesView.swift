@@ -56,10 +56,10 @@ class MoviesView: BaseViewController, Feedbackable {
                                              selectedFont: .systemFont(ofSize: 14.0, weight: .bold),
                                              selectedTextColor: .white)
         
-        let titleViewHeight: CGFloat = self.navigationItem.titleView?.frame.height ?? 40.0
+        let cornerRadius: CGFloat = self.currentOrientation.isPortrait ? 20.0 : 16.0
         let options: [BetterSegmentedControlOption] = [.backgroundColor(.clear),
                                                        .indicatorViewBackgroundColor(.black),
-                                                       .cornerRadius(titleViewHeight / 2)]
+                                                       .cornerRadius(cornerRadius)]
 
         let segmentedControl = BetterSegmentedControl(frame: CGRect(x: 0.0, y: 0.0, width: 300.0, height: 40.0),
                                                       segments: segments,
