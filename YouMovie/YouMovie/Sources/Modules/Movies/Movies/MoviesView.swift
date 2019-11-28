@@ -28,7 +28,7 @@ class MoviesView: BaseViewController, Feedbackable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupUI()
+        self.setupSegmentedControl()
         self.setupSearchController()
         self.setupCollectionView()
         self.setupOrientationRecognizer()
@@ -44,7 +44,7 @@ class MoviesView: BaseViewController, Feedbackable {
 
     // MARK: - Private Methods
 
-    private func setupUI() {
+    private func setupSegmentedControl() {
 
         let titles: [String] = [MessagesUtil.Movies.popularTitle,
                                 MessagesUtil.Movies.topRatedTitle,
@@ -55,14 +55,15 @@ class MoviesView: BaseViewController, Feedbackable {
                                              normalTextColor: .darkGray,
                                              selectedFont: .systemFont(ofSize: 14.0, weight: .bold),
                                              selectedTextColor: .white)
-
+        
+        let titleViewHeight: CGFloat = self.navigationItem.titleView?.frame.height ?? 40.0
         let options: [BetterSegmentedControlOption] = [.backgroundColor(.clear),
                                                        .indicatorViewBackgroundColor(.black),
-                                                       .cornerRadius(20.0)]
+                                                       .cornerRadius(titleViewHeight / 2)]
 
         let segmentedControl = BetterSegmentedControl(frame: CGRect(x: 0.0, y: 0.0, width: 300.0, height: 40.0),
                                                       segments: segments,
-                                                      index: MoviesSectionType.popular.rawValue,
+                                                      index: self.presenter.currentSection.rawValue,
                                                       options: options)
         segmentedControl.addTarget(self, action: #selector(self.didChangeMoviesSection), for: .valueChanged)
         self.navigationItem.titleView = segmentedControl
@@ -124,9 +125,11 @@ class MoviesView: BaseViewController, Feedbackable {
         if newOrientation.isPortrait && newOrientation != .portraitUpsideDown {
             self.currentOrientation = newOrientation
             self.collectionView.reloadData()
+            self.setupSegmentedControl()
         } else if newOrientation.isLandscape {
             self.currentOrientation = newOrientation
             self.collectionView.reloadData()
+            self.setupSegmentedControl()
         }
     }
 

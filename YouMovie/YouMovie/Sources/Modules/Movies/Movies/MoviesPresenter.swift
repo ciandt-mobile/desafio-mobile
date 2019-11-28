@@ -62,7 +62,7 @@ class MoviesPresenter: NSObject {
 
     // MARK: - Private Properties
 
-    private var currentSection: MoviesSectionType = .popular {
+    private(set) var currentSection: MoviesSectionType = .popular {
         didSet {
             self.isLoading = true
             self.interactor.fetchMovies(from: self.currentSection, atPage: 1)

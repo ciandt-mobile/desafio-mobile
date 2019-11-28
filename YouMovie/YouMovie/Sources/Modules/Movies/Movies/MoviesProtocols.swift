@@ -30,6 +30,7 @@ protocol MoviesPresenterInputProtocol: class {
     var shouldFetchNextPageMovies: Bool { get }
     var shouldSearchMovie: Bool { get set }
     var title: String { get }
+    var currentSection: MoviesSectionType { get }
     func fetchMovies(from section: MoviesSectionType)
     func reloadMovies()
     func fetchNextPageMovies()
