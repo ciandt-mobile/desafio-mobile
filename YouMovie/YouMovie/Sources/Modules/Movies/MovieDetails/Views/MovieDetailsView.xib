@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina6_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailsView" customModule="RappiMovie" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailsView" customModule="YouMovie" customModuleProvider="target">
             <connections>
                 <outlet property="backgropImageView" destination="QOq-4d-Nwp" id="PyB-wH-u1X"/>
                 <outlet property="budgetLabel" destination="U8C-as-sTm" id="Oo2-QB-uN8"/>
@@ -46,7 +44,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rIT-dH-qco" userLabel="ContentView" customClass="CardView" customModule="RappiMovie" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rIT-dH-qco" userLabel="ContentView" customClass="CardView" customModule="YouMovie" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="280" width="414" height="375.66666666666674"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fM6-sZ-bWb" userLabel="ContentStackView">
@@ -55,10 +53,10 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoR-th-YTT" userLabel="DescriptionView">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="227.33333333333334"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLu-6c-bdF" userLabel="PosterView" customClass="CardView" customModule="RappiMovie" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLu-6c-bdF" userLabel="PosterView" customClass="CardView" customModule="YouMovie" customModuleProvider="target">
                                                             <rect key="frame" x="15" y="-50" width="130" height="195"/>
                                                             <subviews>
-                                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIg-sk-TbU" userLabel="CardView" customClass="CardView" customModule="RappiMovie" customModuleProvider="target">
+                                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIg-sk-TbU" userLabel="CardView" customClass="CardView" customModule="YouMovie" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="130" height="195"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FFp-3f-m7i">
@@ -100,7 +98,7 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJc-Dj-r8H" customClass="CircularProgressView" customModule="RappiMovie" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJc-Dj-r8H" customClass="CircularProgressView" customModule="YouMovie" customModuleProvider="target">
                                                             <rect key="frame" x="162" y="68.333333333333314" width="45" height="45"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="uJc-Dj-r8H" secondAttribute="height" multiplier="1:1" id="Dsm-U1-hld"/>
@@ -145,13 +143,9 @@
                                                         <constraint firstItem="uJc-Dj-r8H" firstAttribute="top" secondItem="hDM-wb-sAH" secondAttribute="bottom" constant="15" id="GBp-mN-nsH"/>
                                                         <constraint firstItem="CMF-rx-KPV" firstAttribute="leading" secondItem="uJc-Dj-r8H" secondAttribute="trailing" constant="15" id="SFj-3e-hnz"/>
                                                         <constraint firstItem="hDM-wb-sAH" firstAttribute="leading" secondItem="BLu-6c-bdF" secondAttribute="trailing" constant="15" id="XSV-nN-3oC"/>
-                                                        <constraint firstAttribute="trailing" secondItem="hDM-wb-sAH" secondAttribute="trailing" constant="15" id="Z1t-r7-uJt"/>
-                                                        <constraint firstAttribute="trailing" secondItem="hMa-Wm-eFg" secondAttribute="trailing" constant="15" id="cRI-Rf-mBE"/>
                                                         <constraint firstItem="hDM-wb-sAH" firstAttribute="top" secondItem="hoR-th-YTT" secondAttribute="top" constant="10" id="gsT-00-Zas"/>
                                                         <constraint firstItem="hMa-Wm-eFg" firstAttribute="top" secondItem="BLu-6c-bdF" secondAttribute="bottom" priority="750" constant="20" id="juq-rc-1xZ"/>
-                                                        <constraint firstItem="hMa-Wm-eFg" firstAttribute="leading" secondItem="hoR-th-YTT" secondAttribute="leading" constant="15.000000000000004" id="uIQ-Gg-AXn"/>
                                                         <constraint firstItem="hMa-Wm-eFg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uJc-Dj-r8H" secondAttribute="bottom" id="uZ6-V7-dJL"/>
-                                                        <constraint firstItem="BLu-6c-bdF" firstAttribute="leading" secondItem="hoR-th-YTT" secondAttribute="leading" constant="15" id="umV-q8-ASf"/>
                                                     </constraints>
                                                 </view>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7r-zW-VXE" userLabel="InformationsView">
@@ -195,8 +189,6 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="B4F-eb-qN3" firstAttribute="top" secondItem="H7r-zW-VXE" secondAttribute="top" constant="5" id="1bh-ca-BV5"/>
-                                                        <constraint firstAttribute="trailing" secondItem="B4F-eb-qN3" secondAttribute="trailing" constant="15" id="ES8-UN-oht"/>
-                                                        <constraint firstItem="B4F-eb-qN3" firstAttribute="leading" secondItem="H7r-zW-VXE" secondAttribute="leading" constant="14.999999999999993" id="ecA-Lv-XS9"/>
                                                         <constraint firstAttribute="bottom" secondItem="B4F-eb-qN3" secondAttribute="bottom" constant="15" id="xzr-EU-P7c"/>
                                                     </constraints>
                                                 </view>
@@ -255,15 +247,23 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="XyI-LI-D2V" firstAttribute="trailing" secondItem="hDM-wb-sAH" secondAttribute="trailing" constant="15" id="2Mi-QC-hIA"/>
+                <constraint firstItem="XyI-LI-D2V" firstAttribute="trailing" secondItem="hMa-Wm-eFg" secondAttribute="trailing" constant="15" id="4VS-tD-tst"/>
                 <constraint firstItem="l1Y-7L-Gk0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Lc2-yg-MJv"/>
                 <constraint firstItem="l1Y-7L-Gk0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="P4G-G4-YWy"/>
+                <constraint firstItem="B4F-eb-qN3" firstAttribute="leading" secondItem="XyI-LI-D2V" secondAttribute="leading" constant="15" id="PAy-No-CqA"/>
+                <constraint firstItem="BLu-6c-bdF" firstAttribute="leading" secondItem="XyI-LI-D2V" secondAttribute="leading" constant="15" id="UAj-bf-rH4"/>
                 <constraint firstItem="QOq-4d-Nwp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cen-cG-LO7"/>
+                <constraint firstItem="hMa-Wm-eFg" firstAttribute="leading" secondItem="XyI-LI-D2V" secondAttribute="leading" constant="15" id="cur-Os-pYO"/>
                 <constraint firstAttribute="bottom" secondItem="l1Y-7L-Gk0" secondAttribute="bottom" id="oeL-a0-rez"/>
                 <constraint firstAttribute="trailing" secondItem="l1Y-7L-Gk0" secondAttribute="trailing" id="tcG-nc-o7Y"/>
+                <constraint firstItem="XyI-LI-D2V" firstAttribute="trailing" secondItem="B4F-eb-qN3" secondAttribute="trailing" constant="15" id="xpb-Yn-kZl"/>
             </constraints>
+            <viewLayoutGuide key="safeArea" id="XyI-LI-D2V"/>
+            <point key="canvasLocation" x="139" y="119"/>
         </view>
     </objects>
     <resources>
-        <image name="icon-play-button" width="50" height="50"/>
+        <image name="icon-play-button" width="400" height="400"/>
     </resources>
 </document>

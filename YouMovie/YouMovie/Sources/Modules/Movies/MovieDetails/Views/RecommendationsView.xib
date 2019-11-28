@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="9vE-AN-EzM" customClass="RecommendationsView" customModule="RappiMovie" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="9vE-AN-EzM" customClass="RecommendationsView" customModule="YouMovie" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="384" height="191"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -41,10 +38,10 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ZC7-zR-KSv" secondAttribute="trailing" id="0ZF-PB-3NV"/>
-                <constraint firstItem="Cyw-rL-pnD" firstAttribute="leading" secondItem="9vE-AN-EzM" secondAttribute="leading" constant="15" id="5Ur-ow-jkM"/>
                 <constraint firstItem="ZC7-zR-KSv" firstAttribute="top" secondItem="Cyw-rL-pnD" secondAttribute="bottom" constant="15" id="HXi-4K-tCz"/>
+                <constraint firstItem="jlZ-6d-fDA" firstAttribute="trailing" secondItem="Cyw-rL-pnD" secondAttribute="trailing" constant="15" id="JBY-jy-bg4"/>
                 <constraint firstAttribute="bottom" secondItem="ZC7-zR-KSv" secondAttribute="bottom" constant="5" id="ZFL-Kd-6Qh"/>
-                <constraint firstAttribute="trailing" secondItem="Cyw-rL-pnD" secondAttribute="trailing" constant="15" id="oJz-U0-B82"/>
+                <constraint firstItem="Cyw-rL-pnD" firstAttribute="leading" secondItem="jlZ-6d-fDA" secondAttribute="leading" constant="15" id="aJx-Sb-v9T"/>
                 <constraint firstItem="Cyw-rL-pnD" firstAttribute="top" secondItem="9vE-AN-EzM" secondAttribute="top" constant="5" id="uCE-9n-QB8"/>
                 <constraint firstItem="ZC7-zR-KSv" firstAttribute="leading" secondItem="9vE-AN-EzM" secondAttribute="leading" id="yd1-DL-HKw"/>
             </constraints>
