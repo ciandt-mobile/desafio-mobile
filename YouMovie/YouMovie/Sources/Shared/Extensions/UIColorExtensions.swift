@@ -20,7 +20,31 @@ extension UIColor {
         static var lightYellow: UIColor { return UIColor(hexadecimal: 0xD3D353) }
         static var darkRed: UIColor { return UIColor(hexadecimal: 0x501A34) }
         static var lightRed: UIColor { return UIColor(hexadecimal: 0xCA3961) }
-        static var darkGray: UIColor { return UIColor(hexadecimal: 0x666666) }
+        static var darkGrayCustom: UIColor { return UIColor(hexadecimal: 0x666666) }
+        
+        static var blackAdaptative: UIColor {
+            if #available(iOS 13.0, *) {
+                return .label
+            } else {
+                return .black
+            }
+        }
+        
+        static var whiteAdaptative: UIColor {
+            if #available(iOS 13.0, *) {
+                return .systemBackground
+            } else {
+                return .white
+            }
+        }
+        
+        static var darkGrayAdaptative: UIColor {
+            if #available(iOS 13.0, *) {
+                return .secondaryLabel
+            } else {
+                return .darkGray
+            }
+        }
     }
 
     // MARK: - Inits

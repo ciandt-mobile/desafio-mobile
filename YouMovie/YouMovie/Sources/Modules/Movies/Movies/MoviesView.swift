@@ -60,13 +60,13 @@ class MoviesView: BaseViewController, Feedbackable {
 
         let segments = LabelSegment.segments(withTitles: titles,
                                              normalFont: .systemFont(ofSize: 14.0, weight: .medium),
-                                             normalTextColor: .darkGray,
+                                             normalTextColor: UIColor.Style.darkGrayAdaptative,
                                              selectedFont: .systemFont(ofSize: 14.0, weight: .bold),
-                                             selectedTextColor: .white)
+                                             selectedTextColor: UIColor.Style.whiteAdaptative)
         
         let cornerRadius: CGFloat = self.currentOrientation.isPortrait ? 20.0 : 16.0
         let options: [BetterSegmentedControlOption] = [.backgroundColor(.clear),
-                                                       .indicatorViewBackgroundColor(.black),
+                                                       .indicatorViewBackgroundColor(UIColor.Style.blackAdaptative),
                                                        .cornerRadius(cornerRadius)]
 
         let segmentedControl = BetterSegmentedControl(frame: CGRect(x: 0.0, y: 0.0, width: 300.0, height: 40.0),
@@ -81,13 +81,10 @@ class MoviesView: BaseViewController, Feedbackable {
 
         let search = UISearchController(searchResultsController: nil)
         search.searchBar.delegate = self
-        search.searchBar.tintColor = .black
+        search.searchBar.tintColor = UIColor.Style.blackAdaptative
         search.obscuresBackgroundDuringPresentation = false
-
-        if #available(iOS 11.0, *) {
-            self.navigationItem.searchController = search
-            self.navigationItem.hidesSearchBarWhenScrolling = true
-        }
+        self.navigationItem.searchController = search
+        self.navigationItem.hidesSearchBarWhenScrolling = true
     }
 
     private func setupCollectionView() {

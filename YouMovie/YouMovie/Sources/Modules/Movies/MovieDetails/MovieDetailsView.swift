@@ -87,7 +87,7 @@ class MovieDetailsView: BaseViewController {
     private func setupRatingView() {
 
         self.ratingView.backgroundLayerColor = UIColor.Style.darkGreenBackground
-        self.ratingView.progressBarUnfilledColor = UIColor.Style.darkGray
+        self.ratingView.progressBarUnfilledColor = UIColor.Style.darkGrayCustom
 
         if let voteAverage = self.presenter.movie.voteAverage,
             let formattedVote = Double(voteAverage * 10).roundedString {
@@ -148,9 +148,10 @@ extension MovieDetailsView: MovieDetailsPresenterOutputProtocol {
         let Messages = MessagesUtil.MovieDetails.self
         let titleFont: UIFont = .systemFont(ofSize: 14.0, weight: .semibold)
         let contentFont: UIFont = .systemFont(ofSize: 14.0, weight: .regular)
-        let titleColor: UIColor = .darkGray
-        let contentColor: UIColor = .darkGray
-
+        
+        let titleColor: UIColor = UIColor.Style.darkGrayAdaptative
+        let contentColor: UIColor = UIColor.Style.darkGrayAdaptative
+        
         let duration = self.presenter.movie.runtime?.durationFormatted ?? "-"
         let durationTitle = Messages.durationTitle.attributed(with: titleFont, color: titleColor)
         let durationValue = duration.attributed(with: contentFont, color: contentColor)

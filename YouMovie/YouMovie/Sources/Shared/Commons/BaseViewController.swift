@@ -34,8 +34,8 @@ class BaseViewController: UIViewController {
     // MARK: - Internal Methods
     
     func setupBaseNavigationBar(title: String? = nil,
-                                titleColor: UIColor = .black,
-                                tintColor: UIColor = .black,
+                                titleColor: UIColor = UIColor.Style.blackAdaptative,
+                                tintColor: UIColor = UIColor.Style.blackAdaptative,
                                 barStyle: UIBarStyle = .default,
                                 barColor: UIColor? = nil,
                                 isTranslucent: Bool = false,
@@ -49,12 +49,9 @@ class BaseViewController: UIViewController {
         navigationController.navigationBar.barStyle = barStyle
         navigationController.navigationBar.barTintColor = barColor
         navigationController.navigationBar.isTranslucent = isTranslucent
-
-        if #available(iOS 11.0, *) {
-            navigationController.navigationBar.prefersLargeTitles = isLargeTitle
-            navigationController.navigationItem.largeTitleDisplayMode = .automatic
-            navigationController.navigationBar.largeTitleTextAttributes = [.foregroundColor: titleColor]
-        }
+        navigationController.navigationBar.prefersLargeTitles = isLargeTitle
+        navigationController.navigationItem.largeTitleDisplayMode = .automatic
+        navigationController.navigationBar.largeTitleTextAttributes = [.foregroundColor: titleColor]
 
         if let title = title {
             self.navigationItem.title = title
@@ -90,10 +87,10 @@ class BaseViewController: UIViewController {
                 navigationBar.setBackgroundImage(nil, for: .default)
                 navigationBar.shadowImage = nil
                 navigationBar.barTintColor = nil
-                navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+                navigationBar.titleTextAttributes = [.foregroundColor: UIColor.Style.blackAdaptative]
                 navigationBar.layoutIfNeeded()
             }
-            navigationBar.tintColor = .black
+            navigationBar.tintColor = UIColor.Style.blackAdaptative
         }
 
         navigationBar.topItem?.title = title

@@ -23,7 +23,7 @@
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Mdr-JH-FAC">
                     <rect key="frame" x="0.0" y="39.5" width="384" height="146.5"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="999" constant="250" id="U0w-jX-F4I"/>
                     </constraints>
@@ -35,7 +35,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="opM-kN-Yfa" firstAttribute="leading" secondItem="k26-fJ-aVb" secondAttribute="leading" constant="15" id="16J-ws-Mcf"/>
                 <constraint firstItem="Mdr-JH-FAC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7lH-J3-hTU"/>

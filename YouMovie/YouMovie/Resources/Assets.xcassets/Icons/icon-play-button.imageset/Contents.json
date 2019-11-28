@@ -3,13 +3,20 @@
     {
       "idiom" : "universal",
       "filename" : "icon-play-button.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "icon-play-button-1.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "template"
   }
 }

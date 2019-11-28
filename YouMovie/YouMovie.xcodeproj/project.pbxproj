@@ -257,8 +257,8 @@
 		610A8333238DFE1F00DC1C02 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				610A8334238DFE1F00DC1C02 /* MovieCollectionViewCell.swift */,
 				610A8335238DFE1F00DC1C02 /* MovieCollectionViewCell.xib */,
+				610A8334238DFE1F00DC1C02 /* MovieCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
