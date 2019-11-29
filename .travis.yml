@@ -1,6 +1,6 @@
 language: swift
 osx_image: xcode11.2
-xcode_project: YouMovie/YouMovie.xcworkspace
+xcode_project: YouMovie.xcworkspace
 xcode_scheme: YouMovie
 xcode_sdk: iphonesimulator13.2
 
@@ -13,10 +13,10 @@ before_install:
 - rvm use $RVM_RUBY_VERSION
 - brew update
 - brew upgrade swiftlint
-- cd YouMovie && pod repo update
+- pod repo update
 
 script:
-- xcodebuild -workspace YouMovie/YouMovie.xcworkspace -scheme YouMovie -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=13.2.2" clean test | xcpretty
+- xcodebuild -workspace YouMovie.xcworkspace -scheme YouMovie -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=13.2.2" clean test | xcpretty
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 478b8564-5284-409b-8204-43961fcf963e
