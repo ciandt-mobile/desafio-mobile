@@ -13,7 +13,7 @@ before_install:
 - rvm use $RVM_RUBY_VERSION
 - brew update
 - brew upgrade swiftlint
-- pod repo update
+- cd YouMovie && pod repo update
 
 script:
 - xcodebuild -workspace YouMovie/YouMovie.xcworkspace -scheme YouMovie -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=13.2.2" clean test | xcpretty
