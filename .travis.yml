@@ -14,10 +14,10 @@ before_install:
 - rvm use $RVM_RUBY_VERSION
 - brew update
 - brew upgrade swiftlint
-- pod repo update
+- cd YouMovie && pod repo update
 
 script:
-- xcodebuild -workspace YouMovie/YouMovie.xcworkspace -scheme "$SCHEME" -destination "$DESTINATION" clean test | xcpretty
+- xcodebuild -workspace YouMovie.xcworkspace -scheme "$SCHEME" -destination "$DESTINATION" clean test | xcpretty
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t c5a8ad7e-5b56-4b54-a5db-f7f25e873077
