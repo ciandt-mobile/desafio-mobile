@@ -57,7 +57,7 @@ class MovieDetailsInteractorSpec: QuickSpec {
                 sut = MovieDetailsInteractor(movie: movie)
                 sut.output = output
                 sut.fetchMovieDetails()
-                expect(output.fetchMovieDetailsDidSucceedCalled).toEventually(beTrue())
+                expect(output.fetchMovieDetailsDidSucceedCalled).toEventually(beTrue(), timeout: 5.5, pollInterval: 0.2)
             }
         }
 
@@ -100,7 +100,7 @@ class MovieDetailsInteractorSpec: QuickSpec {
                 sut = MovieDetailsInteractor(movie: movie)
                 sut.output = output
                 sut.fetchMovieDetails()
-                expect(output.fetchMovieDetailsDidFailedCalled).toEventually(beTrue())
+                expect(output.fetchMovieDetailsDidFailedCalled).toEventually(beTrue(), timeout: 5.5, pollInterval: 0.2)
             }
         }
     }

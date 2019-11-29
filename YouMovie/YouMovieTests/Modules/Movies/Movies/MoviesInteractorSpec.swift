@@ -51,7 +51,7 @@ class MoviesInteractorSpec: QuickSpec {
                 sut = MoviesInteractor()
                 sut.output = output
                 sut.fetchMovies(from: .popular, atPage: 1)
-                expect(output.fetchMoviesDidSucceedCalled).toEventually(beTrue())
+                expect(output.fetchMoviesDidSucceedCalled).toEventually(beTrue(), timeout: 5.5, pollInterval: 0.2)
             }
         }
 
