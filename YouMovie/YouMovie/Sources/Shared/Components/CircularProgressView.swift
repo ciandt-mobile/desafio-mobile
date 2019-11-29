@@ -56,12 +56,7 @@ class CircularProgressView: UIView {
         super.prepareForInterfaceBuilder()
         self.setupUI()
     }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.setupUI()
-    }
-
+    
     // MARK: - Internal Methods
 
     /// Method used to animate circular progress bar

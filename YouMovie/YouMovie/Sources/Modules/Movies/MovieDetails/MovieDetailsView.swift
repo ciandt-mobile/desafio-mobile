@@ -132,7 +132,6 @@ extension MovieDetailsView: MovieDetailsPresenterOutputProtocol {
     // MARK: - Internal Methods
 
     func updateUI() {
-
         self.setupInformations()
         self.setupCastCrewView()
         self.setupRecommendationsView()
