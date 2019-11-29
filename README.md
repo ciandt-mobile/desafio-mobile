@@ -1,11 +1,21 @@
+<p align="center"><img src="/Screenshots/icon-logo.png" width="250"></p>
 
 ![Xcode 11.0+](https://img.shields.io/badge/Xcode-11.0%2B-blue.svg)
 ![Swift 5.0+](https://img.shields.io/badge/Swift-5.0%2B-orange.svg)
 ![iOS 11.0+](https://img.shields.io/badge/iOS-11.0%2B-blue.svg)
 [![Build Status](https://travis-ci.com/MichaelDouglasCS/desafio-mobile.svg?branch=master)](https://travis-ci.com/MichaelDouglasCS/desafio-mobile)
+[![codecov](https://codecov.io/gh/MichaelDouglasCS/desafio-mobile/branch/master/graph/badge.svg)](https://codecov.io/gh/MichaelDouglasCS/desafio-mobile)
 
 # YouMovie
-This application is a Technical Test to CI&T that has as goal implement a list of movies. The app should show 3 sections, such as Popular, Top Rated and Upcoming and be able to navigate to the details of each item.
+This application is a Technical Test that has as goal implement a list of movies. The app should show 3 sections, such as Popular, Top Rated and Upcoming and be able to navigate to the details of each item.
+
+## Light Mode
+
+<img src="/Screenshots/home-light.png" width="210"> <img src="/Screenshots/home-scrolled-light.png" width="210"> <img src="/Screenshots/details-light.png" width="210"> <img src="/Screenshots/details-scrolled-light.png" width="210">
+
+## Dark Mode
+
+<img src="/Screenshots/home-dark.png" width="210"> <img src="/Screenshots/home-scrolled-dark.png" width="210"> <img src="/Screenshots/details-dark.png" width="210"> <img src="/Screenshots/details-scrolled-dark.png" width="210">
 
 ## Getting Started
 
