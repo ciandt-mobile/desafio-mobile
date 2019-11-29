@@ -9,6 +9,7 @@
 import Foundation
 import Quick
 import Nimble
+import OHHTTPStubs
 @testable import YouMovie
 
 class MovieDetailsInteractorSpec: QuickSpec {
@@ -29,7 +30,7 @@ class MovieDetailsInteractorSpec: QuickSpec {
 
         context("API Success Called") {
 
-            it("Should call fetchMoviesDidSucceed on output") {
+            it("Should call fetchMovieDetailsDidSucceedCalled on output") {
                 let movie = MovieEntity()
                 movie.id = 0
 
@@ -39,11 +40,30 @@ class MovieDetailsInteractorSpec: QuickSpec {
                 sut.fetchMovieDetails()
                 expect(output.fetchMovieDetailsDidSucceedCalled).to(beTrue())
             }
+            
+            it("Should call fetchMoviesDidSucceed on output with Stub") {
+                
+                stub(condition: isMethodGET() && isHost("api.themoviedb.org")) { _ in
+                  return OHHTTPStubsResponse(
+                    fileAtPath: OHPathForFile("MovieDetailsJSON.json", type(of: self))!,
+                    statusCode: 200,
+                    headers: ["Content-Type": "application/json"]
+                  )
+                }
+                
+                let movie = MovieEntity()
+                movie.id = 1234
+
+                sut = MovieDetailsInteractor(movie: movie)
+                sut.output = output
+                sut.fetchMovieDetails()
+                expect(output.fetchMovieDetailsDidSucceedCalled).toEventually(beTrue())
+            }
         }
 
         context("API Failed Called") {
 
-            it("Should call fetchMoviesDidFailed on output") {
+            it("Should call fetchMovieDetailsDidFailedCalled on output with ID") {
                 let movie = MovieEntity()
                 movie.id = 0
 
@@ -52,6 +72,35 @@ class MovieDetailsInteractorSpec: QuickSpec {
                 sut.output = output
                 sut.fetchMovieDetails()
                 expect(output.fetchMovieDetailsDidFailedCalled).to(beTrue())
+            }
+            
+            it("Should call fetchMovieDetailsDidFailedCalled on output without ID") {
+                let movie = MovieEntity()
+
+                sut = MovieDetailsInteractor(movie: movie)
+                sut.requests = MovieDetailsRequestsSuccessMock()
+                sut.output = output
+                sut.fetchMovieDetails()
+                expect(output.fetchMovieDetailsDidFailedCalled).to(beTrue())
+            }
+            
+            it("Should call fetchMovieDetailsDidFailedCalled on output with Error") {
+                
+                stub(condition: isMethodGET() && isHost("api.themoviedb.org")) { _ in
+                  return OHHTTPStubsResponse(
+                    jsonObject: [:],
+                    statusCode: 502,
+                    headers: ["Content-Type": "application/json"]
+                  )
+                }
+                
+                let movie = MovieEntity()
+                movie.id = 1234
+
+                sut = MovieDetailsInteractor(movie: movie)
+                sut.output = output
+                sut.fetchMovieDetails()
+                expect(output.fetchMovieDetailsDidFailedCalled).toEventually(beTrue())
             }
         }
     }

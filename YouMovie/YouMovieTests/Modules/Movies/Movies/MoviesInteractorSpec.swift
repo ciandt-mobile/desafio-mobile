@@ -9,6 +9,7 @@
 import Foundation
 import Quick
 import Nimble
+import OHHTTPStubs
 @testable import YouMovie
 
 class MoviesInteractorSpec: QuickSpec {
@@ -35,6 +36,22 @@ class MoviesInteractorSpec: QuickSpec {
                 sut.output = output
                 sut.fetchMovies(from: .popular, atPage: 1)
                 expect(output.fetchMoviesDidSucceedCalled).to(beTrue())
+            }
+            
+            it("Should call fetchMoviesDidSucceed on output with Stub") {
+                
+                stub(condition: isMethodGET() && isHost("api.themoviedb.org")) { _ in
+                  return OHHTTPStubsResponse(
+                    fileAtPath: OHPathForFile("MoviesJSON.json", type(of: self))!,
+                    statusCode: 200,
+                    headers: ["Content-Type": "application/json"]
+                  )
+                }
+                
+                sut = MoviesInteractor()
+                sut.output = output
+                sut.fetchMovies(from: .popular, atPage: 1)
+                expect(output.fetchMoviesDidSucceedCalled).toEventually(beTrue())
             }
         }
 

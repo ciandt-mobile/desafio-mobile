@@ -23,14 +23,3 @@ extension Instantiable where Self: UIView {
         return view
     }
 }
-
-extension Instantiable where Self: UIViewController {
-
-    /// - Returns: The UIViewController to be presented.
-    static func instantiate() -> Self {
-        let instance = Self(nibName: String(describing: self), bundle: nil)
-        instance.loadView()
-        instance.viewDidLoad()
-        return instance
-    }
-}

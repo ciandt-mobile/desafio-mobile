@@ -123,7 +123,8 @@ class MovieDetailsViewSpec: QuickSpec {
                         print(error)
                     }
                 }
-
+                
+                sut.viewDidLoad()
                 sut.updateUI()
                 expect(sut.stackView.arrangedSubviews.count).toEventually(equal(4))
             }

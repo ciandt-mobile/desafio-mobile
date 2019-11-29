@@ -6,6 +6,19 @@ PODS:
   - Kingfisher/Core (5.10.1)
   - Nimble (8.0.4)
   - ObjectMapper (3.5.1)
+  - OHHTTPStubs/Core (8.0.0)
+  - OHHTTPStubs/Default (8.0.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (8.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (8.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (8.0.0)
+  - OHHTTPStubs/Swift (8.0.0):
+    - OHHTTPStubs/Default
   - Quick (2.2.0)
   - XCDYouTubeKit (2.8.2)
 
@@ -15,6 +28,7 @@ DEPENDENCIES:
   - Kingfisher (~> 5.0)
   - Nimble
   - ObjectMapper (~> 3.4)
+  - OHHTTPStubs/Swift
   - Quick
   - XCDYouTubeKit (~> 2.8)
 
@@ -25,6 +39,7 @@ SPEC REPOS:
     - Kingfisher
     - Nimble
     - ObjectMapper
+    - OHHTTPStubs
     - Quick
     - XCDYouTubeKit
 
@@ -34,9 +49,10 @@ SPEC CHECKSUMS:
   Kingfisher: eb36b7dfcc78d60877051c92c119a2865972961a
   Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
   XCDYouTubeKit: 79baadb0560673a67c771eba45f83e353fd12c1f
 
-PODFILE CHECKSUM: 29533ae47efb52c8f9aef4c2b9e120e809ca0d26
+PODFILE CHECKSUM: 984ab82e610dc606ded65d309da87caf51a7d440
 
 COCOAPODS: 1.8.4
