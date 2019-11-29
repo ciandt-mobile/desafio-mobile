@@ -73,6 +73,7 @@ class MoviesPresenterMock: MoviesPresenterInputProtocol, MoviesInteractorOutputP
     var shouldFetchNextPageMovies: Bool = false
     var shouldSearchMovie: Bool = false
     var title: String = ""
+    var currentSection: MoviesSectionType = .popular
 
     // MARK: - Internal Methods
 

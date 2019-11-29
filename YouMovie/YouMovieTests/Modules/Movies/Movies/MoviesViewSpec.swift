@@ -49,7 +49,7 @@ class MoviesViewSpec: QuickSpec {
                 sut.viewDidLoad()
                 expect(sut.navigationItem.searchController).toNot(beNil())
                 expect(sut.navigationItem.searchController?.searchBar.delegate?.isKind(of: MoviesView.self)).to(beTrue())
-                expect(sut.navigationItem.searchController?.searchBar.tintColor).to(equal(.black))
+                expect(sut.navigationItem.searchController?.searchBar.tintColor).to(equal(UIColor.Style.blackAdaptative))
                 expect(sut.navigationItem.searchController?.obscuresBackgroundDuringPresentation).to(beFalse())
                 expect(sut.navigationItem.hidesSearchBarWhenScrolling).toNot(beNil())
             }
