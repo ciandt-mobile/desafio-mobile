@@ -1,49 +1,52 @@
-# Desafio Mobile - 2019
 
-Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para realizar o desafio 😀.
+![Xcode 11.0+](https://img.shields.io/badge/Xcode-11.0%2B-blue.svg)
+![Swift 5.0+](https://img.shields.io/badge/Swift-5.0%2B-orange.svg)
+![iOS 11.0+](https://img.shields.io/badge/iOS-11.0%2B-blue.svg)
+[![Build Status](https://travis-ci.com/MichaelDouglasCS/desafio-mobile.svg?branch=master)](https://travis-ci.com/MichaelDouglasCS/desafio-mobile)
 
-## Instruções
+# YouMovie
+This application is a Technical Test to CI&T that has as goal implement a list of movies. The app should show 3 sections, such as Popular, Top Rated and Upcoming and be able to navigate to the details of each item.
 
-- Faça um fork desse repositório e crie sua solução para iOS ou Android;
-- Ao terminar a solução realize um Pull Request;
-- Comente no readme do repositório os métodos utilizados, tais como arquitetura, linguagem, soluções técnicas e etc.;
+## Getting Started
 
-## O App
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-<img src="screenshots/ss01.png?raw=true" width="250"> <img src="screenshots/ss02.png?raw=true" width="250"> <img src="screenshots/ss03.png?raw=true" width="250">
+### Prerequisites
 
-#### Filmes Populares
+What things you need to install the software.
 
-Como usuário, gostaria de ver a lista de de filmes mais populares em cartaz nos cinemas. Os itens dessa lista deverão conter:
- - O banner do filme;
- - O nome do filme;
- - A data de estreia;
+```
+1 - Xcode 11+
+2 - Swift 5+
+3 - Pods
+```
 
-#### Em Breve
+### Installing
 
-Como usuário, gostária de conseguir filtrar a lista de filmes populares para que agora mostre os filmes que entrarão em cartaz em breve:
- - O Filtro deverá ser aplicado na lista já existente, implementada na task anterior
+Firs of all, you need install the Xcode 11+, you can find it in the App Store.
 
-#### Detalhes do filme
+```
+https://developer.apple.com/xcode/
+```
 
-Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do filme:
- - Uma imagem em alta resolução;
- - Nome do filme
- - Generos do filme
- - Ano de estreia
- - Duração
- - Elenco principal 
- - Sinópse
- 
-## Requisitos
- - O app deve ser desenvolvido para suportar as orientação Portrait e Landscape
- - Seja criativo, as imagens de referência são apenas exemplos, você pode criar seu próprio layout
- - Use libs e frameworks que você estiver mais acostumado
- - Teste o seu código ;D
- - Utilize a The Movie Database para realizar as consultas 
- -- TMDB (https://www.themoviedb.org)
- -- API (https://www.themoviedb.org/documentation/api)
- 
-# BOA SORTE!
- 
- 
+After you must install the CocoaPods.
+
+CocoaPods is built with Ruby and it will be installable with the default Ruby available on macOS. You can use a Ruby Version manager, however we recommend that you use the standard Ruby available on macOS unless you know what you're doing.
+
+Using the default Ruby install will require you to use sudo when installing gems. (This is only an issue for the duration of the gem installation, though.)
+
+```
+$ sudo gem install cocoapods
+```
+
+Lastly you need open the Terminal, go to Project root folder, and run this code:
+
+```
+$ pod install
+```
+
+Now you have all elements to run this project
+
+## Authors
+
+* **Michael Douglas** - https://github.com/MichaelDouglasCS
