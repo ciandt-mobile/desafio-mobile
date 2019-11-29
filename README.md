@@ -28,7 +28,9 @@ What things you need to install the software.
 ```
 1 - Xcode 11+
 2 - Swift 5+
-3 - Pods
+3 - Cocoapods
+4 - Homebrew
+5 - SwiftLint
 ```
 
 ### Installing
@@ -49,10 +51,22 @@ Using the default Ruby install will require you to use sudo when installing gems
 $ sudo gem install cocoapods
 ```
 
-Lastly you need open the Terminal, go to Project root folder, and run this code:
+Lastly you need open the Terminal, go to Project root folder, and run this command:
 
 ```
 $ pod install
+```
+
+After that, you need to install the Homebrew, you can find the steps on this link below.
+
+```
+https://brew.sh/index_pt-br
+```
+
+With Homebrew installed, you need to install the SwiftLint to assure your code linting, to do that just execute the command below.
+
+```
+$ brew install swiftlint
 ```
 
 Now you have all elements to run this project
