@@ -87,7 +87,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Movie_Poster_Placeholder" width="170.5" height="170.5"/>
+        <image name="Movie_Poster_Placeholder" width="170" height="170"/>
         <namedColor name="Movie_Poster_Background_Color">
             <color red="0.76990799492385786" green="0.76990799492385786" blue="0.76990799492385786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

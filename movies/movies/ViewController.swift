@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var moviesTableView: UITableView!
 
-    let movieService = MovieDbService()
+    private let movieService = MovieDbService()
     var movies: [Movie] = []
 
     override func viewDidLoad() {
@@ -35,6 +35,17 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let movieDetailsVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as? MovieDetailsViewController else {
+            return
+        }
+
+        movieDetailsVC.movie = self.movies[indexPath.row]
+        self.navigationController?.pushViewController(movieDetailsVC, animated: true)
+    }
 }
 
 extension ViewController: UITableViewDataSource {

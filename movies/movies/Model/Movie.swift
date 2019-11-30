@@ -24,7 +24,7 @@ struct Movie: Codable {
     var releaseDateComponents: DateComponents? {
         get {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.dateFormat = Constants.API_DATE_FORMAT
             guard let releaseDate = dateFormatter.date(from: release_date) else {
                 return nil
             }

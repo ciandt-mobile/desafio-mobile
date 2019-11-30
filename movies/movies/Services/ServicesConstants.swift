@@ -15,7 +15,8 @@ struct ServicesConstants {
     static let MOVIES_DB_BASE_PATH = "https://api.themoviedb.org/3"
     static let POPULAR_MOVIES_PATH = "/movie/popular"
     static let UPCOMING_MOVIES_PATH = "/movie/upcoming"
-    static let IMAGE_BASE_PATH = "https://image.tmdb.org/t/p/w154"
+    static let POSTER_BASE_PATH = "https://image.tmdb.org/t/p/w154"
+    static let BACKDROP_BASE_PATH = "https://image.tmdb.org/t/p/w500"
 
     static let POPULAR_MOVIES_URL = MOVIES_DB_BASE_PATH + POPULAR_MOVIES_PATH
     static let UPCOMING_MOVIES_URL = MOVIES_DB_BASE_PATH + UPCOMING_MOVIES_PATH

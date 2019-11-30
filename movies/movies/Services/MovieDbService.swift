@@ -75,9 +75,16 @@ class MovieDbService {
         }
     }
 
-    func getImage(imagePath: String, onSuccess: @escaping ((UIImage) -> Void)) {
+    func downloadImage(imagePath: String, imageType: ImageType, onSuccess: @escaping ((UIImage) -> Void)) {
 
-        let imageUrl = ServicesConstants.IMAGE_BASE_PATH + imagePath
+        var imageUrl: String = ""
+
+        switch imageType {
+        case .poster:
+            imageUrl = ServicesConstants.POSTER_BASE_PATH + imagePath
+        case .backdrop:
+            imageUrl = ServicesConstants.BACKDROP_BASE_PATH + imagePath
+        }
 
         AF.download(imageUrl).validate().responseData { response in
             switch response.result {

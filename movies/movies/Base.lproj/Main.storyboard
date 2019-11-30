@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,13 +11,12 @@
         <!--Popular Movies-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="movies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="240" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x17-2W-xO1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="240" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x17-2W-xO1">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
@@ -39,8 +39,93 @@
                         <outlet property="moviesTableView" destination="x17-2W-xO1" id="TNx-xk-ogj"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1413" y="-32"/>
+        </scene>
+        <!--Movie Details-->
+        <scene sceneID="Kk1-mL-sAm">
+            <objects>
+                <viewController storyboardIdentifier="MovieDetailsViewController" title="Movie Details" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nDg-SS-82c" customClass="MovieDetailsViewController" customModule="movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rwT-u8-Npo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fat-KW-4TG" userLabel="Poster Image View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="4x3-DC-5Zh"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ab7-yV-BxR">
+                                <rect key="frame" x="10" y="254" width="394" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9p-V3-Rgk" userLabel="Release Date Tile Label">
+                                <rect key="frame" x="10" y="288" width="80.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unknow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0C0-54-WtV" userLabel="Release Date Label">
+                                <rect key="frame" x="95.5" y="288" width="46.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JH6-bh-XH7" userLabel="Separator View">
+                                <rect key="frame" x="0.0" y="314" width="414" height="1"/>
+                                <color key="backgroundColor" name="Separator_View_Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Zcc-ox-0Rr"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pNm-d0-95H" userLabel="Overview Text View">
+                                <rect key="frame" x="10" y="325" width="394" height="10"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="CIX-4n-TMe"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fat-KW-4TG" firstAttribute="leading" secondItem="rwT-u8-Npo" secondAttribute="leading" id="0Uk-uY-NyL"/>
+                            <constraint firstItem="Ab7-yV-BxR" firstAttribute="top" secondItem="fat-KW-4TG" secondAttribute="bottom" constant="10" id="4v0-CJ-8hv"/>
+                            <constraint firstItem="JH6-bh-XH7" firstAttribute="top" secondItem="c9p-V3-Rgk" secondAttribute="bottom" constant="10" id="80h-kd-1dt"/>
+                            <constraint firstItem="1qW-BN-aGF" firstAttribute="trailing" secondItem="pNm-d0-95H" secondAttribute="trailing" constant="10" id="97r-X9-LPD"/>
+                            <constraint firstItem="pNm-d0-95H" firstAttribute="top" secondItem="JH6-bh-XH7" secondAttribute="bottom" constant="10" id="FlW-E6-1fP"/>
+                            <constraint firstItem="1qW-BN-aGF" firstAttribute="trailing" secondItem="Ab7-yV-BxR" secondAttribute="trailing" constant="10" id="MiO-Jf-Amz"/>
+                            <constraint firstItem="0C0-54-WtV" firstAttribute="centerY" secondItem="c9p-V3-Rgk" secondAttribute="centerY" id="PDC-yL-ggL"/>
+                            <constraint firstItem="JH6-bh-XH7" firstAttribute="leading" secondItem="1qW-BN-aGF" secondAttribute="leading" id="QlV-EG-up5"/>
+                            <constraint firstItem="c9p-V3-Rgk" firstAttribute="top" secondItem="Ab7-yV-BxR" secondAttribute="bottom" constant="5" id="TYr-ug-q6a"/>
+                            <constraint firstItem="pNm-d0-95H" firstAttribute="leading" secondItem="1qW-BN-aGF" secondAttribute="leading" constant="10" id="UBg-NP-H2P"/>
+                            <constraint firstItem="fat-KW-4TG" firstAttribute="top" secondItem="1qW-BN-aGF" secondAttribute="top" id="WoM-4Z-AQR"/>
+                            <constraint firstItem="0C0-54-WtV" firstAttribute="leading" secondItem="c9p-V3-Rgk" secondAttribute="trailing" constant="5" id="Zga-oG-sHc"/>
+                            <constraint firstItem="c9p-V3-Rgk" firstAttribute="leading" secondItem="1qW-BN-aGF" secondAttribute="leading" constant="10" id="lfs-51-bSB"/>
+                            <constraint firstItem="Ab7-yV-BxR" firstAttribute="leading" secondItem="1qW-BN-aGF" secondAttribute="leading" constant="10" id="vnf-gT-Wru"/>
+                            <constraint firstItem="1qW-BN-aGF" firstAttribute="trailing" secondItem="JH6-bh-XH7" secondAttribute="trailing" id="wWc-ob-7qT"/>
+                            <constraint firstItem="fat-KW-4TG" firstAttribute="trailing" secondItem="rwT-u8-Npo" secondAttribute="trailing" id="wY7-f9-g3x"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1qW-BN-aGF"/>
+                    </view>
+                    <connections>
+                        <outlet property="backdropImage" destination="fat-KW-4TG" id="VsY-fk-sra"/>
+                        <outlet property="overviewTextView" destination="pNm-d0-95H" id="vqR-4G-9YH"/>
+                        <outlet property="overviewTextViewHeightConstraint" destination="CIX-4n-TMe" id="QM9-8g-9Ex"/>
+                        <outlet property="releaseDateLabel" destination="0C0-54-WtV" id="Ol7-Zf-V6c"/>
+                        <outlet property="titleLabel" destination="Ab7-yV-BxR" id="KvG-vT-x9q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M0t-XB-0IA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2339.130434782609" y="-32.142857142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GaX-QL-WNm">
@@ -59,4 +144,9 @@
             <point key="canvasLocation" x="541" y="-32"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="Separator_View_Color">
+            <color red="0.73796399111675126" green="0.73796399111675126" blue="0.73796399111675126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
