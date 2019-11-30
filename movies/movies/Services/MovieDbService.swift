@@ -75,6 +75,38 @@ class MovieDbService {
         }
     }
 
+    func getMovieDetails(movieId: Int, onSuccess: @escaping ((MovieDetails) -> Void), onFailure: @escaping (() -> Void)) {
+
+        let url = ServicesConstants.MOVIE_DETAILS_URL + String(movieId)
+
+        let parameters: Parameters = [
+            ServicesConstants.KEY : "e1431fa912601d9558f5c16a7c89fb5b"
+        ]
+
+        AF.request(url, method: .get, parameters: parameters, headers: ServicesConstants.MOVIES_DB_HEADER).validate().responseJSON { response in
+            switch response.result {
+            case .success:
+                guard let data = response.data else {
+                    print("No data was found in movieDetails API response")
+                    onFailure()
+                    return
+                }
+
+                do {
+                    let movieDetails = try JSONDecoder().decode(MovieDetails.self, from: data)
+                    onSuccess(movieDetails)
+                }
+                catch {
+                    print("movieDetails decoder error: \(error)")
+                    onFailure()
+                }
+            case let .failure(error):
+                print("movieDetails API error: \(error)")
+                onFailure()
+            }
+        }
+    }
+
     func downloadImage(imagePath: String, imageType: ImageType, onSuccess: @escaping ((UIImage) -> Void)) {
 
         var imageUrl: String = ""

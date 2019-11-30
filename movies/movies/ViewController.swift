@@ -44,7 +44,7 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let movieDetailsVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as? MovieDetailsViewController else {
+        guard let movieDetailsVC = storyboard.instantiateViewController(withIdentifier: MovieDetailsViewController.viewIdentifier) as? MovieDetailsViewController else {
             return
         }
 

@@ -95,14 +95,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9p-V3-Rgk" userLabel="Release Date Tile Label">
-                                <rect key="frame" x="10" y="288" width="80.5" height="16"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unknow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0C0-54-WtV" userLabel="Release Date Label">
-                                <rect key="frame" x="95.5" y="288" width="46.5" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODs-Ef-KPA" userLabel="Movie details">
+                                <rect key="frame" x="10" y="288" width="394" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -130,17 +124,16 @@
                         <constraints>
                             <constraint firstItem="fat-KW-4TG" firstAttribute="leading" secondItem="rwT-u8-Npo" secondAttribute="leading" id="0Uk-uY-NyL"/>
                             <constraint firstItem="Ab7-yV-BxR" firstAttribute="top" secondItem="fat-KW-4TG" secondAttribute="bottom" constant="10" id="4v0-CJ-8hv"/>
-                            <constraint firstItem="JH6-bh-XH7" firstAttribute="top" secondItem="c9p-V3-Rgk" secondAttribute="bottom" constant="10" id="80h-kd-1dt"/>
                             <constraint firstItem="1qW-BN-aGF" firstAttribute="trailing" secondItem="pNm-d0-95H" secondAttribute="trailing" constant="10" id="97r-X9-LPD"/>
                             <constraint firstItem="pNm-d0-95H" firstAttribute="top" secondItem="JH6-bh-XH7" secondAttribute="bottom" constant="10" id="FlW-E6-1fP"/>
+                            <constraint firstItem="ODs-Ef-KPA" firstAttribute="top" secondItem="Ab7-yV-BxR" secondAttribute="bottom" constant="5" id="GuA-YE-xxz"/>
+                            <constraint firstItem="1qW-BN-aGF" firstAttribute="trailing" secondItem="ODs-Ef-KPA" secondAttribute="trailing" constant="10" id="Kui-8p-Gva"/>
                             <constraint firstItem="1qW-BN-aGF" firstAttribute="trailing" secondItem="Ab7-yV-BxR" secondAttribute="trailing" constant="10" id="MiO-Jf-Amz"/>
-                            <constraint firstItem="0C0-54-WtV" firstAttribute="centerY" secondItem="c9p-V3-Rgk" secondAttribute="centerY" id="PDC-yL-ggL"/>
                             <constraint firstItem="JH6-bh-XH7" firstAttribute="leading" secondItem="1qW-BN-aGF" secondAttribute="leading" id="QlV-EG-up5"/>
-                            <constraint firstItem="c9p-V3-Rgk" firstAttribute="top" secondItem="Ab7-yV-BxR" secondAttribute="bottom" constant="5" id="TYr-ug-q6a"/>
                             <constraint firstItem="pNm-d0-95H" firstAttribute="leading" secondItem="1qW-BN-aGF" secondAttribute="leading" constant="10" id="UBg-NP-H2P"/>
                             <constraint firstItem="fat-KW-4TG" firstAttribute="top" secondItem="1qW-BN-aGF" secondAttribute="top" id="WoM-4Z-AQR"/>
-                            <constraint firstItem="0C0-54-WtV" firstAttribute="leading" secondItem="c9p-V3-Rgk" secondAttribute="trailing" constant="5" id="Zga-oG-sHc"/>
-                            <constraint firstItem="c9p-V3-Rgk" firstAttribute="leading" secondItem="1qW-BN-aGF" secondAttribute="leading" constant="10" id="lfs-51-bSB"/>
+                            <constraint firstItem="ODs-Ef-KPA" firstAttribute="leading" secondItem="1qW-BN-aGF" secondAttribute="leading" constant="10" id="mis-4e-cQz"/>
+                            <constraint firstItem="JH6-bh-XH7" firstAttribute="top" secondItem="ODs-Ef-KPA" secondAttribute="bottom" constant="10" id="u9i-IV-beM"/>
                             <constraint firstItem="Ab7-yV-BxR" firstAttribute="leading" secondItem="1qW-BN-aGF" secondAttribute="leading" constant="10" id="vnf-gT-Wru"/>
                             <constraint firstItem="1qW-BN-aGF" firstAttribute="trailing" secondItem="JH6-bh-XH7" secondAttribute="trailing" id="wWc-ob-7qT"/>
                             <constraint firstItem="fat-KW-4TG" firstAttribute="trailing" secondItem="rwT-u8-Npo" secondAttribute="trailing" id="wY7-f9-g3x"/>
@@ -149,9 +142,9 @@
                     </view>
                     <connections>
                         <outlet property="backdropImage" destination="fat-KW-4TG" id="VsY-fk-sra"/>
+                        <outlet property="movieDetailsLabel" destination="ODs-Ef-KPA" id="Gkv-zy-FaH"/>
                         <outlet property="overviewTextView" destination="pNm-d0-95H" id="vqR-4G-9YH"/>
                         <outlet property="overviewTextViewHeightConstraint" destination="CIX-4n-TMe" id="QM9-8g-9Ex"/>
-                        <outlet property="releaseDateLabel" destination="0C0-54-WtV" id="Ol7-Zf-V6c"/>
                         <outlet property="titleLabel" destination="Ab7-yV-BxR" id="KvG-vT-x9q"/>
                     </connections>
                 </viewController>

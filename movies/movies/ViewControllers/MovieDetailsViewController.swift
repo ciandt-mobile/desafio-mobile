@@ -12,12 +12,14 @@ class MovieDetailsViewController: UIViewController {
 
     @IBOutlet weak var backdropImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var overviewTextView: UITextView!
     @IBOutlet weak var overviewTextViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var movieDetailsLabel: UILabel!
 
+    static let viewIdentifier: String = "MovieDetailsViewController"
     private let movieService = MovieDbService()
     var movie: Movie?
+    var movieDetails: MovieDetails?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +28,16 @@ class MovieDetailsViewController: UIViewController {
             return
         }
 
+        movieService.getMovieDetails(movieId: movie.id, onSuccess: setMovieDetails) {
+            //FAILURE
+        }
+
         self.titleLabel.text = movie.title
         self.overviewTextView.text = movie.overview
         adjustTextViewHeight()
 
-        if let releaseDateComponents = movie.releaseDateComponents, let releaseDate = Calendar.current.date(from: releaseDateComponents) {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = Constants.APP_DATE_FORMAT
-            self.releaseDateLabel.text = dateFormatter.string(from: releaseDate)
+        if let releaseDateComponents = movie.releaseDateComponents, let year = releaseDateComponents.year {
+            self.movieDetailsLabel.text = String(year)
         }
 
         movieService.downloadImage(imagePath: movie.backdrop_path, imageType: .backdrop) { image in
@@ -48,5 +52,20 @@ class MovieDetailsViewController: UIViewController {
         let textViewSize = self.overviewTextView.visibleSize
         let sizeThatFitsText = self.overviewTextView.sizeThatFits(CGSize(width: textViewSize.width, height: CGFloat.greatestFiniteMagnitude))
         self.overviewTextViewHeightConstraint.constant = sizeThatFitsText.height + heightAddition
+    }
+
+    func setMovieDetails(movieDetails: MovieDetails) {
+        self.movieDetails = movieDetails
+
+        var genres: String = ""
+        for (index, genre) in movieDetails.genres.enumerated() {
+            if index != 0 {
+                genres += ", "
+            }
+            genres += genre.name
+        }
+
+        let details: String = " | \(movieDetails.runtime)min | \(movieDetails.status) | \(genres)"
+        self.movieDetailsLabel.text! += details
     }
 }
