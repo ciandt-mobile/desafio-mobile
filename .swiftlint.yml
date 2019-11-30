@@ -1,0 +1,22 @@
+disabled_rules:
+  - line_length
+  - trailing_whitespace
+
+excluded:
+  - Carthage
+  - Pods
+  - Filme App Collection
+
+
+identifier_name:
+    allowed_symbols:
+      - _
+    validates_start_with_lowercase: false
+    min_length: 3
+    max_length:
+      warning: 50
+      error: 60
+    excluded: # excluded via string array
+      - id
+      - URL
+
