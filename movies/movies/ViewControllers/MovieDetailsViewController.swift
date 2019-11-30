@@ -32,7 +32,7 @@ class MovieDetailsViewController: UIViewController {
 
         if let releaseDateComponents = movie.releaseDateComponents, let releaseDate = Calendar.current.date(from: releaseDateComponents) {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = Constants.dateFormat
+            dateFormatter.dateFormat = Constants.APP_DATE_FORMAT
             self.releaseDateLabel.text = dateFormatter.string(from: releaseDate)
         }
 
