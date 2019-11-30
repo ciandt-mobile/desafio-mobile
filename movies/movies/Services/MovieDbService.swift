@@ -23,7 +23,7 @@ class MovieDbService {
             switch response.result {
             case .success:
                 guard let data = response.data else {
-                    print("No data was found in API response")
+                    print("No data was found in getPopularMovies API response")
                     onFailure()
                     return
                 }
@@ -33,11 +33,11 @@ class MovieDbService {
                     onSuccess(popularMovies)
                 }
                 catch {
-                    print("Decoder error: \(error)")
+                    print("getPopularMovies decoder error: \(error)")
                     onFailure()
                 }
             case let .failure(error):
-                print("API error: \(error)")
+                print("getPopularMovies API error: \(error)")
                 onFailure()
             }
         }
@@ -55,7 +55,7 @@ class MovieDbService {
             switch response.result {
             case .success:
                 guard let data = response.data else {
-                    print("No data was found in API response")
+                    print("No data was found in getUpcomingMovies API response")
                     onFailure()
                     return
                 }
@@ -65,13 +65,33 @@ class MovieDbService {
                     onSuccess(upcomingMovies)
                 }
                 catch {
-                    print("Decoder error: \(error)")
+                    print("getUpcomingMovies decoder error: \(error)")
                     onFailure()
                 }
             case let .failure(error):
-                print("API error: \(error)")
+                print("getUpcomingMovies API error: \(error)")
                 onFailure()
             }
         }
+    }
+
+    func getImage(imagePath: String, onSuccess: @escaping ((UIImage) -> Void)) {
+
+        let imageUrl = ServicesConstants.IMAGE_BASE_PATH + imagePath
+
+        AF.download(imageUrl).validate().responseData { response in
+            switch response.result {
+            case .success:
+                if let data = response.value, let image = UIImage(data: data) {
+                    onSuccess(image)
+                }
+                else {
+                    print("Could not retrieve image data from \(imageUrl)")
+                }
+            case let .failure(error):
+                print("Image API error: \(error)")
+            }
+        }
+
     }
 }
