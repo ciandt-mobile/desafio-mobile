@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var moviesTableView: UITableView!
+    @IBOutlet weak var errorView: UIView!
+    @IBOutlet weak var errorMessageLabel: UILabel!
 
     private let movieService = MovieDbService()
     var movies: [Movie] = []
@@ -22,8 +24,11 @@ class ViewController: UIViewController {
             self.movies = popularMovies.results
             self.moviesTableView.reloadData()
         }) {
-            print("oh oh")
+            self.moviesTableView.isHidden.toggle()
+            self.errorView.isHidden.toggle()
+            self.errorMessageLabel.text = Constants.POPULAR_MOVIES_ERROR_MESSAGE
         }
+
         setupView()
     }
 

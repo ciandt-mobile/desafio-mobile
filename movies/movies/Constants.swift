@@ -11,4 +11,6 @@ import Foundation
 struct Constants {
     static let API_DATE_FORMAT: String = "yyyy-MM-dd"
     static let APP_DATE_FORMAT: String = "MM/dd/yyyy"
+
+    static let POPULAR_MOVIES_ERROR_MESSAGE: String = "We had an error getting the popular movies"
 }

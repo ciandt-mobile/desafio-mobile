@@ -16,6 +16,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qf5-I9-j7x" userLabel="Error View">
+                                <rect key="frame" x="57" y="373" width="300" height="150"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Error_Image" translatesAutoresizingMaskIntoConstraints="NO" id="NNf-C0-GGq" userLabel="Error Image View">
+                                        <rect key="frame" x="110" y="10" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="VCJ-J2-kPx"/>
+                                            <constraint firstAttribute="height" constant="80" id="mbY-21-wnl"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sta-eb-cwz" userLabel="Error Label">
+                                        <rect key="frame" x="10" y="105" width="280" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="sta-eb-cwz" firstAttribute="top" secondItem="NNf-C0-GGq" secondAttribute="bottom" constant="15" id="Ha6-nc-3D5"/>
+                                    <constraint firstItem="sta-eb-cwz" firstAttribute="leading" secondItem="Qf5-I9-j7x" secondAttribute="leading" constant="10" id="Wga-5e-h8T"/>
+                                    <constraint firstAttribute="height" constant="150" id="iOI-en-HYL"/>
+                                    <constraint firstAttribute="trailing" secondItem="sta-eb-cwz" secondAttribute="trailing" constant="10" id="kYb-y7-C5U"/>
+                                    <constraint firstAttribute="width" constant="300" id="mSQ-Bu-n5T"/>
+                                    <constraint firstItem="NNf-C0-GGq" firstAttribute="centerX" secondItem="Qf5-I9-j7x" secondAttribute="centerX" id="sxG-eu-R07"/>
+                                    <constraint firstItem="NNf-C0-GGq" firstAttribute="top" secondItem="Qf5-I9-j7x" secondAttribute="top" constant="10" id="wo6-Jo-Gau"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="240" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x17-2W-xO1">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -28,7 +56,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="x17-2W-xO1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="14f-Ga-OFI"/>
+                            <constraint firstItem="Qf5-I9-j7x" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2Th-P9-HYk"/>
                             <constraint firstItem="x17-2W-xO1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Z2u-rC-eBB"/>
+                            <constraint firstItem="Qf5-I9-j7x" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="if8-ck-0cL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="x17-2W-xO1" secondAttribute="bottom" id="sZE-9L-eF3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x17-2W-xO1" secondAttribute="trailing" id="xvM-zn-RcD"/>
                         </constraints>
@@ -36,12 +66,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Popular Movies" id="szP-iC-Tad"/>
                     <connections>
+                        <outlet property="errorMessageLabel" destination="sta-eb-cwz" id="iW8-3G-W3X"/>
+                        <outlet property="errorView" destination="Qf5-I9-j7x" id="AgM-fj-6Ci"/>
                         <outlet property="moviesTableView" destination="x17-2W-xO1" id="TNx-xk-ogj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1413" y="-32"/>
+            <point key="canvasLocation" x="1410.144927536232" y="-32.142857142857139"/>
         </scene>
         <!--Movie Details-->
         <scene sceneID="Kk1-mL-sAm">
@@ -145,8 +177,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Error_Image" width="170.5" height="170.5"/>
         <namedColor name="Separator_View_Color">
-            <color red="0.73796399111675126" green="0.73796399111675126" blue="0.73796399111675126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.73799997568130493" green="0.73799997568130493" blue="0.73799997568130493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
