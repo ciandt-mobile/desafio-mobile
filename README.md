@@ -1,3 +1,20 @@
+# Funcionalidades do aplicativo
+ - Exibe filmes lançamentos
+ - Exibe filmes populares
+ - Salva filmes como favorito (CoreData)
+ - Exibe tela filmes salvos salvo favorito (CoreData)
+ - Descrição dos filmes
+
+# Tecnologias/Frameworks utilizados
+ - Swift 5+
+ - CoreData
+ - KingFisher
+ - Testes Unitarios
+ - MVC
+ 
+
+
+
 # Desafio Mobile - 2019
 
 Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para realizar o desafio 😀.
