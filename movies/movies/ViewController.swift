@@ -45,6 +45,8 @@ extension ViewController: UITableViewDelegate {
 
         movieDetailsVC.movie = self.movies[indexPath.row]
         self.navigationController?.pushViewController(movieDetailsVC, animated: true)
+
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }
 

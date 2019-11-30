@@ -53,7 +53,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="iof-h7-tC2" firstAttribute="centerX" secondItem="5Aj-J7-u3E" secondAttribute="centerX" id="Ala-OM-1og"/>
                             <constraint firstItem="YVv-iA-sD3" firstAttribute="centerX" secondItem="iof-h7-tC2" secondAttribute="centerX" id="Tuu-6e-uGb"/>
@@ -87,9 +86,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Movie_Poster_Placeholder" width="170" height="170"/>
+        <image name="Movie_Poster_Placeholder" width="170.5" height="170.5"/>
         <namedColor name="Movie_Poster_Background_Color">
-            <color red="0.76990799492385786" green="0.76990799492385786" blue="0.76990799492385786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.76999998092651367" green="0.76999998092651367" blue="0.76999998092651367" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
