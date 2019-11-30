@@ -49,16 +49,7 @@ extension ViewController: UITableViewDataSource {
             fatalError("Could not dequeue PopularMoviesTableViewCell")
         }
 
-        let movie = self.movies[indexPath.row]
-        cell.movieTitle.text = movie.title
-        cell.voteAverageScoreLabel.text = String(movie.vote_average)
-        if let releaseDateComponents = movie.releaseDateComponents, let releaseYear = releaseDateComponents.year {
-            cell.yearLabel.text = String(releaseYear)
-        }
-
-        self.movieService.getImage(imagePath: movie.poster_path) { posterImage in
-            cell.moviePoster.image = posterImage
-        }
+        cell.setMovie(self.movies[indexPath.row])
 
         return cell
     }

@@ -16,7 +16,7 @@ class MovieDbService {
         let url = ServicesConstants.POPULAR_MOVIES_URL
 
         let parameters: Parameters = [
-            ServicesConstants.KEY : ""
+            ServicesConstants.KEY : "e1431fa912601d9558f5c16a7c89fb5b"
         ]
 
         AF.request(url, method: .get, parameters: parameters, headers: ServicesConstants.MOVIES_DB_HEADER).validate().responseJSON { response in
@@ -48,7 +48,7 @@ class MovieDbService {
         let url = ServicesConstants.UPCOMING_MOVIES_URL
 
         let parameters: Parameters = [
-            ServicesConstants.KEY : ""
+            ServicesConstants.KEY : "e1431fa912601d9558f5c16a7c89fb5b"
         ]
 
         AF.request(url, method: .get, parameters: parameters, headers: ServicesConstants.MOVIES_DB_HEADER).validate().responseJSON { response in

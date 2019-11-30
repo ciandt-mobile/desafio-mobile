@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Popular Movies-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -34,7 +34,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="szP-iC-Tad"/>
+                    <navigationItem key="navigationItem" title="Popular Movies" id="szP-iC-Tad"/>
                     <connections>
                         <outlet property="moviesTableView" destination="x17-2W-xO1" id="TNx-xk-ogj"/>
                     </connections>
