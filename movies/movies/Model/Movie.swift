@@ -20,4 +20,17 @@ struct Movie: Codable {
     let vote_average: Double
     let overview: String
     let release_date: String
+
+    var releaseDateComponents: DateComponents? {
+        get {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            guard let releaseDate = dateFormatter.date(from: release_date) else {
+                return nil
+            }
+
+            let calendar = Calendar.current
+            return calendar.dateComponents([.year, .month, .day], from: releaseDate)
+        }
+    }
 }

@@ -14,6 +14,8 @@
 		E32C92342391EF4C00A8C9AA /* ServicesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32C92332391EF4C00A8C9AA /* ServicesConstants.swift */; };
 		E32C92362391FC3600A8C9AA /* UpcomingMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32C92352391FC3600A8C9AA /* UpcomingMovies.swift */; };
 		E32C92382391FD2100A8C9AA /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32C92372391FD2100A8C9AA /* DateRange.swift */; };
+		E32C923D239282F400A8C9AA /* PopularMoviesTableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32C923B239282F400A8C9AA /* PopularMoviesTableTableViewCell.swift */; };
+		E32C923E239282F400A8C9AA /* PopularMoviesTableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32C923C239282F400A8C9AA /* PopularMoviesTableTableViewCell.xib */; };
 		E3A5D0AE2391DAFB002A6E76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5D0AD2391DAFB002A6E76 /* AppDelegate.swift */; };
 		E3A5D0B02391DAFB002A6E76 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5D0AF2391DAFB002A6E76 /* SceneDelegate.swift */; };
 		E3A5D0B22391DAFB002A6E76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5D0B12391DAFB002A6E76 /* ViewController.swift */; };
@@ -32,6 +34,8 @@
 		E32C92332391EF4C00A8C9AA /* ServicesConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesConstants.swift; sourceTree = "<group>"; };
 		E32C92352391FC3600A8C9AA /* UpcomingMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovies.swift; sourceTree = "<group>"; };
 		E32C92372391FD2100A8C9AA /* DateRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
+		E32C923B239282F400A8C9AA /* PopularMoviesTableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesTableTableViewCell.swift; sourceTree = "<group>"; };
+		E32C923C239282F400A8C9AA /* PopularMoviesTableTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularMoviesTableTableViewCell.xib; sourceTree = "<group>"; };
 		E3A5D0AA2391DAFB002A6E76 /* movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A5D0AD2391DAFB002A6E76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3A5D0AF2391DAFB002A6E76 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +95,23 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		E32C92392392825300A8C9AA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E32C923A2392827900A8C9AA /* PopularMovieCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E32C923A2392827900A8C9AA /* PopularMovieCell */ = {
+			isa = PBXGroup;
+			children = (
+				E32C923B239282F400A8C9AA /* PopularMoviesTableTableViewCell.swift */,
+				E32C923C239282F400A8C9AA /* PopularMoviesTableTableViewCell.xib */,
+			);
+			path = PopularMovieCell;
+			sourceTree = "<group>";
+		};
 		E3A5D0A12391DAFB002A6E76 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +133,7 @@
 		E3A5D0AC2391DAFB002A6E76 /* movies */ = {
 			isa = PBXGroup;
 			children = (
+				E32C92392392825300A8C9AA /* Views */,
 				E32C92302391E64400A8C9AA /* Services */,
 				E32C922B2391DC9500A8C9AA /* Model */,
 				E3A5D0AD2391DAFB002A6E76 /* AppDelegate.swift */,
@@ -186,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3A5D0BA2391DAFD002A6E76 /* LaunchScreen.storyboard in Resources */,
+				E32C923E239282F400A8C9AA /* PopularMoviesTableTableViewCell.xib in Resources */,
 				E3A5D0B72391DAFD002A6E76 /* Assets.xcassets in Resources */,
 				E3A5D0B52391DAFB002A6E76 /* Main.storyboard in Resources */,
 			);
@@ -241,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E32C922F2391E5D700A8C9AA /* PopularMovies.swift in Sources */,
+				E32C923D239282F400A8C9AA /* PopularMoviesTableTableViewCell.swift in Sources */,
 				E3A5D0B22391DAFB002A6E76 /* ViewController.swift in Sources */,
 				E32C92322391E65200A8C9AA /* MovieDbService.swift in Sources */,
 				E3A5D0AE2391DAFB002A6E76 /* AppDelegate.swift in Sources */,
