@@ -45,7 +45,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="240" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x17-2W-xO1">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="g3H-sK-g8h"/>
@@ -57,9 +57,9 @@
                         <constraints>
                             <constraint firstItem="x17-2W-xO1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="14f-Ga-OFI"/>
                             <constraint firstItem="Qf5-I9-j7x" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2Th-P9-HYk"/>
+                            <constraint firstItem="x17-2W-xO1" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="E33-gj-yNc"/>
                             <constraint firstItem="x17-2W-xO1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Z2u-rC-eBB"/>
                             <constraint firstItem="Qf5-I9-j7x" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="if8-ck-0cL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="x17-2W-xO1" secondAttribute="bottom" id="sZE-9L-eF3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x17-2W-xO1" secondAttribute="trailing" id="xvM-zn-RcD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
