@@ -37,39 +37,29 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Aj-J7-u3E" userLabel="Vote Average View">
-                        <rect key="frame" x="166.5" y="67" width="290.5" height="173"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vote average" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iof-h7-tC2" userLabel="Vote Average Title Label">
-                                <rect key="frame" x="100.5" y="10" width="90" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVv-iA-sD3" userLabel="Vote Average Score Label">
-                                <rect key="frame" x="121.5" y="38" width="48" height="30"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="iof-h7-tC2" firstAttribute="centerX" secondItem="5Aj-J7-u3E" secondAttribute="centerX" id="Ala-OM-1og"/>
-                            <constraint firstItem="YVv-iA-sD3" firstAttribute="centerX" secondItem="iof-h7-tC2" secondAttribute="centerX" id="Tuu-6e-uGb"/>
-                            <constraint firstItem="YVv-iA-sD3" firstAttribute="top" secondItem="iof-h7-tC2" secondAttribute="bottom" constant="10" id="YV0-5W-kqK"/>
-                            <constraint firstItem="iof-h7-tC2" firstAttribute="top" secondItem="5Aj-J7-u3E" secondAttribute="top" constant="10" id="dvo-2S-VU2"/>
-                        </constraints>
-                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vote average" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iof-h7-tC2" userLabel="Vote Average Title Label">
+                        <rect key="frame" x="166.5" y="97" width="270.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVv-iA-sD3" userLabel="Vote Average Score Label">
+                        <rect key="frame" x="278" y="125" width="48" height="30"/>
+                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Tyb-iT-9aN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="1Kv-of-6rh"/>
-                    <constraint firstItem="5Aj-J7-u3E" firstAttribute="top" secondItem="dvH-cJ-bwj" secondAttribute="bottom" constant="10" id="1xw-T1-zHu"/>
                     <constraint firstItem="Tyb-iT-9aN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="8VR-JF-suN"/>
+                    <constraint firstItem="iof-h7-tC2" firstAttribute="leading" secondItem="Tyb-iT-9aN" secondAttribute="trailing" constant="10" id="IPo-r8-lCE"/>
                     <constraint firstItem="dvH-cJ-bwj" firstAttribute="top" secondItem="KCO-r9-l7x" secondAttribute="bottom" constant="5" id="P3Y-Nj-46c"/>
-                    <constraint firstItem="5Aj-J7-u3E" firstAttribute="leading" secondItem="Tyb-iT-9aN" secondAttribute="trailing" constant="10" id="UHl-3J-uui"/>
+                    <constraint firstItem="iof-h7-tC2" firstAttribute="top" secondItem="dvH-cJ-bwj" secondAttribute="bottom" constant="40" id="R6P-sB-IQf"/>
                     <constraint firstItem="KCO-r9-l7x" firstAttribute="top" secondItem="Tyb-iT-9aN" secondAttribute="top" id="Zt4-zA-bKr"/>
-                    <constraint firstAttribute="trailing" secondItem="5Aj-J7-u3E" secondAttribute="trailing" constant="10" id="cpg-YV-g7Y"/>
-                    <constraint firstAttribute="bottom" secondItem="5Aj-J7-u3E" secondAttribute="bottom" id="oUM-Zh-XUF"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="iof-h7-tC2" secondAttribute="trailing" constant="10" id="Zwb-lA-hpI"/>
+                    <constraint firstItem="YVv-iA-sD3" firstAttribute="top" secondItem="iof-h7-tC2" secondAttribute="bottom" constant="10" id="edC-5s-eDJ"/>
+                    <constraint firstItem="YVv-iA-sD3" firstAttribute="centerX" secondItem="iof-h7-tC2" secondAttribute="centerX" id="hCG-Wa-dXp"/>
                     <constraint firstItem="KCO-r9-l7x" firstAttribute="leading" secondItem="Tyb-iT-9aN" secondAttribute="trailing" constant="20" id="r9u-Qi-NV6"/>
                     <constraint firstAttribute="trailing" secondItem="KCO-r9-l7x" secondAttribute="trailing" id="u6x-Z7-GOu"/>
                     <constraint firstItem="dvH-cJ-bwj" firstAttribute="leading" secondItem="KCO-r9-l7x" secondAttribute="leading" id="uak-7L-9s0"/>

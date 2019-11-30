@@ -14,7 +14,6 @@ class PopularMoviesTableTableViewCell: UITableViewCell {
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var voteAverageScoreLabel: UILabel!
-    @IBOutlet weak var genresView: UIStackView!
 
     let movieService = MovieDbService()
     var movie: Movie?
@@ -34,8 +33,11 @@ class PopularMoviesTableTableViewCell: UITableViewCell {
         self.movieTitle.text = movie.title
         self.voteAverageScoreLabel.text = String(movie.vote_average)
 
-        if let releaseDateComponents = movie.releaseDateComponents, let releaseYear = releaseDateComponents.year {
-            self.yearLabel.text = String(releaseYear)
+        if let releaseDateComponents = movie.releaseDateComponents, let releaseDate = Calendar.current.date(from: releaseDateComponents) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = Constants.APP_DATE_FORMAT
+
+            self.yearLabel.text = dateFormatter.string(from: releaseDate)
         }
 
         self.movieService.downloadImage(imagePath: movie.poster_path, imageType: .poster) { posterImage in
