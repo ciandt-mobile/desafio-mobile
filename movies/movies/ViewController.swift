@@ -119,7 +119,13 @@ extension ViewController: UITableViewDelegate {
             return
         }
 
-        movieDetailsVC.movie = self.movies[indexPath.row]
+        if self.movieFilterSegmentedControl.selectedSegmentIndex == 0 {
+            movieDetailsVC.movie = self.movies[indexPath.row]
+        }
+        else {
+            movieDetailsVC.movie = self.upcomingMovies[indexPath.row]
+        }
+
         self.navigationController?.pushViewController(movieDetailsVC, animated: true)
     }
 
