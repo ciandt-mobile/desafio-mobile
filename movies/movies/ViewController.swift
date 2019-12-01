@@ -10,9 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // MARK: IBOutlets
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var errorMessageLabel: UILabel!
+    @IBOutlet weak var movieFilterSegmentedControl: UISegmentedControl!
 
     private var isFetchingMoreMovies: Bool = false
     private var gotErrorFetchingMovies: Bool = false
@@ -20,6 +22,7 @@ class ViewController: UIViewController {
     private var totalPages: Int = 0
     private let movieService = MovieDbService()
     private var movies: [Movie] = []
+    private var upcomingMovies: [Movie] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,7 @@ class ViewController: UIViewController {
             self.movies = popularMovies.results
             self.totalPages = popularMovies.total_pages
             self.moviesTableView.reloadData()
+            self.filterUpcomingMovies(movies: popularMovies.results)
         }) {
             self.moviesTableView.isHidden.toggle()
             self.errorView.isHidden.toggle()
@@ -62,14 +66,34 @@ class ViewController: UIViewController {
             self.gotErrorFetchingMovies = false
             self.movies.append(contentsOf: popularMovies.results)
             self.moviesTableView.reloadData()
+            self.filterUpcomingMovies(movies: popularMovies.results)
         }) {
             self.isFetchingMoreMovies = false
             self.gotErrorFetchingMovies = true
             NotificationCenter.default.post(name: .didReceivedAnError, object: self)
         }
     }
+
+    // MARK: IBActions
+    @IBAction func movieFilterChangedValue(_ sender: UISegmentedControl) {
+        self.moviesTableView.reloadData()
+    }
+
+    func filterUpcomingMovies(movies: [Movie]) {
+
+        let today = Date()
+
+        for movie in movies {
+            if let releaseDateComponents = movie.releaseDateComponents, let releaseDate = Calendar.current.date(from: releaseDateComponents) {
+                if releaseDate > today {
+                    self.upcomingMovies.append(movie)
+                }
+            }
+        }
+    }
 }
 
+// MARK: UITableView extensions
 extension ViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -119,7 +143,12 @@ extension ViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return self.movies.count
+            if movieFilterSegmentedControl.selectedSegmentIndex == 0 {
+                return self.movies.count
+            }
+            else {
+                return self.upcomingMovies.count
+            }
         }
 
         if self.isFetchingMoreMovies {
@@ -137,7 +166,12 @@ extension ViewController: UITableViewDataSource {
                 fatalError("Could not dequeue PopularMoviesTableViewCell")
             }
 
-            cell.setMovie(self.movies[indexPath.row])
+            if self.movieFilterSegmentedControl.selectedSegmentIndex == 0 {
+                cell.setMovie(self.movies[indexPath.row])
+            }
+            else {
+                cell.setMovie(self.upcomingMovies[indexPath.row])
+            }
 
             return cell
         }

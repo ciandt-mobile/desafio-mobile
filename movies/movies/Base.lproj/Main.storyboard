@@ -44,8 +44,18 @@
                                     <constraint firstItem="NNf-C0-GGq" firstAttribute="top" secondItem="Qf5-I9-j7x" secondAttribute="top" constant="10" id="wo6-Jo-Gau"/>
                                 </constraints>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lxH-J0-Ua9">
+                                <rect key="frame" x="124.5" y="91" width="165" height="32"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Upcoming"/>
+                                </segments>
+                                <connections>
+                                    <action selector="movieFilterChangedValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="H3W-VM-fhh"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x17-2W-xO1">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="125" width="414" height="771"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="g3H-sK-g8h"/>
@@ -55,11 +65,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="x17-2W-xO1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="14f-Ga-OFI"/>
                             <constraint firstItem="Qf5-I9-j7x" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2Th-P9-HYk"/>
+                            <constraint firstItem="lxH-J0-Ua9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="3" id="5jE-8n-fbc"/>
+                            <constraint firstItem="x17-2W-xO1" firstAttribute="top" secondItem="lxH-J0-Ua9" secondAttribute="bottom" constant="3" id="7jl-a3-9HV"/>
                             <constraint firstItem="x17-2W-xO1" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="E33-gj-yNc"/>
                             <constraint firstItem="x17-2W-xO1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Z2u-rC-eBB"/>
                             <constraint firstItem="Qf5-I9-j7x" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="if8-ck-0cL"/>
+                            <constraint firstItem="lxH-J0-Ua9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kyy-0e-qmk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x17-2W-xO1" secondAttribute="trailing" id="xvM-zn-RcD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -68,6 +80,7 @@
                     <connections>
                         <outlet property="errorMessageLabel" destination="sta-eb-cwz" id="iW8-3G-W3X"/>
                         <outlet property="errorView" destination="Qf5-I9-j7x" id="AgM-fj-6Ci"/>
+                        <outlet property="movieFilterSegmentedControl" destination="lxH-J0-Ua9" id="OEu-rH-AE7"/>
                         <outlet property="moviesTableView" destination="x17-2W-xO1" id="TNx-xk-ogj"/>
                     </connections>
                 </viewController>

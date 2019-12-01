@@ -16,7 +16,7 @@ struct ServicesConstants {
     static let POPULAR_MOVIES_PATH = "/movie/popular"
     static let UPCOMING_MOVIES_PATH = "/movie/upcoming"
     static let IMAGE_LOW_RESOLUTION_BASE_PATH = "https://image.tmdb.org/t/p/w154"
-    static let IMAGE_MEDIUM_RESOLUTION_BASE_PATH = "https://image.tmdb.org/t/p/w500/"
+    static let IMAGE_MEDIUM_RESOLUTION_BASE_PATH = "https://image.tmdb.org/t/p/w342/"
     static let IMAGE_HIGH_RESOLUTION_BASE_PATH = "https://image.tmdb.org/t/p/w780/"
     static let MOVIE_DETAILS_PATH = "/movie/"
     static let MOVIE_CREDITS_PATH = "/credits"
