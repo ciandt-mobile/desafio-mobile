@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var errorMessageLabel: UILabel!
 
     private var isFetchingMoreMovies: Bool = false
+    private var gotErrorFetchingMovies: Bool = false
     private var currentPage: Int = 1
     private var totalPages: Int = 0
     private let movieService = MovieDbService()
@@ -47,16 +48,25 @@ class ViewController: UIViewController {
 
     func fetchMoreMovies() {
         self.isFetchingMoreMovies = true
-        self.currentPage += 1
-        self.moviesTableView.reloadData()
-//        self.movieService.getPopularMovies(page: self.currentPage, onSuccess: { popularMovies in
-//            self.isFetchingMoreMovies = false
-//            self.movies.append(contentsOf: popularMovies.results)
-//            self.moviesTableView.reloadData()
-//        }) {
-//            // FAILURE
-//            print("FAILURE")
-//        }
+
+        if !gotErrorFetchingMovies {
+            self.currentPage += 1
+            self.moviesTableView.reloadData()
+        }
+        else {
+            NotificationCenter.default.post(name: .didStartedDownloading, object: self)
+        }
+
+        self.movieService.getPopularMovies(page: self.currentPage, onSuccess: { popularMovies in
+            self.isFetchingMoreMovies = false
+            self.gotErrorFetchingMovies = false
+            self.movies.append(contentsOf: popularMovies.results)
+            self.moviesTableView.reloadData()
+        }) {
+            self.isFetchingMoreMovies = false
+            self.gotErrorFetchingMovies = true
+            NotificationCenter.default.post(name: .didReceivedAnError, object: self)
+        }
     }
 }
 
@@ -138,10 +148,9 @@ extension ViewController: UITableViewDataSource {
             }
 
             cell.loadingIndicator.startAnimating()
+            cell.messageLabel.text = Constants.FETCHING_NEW_MOVIES_MESSAGE
 
             return cell
         }
     }
-
-
 }

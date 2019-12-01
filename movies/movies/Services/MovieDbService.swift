@@ -11,7 +11,16 @@ import Alamofire
 
 class MovieDbService {
 
+    func hasConnection() -> Bool {
+        return NetworkReachabilityManager()?.isReachable ?? false
+    }
+
     func getPopularMovies(page: Int, onSuccess: @escaping ((PopularMovies) -> Void), onFailure: @escaping (() -> Void)) {
+
+        if !hasConnection() {
+            onFailure()
+            return
+        }
 
         let url = ServicesConstants.POPULAR_MOVIES_URL
 
@@ -46,6 +55,11 @@ class MovieDbService {
 
     func getUpcomingMovies(onSuccess: @escaping ((UpcomingMovies) -> Void), onFailure: @escaping (() -> Void)) {
 
+        if !hasConnection() {
+            onFailure()
+            return
+        }
+
         let url = ServicesConstants.UPCOMING_MOVIES_URL
 
         let parameters: Parameters = [
@@ -77,6 +91,11 @@ class MovieDbService {
     }
 
     func getMovieDetails(movieId: Int, onSuccess: @escaping ((MovieDetails) -> Void), onFailure: @escaping (() -> Void)) {
+
+        if !hasConnection() {
+            onFailure()
+            return
+        }
 
         let url = ServicesConstants.MOVIE_DETAILS_URL + String(movieId)
 
@@ -110,6 +129,11 @@ class MovieDbService {
 
     func getMovieCast(movieId: Int, onSuccess: @escaping (([Actor]) -> Void), onFailure: @escaping (() -> Void)) {
 
+        if !hasConnection() {
+            onFailure()
+            return
+        }
+
         let url = ServicesConstants.MOVIE_DETAILS_URL + String(movieId) + ServicesConstants.MOVIE_CREDITS_PATH
 
         let parameters: Parameters = [
@@ -142,6 +166,10 @@ class MovieDbService {
 
     func downloadImage(imagePath: String, imageResolution: ImageResolution, onSuccess: @escaping ((UIImage) -> Void)) {
 
+        if !hasConnection() {
+            return
+        }
+
         var imageUrl: String = ""
 
         switch imageResolution {
@@ -166,6 +194,5 @@ class MovieDbService {
                 print("Image API error: \(error)")
             }
         }
-
     }
 }
