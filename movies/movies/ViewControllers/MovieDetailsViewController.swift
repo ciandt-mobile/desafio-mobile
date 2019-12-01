@@ -13,7 +13,9 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var backdropImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var movieDetailsLabel: UILabel!
+    @IBOutlet weak var taglineLabel: UILabel!
     @IBOutlet weak var overviewTextView: UITextView!
+    @IBOutlet weak var taglineOverviewSeparatorView: UIView!
     @IBOutlet weak var overviewTextViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var castCollectionView: UICollectionView!
 
@@ -87,6 +89,13 @@ class MovieDetailsViewController: UIViewController {
 
         let details: String = " | \(movieDetails.runtime)min | \(movieDetails.status) | \(genres)"
         self.movieDetailsLabel.text! += details
+
+        if movieDetails.tagline != "" {
+            self.taglineLabel.text = movieDetails.tagline
+            self.taglineLabel.isHidden = false
+            self.taglineOverviewSeparatorView.isHidden = false
+        }
+
     }
 
     func setMovieCast(cast: [Actor]) {
