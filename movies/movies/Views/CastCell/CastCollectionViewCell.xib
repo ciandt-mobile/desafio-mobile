@@ -40,7 +40,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="P2m-WO-fLP" firstAttribute="bottom" secondItem="rkQ-LJ-MZt" secondAttribute="bottom" constant="-10" id="IWD-4S-Dlh"/>
                             <constraint firstAttribute="trailing" secondItem="VJg-cJ-Pjp" secondAttribute="trailing" constant="10" id="Qev-fP-7E6"/>
@@ -72,7 +71,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Actor_Profile_Image_Placeholder" width="170" height="170"/>
+        <image name="Actor_Profile_Image_Placeholder" width="170.5" height="170.5"/>
         <namedColor name="Image_Placeholder_Background_Color">
             <color red="0.76999998092651367" green="0.76999998092651367" blue="0.76999998092651367" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

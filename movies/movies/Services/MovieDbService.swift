@@ -146,6 +146,8 @@ class MovieDbService {
         switch imageResolution {
         case .low:
             imageUrl = ServicesConstants.IMAGE_LOW_RESOLUTION_BASE_PATH + imagePath
+        case .medium:
+            imageUrl = ServicesConstants.IMAGE_MEDIUM_RESOLUTION_BASE_PATH + imagePath
         case .high:
             imageUrl = ServicesConstants.IMAGE_HIGH_RESOLUTION_BASE_PATH + imagePath
         }

@@ -18,6 +18,8 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var taglineOverviewSeparatorView: UIView!
     @IBOutlet weak var overviewTextViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var castCollectionView: UICollectionView!
+    @IBOutlet weak var revenueValueLabel: UILabel!
+    @IBOutlet weak var budgetValueLabel: UILabel!
 
     static let viewIdentifier: String = "MovieDetailsViewController"
     private let movieService = MovieDbService()
@@ -96,6 +98,18 @@ class MovieDetailsViewController: UIViewController {
             self.taglineOverviewSeparatorView.isHidden = false
         }
 
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.currencySymbol = "US$"
+        numberFormatter.maximumFractionDigits = 0
+
+        if movieDetails.revenue != 0 {
+            self.revenueValueLabel.text = numberFormatter.string(from: NSNumber(value: movieDetails.revenue))
+        }
+
+        if movieDetails.budget != 0 {
+            self.budgetValueLabel.text = numberFormatter.string(from: NSNumber(value: movieDetails.budget))
+        }
     }
 
     func setMovieCast(cast: [Actor]) {

@@ -10,5 +10,6 @@ import Foundation
 
 enum ImageResolution {
     case low
+    case medium
     case high
 }
