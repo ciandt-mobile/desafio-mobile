@@ -15,15 +15,22 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var overviewTextView: UITextView!
     @IBOutlet weak var overviewTextViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var movieDetailsLabel: UILabel!
+    @IBOutlet weak var castCollectionView: UICollectionView!
 
     static let viewIdentifier: String = "MovieDetailsViewController"
     private let movieService = MovieDbService()
     var movie: Movie?
     var movieDetails: MovieDetails?
+    var movieCast: [Cast]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getMovieData()
+        setupView()
+    }
+
+    func getMovieData() {
         guard let movie = self.movie else {
             return
         }
@@ -31,6 +38,19 @@ class MovieDetailsViewController: UIViewController {
         movieService.getMovieDetails(movieId: movie.id, onSuccess: setMovieDetails) {
             //FAILURE
         }
+
+        movieService.getMovieCast(movieId: movie.id, onSuccess: setMovieCast) {
+            // FAILURE
+        }
+    }
+
+    func setupView() {
+        guard let movie = self.movie else {
+            return
+        }
+
+        let nib = UINib(nibName: CastCollectionViewCell.viewIdentifier, bundle: nil)
+        self.castCollectionView.register(nib, forCellWithReuseIdentifier: CastCollectionViewCell.viewIdentifier)
 
         self.titleLabel.text = movie.title
         self.overviewTextView.text = movie.overview
@@ -40,7 +60,7 @@ class MovieDetailsViewController: UIViewController {
             self.movieDetailsLabel.text = String(year)
         }
 
-        movieService.downloadImage(imagePath: movie.backdrop_path, imageType: .backdrop) { image in
+        movieService.downloadImage(imagePath: movie.backdrop_path, imageResolution: .high) { image in
             self.backdropImage.image = image
         }
     }
@@ -68,4 +88,31 @@ class MovieDetailsViewController: UIViewController {
         let details: String = " | \(movieDetails.runtime)min | \(movieDetails.status) | \(genres)"
         self.movieDetailsLabel.text! += details
     }
+
+    func setMovieCast(cast: [Cast]) {
+        self.movieCast = cast
+
+        self.castCollectionView.reloadData()
+    }
+}
+
+extension MovieDetailsViewController: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.movieCast?.count ?? 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastCollectionViewCell.viewIdentifier, for: indexPath) as? CastCollectionViewCell else {
+            fatalError("Could not dequeue CastCollectionViewCell")
+        }
+
+        if let actor = self.movieCast?[indexPath.row] {
+            cell.setActor(actor)
+        }
+
+        return cell
+    }
+
 }

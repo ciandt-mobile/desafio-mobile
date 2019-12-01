@@ -119,19 +119,50 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2d-OG-WAr" userLabel="Main Cast View">
+                                <rect key="frame" x="0.0" y="435" width="414" height="427"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2my-Qv-hIS" userLabel="Cast Collection View">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="427"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ehZ-gp-dJG">
+                                            <size key="itemSize" width="134" height="191"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="nDg-SS-82c" id="2DR-IP-QC8"/>
+                                            <outlet property="delegate" destination="nDg-SS-82c" id="zeL-8q-tSk"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="2my-Qv-hIS" secondAttribute="trailing" id="FJu-zr-19U"/>
+                                    <constraint firstItem="2my-Qv-hIS" firstAttribute="leading" secondItem="Q2d-OG-WAr" secondAttribute="leading" id="cDT-Mn-mZk"/>
+                                    <constraint firstAttribute="bottom" secondItem="2my-Qv-hIS" secondAttribute="bottom" id="cya-Rj-Ek2"/>
+                                    <constraint firstItem="2my-Qv-hIS" firstAttribute="top" secondItem="Q2d-OG-WAr" secondAttribute="top" id="dsC-09-RV0"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="fat-KW-4TG" firstAttribute="leading" secondItem="rwT-u8-Npo" secondAttribute="leading" id="0Uk-uY-NyL"/>
+                            <constraint firstItem="1qW-BN-aGF" firstAttribute="trailing" secondItem="Q2d-OG-WAr" secondAttribute="trailing" id="0fd-gL-33h"/>
                             <constraint firstItem="Ab7-yV-BxR" firstAttribute="top" secondItem="fat-KW-4TG" secondAttribute="bottom" constant="10" id="4v0-CJ-8hv"/>
                             <constraint firstItem="1qW-BN-aGF" firstAttribute="trailing" secondItem="pNm-d0-95H" secondAttribute="trailing" constant="10" id="97r-X9-LPD"/>
                             <constraint firstItem="pNm-d0-95H" firstAttribute="top" secondItem="JH6-bh-XH7" secondAttribute="bottom" constant="10" id="FlW-E6-1fP"/>
                             <constraint firstItem="ODs-Ef-KPA" firstAttribute="top" secondItem="Ab7-yV-BxR" secondAttribute="bottom" constant="5" id="GuA-YE-xxz"/>
+                            <constraint firstItem="Q2d-OG-WAr" firstAttribute="leading" secondItem="1qW-BN-aGF" secondAttribute="leading" id="Kce-aO-oBr"/>
                             <constraint firstItem="1qW-BN-aGF" firstAttribute="trailing" secondItem="ODs-Ef-KPA" secondAttribute="trailing" constant="10" id="Kui-8p-Gva"/>
                             <constraint firstItem="1qW-BN-aGF" firstAttribute="trailing" secondItem="Ab7-yV-BxR" secondAttribute="trailing" constant="10" id="MiO-Jf-Amz"/>
                             <constraint firstItem="JH6-bh-XH7" firstAttribute="leading" secondItem="1qW-BN-aGF" secondAttribute="leading" id="QlV-EG-up5"/>
+                            <constraint firstItem="1qW-BN-aGF" firstAttribute="bottom" secondItem="Q2d-OG-WAr" secondAttribute="bottom" id="SfX-rg-OVd"/>
                             <constraint firstItem="pNm-d0-95H" firstAttribute="leading" secondItem="1qW-BN-aGF" secondAttribute="leading" constant="10" id="UBg-NP-H2P"/>
                             <constraint firstItem="fat-KW-4TG" firstAttribute="top" secondItem="1qW-BN-aGF" secondAttribute="top" id="WoM-4Z-AQR"/>
+                            <constraint firstItem="Q2d-OG-WAr" firstAttribute="top" secondItem="pNm-d0-95H" secondAttribute="bottom" constant="10" id="dKI-Ax-3gd"/>
                             <constraint firstItem="ODs-Ef-KPA" firstAttribute="leading" secondItem="1qW-BN-aGF" secondAttribute="leading" constant="10" id="mis-4e-cQz"/>
                             <constraint firstItem="JH6-bh-XH7" firstAttribute="top" secondItem="ODs-Ef-KPA" secondAttribute="bottom" constant="10" id="u9i-IV-beM"/>
                             <constraint firstItem="Ab7-yV-BxR" firstAttribute="leading" secondItem="1qW-BN-aGF" secondAttribute="leading" constant="10" id="vnf-gT-Wru"/>
@@ -142,6 +173,7 @@
                     </view>
                     <connections>
                         <outlet property="backdropImage" destination="fat-KW-4TG" id="VsY-fk-sra"/>
+                        <outlet property="castCollectionView" destination="2my-Qv-hIS" id="tug-7h-75h"/>
                         <outlet property="movieDetailsLabel" destination="ODs-Ef-KPA" id="Gkv-zy-FaH"/>
                         <outlet property="overviewTextView" destination="pNm-d0-95H" id="vqR-4G-9YH"/>
                         <outlet property="overviewTextViewHeightConstraint" destination="CIX-4n-TMe" id="QM9-8g-9Ex"/>

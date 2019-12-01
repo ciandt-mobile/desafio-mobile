@@ -40,7 +40,7 @@ class PopularMoviesTableTableViewCell: UITableViewCell {
             self.yearLabel.text = dateFormatter.string(from: releaseDate)
         }
 
-        self.movieService.downloadImage(imagePath: movie.poster_path, imageType: .poster) { posterImage in
+        self.movieService.downloadImage(imagePath: movie.poster_path, imageResolution: .low) { posterImage in
             self.moviePoster.image = posterImage
         }
 

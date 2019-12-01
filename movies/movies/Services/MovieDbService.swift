@@ -107,15 +107,47 @@ class MovieDbService {
         }
     }
 
-    func downloadImage(imagePath: String, imageType: ImageType, onSuccess: @escaping ((UIImage) -> Void)) {
+    func getMovieCast(movieId: Int, onSuccess: @escaping (([Cast]) -> Void), onFailure: @escaping (() -> Void)) {
+
+        let url = ServicesConstants.MOVIE_DETAILS_URL + String(movieId) + ServicesConstants.MOVIE_CREDITS_PATH
+
+        let parameters: Parameters = [
+            ServicesConstants.KEY : "e1431fa912601d9558f5c16a7c89fb5b"
+        ]
+
+        AF.request(url, method: .get, parameters: parameters, headers: ServicesConstants.MOVIES_DB_HEADER).validate().responseJSON { response in
+            switch response.result {
+            case .success:
+                guard let data = response.data else {
+                    print("No data was found in MovieCredits API response")
+                    onFailure()
+                    return
+                }
+
+                do {
+                    let movieCredits = try JSONDecoder().decode(MovieCredits.self, from: data)
+                    onSuccess(movieCredits.cast)
+                }
+                catch {
+                    print("MovieCredits decoder error: \(error)")
+                    onFailure()
+                }
+            case let .failure(error):
+                print("MovieCredits API error: \(error)")
+                onFailure()
+            }
+        }
+    }
+
+    func downloadImage(imagePath: String, imageResolution: ImageResolution, onSuccess: @escaping ((UIImage) -> Void)) {
 
         var imageUrl: String = ""
 
-        switch imageType {
-        case .poster:
-            imageUrl = ServicesConstants.POSTER_BASE_PATH + imagePath
-        case .backdrop:
-            imageUrl = ServicesConstants.BACKDROP_BASE_PATH + imagePath
+        switch imageResolution {
+        case .low:
+            imageUrl = ServicesConstants.IMAGE_LOW_RESOLUTION_BASE_PATH + imagePath
+        case .high:
+            imageUrl = ServicesConstants.IMAGE_HIGH_RESOLUTION_BASE_PATH + imagePath
         }
 
         AF.download(imageUrl).validate().responseData { response in

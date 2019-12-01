@@ -1,5 +1,5 @@
 //
-//  ImageType.swift
+//  MovieCredits.swift
 //  movies
 //
 //  Created by Arthur Silva on 11/30/19.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-enum ImageType {
-    case poster
-    case backdrop
+struct MovieCredits: Codable {
+    let cast: [Cast]
 }
