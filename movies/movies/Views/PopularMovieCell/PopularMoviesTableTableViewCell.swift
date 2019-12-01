@@ -18,7 +18,7 @@ class PopularMoviesTableTableViewCell: UITableViewCell {
     let movieService = MovieDbService()
     var movie: Movie?
 
-    static let cellIdentifier: String = "PopularMoviesTableTableViewCell"
+    static let viewIdentifier: String = "PopularMoviesTableTableViewCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,6 +42,7 @@ class PopularMoviesTableTableViewCell: UITableViewCell {
 
         self.movieService.downloadImage(imagePath: movie.poster_path, imageResolution: .medium) { posterImage in
             self.moviePoster.image = posterImage
+            self.moviePoster.backgroundColor = nil
         }
 
         self.movie = movie

@@ -14,13 +14,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var errorMessageLabel: UILabel!
 
+    private var isFetchingMoreMovies: Bool = false
+    private var currentPage: Int = 1
     private let movieService = MovieDbService()
-    var movies: [Movie] = []
+    private var movies: [Movie] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        movieService.getPopularMovies(onSuccess: { popularMovies in
+        movieService.getPopularMovies(page: self.currentPage, onSuccess: { popularMovies in
             self.movies = popularMovies.results
             self.moviesTableView.reloadData()
         }) {
@@ -34,12 +36,24 @@ class ViewController: UIViewController {
 
     func setupView() {
 
-        let nib = UINib(nibName: PopularMoviesTableTableViewCell.cellIdentifier, bundle: nil)
-        self.moviesTableView.register(nib, forCellReuseIdentifier: PopularMoviesTableTableViewCell.cellIdentifier)
+        let movieNib = UINib(nibName: PopularMoviesTableTableViewCell.viewIdentifier, bundle: nil)
+        self.moviesTableView.register(movieNib, forCellReuseIdentifier: PopularMoviesTableTableViewCell.viewIdentifier)
+
+        let newBatchNib = UINib(nibName: NewMovieBatchMessageTableViewCell.viewIdentifier, bundle: nil)
+        self.moviesTableView.register(newBatchNib, forCellReuseIdentifier: NewMovieBatchMessageTableViewCell.viewIdentifier)
     }
 }
 
 extension ViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 240
+        }
+        else {
+            return 44
+        }
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
@@ -53,23 +67,68 @@ extension ViewController: UITableViewDelegate {
 
         tableView.deselectRow(at: indexPath, animated: false)
     }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+
+        print("offsetY: \(offsetY) > contentHight: \(contentHeight) - scrollView.frame.height: \(scrollView.frame.height)")
+        if offsetY > contentHeight - scrollView.frame.height && !self.isFetchingMoreMovies {
+            self.isFetchingMoreMovies = true
+            self.currentPage += 1
+            self.moviesTableView.reloadData()
+            self.movieService.getPopularMovies(page: self.currentPage, onSuccess: { popularMovies in
+                self.isFetchingMoreMovies = false
+                self.movies.append(contentsOf: popularMovies.results)
+                self.moviesTableView.reloadData()
+            }) {
+                // FAILURE
+                print("FAILURE")
+            }
+        }
+    }
 }
 
 extension ViewController: UITableViewDataSource {
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.movies.count
+        if section == 0 {
+            return self.movies.count
+        }
+
+        if self.isFetchingMoreMovies {
+            return 1
+        }
+
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PopularMoviesTableTableViewCell.cellIdentifier, for: indexPath) as? PopularMoviesTableTableViewCell else {
-            fatalError("Could not dequeue PopularMoviesTableViewCell")
+        if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PopularMoviesTableTableViewCell.viewIdentifier, for: indexPath)
+                as? PopularMoviesTableTableViewCell else {
+                fatalError("Could not dequeue PopularMoviesTableViewCell")
+            }
+
+            cell.setMovie(self.movies[indexPath.row])
+
+            return cell
         }
+        else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: NewMovieBatchMessageTableViewCell.viewIdentifier, for: indexPath)
+                as? NewMovieBatchMessageTableViewCell else {
+                    fatalError("Could not dequeue NewMovieBatchMessageTableViewCell")
+            }
 
-        cell.setMovie(self.movies[indexPath.row])
+            cell.loadingIndicator.startAnimating()
 
-        return cell
+            return cell
+        }
     }
 
 

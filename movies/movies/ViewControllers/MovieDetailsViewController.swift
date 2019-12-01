@@ -64,8 +64,10 @@ class MovieDetailsViewController: UIViewController {
             self.movieDetailsLabel.text = String(year)
         }
 
-        movieService.downloadImage(imagePath: movie.backdrop_path, imageResolution: .high) { image in
-            self.backdropImage.image = image
+        if let backdropPath = movie.backdrop_path {
+            movieService.downloadImage(imagePath: backdropPath, imageResolution: .high) { image in
+                self.backdropImage.image = image
+            }
         }
     }
 

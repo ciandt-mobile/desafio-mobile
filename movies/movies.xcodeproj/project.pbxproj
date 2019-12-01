@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		75B7BA06A0C034EC15CE4DCD /* Pods_movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A190403D4E6D450CA5C870B /* Pods_movies.framework */; };
+		E326B9F5239435C000837029 /* NewMovieBatchMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326B9F3239435C000837029 /* NewMovieBatchMessageTableViewCell.swift */; };
+		E326B9F6239435C000837029 /* NewMovieBatchMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E326B9F4239435C000837029 /* NewMovieBatchMessageTableViewCell.xib */; };
 		E32C922D2391DCA200A8C9AA /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32C922C2391DCA200A8C9AA /* Movie.swift */; };
 		E32C922F2391E5D700A8C9AA /* PopularMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32C922E2391E5D700A8C9AA /* PopularMovies.swift */; };
 		E32C92322391E65200A8C9AA /* MovieDbService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32C92312391E65200A8C9AA /* MovieDbService.swift */; };
@@ -37,6 +39,8 @@
 		45B764CBEF8C0CD0FCB8CF40 /* Pods-movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movies.release.xcconfig"; path = "Target Support Files/Pods-movies/Pods-movies.release.xcconfig"; sourceTree = "<group>"; };
 		6A190403D4E6D450CA5C870B /* Pods_movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9925AF05DCF1BE4F3F45DEA5 /* Pods-movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movies.debug.xcconfig"; path = "Target Support Files/Pods-movies/Pods-movies.debug.xcconfig"; sourceTree = "<group>"; };
+		E326B9F3239435C000837029 /* NewMovieBatchMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMovieBatchMessageTableViewCell.swift; sourceTree = "<group>"; };
+		E326B9F4239435C000837029 /* NewMovieBatchMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewMovieBatchMessageTableViewCell.xib; sourceTree = "<group>"; };
 		E32C922C2391DCA200A8C9AA /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		E32C922E2391E5D700A8C9AA /* PopularMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovies.swift; sourceTree = "<group>"; };
 		E32C92312391E65200A8C9AA /* MovieDbService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDbService.swift; sourceTree = "<group>"; };
@@ -93,6 +97,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E326B9F22394358E00837029 /* NewMovieBatchMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				E326B9F3239435C000837029 /* NewMovieBatchMessageTableViewCell.swift */,
+				E326B9F4239435C000837029 /* NewMovieBatchMessageTableViewCell.xib */,
+			);
+			path = NewMovieBatchMessageCell;
+			sourceTree = "<group>";
+		};
 		E32C922B2391DC9500A8C9AA /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +134,7 @@
 		E32C92392392825300A8C9AA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E326B9F22394358E00837029 /* NewMovieBatchMessageCell */,
 				E34AA8CC23933E3E000028E2 /* CastCell */,
 				E32C923A2392827900A8C9AA /* PopularMovieCell */,
 			);
@@ -250,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E326B9F6239435C000837029 /* NewMovieBatchMessageTableViewCell.xib in Resources */,
 				E34AA8D023933E6B000028E2 /* CastCollectionViewCell.xib in Resources */,
 				E3A5D0BA2391DAFD002A6E76 /* LaunchScreen.storyboard in Resources */,
 				E32C923E239282F400A8C9AA /* PopularMoviesTableTableViewCell.xib in Resources */,
@@ -319,6 +334,7 @@
 				E34AA8C22393045E000028E2 /* Constants.swift in Sources */,
 				E34AA8C7239314FD000028E2 /* Genre.swift in Sources */,
 				E32C92382391FD2100A8C9AA /* DateRange.swift in Sources */,
+				E326B9F5239435C000837029 /* NewMovieBatchMessageTableViewCell.swift in Sources */,
 				E34AA8C923933A73000028E2 /* MovieCredits.swift in Sources */,
 				E32C92462392DDBC00A8C9AA /* MovieDetailsViewController.swift in Sources */,
 				E32C922D2391DCA200A8C9AA /* Movie.swift in Sources */,

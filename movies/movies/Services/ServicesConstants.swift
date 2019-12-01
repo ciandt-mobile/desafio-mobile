@@ -27,6 +27,7 @@ struct ServicesConstants {
 
     // MARK: Parameters
     static let KEY = "api_key"
+    static let PAGE = "page"
 
     // MARK: Headers
     static let MOVIES_DB_HEADER: HTTPHeaders = [

@@ -11,12 +11,13 @@ import Alamofire
 
 class MovieDbService {
 
-    func getPopularMovies(onSuccess: @escaping ((PopularMovies) -> Void), onFailure: @escaping (() -> Void)) {
+    func getPopularMovies(page: Int, onSuccess: @escaping ((PopularMovies) -> Void), onFailure: @escaping (() -> Void)) {
 
         let url = ServicesConstants.POPULAR_MOVIES_URL
 
         let parameters: Parameters = [
-            ServicesConstants.KEY : "e1431fa912601d9558f5c16a7c89fb5b"
+            ServicesConstants.KEY : "e1431fa912601d9558f5c16a7c89fb5b",
+            ServicesConstants.PAGE : page
         ]
 
         AF.request(url, method: .get, parameters: parameters, headers: ServicesConstants.MOVIES_DB_HEADER).validate().responseJSON { response in
