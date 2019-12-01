@@ -11,11 +11,8 @@ import Foundation
 struct Movie: Codable {
     let id: Int
     let poster_path: String
-    let adult: Bool
-    let backdrop_path: String
-    let original_language: String
+    let backdrop_path: String?
     let original_title: String
-    let genre_ids: [Int]
     let title: String
     let vote_average: Double
     let overview: String

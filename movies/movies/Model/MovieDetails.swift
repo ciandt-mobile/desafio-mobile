@@ -12,7 +12,6 @@ struct MovieDetails: Codable {
     let id: Int
     let genres: [Genre]
     let budget: Int
-    let homepage: String
     let revenue: Int
     let runtime: Int
     let status: String
