@@ -53,43 +53,6 @@ class MovieDbService {
         }
     }
 
-    func getUpcomingMovies(onSuccess: @escaping ((UpcomingMovies) -> Void), onFailure: @escaping (() -> Void)) {
-
-        if !hasConnection() {
-            onFailure()
-            return
-        }
-
-        let url = ServicesConstants.UPCOMING_MOVIES_URL
-
-        let parameters: Parameters = [
-            ServicesConstants.KEY : "e1431fa912601d9558f5c16a7c89fb5b"
-        ]
-
-        AF.request(url, method: .get, parameters: parameters, headers: ServicesConstants.MOVIES_DB_HEADER).validate().responseJSON { response in
-            switch response.result {
-            case .success:
-                guard let data = response.data else {
-                    print("No data was found in getUpcomingMovies API response")
-                    onFailure()
-                    return
-                }
-
-                do {
-                    let upcomingMovies = try JSONDecoder().decode(UpcomingMovies.self, from: data)
-                    onSuccess(upcomingMovies)
-                }
-                catch {
-                    print("getUpcomingMovies decoder error: \(error)")
-                    onFailure()
-                }
-            case let .failure(error):
-                print("getUpcomingMovies API error: \(error)")
-                onFailure()
-            }
-        }
-    }
-
     func getMovieDetails(movieId: Int, onSuccess: @escaping ((MovieDetails) -> Void), onFailure: @escaping (() -> Void)) {
 
         if !hasConnection() {
