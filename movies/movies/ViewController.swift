@@ -16,6 +16,7 @@ class ViewController: UIViewController {
 
     private var isFetchingMoreMovies: Bool = false
     private var currentPage: Int = 1
+    private var totalPages: Int = 0
     private let movieService = MovieDbService()
     private var movies: [Movie] = []
 
@@ -24,6 +25,7 @@ class ViewController: UIViewController {
 
         movieService.getPopularMovies(page: self.currentPage, onSuccess: { popularMovies in
             self.movies = popularMovies.results
+            self.totalPages = popularMovies.total_pages
             self.moviesTableView.reloadData()
         }) {
             self.moviesTableView.isHidden.toggle()
@@ -42,23 +44,38 @@ class ViewController: UIViewController {
         let newBatchNib = UINib(nibName: NewMovieBatchMessageTableViewCell.viewIdentifier, bundle: nil)
         self.moviesTableView.register(newBatchNib, forCellReuseIdentifier: NewMovieBatchMessageTableViewCell.viewIdentifier)
     }
+
+    func fetchMoreMovies() {
+        self.isFetchingMoreMovies = true
+        self.currentPage += 1
+        self.moviesTableView.reloadData()
+//        self.movieService.getPopularMovies(page: self.currentPage, onSuccess: { popularMovies in
+//            self.isFetchingMoreMovies = false
+//            self.movies.append(contentsOf: popularMovies.results)
+//            self.moviesTableView.reloadData()
+//        }) {
+//            // FAILURE
+//            print("FAILURE")
+//        }
+    }
 }
 
 extension ViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 240
+            return Constants.MOVIES_CELL_HEIGHT
         }
         else {
-            return 44
+            return Constants.MOVIES_CELL_NEW_FETCH_HEIGHT
         }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let movieDetailsVC = storyboard.instantiateViewController(withIdentifier: MovieDetailsViewController.viewIdentifier) as? MovieDetailsViewController else {
+        guard let movieDetailsVC = storyboard.instantiateViewController(withIdentifier: MovieDetailsViewController.viewIdentifier)
+            as? MovieDetailsViewController else {
             return
         }
 
@@ -72,18 +89,9 @@ extension ViewController: UITableViewDelegate {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
 
-        print("offsetY: \(offsetY) > contentHight: \(contentHeight) - scrollView.frame.height: \(scrollView.frame.height)")
-        if offsetY > contentHeight - scrollView.frame.height && !self.isFetchingMoreMovies {
-            self.isFetchingMoreMovies = true
-            self.currentPage += 1
-            self.moviesTableView.reloadData()
-            self.movieService.getPopularMovies(page: self.currentPage, onSuccess: { popularMovies in
-                self.isFetchingMoreMovies = false
-                self.movies.append(contentsOf: popularMovies.results)
-                self.moviesTableView.reloadData()
-            }) {
-                // FAILURE
-                print("FAILURE")
+        if offsetY > contentHeight - scrollView.frame.height {
+            if !self.isFetchingMoreMovies && self.currentPage + 1 <= self.totalPages {
+                self.fetchMoreMovies()
             }
         }
     }
