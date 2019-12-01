@@ -9,5 +9,5 @@
 import Foundation
 
 struct MovieCredits: Codable {
-    let cast: [Cast]
+    let cast: [Actor]
 }

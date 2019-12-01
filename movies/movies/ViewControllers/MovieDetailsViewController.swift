@@ -21,7 +21,7 @@ class MovieDetailsViewController: UIViewController {
     private let movieService = MovieDbService()
     var movie: Movie?
     var movieDetails: MovieDetails?
-    var movieCast: [Cast]?
+    var movieCast: [Actor]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +89,7 @@ class MovieDetailsViewController: UIViewController {
         self.movieDetailsLabel.text! += details
     }
 
-    func setMovieCast(cast: [Cast]) {
+    func setMovieCast(cast: [Actor]) {
         self.movieCast = cast
 
         self.castCollectionView.reloadData()

@@ -107,7 +107,7 @@ class MovieDbService {
         }
     }
 
-    func getMovieCast(movieId: Int, onSuccess: @escaping (([Cast]) -> Void), onFailure: @escaping (() -> Void)) {
+    func getMovieCast(movieId: Int, onSuccess: @escaping (([Actor]) -> Void), onFailure: @escaping (() -> Void)) {
 
         let url = ServicesConstants.MOVIE_DETAILS_URL + String(movieId) + ServicesConstants.MOVIE_CREDITS_PATH
 

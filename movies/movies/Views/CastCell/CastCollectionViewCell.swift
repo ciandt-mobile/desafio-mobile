@@ -20,7 +20,7 @@ class CastCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func setActor(_ actor: Cast) {
+    func setActor(_ actor: Actor) {
         self.actorNameLabel.text = actor.name
 
         movieService.downloadImage(imagePath: actor.profile_path, imageResolution: .low) { profileImage in

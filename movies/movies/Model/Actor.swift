@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Cast: Codable {
+struct Actor: Codable {
     let character: String
     let name: String
     let order: Int
