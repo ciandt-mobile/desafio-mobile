@@ -16,6 +16,8 @@ struct Constants {
 
     // MARK: User messages
     static let POPULAR_MOVIES_ERROR_MESSAGE: String = "We had an error getting the popular movies"
+    static let FETCHING_NEW_MOVIES_MESSAGE: String = "Fetching new movies..."
+    static let FETCHING_NEW_MOVIES_ERROR_MESSAGE: String = "There was an error fetching new movies!"
 
     // MARK: Numbers
     static let MOVIES_CELL_HEIGHT: CGFloat = 240

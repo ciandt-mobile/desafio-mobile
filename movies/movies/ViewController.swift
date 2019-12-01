@@ -73,6 +73,12 @@ extension ViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+        tableView.deselectRow(at: indexPath, animated: false)
+
+        if indexPath.section == 1 {
+            return
+        }
+
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let movieDetailsVC = storyboard.instantiateViewController(withIdentifier: MovieDetailsViewController.viewIdentifier)
             as? MovieDetailsViewController else {
@@ -81,8 +87,6 @@ extension ViewController: UITableViewDelegate {
 
         movieDetailsVC.movie = self.movies[indexPath.row]
         self.navigationController?.pushViewController(movieDetailsVC, animated: true)
-
-        tableView.deselectRow(at: indexPath, animated: false)
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
