@@ -12,5 +12,5 @@ struct Actor: Codable {
     let character: String
     let name: String
     let order: Int
-    let profile_path: String
+    let profile_path: String?
 }

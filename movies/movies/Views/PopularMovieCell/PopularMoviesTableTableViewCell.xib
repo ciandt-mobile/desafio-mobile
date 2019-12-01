@@ -19,7 +19,7 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Movie_Poster_Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Tyb-iT-9aN" userLabel="Poster Image View">
                         <rect key="frame" x="10" y="10" width="146.5" height="220"/>
-                        <color key="backgroundColor" name="Movie_Poster_Background_Color"/>
+                        <color key="backgroundColor" name="Image_Placeholder_Background_Color"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="146.59999999999999" id="0XB-Md-Bqp"/>
                             <constraint firstAttribute="height" constant="220" id="bpH-jg-6W8"/>
@@ -77,7 +77,7 @@
     </objects>
     <resources>
         <image name="Movie_Poster_Placeholder" width="170.5" height="170.5"/>
-        <namedColor name="Movie_Poster_Background_Color">
+        <namedColor name="Image_Placeholder_Background_Color">
             <color red="0.76999998092651367" green="0.76999998092651367" blue="0.76999998092651367" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

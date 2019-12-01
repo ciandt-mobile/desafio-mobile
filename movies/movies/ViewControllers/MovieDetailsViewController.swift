@@ -12,9 +12,9 @@ class MovieDetailsViewController: UIViewController {
 
     @IBOutlet weak var backdropImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var movieDetailsLabel: UILabel!
     @IBOutlet weak var overviewTextView: UITextView!
     @IBOutlet weak var overviewTextViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var movieDetailsLabel: UILabel!
     @IBOutlet weak var castCollectionView: UICollectionView!
 
     static let viewIdentifier: String = "MovieDetailsViewController"

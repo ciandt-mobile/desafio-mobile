@@ -12,6 +12,7 @@ class CastCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var actorProfileImage: UIImageView!
     @IBOutlet weak var actorNameLabel: UILabel!
+    @IBOutlet weak var characterNameLabel: UILabel!
 
     private let movieService = MovieDbService()
     static let viewIdentifier: String = "CastCollectionViewCell"
@@ -21,10 +22,17 @@ class CastCollectionViewCell: UICollectionViewCell {
     }
 
     func setActor(_ actor: Actor) {
-        self.actorNameLabel.text = actor.name
 
-        movieService.downloadImage(imagePath: actor.profile_path, imageResolution: .low) { profileImage in
+        self.actorNameLabel.text = actor.name
+        self.characterNameLabel.text = actor.character
+
+        guard let profileImagePath = actor.profile_path else {
+            return
+        }
+
+        movieService.downloadImage(imagePath: profileImagePath, imageResolution: .low) { profileImage in
             self.actorProfileImage.image = profileImage
+            self.actorProfileImage.backgroundColor = nil
         }
     }
 }
