@@ -46,4 +46,10 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  
 # BOA SORTE!
  
- 
+ Notas do Desenvolvedor
+ O app tem os seguintes recursos:
+ A tab Home exibira apenas 20 filmes por categoria, no entanto é capaz de performar pull to refresh e trará 20 diferentes cada vez que isso acontecer.
+ As abas Now Playing, Popular, Up Coming e Search tem a funcionalidade de paginacão com scroll infinito até que todos os filmes sejam exibidos.
+ As imagens de capa de filme são armazenadas localmente em cache para economizar banda de internet do usuário.
+ O app funciona em modos landscape e portrait.
+ Nenhum pod foi utilizado. O foco foi utilizar recursos nativos como manda as boas práticas de desenvolvimento Apple.
