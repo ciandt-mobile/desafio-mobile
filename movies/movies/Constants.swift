@@ -19,6 +19,8 @@ struct Constants {
     static let FETCHING_NEW_MOVIES_MESSAGE: String = "Fetching new movies..."
     static let FETCHING_NEW_MOVIES_ERROR_MESSAGE: String = "Sorry, I couldn't fetch new movies!"
     static let MOVIE_UNRELEASED: String = "this movie was not released yet"
+    static let RELEASE_TOMORROW: String = "Tomorrow is the release!"
+    static let DAYS_UNTIL_RELEASE: String = "%d days until the release!"
 
     // MARK: Numbers
     static let MOVIES_CELL_HEIGHT: CGFloat = 240

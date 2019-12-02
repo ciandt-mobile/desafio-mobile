@@ -49,9 +49,16 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days until release!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vc-c1-Gj1" userLabel="Days Until Releas Label">
+                        <rect key="frame" x="166.5" y="210.5" width="129.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Tyb-iT-9aN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="1Kv-of-6rh"/>
+                    <constraint firstItem="2vc-c1-Gj1" firstAttribute="leading" secondItem="Tyb-iT-9aN" secondAttribute="trailing" constant="10" id="4vH-Vv-Pft"/>
                     <constraint firstItem="Tyb-iT-9aN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="8VR-JF-suN"/>
                     <constraint firstItem="iof-h7-tC2" firstAttribute="leading" secondItem="Tyb-iT-9aN" secondAttribute="trailing" constant="10" id="IPo-r8-lCE"/>
                     <constraint firstItem="dvH-cJ-bwj" firstAttribute="top" secondItem="KCO-r9-l7x" secondAttribute="bottom" constant="5" id="P3Y-Nj-46c"/>
@@ -60,6 +67,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="iof-h7-tC2" secondAttribute="trailing" constant="10" id="Zwb-lA-hpI"/>
                     <constraint firstItem="YVv-iA-sD3" firstAttribute="top" secondItem="iof-h7-tC2" secondAttribute="bottom" constant="10" id="edC-5s-eDJ"/>
                     <constraint firstItem="YVv-iA-sD3" firstAttribute="centerX" secondItem="iof-h7-tC2" secondAttribute="centerX" id="hCG-Wa-dXp"/>
+                    <constraint firstItem="2vc-c1-Gj1" firstAttribute="bottom" secondItem="Tyb-iT-9aN" secondAttribute="bottom" id="kAi-oi-lNN"/>
                     <constraint firstItem="KCO-r9-l7x" firstAttribute="leading" secondItem="Tyb-iT-9aN" secondAttribute="trailing" constant="20" id="r9u-Qi-NV6"/>
                     <constraint firstAttribute="trailing" secondItem="KCO-r9-l7x" secondAttribute="trailing" id="u6x-Z7-GOu"/>
                     <constraint firstItem="dvH-cJ-bwj" firstAttribute="leading" secondItem="KCO-r9-l7x" secondAttribute="leading" id="uak-7L-9s0"/>
@@ -67,6 +75,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="daysUntilReleaseLabel" destination="2vc-c1-Gj1" id="kvg-bM-ePG"/>
                 <outlet property="moviePoster" destination="Tyb-iT-9aN" id="TFl-jX-B0h"/>
                 <outlet property="movieTitle" destination="KCO-r9-l7x" id="zfL-5l-b5n"/>
                 <outlet property="voteAverageScoreLabel" destination="YVv-iA-sD3" id="Sq2-b8-pay"/>

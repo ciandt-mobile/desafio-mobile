@@ -270,7 +270,7 @@
                                             <constraint firstItem="dd6-sZ-iWW" firstAttribute="top" secondItem="Vcn-lY-e3c" secondAttribute="top" id="JMP-9d-2LN"/>
                                             <constraint firstItem="OsX-hH-pDt" firstAttribute="top" secondItem="q1R-sG-xXT" secondAttribute="bottom" constant="10" id="M0P-IW-G1J"/>
                                             <constraint firstItem="ccq-Td-f4C" firstAttribute="leading" secondItem="dd6-sZ-iWW" secondAttribute="trailing" constant="30" id="M2h-QV-mvl">
-                                                <variation key="heightClass=compact" constant="5"/>
+                                                <variation key="heightClass=compact" constant="10"/>
                                             </constraint>
                                             <constraint firstAttribute="trailing" secondItem="6ON-xg-q8L" secondAttribute="trailing" constant="10" id="MbW-L6-SNs"/>
                                             <constraint firstItem="dyW-er-mRf" firstAttribute="bottom" secondItem="2ec-5q-1Qc" secondAttribute="bottom" constant="10" id="Mh3-9c-7Rr"/>
@@ -286,7 +286,7 @@
                                             <constraint firstItem="2ec-5q-1Qc" firstAttribute="top" secondItem="ccq-Td-f4C" secondAttribute="bottom" constant="10" id="aVb-Ez-Pav"/>
                                             <constraint firstItem="dd6-sZ-iWW" firstAttribute="leading" secondItem="Vcn-lY-e3c" secondAttribute="leading" id="aYW-O9-34S"/>
                                             <constraint firstItem="dyW-er-mRf" firstAttribute="leading" secondItem="dd6-sZ-iWW" secondAttribute="trailing" constant="64" id="b2i-HY-Gc0">
-                                                <variation key="heightClass=compact" constant="5"/>
+                                                <variation key="heightClass=compact" constant="10"/>
                                             </constraint>
                                             <constraint firstAttribute="trailing" secondItem="ccq-Td-f4C" secondAttribute="trailing" constant="10" id="b3L-g0-o5i"/>
                                             <constraint firstItem="P3O-ir-4qh" firstAttribute="leading" secondItem="Vcn-lY-e3c" secondAttribute="leading" constant="10" id="bE2-ZB-bGS"/>
@@ -303,7 +303,7 @@
                                             <constraint firstAttribute="trailing" secondItem="Ra7-I4-rqb" secondAttribute="trailing" constant="10" id="lXF-GY-jTl"/>
                                             <constraint firstItem="OsX-hH-pDt" firstAttribute="leading" secondItem="Vcn-lY-e3c" secondAttribute="leading" id="n1f-7f-fd8"/>
                                             <constraint firstItem="6ON-xg-q8L" firstAttribute="leading" secondItem="Vcn-lY-e3c" secondAttribute="leading" constant="10" id="nCt-Ty-cDQ"/>
-                                            <constraint firstAttribute="trailing" secondItem="dyW-er-mRf" secondAttribute="trailing" id="nzP-sx-STu"/>
+                                            <constraint firstAttribute="trailing" secondItem="dyW-er-mRf" secondAttribute="trailing" constant="10" id="nzP-sx-STu"/>
                                             <constraint firstItem="dd6-sZ-iWW" firstAttribute="top" secondItem="Vcn-lY-e3c" secondAttribute="top" id="rAF-me-k8B"/>
                                             <constraint firstItem="P3O-ir-4qh" firstAttribute="top" secondItem="OsX-hH-pDt" secondAttribute="bottom" constant="10" id="rJI-Pb-dag"/>
                                             <constraint firstItem="2ec-5q-1Qc" firstAttribute="top" secondItem="ccq-Td-f4C" secondAttribute="bottom" constant="8" id="s0D-WK-cuY">
