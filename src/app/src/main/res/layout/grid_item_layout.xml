@@ -7,7 +7,7 @@
     <data>
         <variable
             name="movie"
-            type="br.com.josericardooliveira.desafiomobile.model.Movie" />
+            type="br.com.josericardooliveira.desafiomobile.model.MovieInfo" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,11 +19,11 @@
             android:id="@+id/movie_banner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:picassoLoad="@{movie.bannerUrl}"
+            app:picassoLoad="@{movie.posterPath}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars"
-            android:contentDescription="@string/movie_banner" />
+            android:contentDescription="@{movie.title}" />
 
         <TextView
             android:id="@+id/movie_date"
@@ -35,7 +35,7 @@
             android:paddingEnd="4dp"
             android:paddingBottom="4dp"
             android:text="@{movie.formattedDate()}"
-            android:textColor="?android:attr/textColorPrimary"
+            android:textColor="#ffffff"
             app:layout_constraintBottom_toBottomOf="@+id/movie_banner"
             app:layout_constraintEnd_toEndOf="@+id/movie_banner"
             app:layout_constraintStart_toStartOf="@+id/movie_banner"
@@ -49,7 +49,7 @@
             android:maxLines="2"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
-            android:text="@{movie.name}"
+            android:text="@{movie.title}"
             app:layout_constraintEnd_toEndOf="@+id/movie_banner"
             app:layout_constraintStart_toStartOf="@+id/movie_banner"
             app:layout_constraintTop_toBottomOf="@+id/movie_banner"

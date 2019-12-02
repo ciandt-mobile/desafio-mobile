@@ -1,7 +1,8 @@
-package br.com.josericardooliveira.desafiomobile
+package br.com.josericardooliveira.desafiomobile.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.com.josericardooliveira.desafiomobile.R
 
 class MainActivity : AppCompatActivity() {
 
