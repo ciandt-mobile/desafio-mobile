@@ -44,6 +44,12 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  -- TMDB (https://www.themoviedb.org)
  -- API (https://www.themoviedb.org/documentation/api)
  
-# BOA SORTE!
- 
- 
+
+## Comentários
+- A arquitetura do aplicativo segue o modelo MVC, onde é separado o código em três camadas: interface, dados e controle.
+- O aplicativo foi feito inteiramente com o Xcode 11.2.1, linguagem Swift 5.0 e como target o iOS 13.2
+- Foi utilizado somente o framework Alamofire para a comunicação com a API
+- Existe um problema sério de segurança: a API key está "hard coded" na aplicação. Eu armazenaria a mesma em um servidor com suporte a SSL. Assim que a aplicação for iniciada pela primeira vez, eu faria uma requisição para esse servidor e salvaria a chave no KeyChain do aparelho.
+- Limitação: não houve tempo de fazer o armazenamento em cache das informações coletadas da API, então toda vez que o aplicativo é inicializado, ele irá fazer as requisições que necessita para a API.
+- Gostaria de ter feito uma tab bar na tela inicial para que o usuário mude a lista de filmes populares para a de upcoming, mas como o termo de aceite é um filtro da lista previamente coletada, decidi usar o segment control
+- O aplicativo suporta orientções portrait e landscape e também o dark mode do iOS 13
