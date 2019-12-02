@@ -16,20 +16,28 @@ class PopularMoviesDataSource : PageKeyedDataSource<Int, MovieInfo>() {
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, MovieInfo>
     ) {
-        val movieList = service.popularMovies(1)
-        val response = movieList.execute()
-        if(response.isSuccessful) {
-            val movies = response.body()?.results?.toMutableList() ?: mutableListOf()
-            callback.onResult(movies, null, 2)
+        try {
+            val movieList = service.popularMovies(1)
+            val response = movieList.execute()
+            if (response.isSuccessful) {
+                val movies = response.body()?.results?.toMutableList() ?: mutableListOf()
+                callback.onResult(movies, null, 2)
+            }
+        } catch (e: Exception) {
+
         }
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, MovieInfo>) {
-        val movieList = service.popularMovies(params.key)
-        val response = movieList.execute()
-        if(response.isSuccessful) {
-            val movies = response.body()?.results?.toMutableList() ?: mutableListOf()
-            callback.onResult(movies,  params.key + 1)
+        try {
+            val movieList = service.popularMovies(params.key)
+            val response = movieList.execute()
+            if (response.isSuccessful) {
+                val movies = response.body()?.results?.toMutableList() ?: mutableListOf()
+                callback.onResult(movies, params.key + 1)
+            }
+        } catch (e: Exception) {
+
         }
     }
 

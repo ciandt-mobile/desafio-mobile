@@ -5,7 +5,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-val ImageUrlBaseUrl: String = "https://image.tmdb.org/t/p/w500"
+const val ImageUrlBaseUrl: String = "https://image.tmdb.org/t/p/w500"
 
 @BindingAdapter("data")
 fun <T> setRecyclerViewProperties(recyclerView: RecyclerView, data: T) {
@@ -15,10 +15,12 @@ fun <T> setRecyclerViewProperties(recyclerView: RecyclerView, data: T) {
     }
 }
 
-@BindingAdapter( "picassoLoad" )
-fun loadRemoteImage(iv: ImageView, imagePath: String ){
-    Picasso
-        .get()
-        .load( ImageUrlBaseUrl + imagePath )
-        .into( iv )
+@BindingAdapter("picassoLoad")
+fun loadRemoteImage(iv: ImageView, imagePath: String?) {
+    if (imagePath != null) {
+        Picasso
+            .get()
+            .load(ImageUrlBaseUrl + imagePath)
+            .into(iv)
+    }
 }

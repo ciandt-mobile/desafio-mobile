@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="br.com.josericardooliveira.desafiomobile.view.MoviesViewModel" />
@@ -23,7 +24,7 @@
             android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.isUpcoming.booleanValue() ? @string/toggle_option_upcoming : @string/toggle_option_popular  }"
+            android:text="@{viewModel.isUpcoming ? @string/toggle_option_upcoming : @string/toggle_option_popular  }"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="?android:attr/textColorPrimary"
@@ -47,8 +48,8 @@
             android:id="@+id/popular_movies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/toggle_option_popular"
             android:onClick="@{() -> viewModel.toggleUpcoming(false)}"
+            android:text="@string/toggle_option_popular"
             app:layout_constraintEnd_toStartOf="@+id/upcoming_movies"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,8 +59,8 @@
             android:id="@+id/upcoming_movies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/toggle_option_upcoming"
             android:onClick="@{() -> viewModel.toggleUpcoming(true)}"
+            android:text="@string/toggle_option_upcoming"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/popular_movies"

@@ -17,29 +17,34 @@ class MoviesViewModel : ViewModel() {
     val isUpcoming: MutableLiveData<Boolean>
 
     init {
-        val factoryPopularMovies = PopularMoviesDataSourceFactory()
-        val factoryUpcomingMovies = UpcomingMoviesDataSourceFactory()
 
         val config = PagedList.Config.Builder()
-            .setPageSize(20)
-            .build()
+                .setPageSize(20)
+                .build()
 
         val executor = Executors.newFixedThreadPool(5)
+
+        val factoryPopularMovies = PopularMoviesDataSourceFactory()
+        val factoryUpcomingMovies = UpcomingMoviesDataSourceFactory()
 
         isUpcoming = MutableLiveData()
         isUpcoming.postValue(true)
 
-        popularMoviesList = LivePagedListBuilder<Int, MovieInfo>(factoryPopularMovies, config)
+        popularMoviesList = LivePagedListBuilder(factoryPopularMovies, config)
                 .setFetchExecutor(executor)
                 .build()
 
-        upcomingMoviesList = LivePagedListBuilder<Int, MovieInfo> (factoryUpcomingMovies, config)
-            .setFetchExecutor(executor)
-            .build()
+        upcomingMoviesList = LivePagedListBuilder(factoryUpcomingMovies, config)
+                .setFetchExecutor(executor)
+                .build()
     }
 
     fun toggleUpcoming(value: Boolean) {
         isUpcoming.postValue(value)
-        print("oioioi")
+        if (value) {
+            upcomingMoviesList.value?.dataSource?.invalidate()
+        } else {
+            popularMoviesList.value?.dataSource?.invalidate()
+        }
     }
 }
