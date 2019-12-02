@@ -18,8 +18,12 @@ struct Constants {
     static let POPULAR_MOVIES_ERROR_MESSAGE: String = "We had an error getting the popular movies"
     static let FETCHING_NEW_MOVIES_MESSAGE: String = "Fetching new movies..."
     static let FETCHING_NEW_MOVIES_ERROR_MESSAGE: String = "Sorry, I couldn't fetch new movies!"
+    static let MOVIE_UNRELEASED: String = "this movie was not released yet"
 
     // MARK: Numbers
     static let MOVIES_CELL_HEIGHT: CGFloat = 240
     static let MOVIES_CELL_NEW_FETCH_HEIGHT: CGFloat = 44
+
+    // MARK: Movie values
+    static let MOVIE_RELEASE_STATUS: String = "Released"
 }

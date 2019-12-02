@@ -108,6 +108,9 @@ class MovieDetailsViewController: UIViewController {
         if movieDetails.revenue != 0 {
             self.revenueValueLabel.text = numberFormatter.string(from: NSNumber(value: movieDetails.revenue))
         }
+        else if movieDetails.status != Constants.MOVIE_RELEASE_STATUS {
+            self.revenueValueLabel.text = Constants.MOVIE_UNRELEASED
+        }
 
         if movieDetails.budget != 0 {
             self.budgetValueLabel.text = numberFormatter.string(from: NSNumber(value: movieDetails.budget))
