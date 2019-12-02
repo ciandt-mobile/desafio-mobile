@@ -16,6 +16,12 @@ extension String {
         dateFormatter.dateFormat = "yyyy-mm-dd"
         return dateFormatter.date(from: self)
     }
+    
+    func getDateIso() -> Date? {
+        let isoFormatter = ISO8601DateFormatter()
+        isoFormatter.formatOptions = [.withFullDate]
+        return isoFormatter.date(from: self)
+    }
 }
 
 extension Date {

@@ -19,13 +19,14 @@ extension MoviesGalleryViewController {
         }
     
         ServiceManager().getMovies() { (upcoming, error) in
-            guard let upcoming = upcoming else {
+            guard let upcoming: [GalleryMovies] = upcoming else {
                 return
             }
-            self.upcomingMovies = upcoming
+            self.upcomingMovies = upcoming.sorted {
+                $0.releaseDate?.getDateIso() ?? Date() > $1.releaseDate?.getDateIso() ?? Date() }
         }
     }
-    
+
     func parseGalleryMoviesPopular() {
         self.galleryMovies = popularMovies
 

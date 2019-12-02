@@ -14,7 +14,8 @@ class ServiceManager {
     private let apiKey = "0af4273a2dd990ab6b79a1f9c66bc614"
     
     private var params: [String: Any] {
-        return ["api_key": apiKey]
+        return ["api_key": apiKey,
+                "language": "pt-BR"]
     }
     
     func getMovies(completion: @escaping ([GalleryMovies]?, Error?) -> Void) {

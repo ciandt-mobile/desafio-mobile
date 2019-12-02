@@ -33,7 +33,7 @@ extension MoviesGalleryViewController: UICollectionViewDataSource {
         // get movie images
         if let imageUrl = gallery.posterPath {
             let url = URL(string: fullURLImages + imageUrl)
-            cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "sw"))
+            cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "tmdb"))
         }
         
         // get title movies
