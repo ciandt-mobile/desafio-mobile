@@ -65,8 +65,8 @@ class ViewController: UIViewController {
             self.isFetchingMoreMovies = false
             self.gotErrorFetchingMovies = false
             self.movies.append(contentsOf: popularMovies.results)
-            self.moviesTableView.reloadData()
             self.filterUpcomingMovies(movies: popularMovies.results)
+            self.moviesTableView.reloadData()
         }) {
             self.isFetchingMoreMovies = false
             self.gotErrorFetchingMovies = true
@@ -77,6 +77,12 @@ class ViewController: UIViewController {
     // MARK: IBActions
     @IBAction func movieFilterChangedValue(_ sender: UISegmentedControl) {
         self.moviesTableView.reloadData()
+
+        if self.movieFilterSegmentedControl.selectedSegmentIndex == 1 {
+            if self.upcomingMovies.count == 0 {
+                self.fetchMoreMovies()
+            }
+        }
     }
 
     func filterUpcomingMovies(movies: [Movie]) {
