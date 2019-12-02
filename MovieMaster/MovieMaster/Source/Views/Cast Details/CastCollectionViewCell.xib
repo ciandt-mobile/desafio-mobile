@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="Cell" id="gTV-IL-0wX" customClass="CastCollectionViewCell" customModule="MovieMaster" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="185" height="266"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="185" height="266"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZf-wd-Ibh">
+                        <rect key="frame" x="0.0" y="0.0" width="185" height="266"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i7x-07-VW1" customClass="CustomImageView" customModule="MovieMaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="185" height="226"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="cRc-Ma-ifa">
+                                <rect key="frame" x="5" y="226" width="175" height="35"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NF3-PZ-oFH">
+                                        <rect key="frame" x="0.0" y="0.0" width="175" height="14.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVO-7M-egI">
+                                        <rect key="frame" x="0.0" y="21.5" width="175" height="13.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.70379387842465757" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="i7x-07-VW1" secondAttribute="trailing" id="A6q-SG-veb"/>
+                            <constraint firstItem="cRc-Ma-ifa" firstAttribute="leading" secondItem="aZf-wd-Ibh" secondAttribute="leading" constant="5" id="Hot-26-Nwx"/>
+                            <constraint firstItem="cRc-Ma-ifa" firstAttribute="top" secondItem="i7x-07-VW1" secondAttribute="bottom" id="WNJ-OC-3wW"/>
+                            <constraint firstItem="i7x-07-VW1" firstAttribute="leading" secondItem="aZf-wd-Ibh" secondAttribute="leading" id="aei-dF-4ba"/>
+                            <constraint firstAttribute="trailing" secondItem="cRc-Ma-ifa" secondAttribute="trailing" constant="5" id="htd-2x-zfp"/>
+                            <constraint firstItem="i7x-07-VW1" firstAttribute="top" secondItem="aZf-wd-Ibh" secondAttribute="top" id="jxK-sf-sUh"/>
+                            <constraint firstAttribute="bottom" secondItem="cRc-Ma-ifa" secondAttribute="bottom" constant="5" id="pNl-dc-7Cu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="aZf-wd-Ibh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1GV-CA-3Bo"/>
+                <constraint firstAttribute="bottom" secondItem="aZf-wd-Ibh" secondAttribute="bottom" id="3Yo-eh-eW2"/>
+                <constraint firstAttribute="trailing" secondItem="aZf-wd-Ibh" secondAttribute="trailing" id="8cf-o0-sQ3"/>
+                <constraint firstItem="aZf-wd-Ibh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="SgM-5Q-gwf"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="185" height="266"/>
+            <connections>
+                <outlet property="character" destination="NF3-PZ-oFH" id="JVc-nn-Qmn"/>
+                <outlet property="name" destination="jVO-7M-egI" id="PJk-ns-cmE"/>
+                <outlet property="posterImg" destination="i7x-07-VW1" id="Rb4-AA-0kd"/>
+            </connections>
+            <point key="canvasLocation" x="235.50724637681162" y="44.196428571428569"/>
+        </collectionViewCell>
+    </objects>
+</document>

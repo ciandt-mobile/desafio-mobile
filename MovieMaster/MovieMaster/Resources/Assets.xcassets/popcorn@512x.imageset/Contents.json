@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "idiom" : "iphone",
+      "filename" : "popcorn@512x.png"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
+  }
+}

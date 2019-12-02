@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="vi9-tD-Th5" customClass="MovieCollectionViewCell" customModule="MovieMaster" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="179" height="261"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="179" height="261"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylB-f5-829">
+                        <rect key="frame" x="0.0" y="0.0" width="179" height="261"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" image="popcorn" translatesAutoresizingMaskIntoConstraints="NO" id="JNr-nJ-CoC" customClass="CustomImageView" customModule="MovieMaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="179" height="211"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Uk-Tg-jEp" customClass="PaddingLabel" customModule="MovieMaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="211" width="179" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kVc-2Y-S2Q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="13"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0I-Wu-Dk8">
+                                <rect key="frame" x="144" y="5" width="30" height="20"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="XaB-Sx-nvw"/>
+                                    <constraint firstAttribute="height" constant="20" id="uvj-Jk-14H"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7Uk-Tg-jEp" firstAttribute="leading" secondItem="ylB-f5-829" secondAttribute="leading" id="1Oo-8c-UJA"/>
+                            <constraint firstAttribute="trailing" secondItem="JNr-nJ-CoC" secondAttribute="trailing" id="1jv-tb-fst"/>
+                            <constraint firstItem="U0I-Wu-Dk8" firstAttribute="top" secondItem="ylB-f5-829" secondAttribute="top" constant="5" id="B2s-qr-uaP"/>
+                            <constraint firstItem="JNr-nJ-CoC" firstAttribute="leading" secondItem="ylB-f5-829" secondAttribute="leading" id="OtG-ha-pBK"/>
+                            <constraint firstAttribute="bottom" secondItem="7Uk-Tg-jEp" secondAttribute="bottom" id="Upf-lT-W2l"/>
+                            <constraint firstItem="7Uk-Tg-jEp" firstAttribute="top" secondItem="JNr-nJ-CoC" secondAttribute="bottom" id="kPW-MX-K26"/>
+                            <constraint firstItem="JNr-nJ-CoC" firstAttribute="top" secondItem="ylB-f5-829" secondAttribute="top" id="mCn-ci-rGO"/>
+                            <constraint firstAttribute="trailing" secondItem="U0I-Wu-Dk8" secondAttribute="trailing" constant="5" id="pUp-Ba-HPt"/>
+                            <constraint firstAttribute="trailing" secondItem="7Uk-Tg-jEp" secondAttribute="trailing" id="xlW-g5-DCz"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ylB-f5-829" secondAttribute="bottom" id="Eb2-cx-G0M"/>
+                <constraint firstItem="ylB-f5-829" firstAttribute="leading" secondItem="vi9-tD-Th5" secondAttribute="leading" id="NlB-hr-dbY"/>
+                <constraint firstAttribute="trailing" secondItem="ylB-f5-829" secondAttribute="trailing" id="gWG-zf-I9B"/>
+                <constraint firstItem="ylB-f5-829" firstAttribute="top" secondItem="vi9-tD-Th5" secondAttribute="top" id="v3W-gI-WTd"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="3qp-tf-5nv"/>
+            <size key="customSize" width="144" height="154"/>
+            <connections>
+                <outlet property="posterImg" destination="JNr-nJ-CoC" id="NVv-Zg-v1E"/>
+                <outlet property="ratingLabel" destination="U0I-Wu-Dk8" id="2h9-N5-rE6"/>
+                <outlet property="titleLabel" destination="7Uk-Tg-jEp" id="Lik-yL-Nba"/>
+            </connections>
+            <point key="canvasLocation" x="219.56521739130437" y="118.86160714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="popcorn" width="64" height="64"/>
+    </resources>
+</document>
