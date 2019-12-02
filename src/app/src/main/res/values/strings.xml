@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">DesafioMobile</string>
+    <string name="movie_banner">TODO</string>
+    <string name="toggle_option_upcoming">Upcoming</string>
+    <string name="toggle_option_popular">Popular</string>
+</resources>
