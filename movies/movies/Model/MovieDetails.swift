@@ -13,7 +13,7 @@ struct MovieDetails: Codable {
     let genres: [Genre]
     let budget: Int
     let revenue: Int
-    let runtime: Int
+    let runtime: Int?
     let status: String
     let tagline: String
 }

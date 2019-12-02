@@ -91,7 +91,12 @@ class MovieDetailsViewController: UIViewController {
             genres += genre.name
         }
 
-        let details: String = " | \(movieDetails.runtime)min | \(movieDetails.status) | \(genres)"
+        var movieRuntime = ""
+        if let runtime = movieDetails.runtime {
+            movieRuntime = "\(runtime)min |"
+        }
+
+        let details: String = " | \(movieRuntime)\(movieDetails.status) | \(genres)"
         self.movieDetailsLabel.text! += details
 
         if movieDetails.tagline != "" {
