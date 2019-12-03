@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  MoviesUP
+
+  Created by Julio Garavelli on 02/12/19.
+  Copyright © 2019 Julio Garavelli. All rights reserved.
+*/
+
+//MOVIES GALLERY
+"UPCOMING" = "Upcoming";
+"POPULAR" = "Popular";
+
+"UPCOMING_MOVIES" = "Upcoming Movies";
+"POPULAR_MOVIES" = "Popular Movies";

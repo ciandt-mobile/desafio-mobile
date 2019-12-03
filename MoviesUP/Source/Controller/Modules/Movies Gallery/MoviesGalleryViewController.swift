@@ -17,9 +17,9 @@ enum TypeMovies: Int {
     var title: String {
         switch self {
         case .upcoming:
-            return "Upcoming Movies"
+            return "UPCOMING_MOVIES".localized()
         case .popular:
-            return "Popular Movies"
+            return "POPULAR_MOVIES".localized()
         }
     }
 }
@@ -69,7 +69,6 @@ class MoviesGalleryViewController: UIViewController {
         super.viewDidLoad()
         
         setupCollection()
-
         getData()
     }
     
@@ -97,6 +96,9 @@ class MoviesGalleryViewController: UIViewController {
         let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
         segmentedControlTitle.setTitleTextAttributes(titleTextAttributes1, for:.selected)
         galleryCollectionView.reloadData()
+        
+        segmentedControlTitle.setTitle("UPCOMING".localized(), forSegmentAt: 0)
+        segmentedControlTitle.setTitle("POPULAR".localized(), forSegmentAt: 1)
     }
     
     func setupCollection() {

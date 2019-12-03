@@ -20,10 +20,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BQ2-Xy-oHk">
-                                        <rect key="frame" x="105" y="8" width="165" height="32"/>
+                                        <rect key="frame" x="162" y="8" width="51" height="32"/>
                                         <segments>
-                                            <segment title="Upcoming"/>
-                                            <segment title="Popular"/>
+                                            <segment title="-"/>
+                                            <segment title="-"/>
                                         </segments>
                                         <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
