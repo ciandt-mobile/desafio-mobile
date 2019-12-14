@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCell" id="gTV-IL-0wX" customClass="MovieCollectionViewCell" customModule="MoviesChallenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="119" height="284"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="119" height="284"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DlS-vF-OIm">
+                        <rect key="frame" x="0.0" y="44" width="119" height="195"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="195" id="NIc-8H-Hxn"/>
+                            <constraint firstAttribute="width" constant="119" id="QuB-cQ-Ql6"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lf7-Z8-Kbq">
+                        <rect key="frame" x="0.0" y="239" width="119" height="45"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbl-z4-zME">
+                        <rect key="frame" x="19.5" y="218" width="80" height="21"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.24729773116438356" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="Tow-sb-JCc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Lf7-Z8-Kbq" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="9Qf-th-AvM"/>
+                <constraint firstItem="Bbl-z4-zME" firstAttribute="bottom" secondItem="DlS-vF-OIm" secondAttribute="bottom" id="Cy4-aX-4GR"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="Lf7-Z8-Kbq" secondAttribute="bottom" id="NCe-xp-biR"/>
+                <constraint firstItem="Bbl-z4-zME" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="Rez-Xs-iSj"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="DlS-vF-OIm" secondAttribute="trailing" id="U9Q-e5-p3H"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="DlS-vF-OIm" secondAttribute="top" id="UD3-xu-4Gi"/>
+                <constraint firstItem="Lf7-Z8-Kbq" firstAttribute="top" secondItem="DlS-vF-OIm" secondAttribute="bottom" id="eny-CP-UtS"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="DlS-vF-OIm" secondAttribute="bottom" constant="45" id="gvr-8I-wpv"/>
+                <constraint firstItem="DlS-vF-OIm" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="pM3-2K-YAI"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="Lf7-Z8-Kbq" secondAttribute="trailing" id="zT9-y4-Cf1"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="120" height="240"/>
+            <connections>
+                <outlet property="dateLabel" destination="Bbl-z4-zME" id="EZz-7t-qsC"/>
+                <outlet property="imageView" destination="DlS-vF-OIm" id="Ue8-Kx-Fd0"/>
+                <outlet property="nameLabel" destination="Lf7-Z8-Kbq" id="vaC-ON-nkN"/>
+            </connections>
+            <point key="canvasLocation" x="181.8840579710145" y="216.96428571428569"/>
+        </collectionViewCell>
+    </objects>
+</document>
