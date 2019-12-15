@@ -4,7 +4,7 @@ Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para
 
 ## Desenvolvimento
 
-- Projeto desenvolvido usando a linguagem Swift e arquitetura MVC.
+- Projeto desenvolvido utilizando a linguagem Swift e arquitetura MVC.
 - O app está totalmente adaptado para Portrait e Landscape, em qualquer tamanho de tela, inclusive iPad.
 - Única lib que utilizei foi a Kingfisher, para fazer o download assíncrono e cache das imagens.
 - O app carrega apenas a primeira página de filmes, mas poderia tranquilamente ser implementado uma paginação com scroll infinito.
