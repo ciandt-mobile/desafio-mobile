@@ -17,6 +17,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        // Adiciona borda branca na Label de data
         dateLabel.layer.borderWidth = 1
         dateLabel.layer.borderColor = UIColor.white.cgColor
     }
