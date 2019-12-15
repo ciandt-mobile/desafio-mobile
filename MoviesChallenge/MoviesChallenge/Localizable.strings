@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  MoviesChallenge
+
+  Created by Leonardo Bortolotti on 15/12/19.
+  Copyright © 2019 Leonardo Bortolotti. All rights reserved.
+*/
+
+"Upcoming Movies" = "Upcoming Movies";
+"Popular Movies" = "Popular Movies";
