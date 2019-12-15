@@ -2,6 +2,14 @@
 
 Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para realizar o desafio 😀.
 
+## Desenvolvimento
+
+- Projeto desenvolvido usando a linguagem Swift e arquitetura MVC.
+- O app está totalmente adaptado para Portrait e Landscape, em qualquer tamanho de tela, inclusive iPad.
+- Única lib que utilizei foi a Kingfisher, para fazer o download assíncrono e cache das imagens.
+- O app carrega apenas a primeira página de filmes, mas poderia tranquilamente ser implementado uma paginação com scroll infinito.
+- Upcoming Movies foi implementado filtrando a lista do Popular Movies, como pedido no desafio. Outra possibilidade seria fazer uma request para /movie/upcoming.
+
 ## Instruções
 
 - Faça um fork desse repositório e crie sua solução para iOS ou Android;
