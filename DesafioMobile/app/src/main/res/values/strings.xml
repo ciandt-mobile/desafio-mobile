@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Desafio Mobile</string>
+    <string name="api_url">https://api.themoviedb.org/3/</string>
+    <string name="api_key">5d702d017fd75aaae63d08759fb991f0</string>
+
+    <string name="upcoming">Upcoming</string>
+    <string name="popular">Popular</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="popular_movies">Popular Movies</string>
+</resources>

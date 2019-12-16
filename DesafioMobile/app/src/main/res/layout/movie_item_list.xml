@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="movie"
+            type="com.nurik.desafiomobile.pojo.Movie" />
+    </data>
+
+    <RelativeLayout
+        tools:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:visibility="visible"
+            android:id="@+id/movie_poster"
+            app:image="@{movie.poster_path}"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/poster_height"
+            android:padding="@dimen/poster_margin"
+            tools:src="@drawable/dummie_poster"/>
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/movie_poster"
+            android:id="@+id/movie_title"
+            android:text="@{movie.original_title}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/movie_name_text"
+            tools:text="NOME DO FILME"/>
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/movie_date_margin"
+            android:layout_marginBottom="@dimen/poster_margin"
+            android:id="@+id/movie_date"
+            app:format="@{movie.release_date}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:padding="@dimen/movie_date_padding"
+            android:textSize="@dimen/movie_date_text"
+            android:background="@drawable/text_border_white"
+            tools:text="DATA DO FILME"/>
+    </RelativeLayout>
+</layout>
+
