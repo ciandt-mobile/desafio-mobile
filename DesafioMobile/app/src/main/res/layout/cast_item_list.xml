@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="cast"
+            type="com.nurik.desafiomobile.pojo.Cast" />
+    </data>
+
+    <RelativeLayout
+        tools:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:layout_width="@dimen/cast_width"
+        android:layout_height="@dimen/cast_height">
+
+        <ImageView
+            android:visibility="visible"
+            android:id="@+id/cast_image"
+            app:image="@{cast.profile_path}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:src="@drawable/dummie_poster"/>
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/cast_name_margin"
+            android:id="@+id/cast_name"
+            android:text="@{cast.name}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="@dimen/movie_date_padding"
+            android:layout_marginRight="@dimen/movie_date_padding"
+            android:padding="@dimen/movie_date_padding"
+            android:textSize="@dimen/movie_date_text"
+            tools:text="DATA DO FILME"/>
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/cast_name"
+            android:layout_marginBottom="@dimen/poster_margin"
+            android:id="@+id/cast_character"
+            android:text="@{cast.character}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="@dimen/movie_date_padding"
+            android:layout_marginRight="@dimen/movie_date_padding"
+            android:padding="@dimen/movie_date_padding"
+            android:textSize="@dimen/movie_date_text"
+            tools:text="DATA DO FILME"/>
+    </RelativeLayout>
+</layout>
+

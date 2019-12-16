@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="switch_padding">4dp</dimen>
+    <dimen name="switch_width">200dp</dimen>
+    <dimen name="switch_height">30dp</dimen>
+    <dimen name="title">36sp</dimen>
+    <dimen name="title_padding">12sp</dimen>
+    <dimen name="header_padding">8dp</dimen>
+    <dimen name="poster_margin">10dp</dimen>
+    <dimen name="poster_height">150dp</dimen>
+    <dimen name="movie_date_margin">115dp</dimen>
+    <dimen name="movie_date_padding">4dp</dimen>
+    <dimen name="movie_date_text">8sp</dimen>
+    <dimen name="movie_name_text">10sp</dimen>
+    <dimen name="detail_image">200dp</dimen>
+    <dimen name="movie_name_title">24sp</dimen>
+    <dimen name="movie_date_title">18sp</dimen>
+    <dimen name="cast_name_margin">70dp</dimen>
+    <dimen name="cast_height">120dp</dimen>
+    <dimen name="cast_width">100dp</dimen>
+</resources>

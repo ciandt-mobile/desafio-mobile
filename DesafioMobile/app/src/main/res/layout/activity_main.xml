@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".ui.moviesList.MainActivity">
+
+
+
+    <LinearLayout
+        android:id="@+id/header_container"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="@dimen/header_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/switch_header" />
+
+        <TextView
+            android:id="@+id/header_title"
+            android:textStyle="bold"
+            android:textSize="@dimen/title"
+            android:textColor="@android:color/white"
+            android:padding="@dimen/title_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/upcoming_movies"/>
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_movies"
+        android:layout_below="@id/header_container"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layoutManager="GridLayoutManager"
+        tools:spanCount="3"
+        android:padding="@dimen/poster_margin"
+        tools:listitem="@layout/movie_item_list">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_below="@id/header_container"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

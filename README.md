@@ -45,5 +45,15 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  -- API (https://www.themoviedb.org/documentation/api)
  
 # BOA SORTE!
+
+## OBSERVACOES FINAIS
+ Fiz utilização das libs:
+ - Retrofit e HTTP3: Consumo das API REST e Logging 
+ - Lifecycle: databiding
+ - Glide: carregamento de imagens
+ - JUnit, Androidx, mockito e mockwebserver: Tests
+ 
+ Fiz utilizaçao de Kotlin por ser a linguagem principal hoje para android, optei por utilizar MVVM como arquitetura pois alem de ser a mais recomendada para android tambem é uma boa opcao para atender a Regra de negocio onde o app deve perimitir ser utilizado em Landscape. Pensando na regra de negocio que eu deveria filtrar a listagem de upcoming para mostrar o popular, infelizmente nao pude fazer essa abordagem por limitacao da API The Movie DB, entao fiz um viewPager onde cada fragment chama um endpoint da api com os respectivos resultados, realizando assim para o usuario final a filtragem
+ 
  
  
