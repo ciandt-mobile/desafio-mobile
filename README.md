@@ -47,3 +47,8 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
 # BOA SORTE!
  
  
+----------------
+Utilizações:
+Volley - Requisições
+Jackson - Json unmarshalling
+Arquitetura - Model-View-Presenter
