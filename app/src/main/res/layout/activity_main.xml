@@ -5,13 +5,25 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity" android:id="@+id/BG" android:visibility="visible">
-
-    <com.android.volley.toolbox.NetworkImageView
-            android:layout_width="347dp"
-            android:layout_height="79dp" app:srcCompat="@android:color/white"
-            android:id="@+id/myImageView"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp"/>
+        tools:context=".MainActivity"
+        android:id="@+id/activity_main"
+        android:visibility="visible">
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/activity_frame"
+            android:visibility="visible">
+    </FrameLayout>
+    <android.support.design.widget.BottomNavigationView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:id="@+id/navbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="@color/white"
+            app:menu="@menu/navigation"
+            android:visibility="visible"/>
 </android.support.constraint.ConstraintLayout>

@@ -35,10 +35,13 @@ public class AppRequestQueue {
                 });
     }
 
-    public static synchronized AppRequestQueue getInstance(Context context) {
+    public static synchronized void setInstance(Context context) {
         if (instance == null) {
             instance = new AppRequestQueue(context);
         }
+    }
+
+    public static synchronized AppRequestQueue getInstance(){
         return instance;
     }
 

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Filmes</string>
+    <string name="nav_item_title_popular">Populares</string>
+    <string name="nav_item_title_upcoming">Em Breve</string>
 </resources>

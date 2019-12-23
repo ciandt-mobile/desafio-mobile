@@ -5,10 +5,10 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class Genre {
-    private Long id;
+    private Integer id;
     private String name;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
