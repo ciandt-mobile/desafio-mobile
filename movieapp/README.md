@@ -1,6 +1,6 @@
 # movieapp
 
-A new Flutter project.
+Para esse desafio, usei Flutter/dart com o padrão Business Logic Component (BLoC), que é um padrão criado pelo Google e anunciado no Google I / O '18. O padrão BLoC usa a Programação reativa para lidar com o fluxo de dados em um aplicativo.
 
 ## Getting Started
 
