@@ -4,7 +4,7 @@ Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para
 
 ## Exigências:
 
-    https://flutter.dev/docs/get-started/install
+    sdk: ">=2.3.0 <3.0.0"
 
 ## Linguagem/Framework:
 
