@@ -1,0 +1,3 @@
+[submodule "movieapp/injection/inject.dart"]
+	path = movieapp/injection/inject.dart
+	url = https://github.com/google/inject.dart

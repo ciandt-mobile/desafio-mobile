@@ -1,0 +1,1 @@
+enum ListType { Popular, Upcoming }
