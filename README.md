@@ -45,5 +45,17 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  -- API (https://www.themoviedb.org/documentation/api)
  
 # BOA SORTE!
- 
+
+## Informações sobre o projeto
+ ### Linguagem utilizada
+ - Java
+ ### Arquitetura
+ - MVP Model View Presenter
+ ### Informações diversas
+ Foi utlizado Dagger para gerenciamento de injeção de dependência, Retrofit e OkHttp para facilitar as realizações de requisições e 
+ adição de interceptor, juntamente com RxAndroid para manipular e alternar o uso da MainThread e tarefas em background nas requisições.
+ Para manipulação de imagens providas da internet foi utilizado Picasso. Também foi utilizado ButterKnife para facilitar os binds das
+ Activities e ViewHolders. Na criação de layout predomina-se o uso de ConstraintLayout exceto para layouts reaproveitáveis onde foi utilizado LinearLayout.
+
+
  

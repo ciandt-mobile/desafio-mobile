@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nsv_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#606060"
+        android:padding="10dp"
+        tools:context=".activity.MainActivity">
+
+        <Switch
+            android:id="@+id/st_preference"
+            style="@style/GroupText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/popular"
+            app:layout_constraintBottom_toTopOf="@id/tv_first_group"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_first_group"
+            style="@style/GroupText"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/popular_movie"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Populares" />
+
+
+        <TextView
+            android:id="@+id/tv_second_group"
+            style="@style/GroupText"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:text="@string/now_playing_movie"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_first_group"
+            tools:text="Em cartaz" />
+
+        <TextView
+            android:id="@+id/tv_third_group"
+            style="@style/GroupText"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:text="@string/top_rated_movie"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_second_group"
+            tools:text="Mais votados" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_second_group"
+            android:layout_width="0dp"
+            android:layout_height="280dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_second_group">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_first_group"
+            android:layout_width="0dp"
+            android:layout_height="280dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_first_group">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_third_group"
+            android:layout_width="0dp"
+            android:layout_height="280dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_third_group">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+
