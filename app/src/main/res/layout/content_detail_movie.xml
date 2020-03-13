@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activity.DetailMovieActivity"
+    tools:showIn="@layout/activity_detail_movie">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_synopsis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_cast"
+            tools:text="Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth rigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth rigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth rigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth rigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth Brigth" />
+
+        <TextView
+            android:id="@+id/tv_year"
+            style="@style/GroupText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_title"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Brigth" />
+
+        <TextView
+            android:id="@+id/tv_runtime"
+            style="@style/GroupText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="Brigth" />
+
+        <TextView
+            android:id="@+id/tv_genres"
+            style="@style/GroupText"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_runtime"
+            app:layout_constraintTop_toBottomOf="@id/tv_year"
+            tools:text="Brigth" />
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/GroupText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Brigth" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_cast"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_runtime">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+

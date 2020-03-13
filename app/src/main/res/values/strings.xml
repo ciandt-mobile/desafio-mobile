@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">The Movie DB</string>
+    <string name="popular">Popular</string>
+    <string name="popular_movie">Populares</string>
+    <string name="now_playing_movie">Em cartaz</string>
+    <string name="top_rated_movie">Mais votados</string>
+    <string name="latest_movie">Recém adicionados</string>
+    <string name="title_activity_detail_movie">DetailMovieActivity</string>
+    <string name="upcoming">Em breve</string>
+    <string name="runtime">%d min</string>
+</resources>
