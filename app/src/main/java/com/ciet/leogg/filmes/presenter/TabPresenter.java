@@ -1,5 +1,6 @@
 package com.ciet.leogg.filmes.presenter;
 
+import android.util.Log;
 import com.android.volley.Response;
 import com.ciet.leogg.filmes.api.AppRequestQueue;
 import com.ciet.leogg.filmes.api.JacksonListRequest;
@@ -43,12 +44,16 @@ public class TabPresenter implements MoviesContract.TabInteraction {
             public void onResponse(List<Movie> response) {
                 loadedMovies.addAll(response);
                 if(loadedMovies.size() > 40){
-                    popularView.showMovies(response);
+                    popularView.showMovies(loadedMovies);
                 }
+                Log.i("loadMovies","size:"+loadedMovies.size());
             }
         };
         for(int i=1;i<=5;i++){
-            AppRequestQueue.getInstance().addToRequestQueue(new JacksonListRequest<>("https://api.themoviedb.org/3/discover/movie?api_key=adda3de7d4f28a11095c260028a9a7ac&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page="+i,listener,Movie.class));
+            AppRequestQueue.getInstance().addToRequestQueue(new JacksonListRequest<>
+                    ("https://api.themoviedb.org/3/discover/movie?api_key=adda3de7d4f28a11095c260028a9a7ac&" +
+                            "language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page="+
+                            i,listener,Movie.class));
         }
     }
 

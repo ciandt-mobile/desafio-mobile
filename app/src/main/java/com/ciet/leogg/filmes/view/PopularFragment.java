@@ -20,6 +20,7 @@ import com.ciet.leogg.filmes.model.Movie;
 import com.ciet.leogg.filmes.presenter.MoviesContract;
 import com.ciet.leogg.filmes.presenter.TabPresenter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,11 +102,12 @@ public class PopularFragment extends Fragment implements MoviesContract.ListView
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder viewHolder, int position) {
+        public void onBindViewHolder(MoviesAdapter.ViewHolder viewHolder, int position) {
             Movie movie = movies.get(position);
             viewHolder.thumbnail.setDefaultImageResId(R.mipmap.ic_launcher);
             viewHolder.thumbnail.setImageUrl("https://image.tmdb.org/t/p/w500"+movie.getPosterPath(), AppRequestQueue.getInstance().getImageLoader());
             viewHolder.title.setText(movie.getTitle());
+            viewHolder.releaseDate.setText((new SimpleDateFormat("dd/mm/yyyy").format(movie.getReleaseDate())));
         }
 
         public void replaceData(List<Movie> notes) {
@@ -130,6 +132,7 @@ public class PopularFragment extends Fragment implements MoviesContract.ListView
 
             public NetworkImageView thumbnail;
             public TextView title;
+            public TextView releaseDate;
             private ItemListener mItemListener;
 
             public ViewHolder(View itemView, ItemListener listener) {
@@ -137,6 +140,7 @@ public class PopularFragment extends Fragment implements MoviesContract.ListView
                 mItemListener = listener;
                 title = (TextView) itemView.findViewById(R.id.movie_title);
                 thumbnail = (NetworkImageView) itemView.findViewById(R.id.movie_thumbnail);
+                releaseDate = (TextView) itemView.findViewById(R.id.movie_release_date);
                 itemView.setOnClickListener(this);
             }
 
@@ -145,13 +149,11 @@ public class PopularFragment extends Fragment implements MoviesContract.ListView
                 int position = getAdapterPosition();
                 Movie movie = getItem(position);
                 mItemListener.onMovieClick(movie);
-
             }
         }
     }
 
     public interface ItemListener {
-
         void onMovieClick(Movie clickedNote);
     }
 

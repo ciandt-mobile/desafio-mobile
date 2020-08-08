@@ -15,7 +15,6 @@ import com.ciet.leogg.filmes.view.*;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
     private BottomNavigationView bottomNavigationView;
-    NetworkImageView mNetworkImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,13 +22,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navbar);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-
         if(savedInstanceState == null){
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.add(R.id.activity_frame, HomeFragment.newInstance());
-            fragmentTransaction.commit();
+            getSupportFragmentManager().beginTransaction()
+                        .add(R.id.activity_frame, HomeFragment.newInstance())
+                        .commit();
         }
-        AppRequestQueue.setInstance(getApplicationContext());
     }
 
     @Override

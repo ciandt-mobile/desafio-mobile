@@ -21,7 +21,9 @@ public class MoviePresenter implements MoviesContract.MovieSelection {
                 genres = response;
             }
         };
-        AppRequestQueue.getInstance().addToRequestQueue(new JacksonListRequest<>("https://api.themoviedb.org/3/genre/movie/list?api_key=adda3de7d4f28a11095c260028a9a7ac&language=en-US",listener,Genre.class));
+        AppRequestQueue.getInstance().addToRequestQueue(new JacksonListRequest<>
+                ("https://api.themoviedb.org/3/genre/movie/list?api_key=adda3de7d4f28a11095c260028a9a7ac&language=en-US"
+                        ,listener,Genre.class));
     }
 
     @Override
@@ -40,6 +42,8 @@ public class MoviePresenter implements MoviesContract.MovieSelection {
                 detailsView.showMovie(movie,response,genresList);
             }
         };
-        AppRequestQueue.getInstance().addToRequestQueue(new JacksonListRequest<>("https://api.themoviedb.org/3/movie/"+movie.getId()+"/credits?api_key=adda3de7d4f28a11095c260028a9a7ac",listener,Cast.class));
+        AppRequestQueue.getInstance().addToRequestQueue(new JacksonListRequest<>
+                ("https://api.themoviedb.org/3/movie/"+movie.getId()+"/credits?api_key=adda3de7d4f28a11095c260028a9a7ac"
+                        ,listener,Cast.class));
     }
 }

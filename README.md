@@ -8,7 +8,7 @@ Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para
 - Ao terminar a solução realize um Pull Request;
 - Comente no readme do repositório os métodos utilizados, tais como arquitetura, linguagem, soluções técnicas e etc.;
 
-## O App
+## O com.ciet.leogg.filmes.App
 
 <img src="screenshots/ss01.png?raw=true" width="250"> <img src="screenshots/ss02.png?raw=true" width="250"> <img src="screenshots/ss03.png?raw=true" width="250">
 

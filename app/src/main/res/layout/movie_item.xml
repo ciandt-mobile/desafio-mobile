@@ -19,9 +19,21 @@
             android:id="@+id/movie_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|left"
+            android:layout_gravity="bottom|start"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:padding="16dp"
-            android:background="@color/white"
-            tools:text="" />
+            android:padding="8dp"
+            android:background="#90FFFFFF"
+            tools:text="ABC" />
+    <TextView
+            android:id="@+id/movie_release_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:padding="8dp"
+            android:background="#90FFFFFF"
+            tools:text="DEF" />
+
 </android.support.v7.widget.CardView>
