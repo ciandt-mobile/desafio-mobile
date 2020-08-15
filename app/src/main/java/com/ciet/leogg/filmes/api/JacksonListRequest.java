@@ -12,9 +12,9 @@ import java.util.List;
 
 public class JacksonListRequest<T> extends Request<T> {
 
-    private Response.Listener<T> listener;
-    private Class<?> modelClass;
-    private ObjectMapper mapper;
+    private final Response.Listener<T> listener;
+    private final Class<?> modelClass;
+    private final ObjectMapper mapper;
 
     public JacksonListRequest(String url, Response.Listener<T> listener, Class<?> modelClass){
         super(Method.GET, url, new Response.ErrorListener() {
@@ -27,6 +27,7 @@ public class JacksonListRequest<T> extends Request<T> {
         this.modelClass = modelClass;
         this.mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
+
     }
 
     @Override
@@ -53,5 +54,10 @@ public class JacksonListRequest<T> extends Request<T> {
     @Override
     protected void deliverResponse(T response) {
         listener.onResponse(response);
+    }
+
+    @Override
+    public Priority getPriority() {
+        return Priority.IMMEDIATE;
     }
 }

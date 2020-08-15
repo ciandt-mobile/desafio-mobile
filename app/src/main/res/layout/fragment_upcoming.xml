@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".view.UpcomingFragment">
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragments.UpcomingFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <android.support.v7.widget.RecyclerView
+    <com.ciet.leogg.filmes.view.recyclerviews.MoviesRecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/upcoming_list"/>
 
-</FrameLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

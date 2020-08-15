@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <com.ciet.leogg.filmes.view.customviews.MovieItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            card_view:cardUseCompatPadding="true"
+            android:id="@+id/movie_item_view"
+            android:background="#B36B6B">
+
+        <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/movie_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                tools:src="@drawable/ic_launcher_foreground"/>
+
+        <TextView
+                android:id="@+id/movie_release_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:padding="8dp"
+                android:background="#90FFFFFF"
+                tools:text="DEF"/>
+
+        <TextView
+                android:id="@+id/movie_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:padding="8dp"
+                android:background="#90FFFFFF"
+                tools:text="ABC"/>
+    </com.ciet.leogg.filmes.view.customviews.MovieItemView>
+</layout>

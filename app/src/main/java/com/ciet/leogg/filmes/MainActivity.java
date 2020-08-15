@@ -1,53 +1,39 @@
 package com.ciet.leogg.filmes;
 
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
-import com.android.volley.toolbox.NetworkImageView;
+import android.util.Log;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.ciet.leogg.filmes.api.AppRequestQueue;
-import com.ciet.leogg.filmes.view.*;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity{
     private BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
-        bottomNavigationView = (BottomNavigationView)findViewById(R.id.navbar);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
-
-        if(savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction()
-                        .add(R.id.activity_frame, HomeFragment.newInstance())
-                        .commit();
-        }
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch(menuItem.getItemId()){
-            case R.id.navigation_popular:{
-                replaceFragment(PopularFragment.newInstance());
-                break;
+        bottomNavigationView = findViewById(R.id.navbar);
+        NavController navController = Navigation.findNavController(this,R.id.nav_host_fragment_container);
+        NavigationUI.setupWithNavController(bottomNavigationView,navController);
+        AppRequestQueue.getInstance().addToRequestQueue(new StringRequest(Request.Method.GET,"http://www.google.com/",new Response.Listener<String>(){
+            @Override
+            public void onResponse(String response) {
+                Log.d("ColdStart","OK");
             }
-            case R.id.navigation_upcoming:{
-                replaceFragment(UpcomingFragment.newInstance());
-                break;
+        },new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("ColdStart","Error",error);
             }
-        }
-        return true;
-    }
-    private void replaceFragment(Fragment fragment) {
-        getSupportFragmentManager().popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        getSupportFragmentManager().beginTransaction()
-            .replace(R.id.activity_frame, fragment)
-            .addToBackStack(null)
-            .commit();
+        }));
     }
 }
