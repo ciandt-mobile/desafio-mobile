@@ -1,7 +1,7 @@
 package com.ciet.leogg.filmes.presenter;
 
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import com.ciet.leogg.filmes.model.Cast;
@@ -13,9 +13,9 @@ import java.util.List;
 
 public class MoviePresenter extends ViewModel implements MoviesContract.MovieSelection {
     private MoviesContract.DetailsView detailsView;
-    private final MutableLiveData<List<Cast>> castList;
-    private final MutableLiveData<List<Genre>> genreList;
-    private final MutableLiveData<Movie> movie;
+    private final LiveData<List<Cast>> castList;
+    private final LiveData<List<Genre>> genreList;
+    private final LiveData<Movie> movie;
 
     public MoviePresenter() {
         castList = MainRepository.getInstance().getCastList();

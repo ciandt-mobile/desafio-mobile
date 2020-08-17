@@ -7,6 +7,9 @@ import com.ciet.leogg.filmes.model.Movie;
 import java.util.List;
 
 public interface MoviesContract {
+    interface HomeView{
+        void showPageAndLastMovie(Integer page, Movie movie);
+    }
     interface DetailsView{
         void showMovie(Movie movie, List<Cast> castList,List<Genre> genreList);
     }
@@ -22,5 +25,9 @@ public interface MoviesContract {
     interface MovieSelection {
         void setDetailsView(DetailsView view);
         void loadMovie(Movie movie);
+    }
+    interface HomeInteraction {
+        void setHomeView(HomeView view);
+        void loadPageAndLastMovie();
     }
 }

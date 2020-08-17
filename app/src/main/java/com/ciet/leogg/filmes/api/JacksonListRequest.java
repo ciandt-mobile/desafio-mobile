@@ -7,8 +7,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.util.Iterator;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class JacksonListRequest<T> extends Request<T> {
 
@@ -27,7 +27,6 @@ public class JacksonListRequest<T> extends Request<T> {
         this.modelClass = modelClass;
         this.mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
-
     }
 
     @Override
@@ -52,6 +51,12 @@ public class JacksonListRequest<T> extends Request<T> {
     }
 
     @Override
+    protected VolleyError parseNetworkError(VolleyError volleyError) {
+        Log.d("VOLLEY","Volley Error Parsed.",volleyError);
+        return super.parseNetworkError(volleyError);
+    }
+
+    @Override
     protected void deliverResponse(T response) {
         listener.onResponse(response);
     }
@@ -59,5 +64,18 @@ public class JacksonListRequest<T> extends Request<T> {
     @Override
     public Priority getPriority() {
         return Priority.IMMEDIATE;
+    }
+
+    @Override
+    public Map<String, String> getHeaders() throws AuthFailureError {
+        Map<String,String> header = new HashMap<>();
+        header.put("Content-Type","application/json");
+        header.put("Accept","application/json");
+        header.put("Connection","Keep-Alive");
+        header.put("Keep-Alive","timeout=5, max=1000");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.US);
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+        header.put("Date", dateFormat.format(Calendar.getInstance().getTime()));
+        return header;
     }
 }

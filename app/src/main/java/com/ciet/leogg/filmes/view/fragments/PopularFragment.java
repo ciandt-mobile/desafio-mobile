@@ -1,7 +1,6 @@
 package com.ciet.leogg.filmes.view.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,6 @@ import com.ciet.leogg.filmes.view.recyclerviews.MoviesRecyclerView;
 
 import java.util.List;
 
-
 public class PopularFragment extends Fragment implements MoviesContract.ListView {
     private MoviesContract.TabInteraction tabInteraction;
     private MoviesRecyclerView moviesRecyclerView;
@@ -28,19 +26,12 @@ public class PopularFragment extends Fragment implements MoviesContract.ListView
     public PopularFragment() {}
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.d("onCreate","start");
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         tabInteraction = new ViewModelProvider(this).get(TabPresenter.class);
         tabInteraction.setPopularView(this);
         tabInteraction.loadMovies();
-        Log.d("onCreate","end");
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        Log.d("onCreateView","start");
         swipeRefreshLayout = (SwipeRefreshLayout) inflater.inflate(R.layout.fragment_popular, container, false);
         swipeRefreshLayout.setRefreshing(true);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -72,16 +63,13 @@ public class PopularFragment extends Fragment implements MoviesContract.ListView
                 }
             }
         });
-        Log.d("onCreateView","end");
         return swipeRefreshLayout;
     }
 
     @Override
     public void showMovies(List<Movie> movies) {
-        Log.d("showMovies","start");
         moviesRecyclerView.getMoviesAdapter().submitList(movies);
         swipeRefreshLayout.setRefreshing(false);
-        Log.d("showMovies","end");
     }
 }
 

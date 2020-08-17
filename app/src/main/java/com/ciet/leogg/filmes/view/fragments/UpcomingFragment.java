@@ -26,16 +26,12 @@ public class UpcomingFragment extends Fragment implements MoviesContract.ListVie
     public UpcomingFragment() {}
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         tabInteraction = new ViewModelProvider(this).get(TabPresenter.class);
         tabInteraction.setUpcomingView(this);
         tabInteraction.loadMoviesAndFilter();
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
         swipeRefreshLayout = (SwipeRefreshLayout) inflater.inflate(R.layout.fragment_upcoming, container, false);
         swipeRefreshLayout.setRefreshing(true);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

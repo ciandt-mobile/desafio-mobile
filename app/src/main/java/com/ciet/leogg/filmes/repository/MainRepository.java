@@ -1,6 +1,6 @@
 package com.ciet.leogg.filmes.repository;
 
-import android.util.Log;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import com.android.volley.Response;
@@ -10,7 +10,10 @@ import com.ciet.leogg.filmes.model.Cast;
 import com.ciet.leogg.filmes.model.Genre;
 import com.ciet.leogg.filmes.model.Movie;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
 
 public class MainRepository {
     private static MainRepository instance;
@@ -29,7 +32,9 @@ public class MainRepository {
         upcomingMovieList.setValue(new ArrayList<Movie>());
         genreList.setValue(new ArrayList<Genre>());
         castList.setValue(new ArrayList<Cast>());
-        initGenreList();
+        if(fullGenreList.getValue() == null){
+            initGenreList();
+        }
         popularMovieList.observeForever(new Observer<List<Movie>>() {
             @Override
             public void onChanged(List<Movie> movies) {
@@ -54,7 +59,6 @@ public class MainRepository {
     }
 
     public void refreshMovieList(){
-        Log.d("refreshMovieList","start");
         Response.Listener<List<Movie>>listener = new Response.Listener<List<Movie>>() {
             @Override
             public void onResponse(List<Movie> response) {
@@ -65,10 +69,9 @@ public class MainRepository {
                 ("https://api.themoviedb.org/3/discover/movie?api_key=adda3de7d4f28a11095c260028a9a7ac&" +
                         "language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page="+
                         page.getValue(),listener,Movie.class));
-        Log.d("refreshMovieList","end");
     }
 
-    private void initGenreList(){
+    public void initGenreList(){
         Response.Listener<List<Genre>>listener = new Response.Listener<List<Genre>>() {
             @Override
             public void onResponse(List<Genre> response) {
@@ -123,24 +126,28 @@ public class MainRepository {
                         ,listener,Cast.class));
     }
 
-    public MutableLiveData<List<Movie>> getPopularMovieList() {
+    public LiveData<List<Movie>> getPopularMovieList() {
         return popularMovieList;
     }
 
-    public MutableLiveData<List<Movie>> getUpcomingMovieList() {
+    public LiveData<List<Movie>> getUpcomingMovieList() {
         return upcomingMovieList;
     }
 
-    public MutableLiveData<Movie> getMovie() {
+    public LiveData<Movie> getMovie() {
         return movie;
     }
 
-    public MutableLiveData<List<Genre>> getGenreList() {
+    public LiveData<List<Genre>> getGenreList() {
         return genreList;
     }
 
-    public MutableLiveData<List<Cast>> getCastList() {
+    public LiveData<List<Cast>> getCastList() {
         return castList;
+    }
+
+    public LiveData<Integer> getPage(){
+        return page;
     }
 
 }

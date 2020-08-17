@@ -1,6 +1,7 @@
 package com.ciet.leogg.filmes;
 
 import android.app.Application;
+import com.ciet.leogg.filmes.repository.MainRepository;
 
 public class App extends Application {
     private static App app;
@@ -10,7 +11,9 @@ public class App extends Application {
 
     @Override
     public void onCreate() {
-        super.onCreate();
         app = this;
+        super.onCreate();
+        MainRepository.getInstance().initGenreList();
+        MainRepository.getInstance().refreshMovieList();
     }
 }

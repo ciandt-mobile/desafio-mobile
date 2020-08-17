@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import androidx.collection.LruCache;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.cronet.CronetHttpStack;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.ciet.leogg.filmes.App;
@@ -14,7 +15,8 @@ public class AppRequestQueue {
     private final ImageLoader imageLoader;
 
     private AppRequestQueue() {
-        requestQueue = Volley.newRequestQueue(App.instance().getApplicationContext());
+        requestQueue = Volley.newRequestQueue(App.instance().getApplicationContext(),
+                new CronetHttpStack.Builder(App.instance().getApplicationContext()).build());
         imageLoader = new ImageLoader(requestQueue,
                 new ImageLoader.ImageCache() {
                     private final LruCache<String, Bitmap>

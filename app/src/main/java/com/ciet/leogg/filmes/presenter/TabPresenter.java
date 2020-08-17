@@ -1,17 +1,14 @@
 package com.ciet.leogg.filmes.presenter;
 
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.*;
 import com.ciet.leogg.filmes.model.Movie;
 import com.ciet.leogg.filmes.repository.MainRepository;
 
 import java.util.List;
 
 public class TabPresenter extends ViewModel implements MoviesContract.TabInteraction {
-    private final MutableLiveData<List<Movie>> popularMoviesList;
-    private final MutableLiveData<List<Movie>> upcomingMoviesList;
+    private final LiveData<List<Movie>> popularMoviesList;
+    private final LiveData<List<Movie>> upcomingMoviesList;
     private MoviesContract.ListView popularView;
     private MoviesContract.ListView upcomingView;
 
