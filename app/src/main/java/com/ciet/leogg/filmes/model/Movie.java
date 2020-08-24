@@ -4,12 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
+import com.ciet.leogg.filmes.api.GenreDeserializer;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @Keep
@@ -18,10 +21,12 @@ public class Movie implements Parcelable {
     private Long id;
     private String posterPath;
     private String backdropPath;
-    private Date releaseDate;
+    private Date releaseDate = new Date(1400163380494L);
     private String title;
-    private Integer[] genreIds;
     private String overview;
+    private Integer runtime;
+    @JsonDeserialize(using = GenreDeserializer.class)
+    private List<String> genres;
 
     public Long getId() {
         return id;
@@ -43,12 +48,16 @@ public class Movie implements Parcelable {
         return title;
     }
 
-    public Integer[] getGenreIds() {
-        return genreIds;
-    }
-
     public String getOverview() {
         return overview;
+    }
+
+    public Integer getRuntime() {
+        return runtime;
+    }
+
+    public List<String> getGenres() {
+        return genres;
     }
 
     @Override
@@ -71,12 +80,8 @@ public class Movie implements Parcelable {
         Calendar convertedReleaseDate = new GregorianCalendar();
         convertedReleaseDate.setTime(releaseDate);
         parcel.writeLong(convertedReleaseDate.getTimeInMillis());
-        int[] boxedGenreIds = new int[genreIds.length];
-        for(int j=0; j< genreIds.length;j++){
-            boxedGenreIds[j] = genreIds[j];
-        }
-        parcel.writeInt(boxedGenreIds.length);
-        parcel.writeIntArray(boxedGenreIds);
+        parcel.writeInt(runtime);
+        parcel.writeStringList(genres);
     }
     protected Movie(Parcel in) {
         if (in.readByte() == 0) {
@@ -89,14 +94,8 @@ public class Movie implements Parcelable {
         title = in.readString();
         overview = in.readString();
         releaseDate = new Date(in.readLong());
-        int genreIdsLength = in.readInt();
-        int[] boxedGenreIds = new int[genreIdsLength];
-        genreIds = new Integer[genreIdsLength];
-        in.readIntArray(boxedGenreIds);
-        for(int i=0;i<genreIdsLength;i++){
-            genreIds[i] = boxedGenreIds[i];
-        }
-
+        runtime = in.readInt();
+        in.readStringList(genres);
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
@@ -110,6 +109,22 @@ public class Movie implements Parcelable {
             return new Movie[size];
         }
     };
+
+    public static  Movie createDefault(){
+        Movie movie = new Movie(){
+            @Override
+            public String getTitle() {
+                return "No movie";
+            }
+
+            @Override
+            public Date getReleaseDate() {
+                return new Date();
+            }
+        };
+        return movie;
+    }
+
 
     @Override
     public boolean equals(@Nullable Object obj) {

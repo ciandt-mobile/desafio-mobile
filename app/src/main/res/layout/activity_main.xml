@@ -25,17 +25,18 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:background="@color/colorPrimary"
+                android:background="@color/primaryColor"
                 android:id="@+id/navbar"
-                app:itemIconTint="@color/white"
-                app:itemTextColor="@color/white"
+                app:itemIconTint="@android:color/white"
+                app:itemTextColor="@color/primaryTextColor"
                 app:menu="@menu/buttons_bottom"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nav_host_fragment_container"
-                app:layout_constraintHorizontal_bias="0.5">
+                app:layout_constraintHorizontal_bias="0.5"
+                >
 
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 

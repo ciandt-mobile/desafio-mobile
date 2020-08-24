@@ -16,7 +16,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="centerInside"
-                tools:src="@drawable/ic_launcher_foreground"/>
+                android:src="@drawable/ic_sync_portrait"/>
 
         <TextView
                 android:id="@+id/movie_release_date"
@@ -26,8 +26,14 @@
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:padding="8dp"
-                android:background="#90FFFFFF"
-                tools:text="DEF"/>
+                android:background="@color/primaryColorWithAlpha"
+                tools:text="DEF"
+                android:textColor="@color/secondaryLightColor"
+                android:shadowColor="@color/secondaryTextColor"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="6"
+                />
 
         <TextView
                 android:id="@+id/movie_title"
@@ -37,7 +43,12 @@
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:padding="8dp"
-                android:background="#90FFFFFF"
-                tools:text="ABC"/>
+                android:background="@color/primaryColorWithAlpha"
+                tools:text="ABC"
+                android:textColor="@color/secondaryLightColor"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="6"
+                android:shadowColor="@color/secondaryTextColor"/>
     </com.ciet.leogg.filmes.view.customviews.MovieItemView>
 </layout>

@@ -1,7 +1,6 @@
 package com.ciet.leogg.filmes.presenter;
 
 import com.ciet.leogg.filmes.model.Cast;
-import com.ciet.leogg.filmes.model.Genre;
 import com.ciet.leogg.filmes.model.Movie;
 
 import java.util.List;
@@ -11,7 +10,7 @@ public interface MoviesContract {
         void showPageAndLastMovie(Integer page, Movie movie);
     }
     interface DetailsView{
-        void showMovie(Movie movie, List<Cast> castList,List<Genre> genreList);
+        void showMovie(Movie movie, List<Cast> castList);
     }
     interface ListView{
         void showMovies(List<Movie> movies);

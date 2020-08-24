@@ -4,11 +4,13 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.fragments.UpcomingFragment">
+        tools:context=".view.fragments.UpcomingFragment"
+        android:background="@color/secondaryLightColor">
 
     <com.ciet.leogg.filmes.view.recyclerviews.MoviesRecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/upcoming_list"/>
+            android:id="@+id/upcoming_list"
+            android:background="@color/secondaryLightColor"/>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

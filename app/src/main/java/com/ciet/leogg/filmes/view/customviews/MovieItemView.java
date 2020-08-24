@@ -11,6 +11,7 @@ import com.ciet.leogg.filmes.api.AppRequestQueue;
 import com.ciet.leogg.filmes.model.Movie;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MovieItemView extends CardView{
     private NetworkImageView thumbnail;
@@ -31,17 +32,21 @@ public class MovieItemView extends CardView{
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        thumbnail = this.findViewById(R.id.movie_thumbnail);
-        releaseDate = this.findViewById(R.id.movie_release_date);
-        title = this.findViewById(R.id.movie_title);
+        thumbnail = findViewById(R.id.movie_thumbnail);
+        releaseDate = findViewById(R.id.movie_release_date);
+        title = findViewById(R.id.movie_title);
     }
 
     public void updateMovie(Movie movie){
-        thumbnail.setDefaultImageResId(R.drawable.ic_baseline_sync_24);
-        thumbnail.setErrorImageResId(R.drawable.ic_baseline_sync_disabled_24);
-        thumbnail.setImageUrl("https://image.tmdb.org/t/p/w500"+movie.getPosterPath(), AppRequestQueue.getInstance().getImageLoader());
+        thumbnail.setDefaultImageResId(R.drawable.ic_sync_portrait);
+        thumbnail.setErrorImageResId(R.drawable.ic_sync_disabled_portrait);
+        String path = movie.getPosterPath() == null
+                ?"https://via.placeholder.com/600x900/bcaaa4/bcaaa4.png"
+                :"https://image.tmdb.org/t/p/w500"+movie.getPosterPath();
+        thumbnail.setImageUrl(path, AppRequestQueue.getInstance().getImageLoader());
 
         title.setText(movie.getTitle());
-        releaseDate.setText((new SimpleDateFormat("dd/MM/yyyy").format(movie.getReleaseDate())));
+        releaseDate.setText((new SimpleDateFormat("dd/MM/yyyy")
+                .format(movie.getReleaseDate() == null ? new Date(1400163380494L) : movie.getReleaseDate())));
     }
 }

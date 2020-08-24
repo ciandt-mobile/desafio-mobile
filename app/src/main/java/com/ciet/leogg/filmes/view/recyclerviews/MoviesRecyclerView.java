@@ -77,6 +77,9 @@ public class MoviesRecyclerView extends RecyclerView {
             movieItemView = itemView.findViewById(R.id.movie_item_view);
         }
         public void updateMovieItemView(Movie movie){
+            if(movie == null){
+                movie = Movie.createDefault();
+            }
             movieItemView.updateMovie(movie);
         }
     }

@@ -13,7 +13,6 @@ public class App extends Application {
     public void onCreate() {
         app = this;
         super.onCreate();
-        MainRepository.getInstance().initGenreList();
         MainRepository.getInstance().refreshMovieList();
     }
 }
