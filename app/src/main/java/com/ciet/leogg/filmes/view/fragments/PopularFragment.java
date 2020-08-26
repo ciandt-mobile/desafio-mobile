@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,31 +14,33 @@ import com.ciet.leogg.filmes.R;
 import com.ciet.leogg.filmes.model.Movie;
 import com.ciet.leogg.filmes.presenter.MoviesContract;
 import com.ciet.leogg.filmes.presenter.TabPresenter;
-import com.ciet.leogg.filmes.repository.MainRepository;
 import com.ciet.leogg.filmes.view.recyclerviews.MoviesRecyclerView;
 
 import java.util.List;
 
 public class PopularFragment extends Fragment implements MoviesContract.ListView {
     private MoviesContract.TabInteraction tabInteraction;
+
     private MoviesRecyclerView moviesRecyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
 
     public PopularFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView( LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         tabInteraction = new ViewModelProvider(this).get(TabPresenter.class);
         tabInteraction.setPopularView(this);
+        com.ciet.leogg.filmes.databinding.FragmentPopularBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_popular, container, false);
+        binding.setLifecycleOwner(this);
         tabInteraction.loadMovies();
 
-        swipeRefreshLayout = (SwipeRefreshLayout) inflater.inflate(R.layout.fragment_popular, container, false);
+        swipeRefreshLayout = (SwipeRefreshLayout) binding.getRoot();
         swipeRefreshLayout.setRefreshing(true);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                MainRepository.getInstance().more();
+                tabInteraction.more();
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -58,7 +61,7 @@ public class PopularFragment extends Fragment implements MoviesContract.ListView
                 if(recyclerView.getScrollState() == RecyclerView.SCROLL_STATE_DRAGGING
                         && !recyclerView.canScrollVertically(1)){
                     swipeRefreshLayout.setRefreshing(true);
-                    MainRepository.getInstance().less();
+                    tabInteraction.less();
                     swipeRefreshLayout.setRefreshing(false);
                 }
             }

@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import com.android.volley.toolbox.NetworkImageView;
 import com.ciet.leogg.filmes.R;
 import com.ciet.leogg.filmes.api.AppRequestQueue;
 import com.ciet.leogg.filmes.model.Movie;
@@ -14,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MovieItemView extends CardView{
-    private NetworkImageView thumbnail;
+    private MyNetworkImageView thumbnail;
     private TextView releaseDate;
     private TextView title;
     public MovieItemView(@NonNull Context context) {
@@ -32,6 +31,7 @@ public class MovieItemView extends CardView{
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+
         thumbnail = findViewById(R.id.movie_thumbnail);
         releaseDate = findViewById(R.id.movie_release_date);
         title = findViewById(R.id.movie_title);

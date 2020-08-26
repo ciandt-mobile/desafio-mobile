@@ -1,3 +1,21 @@
+----------------
+<i> Utilizações e implementação</i>
+
+- Volley - Requisições  
+- Jackson - Json unmarshalling  
+- Arquitetura - Model-View-Presenter  
+- Linguagem - Java  
+- LiveData, Databinding, RecyclerView 
+ 
+---
+<i> Considerações </i>
+
+- A lista dos filmes que entrarão em cartaz em breve é obtida filtrando a lista dos filmes populares, já que é um requisito de implementação. Como a lista dos filmes populares é paginada, é necessário carregar várias páginas para popular a lista dos que ainda entrarão em cartaz. Seria mais interessante fazer as requisições dos filmes que entrarão em breve separadamente, já que a API disponibiliza essa opção.  
+- São disponibilizadas as linguagens inglês e português, dependendo das configurações do celular.  
+- A Stack utilizada pelo Volley (Cronet) está em desenvolvimento. Em versões posteriores seria interessante utilizar releases estáveis.  
+
+----------------
+
 # Desafio Mobile - 2019
 
 Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para realizar o desafio 😀.
@@ -45,10 +63,3 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  -- API (https://www.themoviedb.org/documentation/api)
  
 # BOA SORTE!
- 
- 
-----------------
-Utilizações:
-Volley - Requisições
-Jackson - Json unmarshalling
-Arquitetura - Model-View-Presenter

@@ -1,5 +1,23 @@
-<resources>
-    <string name="app_name">Filmes</string>
-    <string name="nav_item_title_popular">Populares</string>
-    <string name="nav_item_title_upcoming">Em Breve</string>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="lang">en-us</string>
+    <string name="app_name">Movies</string>
+    <string name="nav_item_title_popular">Popular</string>
+    <string name="nav_item_title_upcoming">Upcoming</string>
+    <string name="tab_title_status">Status</string>
+    <string name="tab_title_about">About</string>
+
+    <string name="dateDefault"><xliff:g id="dateDefault">%1$td/%1$tm/%1$tY</xliff:g></string>
+    <string name="dateOnlyYear"><xliff:g id="dateOnlyYear">%1$tY</xliff:g></string>
+    <string name="durationFormat"><xliff:g id="durationFormat">%1$dmin</xliff:g></string>
+    <string name="clapper_icon_content_description">A deep blue movie clapperboard icon</string>
+    <string name="current_page_label">Current Page:</string>
+    <string name="last_movie_label">Last movie detail seen:</string>
+    <string name="release_year_label">Release Year:</string>
+    <string name="genres_label">Genres:</string>
+    <string name="duration_label">Duration:</string>
+    <string name="movie_name_label">Movie Name:</string>
+    <string name="main_cast_label">Main Cast:</string>
+    <string name="synopsis_label">Synopsis:</string>
+    <string name="backdrop_content_description">Large movie backdrop poster.</string>
+    <string name="no_movie">No movie</string>
 </resources>

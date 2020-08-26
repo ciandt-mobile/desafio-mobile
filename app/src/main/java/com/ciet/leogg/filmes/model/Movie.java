@@ -4,15 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
+import com.ciet.leogg.filmes.App;
+import com.ciet.leogg.filmes.R;
 import com.ciet.leogg.filmes.api.GenreDeserializer;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @Keep
@@ -114,12 +113,17 @@ public class Movie implements Parcelable {
         Movie movie = new Movie(){
             @Override
             public String getTitle() {
-                return "No movie";
+                return App.instance().getString(R.string.no_movie);
             }
 
             @Override
             public Date getReleaseDate() {
                 return new Date();
+            }
+
+            @Override
+            public List<String> getGenres() {
+                return new ArrayList<>();
             }
         };
         return movie;

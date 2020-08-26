@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:tools="http://schemas.android.com/tools">
+
+<androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.fragments.HomeFragment"
@@ -20,7 +21,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:contentDescription="A deep blue movie clapperboard icon"
+            android:contentDescription="@string/clapper_icon_content_description"
             />
 
     <View
@@ -52,14 +53,14 @@
         <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status"
+                android:text="@string/tab_title_status"
                 android:id="@+id/home_tab_btn_1"
                 />
 
         <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="About"
+                android:text="@string/tab_title_about"
                 android:id="@+id/home_tab_btn_2"
                 />
 
@@ -78,3 +79,4 @@
             app:layout_constraintTop_toBottomOf="@+id/tab_layout"
             android:layout_marginTop="1dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

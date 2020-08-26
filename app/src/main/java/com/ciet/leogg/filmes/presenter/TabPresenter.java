@@ -49,5 +49,13 @@ public class TabPresenter extends ViewModel implements MoviesContract.TabInterac
         MainRepository.getInstance().refreshMovieList();
     }
 
+    @Override
+    public void more() {
+        MainRepository.getInstance().more();
+    }
 
+    @Override
+    public void less() {
+        MainRepository.getInstance().less();
+    }
 }

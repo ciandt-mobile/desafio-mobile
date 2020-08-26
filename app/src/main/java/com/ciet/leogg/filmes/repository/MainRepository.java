@@ -1,10 +1,11 @@
 package com.ciet.leogg.filmes.repository;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import com.android.volley.Response;
+import com.ciet.leogg.filmes.App;
+import com.ciet.leogg.filmes.R;
 import com.ciet.leogg.filmes.api.AppRequestQueue;
 import com.ciet.leogg.filmes.api.JacksonListRequest;
 import com.ciet.leogg.filmes.api.JacksonObjectRequest;
@@ -22,7 +23,7 @@ public class MainRepository {
     private final MutableLiveData<List<Movie>> popularMovieList = new MutableLiveData<>();
     private final MutableLiveData<List<Movie>> upcomingMovieList = new MutableLiveData<>();
     //movie details
-    private final MutableLiveData<Movie> movie = new MediatorLiveData<>();
+    private final MutableLiveData<Movie> movie = new MutableLiveData<>();
     private final MutableLiveData<List<Cast>> castList = new MutableLiveData<>();
 
     private MainRepository(){
@@ -43,6 +44,7 @@ public class MainRepository {
                 upcomingMovieList.postValue(newUpcomingMovieList);
             }
         });
+        movie.setValue(Movie.createDefault());
 
     }
 
@@ -61,9 +63,10 @@ public class MainRepository {
             }
         };
         AppRequestQueue.getInstance().addToRequestQueue(new JacksonListRequest<>
-                ("https://api.themoviedb.org/3/discover/movie?api_key=adda3de7d4f28a11095c260028a9a7ac&" +
-                        "language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page="+
-                        page.getValue(),listener,Movie.class));
+                ("https://api.themoviedb.org/3/discover/movie?api_key=adda3de7d4f28a11095c260028a9a7ac&"
+                        +"language="+ App.instance().getString(R.string.lang)
+                        +"&sort_by=popularity.desc&include_adult=false&include_video=false&page="
+                        +page.getValue(),listener,Movie.class));
     }
 
     private List<Movie> filter(List<Movie> input){
@@ -102,7 +105,8 @@ public class MainRepository {
                 castList.postValue(response);
                 AppRequestQueue.getInstance().addToRequestQueue(new JacksonObjectRequest<>
                         ("https://api.themoviedb.org/3/movie/"+inMovie.getId()
-                                +"?api_key=adda3de7d4f28a11095c260028a9a7ac&language=en-US",movieListener,Movie.class));
+                                +"?api_key=adda3de7d4f28a11095c260028a9a7ac&language="
+                                +App.instance().getString(R.string.lang),movieListener,Movie.class));
             }
         };
         AppRequestQueue.getInstance().addToRequestQueue(new JacksonListRequest<>
