@@ -10,10 +10,10 @@
 ---
 <i> Considerações </i>
 
-- A lista dos filmes que entrarão em cartaz em breve é obtida filtrando a lista dos filmes populares, já que é um requisito de implementação. Como a lista dos filmes populares é paginada, é necessário carregar várias páginas para popular a lista dos que ainda entrarão em cartaz. Seria mais interessante fazer as requisições dos filmes que entrarão em breve separadamente, já que a API disponibiliza essa opção.  
+- A lista dos filmes que entrarão em cartaz em breve é obtida filtrando a lista dos filmes populares, já que é um requisito de implementação. Como a lista dos filmes populares é paginada, é necessário carregar várias páginas para popular a lista dos que ainda entrarão em cartaz. Seria mais interessante fazer as requisições dos filmes que entrarão em breve separadamente, já que a API Web suporta essa opção.  
 - São disponibilizadas as linguagens inglês e português, dependendo das configurações do celular.  
-- A Stack utilizada pelo Volley (Cronet) está em desenvolvimento. Em versões posteriores seria interessante utilizar releases estáveis.  
-
+- A Stack utilizada pelo Volley (Cronet) está em desenvolvimento. Em versões posteriores seria interessante utilizar releases estáveis.    
+- O Aplicativo foi desenvolvido com foco em redução do uso de espaço e memória para celulares mais simples. O padrão de projetos Repository foi implementado utilizando somente requisições Web, e não utilizando banco de dados como "fonte única de verdade", já que o armazenamento indiscriminado das imagens de baixa e alta resolução dos posteres dos filmes podem levar a um alto consumo de espaço do celular, portanto sendo armazenados no cache LRU do Volley. Como a responsabilidade já foi separada utilizando o padrão de projeto, nada impede que seja implementada a utilização de banco de dados no futuro.
 ----------------
 
 # Desafio Mobile - 2019

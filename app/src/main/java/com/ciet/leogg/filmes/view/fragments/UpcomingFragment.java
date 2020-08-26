@@ -8,9 +8,11 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.ciet.leogg.filmes.R;
+import com.ciet.leogg.filmes.databinding.FragmentUpcomingBinding;
 import com.ciet.leogg.filmes.model.Movie;
 import com.ciet.leogg.filmes.presenter.MoviesContract;
 import com.ciet.leogg.filmes.presenter.TabPresenter;
@@ -31,7 +33,7 @@ public class UpcomingFragment extends Fragment implements MoviesContract.ListVie
                              Bundle savedInstanceState) {
         tabInteraction = new ViewModelProvider(this).get(TabPresenter.class);
         tabInteraction.setUpcomingView(this);
-        com.ciet.leogg.filmes.databinding.FragmentUpcomingBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_upcoming, container, false);
+        FragmentUpcomingBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_upcoming, container, false);
         binding.setLifecycleOwner(this);
         tabInteraction.loadMoviesAndFilter();
 
@@ -40,6 +42,7 @@ public class UpcomingFragment extends Fragment implements MoviesContract.ListVie
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                ((GridLayoutManager)moviesRecyclerView.getLayoutManager()).setReverseLayout(true);
                 tabInteraction.more();
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -61,11 +64,13 @@ public class UpcomingFragment extends Fragment implements MoviesContract.ListVie
                 if(recyclerView.getScrollState() == RecyclerView.SCROLL_STATE_DRAGGING
                         && !recyclerView.canScrollVertically(1)){
                     swipeRefreshLayout.setRefreshing(true);
+                    ((GridLayoutManager)recyclerView.getLayoutManager()).setReverseLayout(false);
                     tabInteraction.less();
                     swipeRefreshLayout.setRefreshing(false);
                 }
             }
         });
+        moviesRecyclerView.smoothScrollBy(0,-1);
         return swipeRefreshLayout;
     }
 

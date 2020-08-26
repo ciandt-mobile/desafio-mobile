@@ -8,9 +8,11 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.ciet.leogg.filmes.R;
+import com.ciet.leogg.filmes.databinding.FragmentPopularBinding;
 import com.ciet.leogg.filmes.model.Movie;
 import com.ciet.leogg.filmes.presenter.MoviesContract;
 import com.ciet.leogg.filmes.presenter.TabPresenter;
@@ -31,7 +33,7 @@ public class PopularFragment extends Fragment implements MoviesContract.ListView
                              Bundle savedInstanceState) {
         tabInteraction = new ViewModelProvider(this).get(TabPresenter.class);
         tabInteraction.setPopularView(this);
-        com.ciet.leogg.filmes.databinding.FragmentPopularBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_popular, container, false);
+        FragmentPopularBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_popular, container, false);
         binding.setLifecycleOwner(this);
         tabInteraction.loadMovies();
 
@@ -40,6 +42,7 @@ public class PopularFragment extends Fragment implements MoviesContract.ListView
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                ((GridLayoutManager)moviesRecyclerView.getLayoutManager()).setReverseLayout(true);
                 tabInteraction.more();
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -61,6 +64,7 @@ public class PopularFragment extends Fragment implements MoviesContract.ListView
                 if(recyclerView.getScrollState() == RecyclerView.SCROLL_STATE_DRAGGING
                         && !recyclerView.canScrollVertically(1)){
                     swipeRefreshLayout.setRefreshing(true);
+                    ((GridLayoutManager)recyclerView.getLayoutManager()).setReverseLayout(false);
                     tabInteraction.less();
                     swipeRefreshLayout.setRefreshing(false);
                 }
