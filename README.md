@@ -1,3 +1,21 @@
+----------------
+<i> Utilizações e implementação</i>
+
+- Volley - Requisições  
+- Jackson - Json unmarshalling  
+- Arquitetura - Model-View-Presenter  
+- Linguagem - Java  
+- LiveData, Databinding, RecyclerView 
+ 
+---
+<i> Considerações </i>
+
+- A lista dos filmes que entrarão em cartaz em breve é obtida filtrando a lista dos filmes populares, já que é um requisito de implementação. Como a lista dos filmes populares é paginada, é necessário carregar várias páginas para popular a lista dos que ainda entrarão em cartaz. Seria mais interessante fazer as requisições dos filmes que entrarão em breve separadamente, já que a API Web suporta essa opção.  
+- São disponibilizadas as linguagens inglês e português, dependendo das configurações do celular.  
+- A Stack utilizada pelo Volley (Cronet) está em desenvolvimento. Em versões posteriores seria interessante utilizar releases estáveis.    
+- O Aplicativo foi desenvolvido com foco em redução do uso de espaço e memória para celulares mais simples. O padrão de projetos Repository foi implementado utilizando somente requisições Web, e não utilizando banco de dados como "fonte única de verdade", já que o armazenamento indiscriminado das imagens de baixa e alta resolução dos posteres dos filmes podem levar a um alto consumo de espaço do celular, portanto sendo armazenados no cache LRU do Volley. Como a responsabilidade já foi separada utilizando o padrão de projeto, nada impede que seja implementada a utilização de banco de dados no futuro.
+----------------
+
 # Desafio Mobile - 2019
 
 Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para realizar o desafio 😀.
@@ -8,7 +26,7 @@ Bem Vindo ao desafio mobile da CI&T, por favor siga as instruções a baixo para
 - Ao terminar a solução realize um Pull Request;
 - Comente no readme do repositório os métodos utilizados, tais como arquitetura, linguagem, soluções técnicas e etc.;
 
-## O App
+## O com.ciet.leogg.filmes.App
 
 <img src="screenshots/ss01.png?raw=true" width="250"> <img src="screenshots/ss02.png?raw=true" width="250"> <img src="screenshots/ss03.png?raw=true" width="250">
 
@@ -45,5 +63,3 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  -- API (https://www.themoviedb.org/documentation/api)
  
 # BOA SORTE!
- 
- 

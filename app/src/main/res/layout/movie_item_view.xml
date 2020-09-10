@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+                name="movie"
+                type="com.ciet.leogg.filmes.model.Movie"/>
+        <variable
+                name="posterPath"
+                type="String"/>
+    </data>
+
+    <com.ciet.leogg.filmes.view.customviews.MovieItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            card_view:cardUseCompatPadding="true"
+            android:id="@+id/movie_item_view"
+            android:background="#B36B6B">
+
+        <com.ciet.leogg.filmes.view.customviews.MyNetworkImageView
+                android:id="@+id/movie_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_sync_portrait"
+                app:imageUrl="@{posterPath}"
+                app:defaultImageResId="@drawable/ic_sync_portrait"
+                app:errorImageResId="@drawable/ic_sync_disabled_portrait"/>
+
+        <TextView
+                android:id="@+id/movie_release_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:padding="8dp"
+                android:background="@color/primaryColorWithAlpha"
+                tools:text="@{@string/dateDefault(movie.releaseDate)}"
+                android:textColor="@color/secondaryLightColor"
+                android:shadowColor="@color/secondaryTextColor"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="6"
+                />
+
+        <TextView
+                android:id="@+id/movie_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:padding="8dp"
+                android:background="@color/primaryColorWithAlpha"
+                tools:text="@{movie.title}"
+                android:textColor="@color/secondaryLightColor"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="6"
+                android:shadowColor="@color/secondaryTextColor"/>
+    </com.ciet.leogg.filmes.view.customviews.MovieItemView>
+</layout>

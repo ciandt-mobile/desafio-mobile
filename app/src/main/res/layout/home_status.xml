@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+                name="presenter"
+                type="com.ciet.leogg.filmes.presenter.HomePresenter"/>
+    </data>
+
+<androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/home_status"
+        android:background="@color/primaryLightColor">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/constraint_status"
+            style="@style/AppTheme"
+            android:background="@color/primaryLightColor">
+
+        <TextView
+                android:text="@string/current_page_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/current_page_label"
+                tools:text="Current Page:"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/current_page_number"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintBottom_toTopOf="@+id/home_divider"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintVertical_bias="0.49"
+                app:layout_constraintVertical_chainStyle="packed"
+                android:textColor="@color/secondaryLightColor"/>
+
+        <TextView
+                android:text="@{String.valueOf(presenter.page)}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/current_page_number"
+                android:textSize="24sp"
+                app:layout_constraintStart_toEndOf="@+id/current_page_label"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBaseline_toBaselineOf="@+id/current_page_label"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/secondaryLightColor"/>
+
+
+        <include
+                layout="@layout/movie_item_view"
+                bind:movie="@{presenter.movie}"
+                bind:posterPath="@{presenter.posterPath}"
+                android:layout_width="150dp"
+                android:layout_height="225dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp"
+                android:id="@+id/home_last_movie"
+                app:layout_constraintTop_toBottomOf="@+id/last_movie_label"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"/>
+
+        <View
+                android:id="@+id/home_divider"
+                android:layout_width="409dp"
+                android:layout_height="2dp"
+                android:background="?android:attr/listDivider"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/current_page_label"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintBottom_toTopOf="@+id/last_movie_label"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"/>
+
+        <TextView
+                android:text="@string/last_movie_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/last_movie_label"
+                app:layout_constraintTop_toBottomOf="@+id/home_divider"
+                app:layout_constraintBottom_toTopOf="@+id/home_last_movie"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="24sp"
+                android:textColor="@color/secondaryLightColor"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+</layout>

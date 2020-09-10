@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/popularFragment"
+            android:title="@string/nav_item_title_popular"
+            android:icon="@drawable/ic_popular"/>
+    <item
+            android:id="@+id/upcomingFragment"
+            android:title="@string/nav_item_title_upcoming"
+            android:icon="@drawable/ic_upcomming"/>
+</menu>
