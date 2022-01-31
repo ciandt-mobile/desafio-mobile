@@ -46,4 +46,15 @@ Como usuário, ao selecionar um item da lista, gostaria de ver os detalhes do fi
  
 # BOA SORTE!
  
- 
+######################################
+# Informações sobre o desenvolvimento
+
+# Descrição
+- Projeto desenvolvido utilizando a linguagem Flutter, com padrões de codificação clean code SOLID, sendo um arquitetura MVVM.
+- Projeto com pastas divididas:
+- "presentation" - sendo a parte de BLOC e UI ; 
+- "getit" - sendo o local onde fica a utilização do package GetIt para injeção de dependencias ; 
+- "common" - sendo a pasta onde se entra as constantes comuns de todos projeto;
+- "repositories" - onde está os contratos abstratos e as entities
+- "data" - onde está os models e as chamadas RestFul pra API.
+
